@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="20dp"
+    android:layout_marginEnd="20dp">
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:id="@+id/mgFrameItemFolderTvName"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Love"
+        android:textColor="#8893CB"
+        android:textSize="12sp" />
+
+</RelativeLayout>

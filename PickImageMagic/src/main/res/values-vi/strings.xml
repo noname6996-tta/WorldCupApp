@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">g3_magic_photo</string>
+    <string name="string_title_name_folder">Tất cả ảnh</string>
+    <string name="no_image">Không có ảnh</string>
+    <string name="allimage">Tất cả ảnh</string>
+    <string name="string_clear_all">Xoá tất cả</string>
+    <string name="string_title_start">Bắt đầu</string>
+    <string name="string_please_choose_from_1_to_9_photos">Vui lòng chọn từ 1 đến %1$s ảnh</string>
+    <string name="string_warning">Vui lòng chọn tối đa %1$s ảnh</string>
+    <string name="txt_should_pick_max_image">Vui lòng chọn đủ %1$s ảnh</string>
+</resources>

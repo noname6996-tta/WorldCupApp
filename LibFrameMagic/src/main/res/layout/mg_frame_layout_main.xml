@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F8FF">
+
+    <include
+        android:id="@+id/mgFrameLayoutToolbar"
+        layout="@layout/mg_frame_layout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+    <include
+        android:id="@+id/mgFrameLayoutRcv"
+        layout="@layout/mg_frame_layout_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mgFrameLayoutToolbar" />
+
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mgFrameLayoutRcv">
+
+        <g3.module.libframemagic.ui.customview.TouchView
+            android:layout_centerInParent="true"
+            android:id="@+id/mgTouchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <g3.module.libframemagic.ui.customview.FrameDrawView
+            android:id="@+id/mgFrameViewDraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mgFrameProgressBarLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mp_vanishing_color_80121652"
+        android:visibility="visible">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_centerInParent="true"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading_beauty" />
+
+    </RelativeLayout>
+</RelativeLayout>

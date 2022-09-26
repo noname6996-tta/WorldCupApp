@@ -1,0 +1,3 @@
+<resources>
+    <string name="general_util_no_internet">Connection failed. Please check the network connection again</string>
+</resources>
