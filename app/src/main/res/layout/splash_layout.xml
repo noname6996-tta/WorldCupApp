@@ -15,7 +15,6 @@
         android:layout_height="200dp" />
     <TextView
         android:textSize="30sp"
-        android:fontFamily="@font/agency_fb_bold"
         android:textColor="#ffffff"
         android:text="@string/app_name"
         android:layout_marginTop="25dp"
