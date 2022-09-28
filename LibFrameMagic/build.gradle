@@ -73,7 +73,6 @@ dependencies {
     // check internet
     implementation project(':LibCheckInternet')
     // check click
-    implementation project(':LibClickAnim')
 
     //hawk
     implementation "com.orhanobut:hawk:2.0.1"

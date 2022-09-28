@@ -17,8 +17,8 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import g3.module.libcheckinternet.network.AppExecutors
 import g3.module.libcheckinternet.network.NetworkConnectivity
-import g3.module.libclickanim.clickutils.LibClickAnimUtils
-import g3.module.libclickanim.clickutils.OnCustomClickListener
+import g3.module.libframemagic.apputils.clickutils.LibClickAnimUtils
+import g3.module.libframemagic.apputils.clickutils.OnCustomClickListener
 import g3.module.libframemagic.R
 import g3.module.libframemagic.adapter.FolderFrameAdapter
 import g3.module.libframemagic.adapter.ItemFrameAdapter

@@ -2,8 +2,6 @@ include ':app'
 rootProject.name = "MVVM-Kotlin-Android-Architecture"
 
 include ':LibCheckInternet'
-include ':LibClickAnim'
 include ':LibFrameMagic'
-include ':MediaLoaderMagic'
-include ':PermissionUtilsMagic'
 include ':tedimagepicker'
+include ':permissionx'

@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">G3LibVideoV2</string>
-    <string name="permission_txt_allow_permission">Please allow permissions to use this feature</string>
-    <string name="permission_txt_denied_permission">Permission disabled. Please allow permissions to use this feature</string>
-    <string name="permission_ask_for_permission">Ask for permission</string>
-    <string name="permission_btn_cancel">Cancel</string>
-    <string name="permission_btn_ok">Ok</string>
-
-</resources>
