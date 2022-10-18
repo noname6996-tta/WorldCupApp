@@ -54,7 +54,7 @@ class DataFactory {
         for (k in 0 until data.listPhotoFrames.size) {
             var itemFolder = data.listPhotoFrames[k]
             for (i in itemFolder.defines[0].start..itemFolder.defines[0].end) {
-                var urlImage = start_link + itemFolder.folder + "%2Fframe_"+i+".png"
+                var urlImage = start_link + itemFolder.folder + "%2F"+itemFolder.folder+"_frame_"+i+".png"
                 var itemFrameModel = ItemFrameModel(k,urlImage)
                 mListItemSky.add(itemFrameModel)
             }

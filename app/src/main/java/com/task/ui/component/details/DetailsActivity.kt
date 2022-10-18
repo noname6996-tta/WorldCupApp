@@ -42,12 +42,12 @@ class DetailsActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.details_menu, menu)
-        this.menu = menu
-        viewModel.isFavourites()
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.details_menu, menu)
+//        this.menu = menu
+//        viewModel.isFavourites()
+//        return true
+//    }
 
     fun onClickFavorite(mi: MenuItem) {
         mi.isCheckable = false

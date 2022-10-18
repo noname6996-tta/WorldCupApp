@@ -1,26 +1,34 @@
 package com.task.ui.component.login
 
+//import com.task.ui.component.frames.BeautyMagicActivity
+//import com.task.ui.component.frames.DirectPickImageActivity
+//import g3.module.libclickanim.clickutils.UtilsAnimation
+import URIPathHelper
+import android.Manifest
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.LiveData
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import com.permissionx.guolindev.PermissionX
 import com.task.data.Resource
 import com.task.data.dto.login.LoginResponse
 import com.task.databinding.LoginActivityBinding
 import com.task.ui.base.BaseActivity
-//import com.task.ui.component.frames.BeautyMagicActivity
-//import com.task.ui.component.frames.DirectPickImageActivity
+import com.task.ui.component.BeautyActivity
 import com.task.ui.component.recipes.RecipesListActivity
 import com.task.utils.*
 import dagger.hilt.android.AndroidEntryPoint
-//import g3.module.libclickanim.clickutils.UtilsAnimation
+import g3.module.libframemagic.appinterface.OnListenerFrameView
 import gun0912.tedimagepicker.builder.TedRxImagePicker
-import java.util.*
+import kotlinx.android.synthetic.main.activity_beauty_magic.*
 
 /**
  * Created by AhmedEltaher
@@ -56,14 +64,16 @@ class LoginActivity : BaseActivity() {
 //            binding.username.text.trim().toString(),
 //            binding.password.text.toString()
 //        )
-
-        TedRxImagePicker.with(this)
-            .start()
-            .subscribe(this::showSingleImage, Throwable::printStackTrace)
+        Log.e("TAG", "doLogin: " )
+checkPermission()
+//        TedRxImagePicker.with(this)
+//            .start()
+//            .subscribe(this::showSingleImage, Throwable::printStackTrace)
     }
     private fun showSingleImage(uri: Uri) {
         Log.e("TAG", "showSingleImage: "+ uri )
         Glide.with(this).load(uri).into(binding.ivImage)
+        URIPathHelper().getPath(this, uri)?.let { startBeautyActivity(it) }
 
     }
     private fun handleLoginResult(status: Resource<LoginResponse>) {
@@ -114,9 +124,9 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun startBeautyActivity(path: String) {
-//        val intent = Intent(this, BeautyMagicActivity::class.java)
-//        intent.putExtra(ConstantMagic.PATH_BEAUTY, path)
-//        startActivity(intent)
+        val intent = Intent(this, BeautyActivity::class.java)
+        intent.putExtra("PATH_BEAUTY", path)
+        startActivity(intent)
     }
 
     /**
@@ -133,5 +143,43 @@ class LoginActivity : BaseActivity() {
             checkAction = !checkAction
         }
     }
+
+    /**
+     *
+     */
+    fun checkPermission(){
+        PermissionX.init(this)
+            .permissions(
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+
+
+
+            )
+            .setDialogTintColor(Color.parseColor("#ff0000"), Color.parseColor("#008577"))
+            .onExplainRequestReason { scope, deniedList, beforeRequest ->
+                val message = "PermissionX needs following permissions to continue"
+                scope.showRequestReasonDialog(deniedList, message, "Allow", "Deny")
+//                    val message = "Please allow the following permissions in settings"
+//                    val dialog = CustomDialogFragment(message, deniedList)
+//                    scope.showRequestReasonDialog(dialog)
+            }
+            .onForwardToSettings { scope, deniedList ->
+                val message = "Please allow following permissions in settings"
+                scope.showForwardToSettingsDialog(deniedList, message, "Allow", "Deny")
+            }
+            .request { allGranted, grantedList, deniedList ->
+                if (allGranted) {
+                            TedRxImagePicker.with(this)
+                                .start()
+                                .subscribe(this::showSingleImage, Throwable::printStackTrace)
+                    Toast.makeText(this, "All permissions are granted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "The following permissions are denied：$deniedList", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
+
 
 }
