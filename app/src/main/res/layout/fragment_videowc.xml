@@ -55,7 +55,7 @@
         android:hint="@string/search_highlights"
         android:maxLines="1"
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="16dp"
         android:fontFamily="@font/inter"
         android:layout_marginLeft="13dp"
         app:layout_constraintBottom_toBottomOf="@+id/view10"

@@ -10,7 +10,7 @@ import com.example.worldcup2022.adapter.StadiumAdapter
 import com.example.worldcup2022.databinding.FragmentStadiumBinding
 import com.example.worldcup2022.databinding.FragmentStadiumSecondBinding
 import com.example.worldcup2022.model.Stadium
-import com.example.worldcup2022.view.activity.MainActivity
+
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.proxglobal.worlcupapp.base.BaseFragment

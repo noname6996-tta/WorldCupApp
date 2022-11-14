@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.adapter.GroupMatchAdapter
 import com.example.worldcup2022.databinding.FragmentGroupinfoBinding
 import com.example.worldcup2022.model.Match
-import com.example.worldcup2022.view.activity.MainActivity
+import com.example.worldcup2022.ui.component.main.MainNewActivity
+
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.proxglobal.worlcupapp.base.BaseFragment
@@ -26,7 +27,7 @@ class GroupInfoFragment : BaseFragment<FragmentGroupinfoBinding>() {
 
     override fun initView() {
         super.initView()
-        MainActivity.binding.bottomMain.visibility = View.GONE
+        MainNewActivity.binding.bottomMain.visibility = View.GONE
         binding.recGroupMatch.adapter = groupMathAdapter
         arrMatchs = ArrayList()
         val linearLayoutManager = LinearLayoutManager(requireContext())
@@ -34,7 +35,7 @@ class GroupInfoFragment : BaseFragment<FragmentGroupinfoBinding>() {
         binding.recGroupMatch.layoutManager = linearLayoutManager
 
         binding.imgbackGroup.setOnClickListener {
-            MainActivity.binding.bottomMain.visibility = View.VISIBLE
+            MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().popBackStack()
 
         }

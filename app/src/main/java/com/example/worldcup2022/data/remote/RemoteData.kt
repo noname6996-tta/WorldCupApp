@@ -4,9 +4,11 @@ import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.frames.DataFrames
 import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.recipes.RecipesItem
+import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.error.NETWORK_ERROR
 import com.example.worldcup2022.data.error.NO_INTERNET_CONNECTION
 import com.example.worldcup2022.data.remote.service.FramesService
+import com.example.worldcup2022.data.remote.service.MatchsService
 //import com.example.worldcup2022.data.remote.service.FramesService
 import com.example.worldcup2022.data.remote.service.RecipesService
 import com.example.worldcup2022.utils.NetworkConnectivity
@@ -38,6 +40,18 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         return when (val response = processCall(framesService::fetchFrames)) {
             is DataFrames -> {
                 Resource.Success(data = response as DataFrames)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
+    override suspend fun requestMatch(filter:String): Resource<ResponseMatch> {
+        val matchsService = serviceGenerator.createService(MatchsService::class.java)
+        return when (val response = processCall { matchsService.fetchMatchs(filter, 0, 100) }) {
+            is ResponseMatch -> {
+                Resource.Success(data = response as ResponseMatch)
             }
             else -> {
                 Resource.DataError(errorCode = response as Int)

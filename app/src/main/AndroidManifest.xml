@@ -29,13 +29,13 @@
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.WorldCup2022"
+        android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup,android:label">
         <activity
             android:name=".ui.component.login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity
-            android:name=".view.activity.MainActivity"
-            android:label="@string/title_activity_login" />
+        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".ui.component.main.MainNewActivity" />
         <activity
             android:name=".ui.component.splash.SplashActivity"
             android:exported="true"

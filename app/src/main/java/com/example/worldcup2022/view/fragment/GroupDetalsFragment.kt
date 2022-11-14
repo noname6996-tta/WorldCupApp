@@ -10,7 +10,7 @@ import com.example.worldcup2022.adapter.MatchGroupAdapter
 import com.example.worldcup2022.databinding.FragmentGroupDetalsBinding
 import com.example.worldcup2022.model.Country
 import com.example.worldcup2022.model.Match
-import com.example.worldcup2022.view.activity.MainActivity
+import com.example.worldcup2022.ui.component.main.MainNewActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.proxglobal.worlcupapp.base.BaseFragment
@@ -32,7 +32,7 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>(){
 
     override fun initView() {
         super.initView()
-        MainActivity.binding.bottomMain.visibility = View.GONE
+        MainNewActivity.binding.bottomMain.visibility = View.GONE
         groupMatch = args.groupName
         binding.textView5.text = "Group "+groupMatch+" "
         binding.tvLogoGroupName.text = "Group "+groupMatch+" "
@@ -88,7 +88,7 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>(){
     override fun addEvent() {
         super.addEvent()
         binding.vireBack.setOnClickListener {
-            MainActivity.binding.bottomMain.visibility = View.VISIBLE
+            MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().popBackStack()
         }
         homeMatchAdapter.setClickShowMatch{

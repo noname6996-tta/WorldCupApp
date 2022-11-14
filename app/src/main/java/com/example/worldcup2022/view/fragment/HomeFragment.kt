@@ -1,14 +1,11 @@
 package com.example.worldcup2022.view.fragment
 
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.View
-import androidx.navigation.fragment.findNavController
-import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HomeMatchPagerAdapter
 import com.example.worldcup2022.databinding.FragmentHomeBinding
-import com.example.worldcup2022.view.activity.MainActivity
-import com.google.android.material.tabs.TabLayout
+import com.example.worldcup2022.ui.component.main.MainNewActivity
+
 import com.google.android.material.tabs.TabLayoutMediator
 import com.proxglobal.worlcupapp.base.BaseFragment
 import java.text.SimpleDateFormat
@@ -23,35 +20,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun initView() {
         super.initView()
-        MainActivity.binding.bottomMain.visibility = View.VISIBLE
+        MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
         countDownTime()
         binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity())
-        TabLayoutMediator(binding.tabLayout,
+        TabLayoutMediator(
+            binding.tabLayout,
             binding.viewPagerHome,
             false,
-            false,
-            object : TabLayoutMediator.TabConfigurationStrategy{
-            override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-                when(position){
-                    0-> tab.text = "Su 20 Nov"
-                    1-> tab.text = "Mo 21 Nov"
-                    2-> tab.text = "Tu 22 Nov"
-                    3-> tab.text = "We 23 Nov"
-                    4-> tab.text = "Th 24 Nov"
-                    5-> tab.text = "Fr 25 Nov"
-                    6-> tab.text = "Sa 26 Nov"
-                    7-> tab.text = "Su 27 Nov"
-                    8-> tab.text = "Mo 28 Nov"
-                    9-> tab.text = "Tu 29 Nov"
-                    10-> tab.text = "We 30 Nov"
-                    11-> tab.text = "Th 1 Dec"
-                    12-> tab.text = "Fr 2 Dec"
-                    13-> tab.text = "Sa 3 Dec"
-                    // tam thoi
-                }
+            false
+        ) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Su 20 Nov"
+                1 -> tab.text = "Mo 21 Nov"
+                2 -> tab.text = "Tu 22 Nov"
+                3 -> tab.text = "We 23 Nov"
+                4 -> tab.text = "Th 24 Nov"
+                5 -> tab.text = "Fr 25 Nov"
+                6 -> tab.text = "Sa 26 Nov"
+                7 -> tab.text = "Su 27 Nov"
+                8 -> tab.text = "Mo 28 Nov"
+                9 -> tab.text = "Tu 29 Nov"
+                10 -> tab.text = "We 30 Nov"
+                11 -> tab.text = "Th 1 Dec"
+                12 -> tab.text = "Fr 2 Dec"
+                13 -> tab.text = "Sa 3 Dec"
+                // tam thoi
             }
-
-        }).attach()
+        }.attach()
     }
 
     override fun addEvent() {
@@ -67,7 +62,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     }
 
-    fun countDownTime() {
+    /**
+     *
+     */
+    private fun countDownTime() {
         val currentTime = Calendar.getInstance().time
         val endDateDay = "20/11/2022 18:00:00"
         val format1 = SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.getDefault())

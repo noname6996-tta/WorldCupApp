@@ -8,7 +8,8 @@ import com.example.worldcup2022.databinding.SplashLayoutBinding
 import com.example.worldcup2022.ui.base.BaseActivity
 import com.example.worldcup2022.ui.component.login.LoginActivity
 import com.example.worldcup2022.SPLASH_DELAY
-import com.example.worldcup2022.view.activity.MainActivity
+import com.example.worldcup2022.ui.component.main.MainNewActivity
+import com.example.worldcup2022.ui.component.recipes.RecipesListActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -35,7 +36,7 @@ class SplashActivity : BaseActivity(){
 
     private fun navigateToMainScreen() {
         Handler().postDelayed({
-            val nextScreenIntent = Intent(this, MainActivity::class.java)
+            val nextScreenIntent = Intent(this, MainNewActivity::class.java)
             startActivity(nextScreenIntent)
             finish()
         }, SPLASH_DELAY.toLong())

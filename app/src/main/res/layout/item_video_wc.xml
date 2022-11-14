@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="dasdasd"
         android:layout_marginTop="8dp"
-        android:textSize="12sp"
+        android:textSize="12dp"
         android:fontFamily="@font/inter"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

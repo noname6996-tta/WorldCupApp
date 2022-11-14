@@ -41,7 +41,7 @@
                 android:text="Match  "
                 android:textColor="@color/maincolor"
                 android:textFontWeight="700"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textStyle="italic"
                 app:layout_constraintStart_toEndOf="@+id/imgbackGroup"
                 app:layout_constraintTop_toBottomOf="@+id/imgHeader" />
@@ -76,7 +76,7 @@
                 android:text="@string/fifa_world_cup_2022"
                 android:textColor="@color/white"
                 android:textFontWeight="400"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/view2" />
@@ -88,7 +88,7 @@
                 android:fontFamily="@font/intermedium"
                 android:text="@string/group_a"
                 android:textColor="@color/gray2"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -101,7 +101,7 @@
                 android:text="@string/time"
                 android:textColor="@color/white"
                 android:textFontWeight="400"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="@+id/view2"
                 app:layout_constraintEnd_toEndOf="@+id/view2"
                 app:layout_constraintStart_toStartOf="@+id/view2"
@@ -115,7 +115,7 @@
                 android:fontFamily="@font/intermedium"
                 android:text="@string/sun_nov_20"
                 android:textColor="@color/gray2"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/tvTimeMatch"
                 app:layout_constraintEnd_toEndOf="@+id/view2"
                 app:layout_constraintStart_toStartOf="@+id/view2" />
@@ -132,7 +132,7 @@
                 android:maxLines="2"
                 android:text="@string/ai_bay_stadium"
                 android:textColor="@color/gray2"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 app:layout_constraintEnd_toStartOf="@+id/imgTeam2"
                 app:layout_constraintStart_toEndOf="@+id/imgteam1"
                 app:layout_constraintTop_toBottomOf="@+id/tvTimeMatch" />

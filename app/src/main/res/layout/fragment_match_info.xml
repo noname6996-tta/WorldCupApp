@@ -21,7 +21,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/head_to_head"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,7 +44,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/netherlands"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 app:layout_constraintStart_toEndOf="@+id/imgTeam1"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -67,7 +67,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/netherlands"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 app:layout_constraintEnd_toStartOf="@+id/imgTeam2"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -79,7 +79,7 @@
                 android:fontFamily="@font/inter"
                 android:text="@string/played"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTeam1" />
@@ -93,7 +93,7 @@
                 android:fontFamily="@font/inter"
                 android:text="@string/wins"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTeam1" />
 
@@ -106,7 +106,7 @@
                 android:fontFamily="@font/inter"
                 android:text="@string/wins"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTeam2" />
 
@@ -191,7 +191,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Drawn 0"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSumPlayed" />
@@ -205,7 +205,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/predict_the_outcome_of_the_match"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDraw" />
 
@@ -351,7 +351,7 @@
                 android:fontFamily="@font/inter_bold"
                 android:text="@string/who_will_win"
                 android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 app:layout_constraintStart_toEndOf="@+id/tvMatchName"
                 app:layout_constraintTop_toTopOf="@+id/view7" />
 

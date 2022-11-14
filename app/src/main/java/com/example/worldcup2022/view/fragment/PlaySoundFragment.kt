@@ -12,7 +12,8 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.navigation.fragment.findNavController
 import com.example.worldcup2022.R
 import com.example.worldcup2022.databinding.FragmentPlaySoundBinding
-import com.example.worldcup2022.view.activity.MainActivity
+import com.example.worldcup2022.ui.component.main.MainNewActivity
+
 import com.proxglobal.worlcupapp.base.BaseFragment
 
 
@@ -25,7 +26,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
 
     override fun initView() {
         super.initView()
-        MainActivity.binding.bottomMain.visibility = View.GONE
+        MainNewActivity.binding.bottomMain.visibility = View.GONE
     }
     override fun initData() {
         super.initData()
@@ -35,7 +36,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     override fun addEvent() {
         super.addEvent()
         binding.viewBack.setOnClickListener {
-            MainActivity.binding.bottomMain.visibility = View.VISIBLE
+            MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().navigateUp()
         }
         binding.imgPlay.setOnPressListener(

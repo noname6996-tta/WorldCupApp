@@ -69,7 +69,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="@string/group_a"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -251,7 +251,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="Group B"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -433,7 +433,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="Group C"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -615,7 +615,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="Group D"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -797,7 +797,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="Group E"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -979,7 +979,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="Group F"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1161,7 +1161,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="Group G"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -1343,7 +1343,7 @@
                         android:fontFamily="@font/inter_extrabold"
                         android:text="Group H"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

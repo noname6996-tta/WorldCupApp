@@ -12,7 +12,8 @@ import com.example.worldcup2022.databinding.FragmentMatchBinding
 import com.example.worldcup2022.model.Country
 import com.example.worldcup2022.model.Match
 import com.example.worldcup2022.model.Stadium
-import com.example.worldcup2022.view.activity.MainActivity
+import com.example.worldcup2022.ui.component.main.MainNewActivity
+
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
@@ -33,7 +34,7 @@ class MatchFragment:BaseFragment<FragmentMatchBinding>() {
     }
     override fun initData() {
         super.initData()
-        MainActivity.binding.bottomMain.visibility = View.GONE
+        MainNewActivity.binding.bottomMain.visibility = View.GONE
         var match :Match = args.objectMatch
         matchFragment = args.objectMatch
         MatchGroupFragment.group = match.group
@@ -97,7 +98,7 @@ class MatchFragment:BaseFragment<FragmentMatchBinding>() {
 
     override fun initView() {
         super.initView()
-        MainActivity.binding.bottomMain.visibility = View.VISIBLE
+        MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
         binding.viewPagerMatch.adapter = MatchPagerAdapter(requireActivity())
         TabLayoutMediator(binding.tabLayoutMatch,
             binding.viewPagerMatch,
