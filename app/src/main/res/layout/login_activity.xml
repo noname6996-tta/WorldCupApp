@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.task.ui.component.login.LoginActivity">
+>
 
     <EditText
         android:id="@+id/username"
@@ -80,29 +80,6 @@
         android:padding="10dp"
    >
 
-        <TextView
-
-            android:id="@+id/tvAction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đóng"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/llAction"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_margin="10dp"
-            android:background="#ff00"
-            android:orientation="vertical" >
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_apply_beauty"/>
-        </LinearLayout>
 
 
     </LinearLayout>

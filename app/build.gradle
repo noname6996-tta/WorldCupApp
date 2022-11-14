@@ -1,10 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'kotlin-platform-android'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
 
 
@@ -12,7 +13,7 @@ android {
     compileSdkVersion 33
     buildToolsVersion '33.0.0'
     defaultConfig {
-        applicationId 'com.eltaher.task'
+        applicationId 'com.worldcup.soccerapp.footballapp.sports'
         minSdkVersion 22
         targetSdkVersion 33
         versionCode 1
@@ -20,6 +21,30 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "com.task.CustomTestRunner"
     }
+    buildscript {
+        repositories {
+            google()
+        }
+        dependencies {
+            classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.2")
+        }
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'key0'
+            keyPassword 'prox@123'
+            storeFile file('keystore.jks')
+            storePassword 'prox@123'
+        }
+
+        release {
+            keyAlias 'key0'
+            keyPassword 'prox@123'
+            storeFile file('keystore.jks')
+            storePassword 'prox@123'
+        }
+    }
+
     buildFeatures {
         viewBinding = true
     }
@@ -120,13 +145,26 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation project(':LibFrameMagic')
-    implementation project(':tedimagepicker')
+
     implementation project(':permissionx')
     implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     //animation
     implementation 'com.github.florent37:viewanimator:1.1.0'
+
+    //constraintlayout
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+
+    // circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //
+    implementation 'com.github.MackHartley:RoundedProgressBar:3.0.0'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.10'
 }
 kapt {
     correctErrorTypes true

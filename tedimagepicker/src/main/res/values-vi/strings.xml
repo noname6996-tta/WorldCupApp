@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="ted_image_picker_album_all">Tất cả</string>
-    <string name="ted_image_picker_empty">Rỗng</string>
-    <string name="ted_image_picker_title">Chọn ảnh</string>
-    <string name="ted_image_picker_done">Hoàn thành</string>
-    <string name="ted_image_picker_max_count">Bạn không thể thêm nhiều hơn nữa</string>
-    <string name="ted_image_picker_min_count">Bạn phải lựa chọn hình ảnh</string>
-</resources>

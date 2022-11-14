@@ -157,11 +157,7 @@
 
 
 
-        <g3.module.libframemagic.ui.customview.FrameCustomView
-            android:id="@+id/mFrameCustomView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone" />
+
 
 
     </RelativeLayout>

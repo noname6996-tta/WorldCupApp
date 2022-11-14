@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Beautiful frames</string>
     <string name="no_data">No Data</string>
     <string name="search_by_name">Search by name</string>
     <string name="search_error">there is no such recipe name</string>
@@ -28,4 +27,33 @@
     <string name="add_to_favorite">Add to favorite</string>
     <string name="test_password">ahmed</string>
     <string name="test_email">ahmed@ahmed.ahmed</string>
+    <string name="app_name">WorldCup2022</string>
+    <string name="home">Home</string>
+    <string name="tables">Tables</string>
+    <string name="video_wc">Video WC</string>
+    <string name="wc_fun">WC Fun</string>
+    <string name="history">Statistics</string>
+    <string name="group_a">Group A</string>
+    <string name="match">Match</string>
+    <string name="fifa_world_cup_2022">FIFA World Cup 2022</string>
+    <string name="time">23:00</string>
+    <string name="netherlands">Netherlands</string>
+    <string name="sun_nov_20">Sun Nov 20</string>
+    <string name="ai_bay_stadium">AI Bay stadium</string>
+    <string name="head_to_head">Head-to-Head</string>
+    <string name="played">Played</string>
+    <string name="wins">Wins</string>
+    <string name="predict_the_outcome_of_the_match">Predict the outcome of the match</string>
+    <string name="enter_your_prediction">Enter your prediction</string>
+    <string name="who_will_win"> Who will win?</string>
+    <string name="netherlands_vs_ecuador">Netherlands vs Ecuador:</string>
+    <string name="details">Details</string>
+    <string name="team">Team</string>
+    <string name="location">Location</string>
+    <string name="capacity">Capacity</string>
+    <string name="opened">Opened</string>
+    <string name="other_stadiums">Other stadiums</string>
+    <string name="group_details">Group details</string>
+    <string name="simulation_sound">Simulation sound</string>
+    <string name="search_highlights">Search highlights</string>
 </resources>
