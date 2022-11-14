@@ -76,7 +76,7 @@ class MainNewActivity : BaseActivity() {
     }
 
     private fun bindListData(matchs: ResponseMatch) {
-        Log.e("TAG", "bindListData: " + matchs)
+        Log.e("TAG", "bindListData: " + matchs.data.size)
     }
     private fun preloadStadiumImage() {
         val fileInString: String =
