@@ -297,27 +297,23 @@
                 app:layout_constraintStart_toStartOf="@+id/view5"
                 app:layout_constraintTop_toTopOf="@+id/view5" />
 
-            <View
-                android:id="@+id/view6"
-                android:layout_width="170dp"
-                android:layout_height="31dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/border_radius_yellow"
-                app:layout_constraintEnd_toEndOf="@+id/view3"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 
             <TextView
+                android:id="@+id/tvVote"
+                android:layout_marginTop="26dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/border_radius_yellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/intermedium"
                 android:text="@string/enter_your_prediction"
                 android:textColor="@color/maincolor"
                 android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/view6"
-                app:layout_constraintEnd_toEndOf="@+id/view6"
-                app:layout_constraintStart_toStartOf="@+id/view6"
-                app:layout_constraintTop_toTopOf="@+id/view6" />
+                app:layout_constraintEnd_toEndOf="@+id/view3"
+                app:layout_constraintStart_toStartOf="@+id/view3"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <View
                 android:id="@+id/view7"

@@ -1,7 +1,6 @@
 package com.example.worldcup2022.ui.component.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.navigation.NavController
@@ -12,24 +11,15 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
-import com.example.worldcup2022.LIST_DATES
-import com.example.worldcup2022.LIST_MATCHS
 import com.example.worldcup2022.R
-import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.Match
-import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
-import com.example.worldcup2022.databinding.ActivityMainBinding
 import com.example.worldcup2022.data.dto.worldcup.Stadium
+import com.example.worldcup2022.databinding.ActivityMainBinding
 import com.example.worldcup2022.ui.base.BaseActivity
-import com.example.worldcup2022.utils.UtilsKotlin
-import com.example.worldcup2022.utils.observe
 import com.google.android.material.navigation.NavigationBarView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.orhanobut.hawk.Hawk
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.Collections
-import kotlin.jvm.internal.Intrinsics.Kotlin
 
 /**
  * Created by TruyenDev on 14/11/2022.
@@ -62,7 +52,6 @@ class MainNewActivity : BaseActivity() {
 
     override fun observeViewModel() {
     }
-
 
 
     private fun preloadStadiumImage() {
