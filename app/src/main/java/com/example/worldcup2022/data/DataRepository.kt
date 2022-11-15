@@ -4,6 +4,7 @@ import com.example.worldcup2022.data.dto.frames.DataFrames
 import com.example.worldcup2022.data.dto.login.LoginRequest
 import com.example.worldcup2022.data.dto.login.LoginResponse
 import com.example.worldcup2022.data.dto.recipes.Recipes
+import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.local.LocalData
 import com.example.worldcup2022.data.remote.RemoteData
@@ -76,5 +77,9 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
         }.flowOn(ioDispatcher)
     }
 
-
+    override suspend fun requestHighlights(filter: String, pageSize: Int): Flow<Resource<ResponseHighlight>> {
+        return flow {
+            emit(remoteRepository.requestHighlight(filter, pageSize))
+        }.flowOn(ioDispatcher)
+    }
 }
