@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.worldcup2022.view.fragment.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_homeGroupFragment"
+            app:destination="@id/homeGroupFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.worldcup2022.view.fragment.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/tablesFragment"
+        android:name="com.example.worldcup2022.view.fragment.TablesFragment"
+        android:label="TablesFragment"
+        tools:layout="@layout/fragment_tables" >
+        <action
+            android:id="@+id/action_tablesFragment_to_groupDetalsFragment"
+            app:destination="@id/groupDetalsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/videoWcFragment"
+        android:name="com.example.worldcup2022.view.fragment.VideoWcFragment"
+        android:label="VideoWcFragment"
+        tools:layout="@layout/fragment_videowc" />
+    <fragment
+        android:id="@+id/wcFunFragment"
+        android:name="com.example.worldcup2022.view.fragment.WcFunFragment"
+        android:label="WcFunFragment"
+        tools:layout="@layout/fragment_videowc" >
+        <action
+            android:id="@+id/action_wcFunFragment_to_playSoundFragment"
+            app:destination="@id/playSoundFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeGroupFragment"
+        tools:layout="@layout/fragemnt_homegroup"
+        android:name="com.example.worldcup2022.view.fragment.HomeGroupFragment"
+        android:label="HomeGroupFragment" >
+        <action
+            android:id="@+id/action_homeGroupFragment_to_groupInfoFragment"
+            app:destination="@id/groupInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeMatchFragment"
+        tools:layout="@layout/fragment_homematch"
+        android:name="com.example.worldcup2022.view.fragment.HomeMatchFragment"
+        android:label="HomeMatchFragment" >
+        <action
+            android:id="@+id/action_homeMatchFragment_to_homeGroupFragment"
+            app:destination="@id/homeGroupFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_groupinfo"
+        android:id="@+id/groupInfoFragment"
+        android:name="com.example.worldcup2022.view.fragment.GroupInfoFragment"
+        android:label="GroupInfoFragment" >
+        <argument
+            android:name="group_name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_groupInfoFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_allgroup"
+        android:id="@+id/homeAllGroupFragment"
+        android:name="com.example.worldcup2022.view.fragment.HomeAllGroupFragment"
+        android:label="HomeAllGroupFragment" />
+    <fragment
+        tools:layout="@layout/fragment_match"
+        android:id="@+id/matchFragment"
+        android:name="com.example.worldcup2022.view.fragment.MatchFragment"
+        android:label="MatchFragment" >
+        <argument
+            android:name="object_match"
+            app:argType="com.example.worldcup2022.model.Match" />
+        <action
+            android:id="@+id/action_matchFragment_to_groupDetalsFragment"
+            app:destination="@id/groupDetalsFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_stadiumFragment"
+            app:destination="@id/stadiumFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_group_detals"
+        android:id="@+id/groupDetalsFragment"
+        android:name="com.example.worldcup2022.view.fragment.GroupDetalsFragment"
+        android:label="GroupDetalsFragment" >
+        <argument
+            android:name="group_name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_groupDetalsFragment_to_tablesFragment"
+            app:destination="@id/tablesFragment" />
+        <action
+            android:id="@+id/action_groupDetalsFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_stadium"
+        android:id="@+id/stadiumFragment"
+        android:name="com.example.worldcup2022.view.fragment.StadiumFragment"
+        android:label="StadiumFragment" >
+        <argument
+            android:name="id_stadium"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_stadiumFragment_to_stadiumSecondFragment"
+            app:destination="@id/stadiumSecondFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_stadium_second"
+        android:id="@+id/stadiumSecondFragment"
+        android:name="com.example.worldcup2022.view.fragment.StadiumSecondFragment"
+        android:label="StadiumSecondFragment" >
+        <argument android:name="id_stadium2"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_stadiumSecondFragment_to_stadiumFragment"
+            app:destination="@id/stadiumFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_play_sound"
+        android:id="@+id/playSoundFragment"
+        android:name="com.example.worldcup2022.view.fragment.PlaySoundFragment"
+        android:label="PlaySoundFragment" />
+</navigation>

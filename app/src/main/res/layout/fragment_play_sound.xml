@@ -36,13 +36,13 @@
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/viewBack" />
 
-    <View
+    <ImageView
         android:id="@+id/imgPlay"
         android:clickable="true"
         android:focusable="true"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:background="@drawable/drum_sound"
+        android:src="@drawable/drum_sound"
+        android:layout_width="230dp"
+        android:layout_height="230dp"
         app:layout_constraintBottom_toTopOf="@+id/view11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

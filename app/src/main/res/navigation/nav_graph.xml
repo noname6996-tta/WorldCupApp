@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_wcFunFragment_to_playSoundFragment"
             app:destination="@id/playSoundFragment" />
+        <action
+            android:id="@+id/action_wcFunFragment_to_playSoundFragment2"
+            app:destination="@id/playSoundFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeGroupFragment"
@@ -137,5 +140,9 @@
         tools:layout="@layout/fragment_play_sound"
         android:id="@+id/playSoundFragment"
         android:name="com.example.worldcup2022.view.fragment.PlaySoundFragment"
-        android:label="PlaySoundFragment" />
+        android:label="PlaySoundFragment" >
+        <argument
+            android:name="isInternet"
+            app:argType="integer" />
+    </fragment>
 </navigation>
