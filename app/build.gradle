@@ -114,6 +114,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_ktx"
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation project(path: ':VideoPlayer')
     androidTestImplementation "androidx.test.ext:junit-ktx:$androidXJunitVersion"
     /**-------------------testing libs------------------------------------------**/
     //UI Testing , AndroidJUnitRunner and JUnit Rules &Espresso dependencies

@@ -1,10 +1,12 @@
 package com.example.worldcup2022.view.fragment
 
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,6 +19,7 @@ import com.example.worldcup2022.databinding.FragmentVideowcBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
 import com.ntduc.activityutils.hideKeyboard
+import com.ntduc.videoplayer.video.player.VideoPlayerActivity
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -85,7 +88,11 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
         })
 
         adapter.setOnClickItemListener {
-
+            val intentOpenVideo = Intent(requireContext(), VideoPlayerActivity::class.java)
+            intentOpenVideo.setDataAndType(it.image?.toUri(), null)
+            intentOpenVideo.putExtra(VideoPlayerActivity.API_TITLE, it.name)
+            intentOpenVideo.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            startActivity(intentOpenVideo)
         }
     }
 

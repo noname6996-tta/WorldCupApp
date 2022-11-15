@@ -214,11 +214,11 @@ open class VideoPlayerActivity : Activity() {
             }
         }
 
-        //Bật darkmode đối với TV Box
-        isTvBox = isTvBox(this)
-        if (isTvBox) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }
+//        //Bật darkmode đối với TV Box
+//        isTvBox = isTvBox(this)
+//        if (isTvBox) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+//        }
         val launchIntent = intent
         val action = launchIntent.action
         val type = launchIntent.type
@@ -235,76 +235,79 @@ open class VideoPlayerActivity : Activity() {
             }
         } else if (launchIntent.data != null) {
             resetApiAccess()
+
             val uri = launchIntent.data
-
-            playlist = try {
-                launchIntent.getParcelableArrayListExtra(API_PLAYLIST)
-            } catch (e: Exception) {
-                null
-            }
-            if (playlist != null) {
-                for (i in 0 until playlist!!.size) {
-                    if (playlist!![i] == uri) {
-                        currentPlay = i
-                    }
-                }
-            }
-            isPlaylist = playlist != null && currentPlay != -1
-
-            //Kiểm tra video có phụ đề không
-            if (isSubtitle(uri, type)) {
-                handleSubtitles(uri)
-            } else {
-                val bundle = launchIntent.extras
-
-                //???
-                if (bundle != null) {
-                    apiAccess = (bundle.containsKey(API_POSITION) || bundle.containsKey(
-                        API_RETURN_RESULT
-                    ) || bundle.containsKey(API_TITLE)
-                            || bundle.containsKey(API_SUBS) || bundle.containsKey(API_SUBS_ENABLE))
-                    if (apiAccess) {
-                        mPrefs!!.setPersistent(false)
-                    }
-                    apiTitle = bundle.getString(API_TITLE)
-                }
-
-                mPrefs!!.updateMedia(this, uri, type) //Lưu information Video
-
-                //???
-                if (bundle != null) {
-                    var defaultSub: Uri? = null
-                    val subsEnable = bundle.getParcelableArray(API_SUBS_ENABLE)
-                    if (subsEnable != null && subsEnable.isNotEmpty()) {
-                        defaultSub = subsEnable[0] as Uri
-                    }
-                    val subs = bundle.getParcelableArray(API_SUBS)
-                    val subsName = bundle.getStringArray(API_SUBS_NAME)
-                    if (subs != null && subs.isNotEmpty()) {
-                        for (i in subs.indices) {
-                            val sub = subs[i] as Uri
-                            var name: String? = null
-                            if (subsName != null && subsName.size > i) {
-                                name = subsName[i]
-                            }
-                            apiSubs.add(buildSubtitle(this, sub, name, sub == defaultSub))
-                        }
-                    }
-                }
-
-                //???
-                if (apiSubs.isEmpty()) {
-                    searchSubtitles()
-                }
-
-                //???
-                if (bundle != null) {
-                    intentReturnResult = bundle.getBoolean(API_RETURN_RESULT)
-                    if (bundle.containsKey(API_POSITION)) {
-                        mPrefs!!.updatePosition(bundle.getInt(API_POSITION).toLong())
-                    }
-                }
-            }
+            apiTitle = launchIntent.getStringExtra(API_TITLE)
+            mPrefs!!.updateMedia(this, uri, type) //Lưu information Video
+//
+//            playlist = try {
+//                launchIntent.getParcelableArrayListExtra(API_PLAYLIST)
+//            } catch (e: Exception) {
+//                null
+//            }
+//            if (playlist != null) {
+//                for (i in 0 until playlist!!.size) {
+//                    if (playlist!![i] == uri) {
+//                        currentPlay = i
+//                    }
+//                }
+//            }
+//            isPlaylist = playlist != null && currentPlay != -1
+//
+//            //Kiểm tra video có phụ đề không
+//            if (isSubtitle(uri, type)) {
+//                handleSubtitles(uri)
+//            } else {
+//                val bundle = launchIntent.extras
+//
+//                //???
+//                if (bundle != null) {
+//                    apiAccess = (bundle.containsKey(API_POSITION) || bundle.containsKey(
+//                        API_RETURN_RESULT
+//                    ) || bundle.containsKey(API_TITLE)
+//                            || bundle.containsKey(API_SUBS) || bundle.containsKey(API_SUBS_ENABLE))
+//                    if (apiAccess) {
+//                        mPrefs!!.setPersistent(false)
+//                    }
+//                    apiTitle = bundle.getString(API_TITLE)
+//                }
+//
+//                mPrefs!!.updateMedia(this, uri, type) //Lưu information Video
+//
+//                //???
+//                if (bundle != null) {
+//                    var defaultSub: Uri? = null
+//                    val subsEnable = bundle.getParcelableArray(API_SUBS_ENABLE)
+//                    if (subsEnable != null && subsEnable.isNotEmpty()) {
+//                        defaultSub = subsEnable[0] as Uri
+//                    }
+//                    val subs = bundle.getParcelableArray(API_SUBS)
+//                    val subsName = bundle.getStringArray(API_SUBS_NAME)
+//                    if (subs != null && subs.isNotEmpty()) {
+//                        for (i in subs.indices) {
+//                            val sub = subs[i] as Uri
+//                            var name: String? = null
+//                            if (subsName != null && subsName.size > i) {
+//                                name = subsName[i]
+//                            }
+//                            apiSubs.add(buildSubtitle(this, sub, name, sub == defaultSub))
+//                        }
+//                    }
+//                }
+//
+//                //???
+//                if (apiSubs.isEmpty()) {
+//                    searchSubtitles()
+//                }
+//
+//                //???
+//                if (bundle != null) {
+//                    intentReturnResult = bundle.getBoolean(API_RETURN_RESULT)
+//                    if (bundle.containsKey(API_POSITION)) {
+//                        mPrefs!!.updatePosition(bundle.getInt(API_POSITION).toLong())
+//                    }
+//                }
+//            }
             focusPlay = true
         }
 
@@ -489,21 +492,21 @@ open class VideoPlayerActivity : Activity() {
         buttonBack!!.setOnClickListener { onBackPressed() }
         buttonMore!!.setOnClickListener { enterMore(it) }
 
-        //Gửi video
-        titleView!!.setOnLongClickListener {
-            // Prevent FileUriExposedException
-            if (mPrefs!!.mediaUri != null && ContentResolver.SCHEME_FILE == mPrefs!!.mediaUri!!.scheme) {
-                return@setOnLongClickListener false
-            }
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.putExtra(Intent.EXTRA_STREAM, mPrefs!!.mediaUri)
-            if (mPrefs!!.mediaType == null) shareIntent.type = "video/*" else shareIntent.type =
-                mPrefs!!.mediaType
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            // Start without intent chooser to allow any target to be set as default
-            startActivity(shareIntent)
-            true
-        }
+//        //Gửi video
+//        titleView!!.setOnLongClickListener {
+//            // Prevent FileUriExposedException
+//            if (mPrefs!!.mediaUri != null && ContentResolver.SCHEME_FILE == mPrefs!!.mediaUri!!.scheme) {
+//                return@setOnLongClickListener false
+//            }
+//            val shareIntent = Intent(Intent.ACTION_SEND)
+//            shareIntent.putExtra(Intent.EXTRA_STREAM, mPrefs!!.mediaUri)
+//            if (mPrefs!!.mediaType == null) shareIntent.type = "video/*" else shareIntent.type =
+//                mPrefs!!.mediaType
+//            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+//            // Start without intent chooser to allow any target to be set as default
+//            startActivity(shareIntent)
+//            true
+//        }
 
         //???
         controlView = playerView!!.findViewById(R.id.exo_controller)
@@ -2381,7 +2384,7 @@ open class VideoPlayerActivity : Activity() {
     }
 
     open fun getVisibilityFolderOpen(): Int {
-        return View.VISIBLE
+        return View.GONE
     }
 
     //PIP
@@ -2396,7 +2399,7 @@ open class VideoPlayerActivity : Activity() {
     }
 
     open fun getVisibilityPictureInPictureAlt(): Int {
-        return View.VISIBLE
+        return View.GONE
     }
 
     //Aspect Ratio
@@ -2411,7 +2414,7 @@ open class VideoPlayerActivity : Activity() {
     }
 
     open fun getVisibilityAspectRatio(): Int {
-        return View.VISIBLE
+        return View.GONE
     }
 
     //Rotation
@@ -2461,7 +2464,7 @@ open class VideoPlayerActivity : Activity() {
 
     //More
     open fun getVisibilityMore(): Int {
-        return View.VISIBLE
+        return View.GONE
     }
 
     open fun enterMore(view: View) {}
@@ -2499,17 +2502,17 @@ open class VideoPlayerActivity : Activity() {
 
     //Subtitle
     open fun getVisibilitySubtitle(): Int {
-        return View.VISIBLE
+        return View.GONE
     }
 
     //Settings
     open fun getVisibilitySettings(): Int {
-        return View.VISIBLE
+        return View.GONE
     }
 
     //Repeat
     open fun getVisibilityRepeat(): Int {
-        return View.VISIBLE
+        return View.GONE
     }
 
     //Time
