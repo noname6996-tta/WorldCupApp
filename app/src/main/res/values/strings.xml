@@ -56,4 +56,5 @@
     <string name="group_details">Group details</string>
     <string name="simulation_sound">Simulation sound</string>
     <string name="search_highlights">Search highlights</string>
+    <string name="no_highlight_videos_found">No highlight videos found</string>
 </resources>

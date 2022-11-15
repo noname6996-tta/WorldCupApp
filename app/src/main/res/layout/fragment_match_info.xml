@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
-                android:fontFamily="@font/inter"
+                android:fontFamily="@font/interregular"
                 android:text="@string/played"
                 android:textColor="@color/black"
                 android:textSize="14dp"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="23dp"
-                android:fontFamily="@font/inter"
+                android:fontFamily="@font/interregular"
                 android:text="@string/wins"
                 android:textColor="@color/black"
                 android:textSize="14dp"
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
                 android:layout_marginEnd="16dp"
-                android:fontFamily="@font/inter"
+                android:fontFamily="@font/interregular"
                 android:text="@string/wins"
                 android:textColor="@color/black"
                 android:textSize="14dp"
@@ -297,27 +297,23 @@
                 app:layout_constraintStart_toStartOf="@+id/view5"
                 app:layout_constraintTop_toTopOf="@+id/view5" />
 
-            <View
-                android:id="@+id/view6"
-                android:layout_width="170dp"
-                android:layout_height="31dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/border_radius_yellow"
-                app:layout_constraintEnd_toEndOf="@+id/view3"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
 
             <TextView
+                android:id="@+id/tvVote"
+                android:layout_marginTop="26dp"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:background="@drawable/border_radius_yellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/intermedium"
                 android:text="@string/enter_your_prediction"
                 android:textColor="@color/maincolor"
                 android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/view6"
-                app:layout_constraintEnd_toEndOf="@+id/view6"
-                app:layout_constraintStart_toStartOf="@+id/view6"
-                app:layout_constraintTop_toTopOf="@+id/view6" />
+                app:layout_constraintEnd_toEndOf="@+id/view3"
+                app:layout_constraintStart_toStartOf="@+id/view3"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <View
                 android:id="@+id/view7"
@@ -529,7 +525,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
                         android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/inter"
+                        android:fontFamily="@font/interregular"
                         android:maxWidth="200dp"
                         android:maxLines="1"
                         android:text="Doha, Qatar"

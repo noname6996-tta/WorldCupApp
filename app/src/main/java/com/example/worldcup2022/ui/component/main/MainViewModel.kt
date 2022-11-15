@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.worldcup2022.data.DataRepositorySource
 import com.example.worldcup2022.data.Resource
+import com.example.worldcup2022.data.dto.worldcup.Highlight
+import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
 import com.example.worldcup2022.ui.base.BaseViewModel
@@ -33,27 +35,66 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val soundsLiveData: LiveData<Resource<ResponseSound>> get() = soundsLiveDataPrivate
 
     /**
+     * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
+     */
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val highlightLiveDataPrivate = MutableLiveData<Resource<ResponseHighlight>>()
+    val highlightLiveData: LiveData<Resource<ResponseHighlight>> get() = highlightLiveDataPrivate
+    var currentPageHighlight = 0
+    var maxPageHighlight = 0
+
+    /**
      *
      */
     fun getFullMatchs() {
         viewModelScope.launch {
             matchsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestMatchs("date==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
+                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"").collect {
                     matchsLiveDataPrivate.value = it
                 }
             }
         }
     }
 
+    /**
+     *
+     */
     fun getFullSounds() {
         viewModelScope.launch {
             soundsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestSounds("id==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
+                dataRepositoryRepository.requestSounds("id==\"" + URLEncoder.encode("**", "UTF-8") + "\"").collect {
                     soundsLiveDataPrivate.value = it
                 }
             }
+        }
+    }
+
+
+    /**
+     *
+     */
+    fun getHighlightsViaSearch(search: CharSequence, pageSize: Int) {
+        viewModelScope.launch {
+            highlightLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestHighlights(filter = "group==\"highlight\";name==\"*$search*\"", pageSize = pageSize).collect {
+                    highlightLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    fun loadMoreHighlights(search: CharSequence, oldList: List<Highlight>) {
+        if (currentPageHighlight < maxPageHighlight) {
+            val tmp: ArrayList<Highlight> = arrayListOf()
+            tmp.addAll(oldList)
+            tmp.removeLast()
+            getHighlightsViaSearch(search, currentPageHighlight)
         }
     }
 }

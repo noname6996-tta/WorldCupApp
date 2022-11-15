@@ -1,6 +1,6 @@
 [
   {
-    "id": 0,
+    "id": "0",
     "name": "Al Bayt Stadium",
     "location": "Al Khor City, 35km north of Doha",
     "capacity": "60000",
@@ -9,7 +9,7 @@
     "image": "https://www.qatar2022.qa/sites/default/files/styles/1440x815/public/2022-08/Al-Bayt-Stadium-1.jpg?h=54c3999e&itok=oiwFVmsq"
   },
   {
-    "id": 1,
+    "id": "1",
     "name": "Stadium 974",
     "location": "Ras Abu Aboud, 10km east of central Doha",
     "capacity": "40000",

@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.MatchGroupAdapter
 import com.example.worldcup2022.databinding.FragmentMatchGroupBinding
-import com.example.worldcup2022.model.Country
+import com.example.worldcup2022.data.dto.worldcup.Country
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.proxglobal.worlcupapp.base.BaseFragment
