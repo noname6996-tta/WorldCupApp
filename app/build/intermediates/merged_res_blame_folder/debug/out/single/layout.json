@@ -1,0 +1,114 @@
+[
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_home.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_simulation_sound.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_simulation_sound.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_history.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_history.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_match_group.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_match_group.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_selfie_preview.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_selfie_preview.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_stadium_second.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_stadium_second.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/item_country_points.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/item_country_points.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/item_stadium.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/item_stadium.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_play_sound.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_play_sound.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_wcfun.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_wcfun.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_videowc.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_videowc.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/item_match_group.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/item_match_group.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_tables.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_tables.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/item_match_border_red.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/item_match_border_red.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/activity_main.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragemnt_homegroup.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragemnt_homegroup.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_match.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_match.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_homematch.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_homematch.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_selfie_camera.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_selfie_camera.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_knockout_stage.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_knockout_stage.xml"
+    },
+    {
+        "merged": "com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_selfie_preview.xml",
+        "source": "com.example.worldcup2022.app-main-57:/layout/fragment_selfie_preview.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/item_match.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/item_match.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_selfie_result.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_selfie_result.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_match_info.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_match_info.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_allgroup.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_allgroup.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_stadium.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_stadium.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_groupinfo.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_groupinfo.xml"
+    },
+    {
+        "merged": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-mergeDebugResources-54:/layout/fragment_group_detals.xml",
+        "source": "/Users/apple/.gradle/daemon/7.4/com.example.worldcup2022.app-main-57:/layout/fragment_group_detals.xml"
+    }
+]

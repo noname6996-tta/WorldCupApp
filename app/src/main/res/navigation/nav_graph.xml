@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_wcFunFragment_to_playSoundFragment"
             app:destination="@id/playSoundFragment" />
+        <action
+            android:id="@+id/action_wcFunFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeGroupFragment"
@@ -138,4 +141,9 @@
         android:id="@+id/playSoundFragment"
         android:name="com.example.worldcup2022.view.fragment.PlaySoundFragment"
         android:label="PlaySoundFragment" />
+    <fragment
+        tools:layout="@layout/fragment_camera"
+        android:id="@+id/cameraFragment"
+        android:name="com.example.worldcup2022.view.fragment.selfie.CameraFragment"
+        android:label="CameraFragment" />
 </navigation>

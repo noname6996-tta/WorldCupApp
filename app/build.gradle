@@ -165,6 +165,18 @@ dependencies {
 
     //gson
     implementation 'com.google.code.gson:gson:2.10'
+    def camerax_version = "1.2.0-rc01"
+    implementation "androidx.camera:camera-core:${camerax_version}"
+    implementation "androidx.camera:camera-camera2:${camerax_version}"
+    implementation "androidx.camera:camera-lifecycle:${camerax_version}"
+
+    implementation "androidx.camera:camera-view:${camerax_version}"
+    implementation "androidx.camera:camera-extensions:${camerax_version}"
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+    //yoyo - animation
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+    implementation 'com.daimajia.easing:library:2.4@aar'
 }
 kapt {
     correctErrorTypes true

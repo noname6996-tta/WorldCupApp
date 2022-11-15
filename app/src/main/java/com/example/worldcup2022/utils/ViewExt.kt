@@ -1,8 +1,12 @@
 package com.example.worldcup2022.utils
 
+import android.animation.ObjectAnimator
 import android.app.Service
+import android.graphics.Rect
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.MotionEvent
+import android.view.TouchDelegate
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -16,6 +20,8 @@ import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import com.daimajia.androidanimations.library.BaseViewAnimator
+import com.daimajia.androidanimations.library.YoYo
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import com.example.worldcup2022.App
@@ -137,3 +143,57 @@ fun AppCompatEditText.setTextFutureExt(text: String) =
         setText(
                 PrecomputedTextCompat.create(text, TextViewCompat.getTextMetricsParams(this))
         )
+
+fun View.setOnPressListener(
+    onPress: (view: View) -> Unit,
+    onRelease: (view: View) -> Unit
+) {
+    setOnTouchListener { v, event ->
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                onPress(v)
+            }
+            MotionEvent.ACTION_UP -> {
+                onRelease(v)
+            }
+        }
+        false
+    }
+}
+
+fun View.setOnClickListenerWithScaleAnimation(onClick: (View) -> Unit) {
+    val composer = YoYo.with(ScaleSmall()).duration(50)
+    var yoYoString: YoYo.YoYoString? = null
+    setOnPressListener(
+        onPress = {
+            yoYoString = composer.playOn(this)
+        },
+        onRelease = {
+            yoYoString?.stop(true)
+        }
+    )
+    setOnClickListener {
+        onClick(it)
+    }
+}
+
+fun View.increaseClickArea(size: Int) {
+    (parent as View).post {
+        val r = Rect()
+        getHitRect(r)
+        r.top -= size
+        r.bottom += size
+        r.left -= size
+        r.right += size
+        (parent as View).touchDelegate = TouchDelegate(r, this)
+    }
+}
+
+class ScaleSmall : BaseViewAnimator() {
+    override fun prepare(target: View?) {
+        animatorAgent.playTogether(
+            ObjectAnimator.ofFloat(target, "scaleY", 1f, 0.9f),
+            ObjectAnimator.ofFloat(target, "scaleX", 1f, 0.9f)
+        )
+    }
+}

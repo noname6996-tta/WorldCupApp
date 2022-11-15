@@ -55,5 +55,8 @@
     <string name="other_stadiums">Other stadiums</string>
     <string name="group_details">Group details</string>
     <string name="simulation_sound">Simulation sound</string>
+    <string name="back">Back</string>
+    <string name="download">Download</string>
+    <string name="share">Share</string>
     <string name="search_highlights">Search highlights</string>
 </resources>
