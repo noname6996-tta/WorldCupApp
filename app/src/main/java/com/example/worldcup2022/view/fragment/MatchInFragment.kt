@@ -8,9 +8,9 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
 import com.example.worldcup2022.databinding.FragmentMatchInfoBinding
-import com.example.worldcup2022.model.Country
-import com.example.worldcup2022.model.Match
-import com.example.worldcup2022.model.Stadium
+import com.example.worldcup2022.data.dto.worldcup.Country
+import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.proxglobal.worlcupapp.base.BaseFragment
@@ -41,7 +41,7 @@ class MatchInFragment:BaseFragment<FragmentMatchInfoBinding>() {
                 Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
             for (i in 0..countrys.size - 1) {
                 val country = countrys[i]
-                if (match.idcountry1 == country.id) {
+                if (match.idcountry1.toString() == country.id) {
                     binding.tvTeam1.text = country.name
                     binding.tvProcessNameTeam1.text = country.name
                     Glide.with(requireContext()).load(country.image)
@@ -51,7 +51,7 @@ class MatchInFragment:BaseFragment<FragmentMatchInfoBinding>() {
                         .error(R.drawable.ic_launcher_background)
                         .into(binding.imgTeam1Prediction)
                 }
-                if (match.idcountry2 == country.id) {
+                if (match.idcountry2.toString() == country.id) {
                     binding.tvTeam2.text = country.name
                     binding.tvProcessNameTeam2.text = country.name
                     Glide.with(requireContext()).load(country.image)
@@ -93,7 +93,7 @@ class MatchInFragment:BaseFragment<FragmentMatchInfoBinding>() {
                 Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
             for (i in 0..stadiums.size - 1) {
                 val stadium = stadiums[i]
-                if (match.idStadium == stadium.id) {
+                if (match.idStadium.toString() == stadium.id) {
                     binding.tvNameSatdium.text = stadium.name
                     binding.tvLocationMatchStadium.text = stadium.location
                     Glide.with(requireContext()).load(stadium.image)
@@ -118,7 +118,7 @@ class MatchInFragment:BaseFragment<FragmentMatchInfoBinding>() {
     override fun addEvent() {
         super.addEvent()
         binding.viewDetails.setOnClickListener{
-            val action = MatchFragmentDirections.actionMatchFragmentToStadiumFragment(match.idStadium)
+            val action = MatchFragmentDirections.actionMatchFragmentToStadiumFragment(match.idStadium.toString())
             findNavController().navigate(action)
         }
     }

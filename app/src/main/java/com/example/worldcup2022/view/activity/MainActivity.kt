@@ -16,7 +16,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
 import com.example.worldcup2022.databinding.ActivityMainBinding
-import com.example.worldcup2022.model.Stadium
+import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.google.android.material.navigation.NavigationBarView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

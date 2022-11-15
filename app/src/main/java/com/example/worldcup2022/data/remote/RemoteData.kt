@@ -49,7 +49,7 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
 
     override suspend fun requestMatch(filter:String): Resource<ResponseMatch> {
         val matchsService = serviceGenerator.createService(MatchsService::class.java)
-        return when (val response = processCall { matchsService.fetchMatchs(filter, 0, 100) }) {
+        return when (val response = processCall { matchsService.fetchMatchs(filter, 0, 100,"dateTime") }) {
             is ResponseMatch -> {
                 Resource.Success(data = response as ResponseMatch)
             }

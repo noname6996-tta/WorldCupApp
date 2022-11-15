@@ -12,5 +12,5 @@ import retrofit2.http.Query
 
 interface MatchsService {
     @GET("match/search")
-    suspend fun fetchMatchs(@Query("filter") filter: String, @Query("pageIndex") pageIndex: Int, @Query("pageSize") pageSize: Int): Response<ResponseMatch>
+    suspend fun fetchMatchs(@Query("filter") filter: String, @Query("pageIndex") pageIndex: Int, @Query("pageSize") pageSize: Int,@Query("sort") sort: String): Response<ResponseMatch>
 }

@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
 import com.example.worldcup2022.databinding.ItemStadiumBinding
-import com.example.worldcup2022.model.Match
-import com.example.worldcup2022.model.Stadium
+import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.Stadium
 
 class StadiumAdapter : RecyclerView.Adapter<StadiumViewHolder>() {
 

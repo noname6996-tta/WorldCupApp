@@ -3,12 +3,12 @@ package com.example.worldcup2022.utils
 import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.*
-import android.renderscript.Allocation
-import android.renderscript.RenderScript
-import android.renderscript.ScriptIntrinsicConvolve3x3
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * Created by TruyenDev on 30/10/2022.
@@ -73,11 +73,14 @@ class UtilsKotlin {
         val cm = ColorMatrix()
         val scale = contrast + 1f
         val translate = (-.5f * scale + .5f) * 255f
-        cm.set(floatArrayOf(
-            scale, 0f, 0f, 0f, translate,
-            0f, scale, 0f, 0f, translate,
-            0f, 0f, scale, 0f, translate,
-            0f, 0f, 0f, 1f, 0f))
+        cm.set(
+            floatArrayOf(
+                scale, 0f, 0f, 0f, translate,
+                0f, scale, 0f, 0f, translate,
+                0f, 0f, scale, 0f, translate,
+                0f, 0f, 0f, 1f, 0f
+            )
+        )
         val ret = Bitmap.createBitmap(bmp.width, bmp.height, bmp.config)
         val canvas = Canvas(ret)
         val paint = Paint()
@@ -86,7 +89,7 @@ class UtilsKotlin {
         return ret
     }
 
-    fun saveToInternalStorageCrop(croppedBitmap : Bitmap, context: Context): String? {
+    fun saveToInternalStorageCrop(croppedBitmap: Bitmap, context: Context): String? {
 
         var sharp = floatArrayOf(-0.15f, -0.15f, -0.15f, -0.15f, 2.2f, -0.15f, -0.15f, -0.15f, -0.15f)
         //you call the method above and just paste the bitmap you want to apply it and the float of above
@@ -116,4 +119,24 @@ class UtilsKotlin {
         }
         return mypath.absolutePath
     }
+
+    fun parseTime(timeInString: String): Long {
+        val df1: DateFormat = SimpleDateFormat("dd/MM/yyyy")
+        val result1 = df1.parse(timeInString)
+        return result1.time
+    }
+
+    fun formatDate(time: Long): String {
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = time
+        }.time
+        return SimpleDateFormat("EEE dd MMM", Locale.ENGLISH).format(calendar)
+    }
+
+    fun parseTimeEEEddMMM(timeInString: String): Long {
+        val df1: DateFormat = SimpleDateFormat("EEE dd MMM")
+        val result1 = df1.parse(timeInString)
+        return result1.time
+    }
+
 }

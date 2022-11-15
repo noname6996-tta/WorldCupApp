@@ -19,4 +19,5 @@ interface DataRepositorySource {
     suspend fun isFavourite(id: String): Flow<Resource<Boolean>>
     suspend fun requestFrames(): Flow<Resource<DataFrames>>
     suspend fun requestMatchs(filter : String): Flow<Resource<ResponseMatch>>
+
 }
