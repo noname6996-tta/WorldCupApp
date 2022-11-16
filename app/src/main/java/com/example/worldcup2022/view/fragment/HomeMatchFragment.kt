@@ -1,27 +1,36 @@
 package com.example.worldcup2022.view.fragment
 
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.LIST_MATCHS
 import com.example.worldcup2022.adapter.HomeMathAdapter
 import com.example.worldcup2022.data.Data.parseTime
+import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.databinding.FragmentHomematchBinding
+import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.UtilsKotlin
+import com.example.worldcup2022.utils.observe
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.orhanobut.hawk.Hawk
 import com.proxglobal.worlcupapp.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
+@AndroidEntryPoint
 class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
     companion object {
         private const val ARG_DATE = "ARG_DATE"
     }
-
+    private val mainViewModel: MainViewModel by viewModels()
     private val homeMatchAdapter = HomeMathAdapter()
     lateinit var matchs: List<Match>
     lateinit var matchsOnl: List<com.example.worldcup2022.data.dto.worldcup.Match>
@@ -44,7 +53,10 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
         }
     }
 
-
+    override fun addObservers() {
+        super.addObservers()
+        observe(mainViewModel.matchsByDateLiveData, ::handleMatchsList)
+    }
     override fun initView() {
         super.initView()
         binding.recHomeMatch.adapter = homeMatchAdapter
@@ -129,5 +141,28 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
             val action = HomeFragmentDirections.actionHomeFragmentToMatchFragment(it)
             findNavController().navigate(action)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mainViewModel.getMatchsByDate(daymatch)
+    }
+
+    private fun handleMatchsList(status: Resource<ResponseMatch>) {
+        when (status) {
+            is Resource.Loading -> {
+                Log.e("Home", "handleMatchsList: Loading ")
+            }
+            is Resource.Success -> status.data?.let { bindListData(matchs = it) }
+            is Resource.DataError -> {
+                status.errorCode?.let { Log.e("Home", "handleMatchsList: Error " + it) }
+            }
+        }
+    }
+    private fun bindListData(matchs: ResponseMatch) {
+        arrMatchs.clear()
+        arrMatchs.addAll(matchs.data)
+        homeMatchAdapter.setListMatch(arrMatchs, requireContext())
+
     }
 }

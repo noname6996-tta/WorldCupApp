@@ -25,3 +25,5 @@ open class SingleEvent<out T>(private val content: T) {
      */
     fun peekContent(): T = content
 }
+
+fun <T> eventOf(value: T) = SingleEvent(value)

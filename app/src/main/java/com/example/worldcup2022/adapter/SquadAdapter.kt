@@ -31,7 +31,7 @@ class SquadAdapter : RecyclerView.Adapter<SquadViewHolder>(){
         holder.binding.tvNamePlayer.text = squad.name
         holder.binding.tvPositionSquad.text = squad.position
         Glide.with(holder.itemView.context).load(squad.image)
-            .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
+            .error(R.drawable.logo).placeholder(R.drawable.logo)
             .into(holder.binding.imgPlayer)
         Log.e("dadasdasdas",squad.image.toString())
     }

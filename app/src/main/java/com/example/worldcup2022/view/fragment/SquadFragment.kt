@@ -51,7 +51,7 @@ class SquadFragment : BaseFragment<FragmentSquadBinding>() {
         } else {
             mainViewModel.getFullSquads(country.id)
             Glide.with(requireContext()).load(country.image)
-                .error(R.drawable.logoapp)
+                .error(R.drawable.logo)
                 .into(binding.imgCountryFlag)
             binding.tvNameCountry.text = country.name.trim().toString()+" "
         }
@@ -127,7 +127,7 @@ class SquadFragment : BaseFragment<FragmentSquadBinding>() {
                 "COACH" -> {
                     binding.tvNameCoach.text = squad.name
                     Glide.with(requireContext()).load(squad.image)
-                        .error(R.drawable.logoapp)
+                        .error(R.drawable.logo)
                         .into(binding.imgCoach)
                 }
                 "FORWARDS" -> {

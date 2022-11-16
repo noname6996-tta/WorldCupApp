@@ -1,5 +1,6 @@
 package com.example.worldcup2022.data.remote
 
+
 //import com.example.worldcup2022.data.remote.service.FramesService
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.frames.DataFrames
@@ -10,6 +11,7 @@ import com.example.worldcup2022.data.error.NETWORK_ERROR
 import com.example.worldcup2022.data.error.NO_INTERNET_CONNECTION
 import com.example.worldcup2022.data.remote.service.*
 import com.example.worldcup2022.utils.NetworkConnectivity
+import okhttp3.RequestBody
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -63,6 +65,15 @@ constructor(
             else -> {
                 Resource.DataError(errorCode = response as Int)
             }
+        }
+    }
+
+    override suspend fun requestSelfieFrame(): Resource<ResponseSelfieFrame> {
+        val selfieFrameService = serviceGenerator.createService(SelfieFrameService::class.java)
+        return when (val response =
+            processCall { selfieFrameService.fetch("group=in=(player, team)", 0, 100) }) {
+            is ResponseSelfieFrame -> Resource.Success(data = response)
+            else -> Resource.DataError(errorCode = (response as ResponseSelfieFrame).code)
         }
     }
 
@@ -137,6 +148,38 @@ constructor(
             processCall { highlightsService.getResultGuess(userId) }) {
             is ResponseResultGuess -> {
                 Resource.Success(data = response as ResponseResultGuess)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    override suspend fun postGuess(requestBody: RequestBody): Resource<ResponseGuess> {
+        val postGuess = serviceGenerator.createService(GuessService::class.java)
+        return when (val response =
+            processCall { postGuess.postGuess(requestBody) }) {
+            is ResponseGuess -> {
+                Resource.Success(data = response as ResponseGuess)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    override suspend fun requestHistoryMatch(id: String, pageSize: Int): Resource<ResponseHistoryMatch> {
+        val historyMatchService = serviceGenerator.createService(HistoryMatchService::class.java)
+        return when (val response =
+            processCall { historyMatchService.fetchHistoryMatchs(id, pageSize, 10) }) {
+            is ResponseHistoryMatch -> {
+                Resource.Success(data = response as ResponseHistoryMatch)
             }
             else -> {
                 Resource.DataError(errorCode = response as Int)

@@ -43,12 +43,12 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         if (match.country1 != null) {
             binding.tvTeam1.text = match.country1!!.name
             Glide.with(requireContext()).load(match.country1!!.image)
-                .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
+                .error(R.drawable.logo).placeholder(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgteam1)
             binding.tvTeam2.text = match.country2!!.name
             Glide.with(requireContext()).load(match.country2!!.image)
-                .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
+                .error(R.drawable.logo).placeholder(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgTeam2)
         } else {
@@ -62,14 +62,14 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
                     if (match.idcountry1.toString() == country.id) {
                         binding.tvTeam1.text = country.name
                         Glide.with(requireContext()).load(country.image)
-                            .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
+                            .error(R.drawable.logo).placeholder(R.drawable.logo)
                             .override(100, 100)
                             .into(binding.imgteam1)
                     }
                     if (match.idcountry2.toString() == country.id) {
                         binding.tvTeam2.text = country.name
                         Glide.with(requireContext()).load(country.image)
-                            .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
+                            .error(R.drawable.logo).placeholder(R.drawable.logo)
                             .override(100, 100)
                             .into(binding.imgTeam2)
                     }

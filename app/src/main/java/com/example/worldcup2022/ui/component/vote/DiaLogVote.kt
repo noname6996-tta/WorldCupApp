@@ -8,13 +8,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
 import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.databinding.LayoutDialogVoteBinding
 import com.google.gson.Gson
 
-class DiaLogVote(context: Context, match: Match) : Dialog(context) {
+class DiaLogVote(context: Context, match: Match, private val onClickSave: (score1: String,score2: String) -> Unit) : Dialog(context) {
 
     init {
         this.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -30,7 +31,15 @@ class DiaLogVote(context: Context, match: Match) : Dialog(context) {
     }
 
     private fun listener(bind: LayoutDialogVoteBinding, match: Match) {
-        bind.tvSave.setOnClickListener { dismiss() }
+        bind.tvSave.setOnClickListener {
+            if (bind.edtScores1.text.isEmpty() || bind.edtScores2.text.isEmpty()) {
+                Toast.makeText(context, "You have not voted for the score yet", Toast.LENGTH_SHORT).show()
+            } else {
+                onClickSave(bind.edtScores1.text.toString()  , bind.edtScores2.text.toString())
+                dismiss()
+            }
+
+        }
         Glide.with(context).load(match.country1?.image)
             .error(R.drawable.logo).placeholder(R.drawable.logo)
             .into(bind.ivFlag1)

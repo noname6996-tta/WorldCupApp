@@ -47,12 +47,12 @@ class HomeMathAdapter : RecyclerView.Adapter<HomeMatchViewHolder>() {
         if (match.country1 != null ) {
             holder.binding.tvTeam1.text = match.country1?.name
             Glide.with(holder.itemView.context).load(match.country1?.image)
-                .error(R.drawable.logoapp)
+                .error(R.drawable.logo)
                 .into(holder.binding.imgTeam1)
 
             holder.binding.tvTeam2.text = match.country2?.name
             Glide.with(holder.itemView.context).load(match.country2?.image)
-                .error(R.drawable.logoapp)
+                .error(R.drawable.logo)
                 .into(holder.binding.imgTeam2)
         } else {
             try {
@@ -65,13 +65,13 @@ class HomeMathAdapter : RecyclerView.Adapter<HomeMatchViewHolder>() {
                     if (match.idcountry1.toString() == country.id) {
                         holder.binding.tvTeam1.text = country.name
                         Glide.with(holder.itemView.context).load(country.image)
-                            .error(R.drawable.logoapp)
+                            .error(R.drawable.logo)
                             .into(holder.binding.imgTeam1)
                     }
                     if (match.idcountry2.toString() == country.id) {
                         holder.binding.tvTeam2.text = country.name
                         Glide.with(holder.itemView.context).load(country.image)
-                            .error(R.drawable.logoapp)
+                            .error(R.drawable.logo)
                             .into(holder.binding.imgTeam2)
                     }
                 }
