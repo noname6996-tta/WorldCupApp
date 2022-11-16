@@ -145,5 +145,14 @@
         tools:layout="@layout/fragment_camera"
         android:id="@+id/cameraFragment"
         android:name="com.example.worldcup2022.view.fragment.selfie.CameraFragment"
-        android:label="CameraFragment" />
+        android:label="CameraFragment" >
+        <action
+            android:id="@+id/action_cameraFragment_to_imagePreviewFragment"
+            app:destination="@id/imagePreviewFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_image_preview"
+        android:id="@+id/imagePreviewFragment"
+        android:name="com.example.worldcup2022.view.fragment.selfie.ImagePreviewFragment"
+        android:label="ImagePreviewFragment" />
 </navigation>

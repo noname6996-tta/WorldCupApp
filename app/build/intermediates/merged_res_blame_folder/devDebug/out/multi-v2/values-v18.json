@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.worldcup2022.app-mergeDevDebugResources-61:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "/Users/apple/.gradle/caches/transforms-3/bb0cbbba4fb7325a879c803c720dfcd5/transformed/appcompat-1.5.0/res/values-v18/values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

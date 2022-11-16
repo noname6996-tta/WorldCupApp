@@ -1,0 +1,220 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.worldcup.soccerapp.footballapp.sports.dev"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:6:5-67
+11-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:7:5-79
+12-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:7:22-76
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:8:5-76
+13-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:8:22-73
+14    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+14-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:9:5-76
+14-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:9:22-73
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:10:5-81
+15-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:10:22-78
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:11:5-80
+16-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:11:22-77
+17    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+17-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:12:5-14:40
+17-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:13:9-66
+18    <uses-permission android:name="android.permission.CAMERA" />
+18-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:15:5-65
+18-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:15:22-62
+19    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+19-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:16:5-88
+19-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:16:22-85
+20    <uses-permission android:name="android.permission.VIBRATE" />
+20-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:17:5-66
+20-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:17:22-63
+21    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+21-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:18:5-20:53
+21-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:19:9-61
+22    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+22-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:21:5-72
+22-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:21:22-69
+23
+24    <queries>
+24-->[androidx.camera:camera-extensions:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/f26ae67a964b97df117b7965d6256636/transformed/jetified-camera-extensions-1.2.0-rc01/AndroidManifest.xml:22:5-26:15
+25        <intent>
+25-->[androidx.camera:camera-extensions:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/f26ae67a964b97df117b7965d6256636/transformed/jetified-camera-extensions-1.2.0-rc01/AndroidManifest.xml:23:9-25:18
+26            <action android:name="androidx.camera.extensions.action.VENDOR_ACTION" />
+26-->[androidx.camera:camera-extensions:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/f26ae67a964b97df117b7965d6256636/transformed/jetified-camera-extensions-1.2.0-rc01/AndroidManifest.xml:24:13-86
+26-->[androidx.camera:camera-extensions:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/f26ae67a964b97df117b7965d6256636/transformed/jetified-camera-extensions-1.2.0-rc01/AndroidManifest.xml:24:21-83
+27        </intent>
+28    </queries>
+29
+30    <application
+30-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:23:5-70:19
+31        android:name="com.example.worldcup2022.App"
+31-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:24:9-28
+32        android:allowBackup="false"
+32-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:25:9-36
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.8.0] /Users/apple/.gradle/caches/transforms-3/b85870c1af7e66556a5c3a43acf36ee4/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+34        android:debuggable="true"
+35        android:icon="@drawable/logo"
+35-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:26:9-38
+36        android:label="@string/app_name"
+36-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:27:9-41
+37        android:largeHeap="true"
+37-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:28:9-33
+38        android:requestLegacyExternalStorage="true"
+38-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:29:9-52
+39        android:supportsRtl="true"
+39-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:30:9-35
+40        android:testOnly="true"
+41        android:theme="@style/Theme.WorldCup2022"
+41-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:31:9-50
+42        android:usesCleartextTraffic="true" >
+42-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:32:9-44
+43        <activity
+43-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:34:9-36:60
+44            android:name="com.example.worldcup2022.ui.component.login.LoginActivity"
+44-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:35:13-61
+45            android:label="@string/title_activity_login" />
+45-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:36:13-57
+46        <activity android:name="com.example.worldcup2022.view.activity.MainActivity" />
+46-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:37:9-64
+46-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:37:19-61
+47        <activity android:name="com.example.worldcup2022.ui.component.main.MainNewActivity" />
+47-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:38:9-71
+47-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:38:19-68
+48        <activity
+48-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:39:9-48:20
+49            android:name="com.example.worldcup2022.ui.component.splash.SplashActivity"
+49-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:40:13-63
+50            android:exported="true"
+50-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:41:13-36
+51            android:theme="@style/Theme.WorldCup2022" >
+51-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:42:13-54
+52            <intent-filter>
+52-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:43:13-47:29
+53                <action android:name="android.intent.action.MAIN" />
+53-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:44:17-69
+53-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:44:25-66
+54
+55                <category android:name="android.intent.category.LAUNCHER" />
+55-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:46:17-77
+55-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:46:27-74
+56            </intent-filter>
+57        </activity>
+58        <activity
+58-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:49:9-55:20
+59            android:name="com.example.worldcup2022.ui.component.recipes.RecipesListActivity"
+59-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:50:13-69
+60            android:label="@string/title_activity_recipes" >
+60-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:51:13-59
+61            <meta-data
+61-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:52:13-54:54
+62                android:name="android.app.searchable"
+62-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:53:17-54
+63                android:resource="@xml/searchable" />
+63-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:54:17-51
+64        </activity>
+65
+66        <meta-data
+66-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:57:9-59:57
+67            android:name="preloaded_fonts"
+67-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:58:13-43
+68            android:resource="@array/preloaded_fonts" />
+68-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:59:13-54
+69
+70        <provider
+71            android:name="androidx.core.content.FileProvider"
+71-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:62:13-62
+72            android:authorities="com.worldcup.soccerapp.footballapp.sports.dev"
+72-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:63:13-51
+73            android:exported="false"
+73-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:64:13-37
+74            android:grantUriPermissions="true" >
+74-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:65:13-47
+75            <meta-data
+75-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:66:13-68:58
+76                android:name="android.support.FILE_PROVIDER_PATHS"
+76-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:67:17-67
+77                android:resource="@xml/provider_paths" />
+77-->/Volumes/Windows 10 Pro/Github/fifa88-wc2022/app/src/main/AndroidManifest.xml:68:17-55
+78        </provider>
+79
+80        <uses-library
+80-->[androidx.camera:camera-extensions:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/f26ae67a964b97df117b7965d6256636/transformed/jetified-camera-extensions-1.2.0-rc01/AndroidManifest.xml:29:9-31:40
+81            android:name="androidx.camera.extensions.impl"
+81-->[androidx.camera:camera-extensions:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/f26ae67a964b97df117b7965d6256636/transformed/jetified-camera-extensions-1.2.0-rc01/AndroidManifest.xml:30:13-59
+82            android:required="false" />
+82-->[androidx.camera:camera-extensions:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/f26ae67a964b97df117b7965d6256636/transformed/jetified-camera-extensions-1.2.0-rc01/AndroidManifest.xml:31:13-37
+83
+84        <service
+84-->[androidx.camera:camera-camera2:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/51c52a0835aa2ae122e7c0f3b19f4840/transformed/jetified-camera-camera2-1.2.0-rc01/AndroidManifest.xml:24:9-33:19
+85            android:name="androidx.camera.core.impl.MetadataHolderService"
+85-->[androidx.camera:camera-camera2:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/51c52a0835aa2ae122e7c0f3b19f4840/transformed/jetified-camera-camera2-1.2.0-rc01/AndroidManifest.xml:25:13-75
+86            android:enabled="false"
+86-->[androidx.camera:camera-camera2:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/51c52a0835aa2ae122e7c0f3b19f4840/transformed/jetified-camera-camera2-1.2.0-rc01/AndroidManifest.xml:26:13-36
+87            android:exported="false" >
+87-->[androidx.camera:camera-camera2:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/51c52a0835aa2ae122e7c0f3b19f4840/transformed/jetified-camera-camera2-1.2.0-rc01/AndroidManifest.xml:27:13-37
+88            <meta-data
+88-->[androidx.camera:camera-camera2:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/51c52a0835aa2ae122e7c0f3b19f4840/transformed/jetified-camera-camera2-1.2.0-rc01/AndroidManifest.xml:30:13-32:89
+89                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+89-->[androidx.camera:camera-camera2:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/51c52a0835aa2ae122e7c0f3b19f4840/transformed/jetified-camera-camera2-1.2.0-rc01/AndroidManifest.xml:31:17-103
+90                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+90-->[androidx.camera:camera-camera2:1.2.0-rc01] /Users/apple/.gradle/caches/transforms-3/51c52a0835aa2ae122e7c0f3b19f4840/transformed/jetified-camera-camera2-1.2.0-rc01/AndroidManifest.xml:32:17-86
+91        </service>
+92
+93        <uses-library
+93-->[androidx.window:window:1.0.0] /Users/apple/.gradle/caches/transforms-3/b8b34e5150f921e5f8dabf22f5ede6fb/transformed/jetified-window-1.0.0/AndroidManifest.xml:25:9-27:40
+94            android:name="androidx.window.extensions"
+94-->[androidx.window:window:1.0.0] /Users/apple/.gradle/caches/transforms-3/b8b34e5150f921e5f8dabf22f5ede6fb/transformed/jetified-window-1.0.0/AndroidManifest.xml:26:13-54
+95            android:required="false" />
+95-->[androidx.window:window:1.0.0] /Users/apple/.gradle/caches/transforms-3/b8b34e5150f921e5f8dabf22f5ede6fb/transformed/jetified-window-1.0.0/AndroidManifest.xml:27:13-37
+96        <uses-library
+96-->[androidx.window:window:1.0.0] /Users/apple/.gradle/caches/transforms-3/b8b34e5150f921e5f8dabf22f5ede6fb/transformed/jetified-window-1.0.0/AndroidManifest.xml:28:9-30:40
+97            android:name="androidx.window.sidecar"
+97-->[androidx.window:window:1.0.0] /Users/apple/.gradle/caches/transforms-3/b8b34e5150f921e5f8dabf22f5ede6fb/transformed/jetified-window-1.0.0/AndroidManifest.xml:29:13-51
+98            android:required="false" />
+98-->[androidx.window:window:1.0.0] /Users/apple/.gradle/caches/transforms-3/b8b34e5150f921e5f8dabf22f5ede6fb/transformed/jetified-window-1.0.0/AndroidManifest.xml:30:13-37
+99
+100        <provider
+100-->[com.squareup.picasso:picasso:2.71828] /Users/apple/.gradle/caches/transforms-3/205c852155184676f31515758c43901a/transformed/jetified-picasso-2.71828/AndroidManifest.xml:8:9-11:40
+101            android:name="com.squareup.picasso.PicassoProvider"
+101-->[com.squareup.picasso:picasso:2.71828] /Users/apple/.gradle/caches/transforms-3/205c852155184676f31515758c43901a/transformed/jetified-picasso-2.71828/AndroidManifest.xml:9:13-64
+102            android:authorities="com.worldcup.soccerapp.footballapp.sports.dev.com.squareup.picasso"
+102-->[com.squareup.picasso:picasso:2.71828] /Users/apple/.gradle/caches/transforms-3/205c852155184676f31515758c43901a/transformed/jetified-picasso-2.71828/AndroidManifest.xml:10:13-72
+103            android:exported="false" />
+103-->[com.squareup.picasso:picasso:2.71828] /Users/apple/.gradle/caches/transforms-3/205c852155184676f31515758c43901a/transformed/jetified-picasso-2.71828/AndroidManifest.xml:11:13-37
+104        <provider
+104-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/8f826a28da7e15e093b79a96f3b21457/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+105            android:name="androidx.startup.InitializationProvider"
+105-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/8f826a28da7e15e093b79a96f3b21457/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+106            android:authorities="com.worldcup.soccerapp.footballapp.sports.dev.androidx-startup"
+106-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/8f826a28da7e15e093b79a96f3b21457/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+107            android:exported="false" >
+107-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/8f826a28da7e15e093b79a96f3b21457/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+108            <meta-data
+108-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/8f826a28da7e15e093b79a96f3b21457/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+109                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+109-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/8f826a28da7e15e093b79a96f3b21457/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+110                android:value="androidx.startup" />
+110-->[androidx.emoji2:emoji2:1.2.0] /Users/apple/.gradle/caches/transforms-3/8f826a28da7e15e093b79a96f3b21457/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+111            <meta-data
+111-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/apple/.gradle/caches/transforms-3/0a4b3bab12a0bdf72d78f90a72f796c7/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+112                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+112-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/apple/.gradle/caches/transforms-3/0a4b3bab12a0bdf72d78f90a72f796c7/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+113                android:value="androidx.startup" />
+113-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/apple/.gradle/caches/transforms-3/0a4b3bab12a0bdf72d78f90a72f796c7/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+114        </provider>
+115    </application>
+116
+117</manifest>

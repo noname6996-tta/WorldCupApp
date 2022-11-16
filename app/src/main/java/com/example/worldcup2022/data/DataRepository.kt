@@ -5,6 +5,8 @@ import com.example.worldcup2022.data.dto.login.LoginRequest
 import com.example.worldcup2022.data.dto.login.LoginResponse
 import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
+import com.example.worldcup2022.data.dto.worldcup.ResponseSelfieFrame
+import com.example.worldcup2022.data.dto.worldcup.SelfieFrame
 import com.example.worldcup2022.data.local.LocalData
 import com.example.worldcup2022.data.remote.RemoteData
 import kotlinx.coroutines.flow.Flow
@@ -73,6 +75,12 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
     override suspend fun requestMatchs(filter: String): Flow<Resource<ResponseMatch>> {
         return flow {
             emit(remoteRepository.requestMatch(filter))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun requestSelfieFrame(): Flow<Resource<ResponseSelfieFrame>> {
+        return flow {
+            emit(remoteRepository.requestSelfieFrame())
         }.flowOn(ioDispatcher)
     }
 

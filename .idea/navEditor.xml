@@ -159,6 +159,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="imagePreviewFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="999" />
+                            <option name="y" value="-294" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="matchFragment">
                     <value>
                       <LayoutPositions>
@@ -283,6 +295,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_wcFunFragment_to_cameraFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_wcFunFragment_to_playSoundFragment">
                               <value>
                                 <LayoutPositions />

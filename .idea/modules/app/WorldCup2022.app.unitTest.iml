@@ -30,7 +30,9 @@
           <stringArguments>
             <stringArg name="classpath">
               <args>
+                <arg>$MODULE_DIR$/../../../app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/devDebug/R.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/6b4cec6840cc29239f7428bfbc653c6b/transformed/databinding-runtime-7.3.0-api.jar</arg>
+                <arg>$MODULE_DIR$/../../../permissionx/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/4d543472adc448d7622a8fa6cd5a6993/transformed/jetified-viewbinding-7.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/1c4492022a5fb23432346a5d2f815de3/transformed/databinding-adapters-7.3.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.databinding/databinding-common/7.3.0/9ce4d7d086454caee5620765f7aa39115aeffb47/databinding-common-7.3.0.jar</arg>
@@ -55,6 +57,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/411d1f12556035cd1d4c0573fdf8f533/transformed/material-1.4.0-beta01-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/17fec7e21deb89f61e927e26c4899699/transformed/appcompat-1.5.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/cb158169d5a616c59ed6049334dcaa3b/transformed/jetified-glide-4.11.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/b54d0aeff567a3b14a9d422033995411/transformed/jetified-skeletonlayout-4.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/989231101902b02d2c80a8942f254eeb/transformed/jetified-viewpager2-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/20b561a99e57603a87288c2fc456ee5e/transformed/fragment-1.5.4-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/bc55342927a6ca1c8c51b3bf5126ba3f/transformed/jetified-activity-1.5.1-api.jar</arg>
@@ -165,6 +168,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/8e024f51a2077603da9bab01edfe7107/transformed/jetified-sdp-android-1.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/18225601fb24f9a35cfd597d6ffaa5f9/transformed/jetified-library-2.4-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b1709ee360c8243e429a40f8af6230ab/transformed/jetified-library-2.4-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/371155011bbba5ded758b2a87e0f96b7/transformed/jetified-lottie-5.2.0-api.jar</arg>
                 <arg>$USER_HOME$/Library/Android/sdk/platforms/android-33/android.jar</arg>
                 <arg>$USER_HOME$/Library/Android/sdk/build-tools/33.0.0/core-lambda-stubs.jar</arg>
               </args>
