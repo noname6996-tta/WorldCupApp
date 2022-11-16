@@ -37,6 +37,12 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
         return FragmentVideowcBinding.inflate(layoutInflater)
     }
 
+    override fun onStop() {
+        super.onStop()
+        mainViewModel.nextPageHighlight.value = 0
+        mainViewModel.getHighlightsViaSearch("")
+    }
+
     override fun initView() {
         adapter = HighlightAdapter(requireContext())
         binding.rcvList.adapter = adapter
