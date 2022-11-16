@@ -11,6 +11,7 @@ import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
 import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
+import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.ui.base.BaseViewModel
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -41,11 +42,20 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     /**
      * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
      */
+
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val highlightLiveDataPrivate = MutableLiveData<Resource<ResponseHighlight>>()
     val highlightLiveData: LiveData<Resource<ResponseHighlight>> get() = highlightLiveDataPrivate
     var currentPageHighlight = 0
     var maxPageHighlight = 0
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val userLiveDataPrivate = MutableLiveData<Resource<ResponseUser>>()
+    val userLiveData: LiveData<Resource<ResponseUser>> get() = userLiveDataPrivate
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val resultGuessLiveDataPrivate = MutableLiveData<Resource<ResponseResultGuess>>()
+    val resultGuessLiveData: LiveData<Resource<ResponseResultGuess>> get() = resultGuessLiveDataPrivate
 
     /**
      *
@@ -75,14 +85,16 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         }
     }
 
-<<<<<<< HEAD
     fun getFullSquads() {
         viewModelScope.launch {
             soundsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
                 dataRepositoryRepository.requestSquads("countryId==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
                     squadsLiveDataPrivate.value = it
-=======
+                }
+            }
+        }
+    }
 
     /**
      *
@@ -93,13 +105,11 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             wrapEspressoIdlingResource {
                 dataRepositoryRepository.requestHighlights(filter = "group==\"highlight\";name==\"*$search*\"", pageSize = pageSize).collect {
                     highlightLiveDataPrivate.value = it
->>>>>>> ee756542d893a45d858e7a962093bf8133f9a454
                 }
             }
         }
     }
-<<<<<<< HEAD
-=======
+
 
     /**
      *
@@ -112,5 +122,32 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             getHighlightsViaSearch(search, currentPageHighlight)
         }
     }
->>>>>>> ee756542d893a45d858e7a962093bf8133f9a454
+
+    /**
+     *
+     */
+    fun getRegisterUser() {
+        viewModelScope.launch {
+            userLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.registerUser().collect {
+                    userLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    fun getResultGuess(userId: String) {
+        viewModelScope.launch {
+            resultGuessLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.getResultGuess(userId).collect {
+                    resultGuessLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
 }

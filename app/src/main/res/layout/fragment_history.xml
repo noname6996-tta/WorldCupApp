@@ -36,11 +36,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view8" />
 
+
     <TextView
         android:id="@+id/tv45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Predicted number of matches: Empty"
+        android:text="@string/predicted_number_of_matches_empty"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/white"
@@ -52,7 +53,7 @@
         android:id="@+id/tv76"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of correct guesses: Empty"
+        android:text="@string/number_of_correct_guesses_empty"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/white"
@@ -64,7 +65,7 @@
         android:id="@+id/Numere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of wrong guesses: Empty"
+        android:text="@string/number_of_wrong_guesses_empty"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:textColor="@color/white"
@@ -80,7 +81,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/inter_bold"
-        android:text="Odds of guessing correctly: Empty"
+        android:text="@string/odds_of_guessing_correctly_empty"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"

@@ -27,6 +27,8 @@ data class Match(
     val date: String = "",
     @Json(name = "dateTime")
     val dateTime: String = "",
+    @Json(name = "dateFormat")
+    val dateFormat: String = "",
     @Json(name = "time")
     val time: String = "",
     @Json(name = "stadium")

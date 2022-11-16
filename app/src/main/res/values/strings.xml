@@ -57,4 +57,9 @@
     <string name="simulation_sound">Simulation sound</string>
     <string name="search_highlights">Search highlights</string>
     <string name="no_highlight_videos_found">No highlight videos found</string>
+    <string name="predicted_number_of_matches_empty">Predicted number of matches: %s</string>
+    <string name="number_of_correct_guesses_empty">Number of correct guesses: %s</string>
+    <string name="number_of_wrong_guesses_empty">Number of wrong guesses: %s</string>
+    <string name="odds_of_guessing_correctly_empty">Odds of guessing correctly: %s</string>
+    <string name="empty">Empty</string>
 </resources>

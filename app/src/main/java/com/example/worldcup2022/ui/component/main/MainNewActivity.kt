@@ -1,6 +1,7 @@
 package com.example.worldcup2022.ui.component.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.navigation.NavController
@@ -12,9 +13,13 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
+import com.example.worldcup2022.USER_ID
+import com.example.worldcup2022.data.Resource
+import com.example.worldcup2022.data.dto.worldcup.ResponseUser
 import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.databinding.ActivityMainBinding
 import com.example.worldcup2022.ui.base.BaseActivity
+import com.example.worldcup2022.utils.observe
 import com.google.android.material.navigation.NavigationBarView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -48,9 +53,14 @@ class MainNewActivity : BaseActivity() {
             preloadStadiumImage()
         }.start()
 
+        val userId = Hawk.get<String>(USER_ID, "")
+        if (userId.isEmpty()) {
+            mainViewModel.getRegisterUser()
+        }
     }
 
     override fun observeViewModel() {
+        observe(mainViewModel.userLiveData, ::handleUserData)
     }
 
 
@@ -127,5 +137,20 @@ class MainNewActivity : BaseActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    private fun handleUserData(status: Resource<ResponseUser>) {
+        when (status) {
+            is Resource.Loading -> {
+                Log.e("Home", "handleUserData: Loading ")
+            }
+            is Resource.Success -> status.data?.let { bindUserData(user = it) }
+            is Resource.DataError -> {
+                status.errorCode?.let { Log.e("Home", "handleUserData: Error " + it) }
+            }
+        }
+    }
 
+    private fun bindUserData(user: ResponseUser) {
+        Hawk.put(USER_ID, user.data)
+        Log.e("TAG", "bindUserData: " + user.data)
+    }
 }
