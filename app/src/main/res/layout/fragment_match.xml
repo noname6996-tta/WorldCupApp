@@ -106,6 +106,20 @@
                 app:layout_constraintEnd_toEndOf="@+id/view2"
                 app:layout_constraintStart_toStartOf="@+id/view2"
                 app:layout_constraintTop_toTopOf="@+id/view2" />
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tvGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_extrabold"
+                android:text="@string/time"
+                android:textColor="@color/white"
+                android:textFontWeight="400"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/view2"
+                app:layout_constraintEnd_toEndOf="@+id/view2"
+                app:layout_constraintStart_toStartOf="@+id/view2"
+                app:layout_constraintTop_toTopOf="@+id/view2" />
 
             <TextView
                 android:id="@+id/tvDateMatchGroup"
@@ -153,7 +167,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="26dp"
                 android:fontFamily="@font/inter_bold"
-                android:text="@string/netherlands"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/view2"
                 app:layout_constraintEnd_toEndOf="@+id/imgteam1"
@@ -176,7 +189,6 @@
                 android:layout_marginBottom="26dp"
 
                 android:fontFamily="@font/inter_bold"
-                android:text="@string/netherlands"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/imgTeam2"
                 app:layout_constraintStart_toStartOf="@+id/imgTeam2"

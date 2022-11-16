@@ -32,40 +32,67 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     override fun initView() {
         super.initView()
         match = MatchFragment.matchFragment
+        if (match.country1 != null) {
+            binding.tvTeam1.text = match.country1!!.name
+            binding.tvProcessNameTeam1.text = match.country1!!.name
+            Glide.with(requireContext()).load(match.country1!!.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam1)
+            Glide.with(requireContext()).load(match.country1!!.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam1Prediction)
 
-        // name and image
-        try {
-            val fileInString: String =
-                requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
-            var countrys: List<Country> =
-                Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
-            for (i in 0..countrys.size - 1) {
-                val country = countrys[i]
-                if (match.idcountry1.toString() == country.id) {
-                    binding.tvTeam1.text = country.name
-                    binding.tvProcessNameTeam1.text = country.name
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam1)
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam1Prediction)
-                    match.country1= country
+            binding.tvTeam2.text = match.country2?.name
+            binding.tvProcessNameTeam2.text = match.country2?.name
+            Glide.with(requireContext()).load(match.country2?.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam2)
+            Glide.with(requireContext()).load(match.country2?.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam2Prediction)
+        } else {
+            // name and image
+            try {
+                val fileInString: String =
+                    requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
+                var countrys: List<Country> =
+                    Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
+                for (i in 0..countrys.size - 1) {
+                    val country = countrys[i]
+                    if (match.idcountry1.toString() == country.id) {
+                        binding.tvTeam1.text = country.name
+                        binding.tvProcessNameTeam1.text = country.name
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam1)
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam1Prediction)
+                        match.country1 = country
+                    }
+                    if (match.idcountry2.toString() == country.id) {
+                        binding.tvTeam2.text = country.name
+                        binding.tvProcessNameTeam2.text = country.name
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam2)
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam2Prediction)
+                        match.country2 = country
+                    }
                 }
-                if (match.idcountry2.toString() == country.id) {
-                    binding.tvTeam2.text = country.name
-                    binding.tvProcessNameTeam2.text = country.name
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam2)
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam2Prediction)
-                    match.country2= country
-                }
+            } catch (e: IOException) {
+
             }
-        } catch (e: IOException) {
-
         }
         dialogVote = DiaLogVote(requireContext(), match)
         //
@@ -100,7 +127,8 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                     binding.tvNameSatdium.text = stadium.name
                     binding.tvLocationMatchStadium.text = stadium.location
                     Glide.with(requireContext()).load(stadium.image)
-                        .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+
+                        .error(R.drawable.logo).placeholder(R.drawable.logo)
                         .into(binding.imgStadium)
                 }
             }
