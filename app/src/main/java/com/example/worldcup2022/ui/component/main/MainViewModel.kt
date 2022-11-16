@@ -1,5 +1,7 @@
 package com.example.worldcup2022.ui.component.main
 
+import android.os.Handler
+import android.os.Looper
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -40,8 +42,8 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val highlightLiveDataPrivate = MutableLiveData<Resource<ResponseHighlight>>()
     val highlightLiveData: LiveData<Resource<ResponseHighlight>> get() = highlightLiveDataPrivate
-    var currentPageHighlight = 0
-    var maxPageHighlight = 0
+    var nextPageHighlight = MutableLiveData(0)
+    var maxPageHighlight = MutableLiveData(0)
 
     /**
      *
@@ -50,7 +52,12 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             matchsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"").collect {
+                dataRepositoryRepository.requestMatchs(
+                    "date==\"" + URLEncoder.encode(
+                        "**",
+                        "UTF-8"
+                    ) + "\""
+                ).collect {
                     matchsLiveDataPrivate.value = it
                 }
             }
@@ -64,7 +71,12 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             soundsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestSounds("id==\"" + URLEncoder.encode("**", "UTF-8") + "\"").collect {
+                dataRepositoryRepository.requestSounds(
+                    "id==\"" + URLEncoder.encode(
+                        "**",
+                        "UTF-8"
+                    ) + "\""
+                ).collect {
                     soundsLiveDataPrivate.value = it
                 }
             }
@@ -75,26 +87,33 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     /**
      *
      */
-    fun getHighlightsViaSearch(search: CharSequence, pageSize: Int) {
-        viewModelScope.launch {
-            highlightLiveDataPrivate.value = Resource.Loading()
-            wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestHighlights(filter = "group==\"highlight\";name==\"*$search*\"", pageSize = pageSize).collect {
-                    highlightLiveDataPrivate.value = it
+    private var handleUpdateData = Handler(Looper.getMainLooper())
+    fun getHighlightsViaSearch(search: CharSequence) {
+        handleUpdateData.removeCallbacksAndMessages(null)
+        handleUpdateData.postDelayed({
+            viewModelScope.launch {
+                highlightLiveDataPrivate.value = Resource.Loading()
+                wrapEspressoIdlingResource {
+                    dataRepositoryRepository.requestHighlights(
+                        filter = "group==\"highlight\";name==\"*$search*\"",
+                        pageSize = nextPageHighlight.value ?: 0
+                    ).collect {
+                        highlightLiveDataPrivate.value = it
+                    }
                 }
             }
-        }
+        }, 500)
     }
 
     /**
      *
      */
     fun loadMoreHighlights(search: CharSequence, oldList: List<Highlight>) {
-        if (currentPageHighlight < maxPageHighlight) {
+        if (nextPageHighlight.value!! < maxPageHighlight.value!!) {
             val tmp: ArrayList<Highlight> = arrayListOf()
             tmp.addAll(oldList)
             tmp.removeLast()
-            getHighlightsViaSearch(search, currentPageHighlight)
+            getHighlightsViaSearch(search)
         }
     }
 }

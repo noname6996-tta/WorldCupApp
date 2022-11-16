@@ -1,6 +1,8 @@
 package com.example.worldcup2022.view.fragment
 
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -30,7 +32,7 @@ import kotlinx.coroutines.withContext
 class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
     private val mainViewModel: MainViewModel by viewModels()
     private lateinit var adapter: HighlightAdapter
-
+    private var isFocusedSearch = false;
     override fun getDataBinding(): FragmentVideowcBinding {
         return FragmentVideowcBinding.inflate(layoutInflater)
     }
@@ -57,6 +59,10 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
             requireActivity().hideKeyboard()
         }
 
+        binding.edtSearch.setOnFocusChangeListener { _, hasFocus ->
+            isFocusedSearch = hasFocus
+        }
+
         binding.edtSearch.setOnEditorActionListener { _, i, _ ->
             if (i == EditorInfo.IME_ACTION_SEARCH) {
                 requireActivity().hideKeyboard()
@@ -67,13 +73,17 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
 
         binding.edtSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun afterTextChanged(s: Editable?) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                binding.btnDeleteSearch.visibility = if (s.isEmpty()) View.GONE else View.VISIBLE
+            override fun afterTextChanged(s: Editable) {
+                if (isFocusedSearch) {
+                    Log.d("ntduc_debug", "afterTextChanged: $s")
+                    binding.btnDeleteSearch.visibility =
+                        if (s.isEmpty()) View.GONE else View.VISIBLE
 
-                mainViewModel.currentPageHighlight = 0
-                mainViewModel.getHighlightsViaSearch(s, mainViewModel.currentPageHighlight)
+                    mainViewModel.nextPageHighlight.value = 0
+                    mainViewModel.getHighlightsViaSearch(s)
+                }
             }
         })
 
@@ -81,7 +91,7 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val grid = binding.rcvList.layoutManager as GridLayoutManager
-                if (adapter.isLoadMore && grid.findLastCompletelyVisibleItemPosition() == adapter.list.size - 1) {
+                if (adapter.list.isNotEmpty() && adapter.isLoadMore && grid.findLastCompletelyVisibleItemPosition() == adapter.list.size - 1) {
                     mainViewModel.loadMoreHighlights(binding.edtSearch.text, adapter.list)
                 }
             }
@@ -101,21 +111,24 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
     }
 
     override fun initData() {
-        mainViewModel.currentPageHighlight = 0
-        mainViewModel.getHighlightsViaSearch(
-            binding.edtSearch.text,
-            mainViewModel.currentPageHighlight
-        )
+        mainViewModel.nextPageHighlight.value = 0
+        mainViewModel.getHighlightsViaSearch(binding.edtSearch.text)
     }
 
+    private var handleUpdateData = Handler(Looper.getMainLooper())
     private fun handleHighlightsList(status: Resource<ResponseHighlight>) {
         when (status) {
             is Resource.Loading -> {
-                if (mainViewModel.currentPageHighlight == 0) {
+                if (mainViewModel.nextPageHighlight.value == 0) {
                     showLoadingView()
                 }
             }
-            is Resource.Success -> status.data?.let { bindListData(highlights = it) }
+            is Resource.Success -> status.data?.let {
+                handleUpdateData.removeCallbacksAndMessages(null)
+                handleUpdateData.post {
+                    bindListData(highlights = it)
+                }
+            }
             is Resource.DataError -> {
                 status.errorCode?.let { Log.d("ntduc_debug", "handleHighlightsList: Error " + it) }
 
@@ -133,7 +146,7 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
 
     private fun bindListData(highlights: ResponseHighlight) {
         if (highlights.data != null) {
-            if (mainViewModel.currentPageHighlight == 0) {
+            if (mainViewModel.nextPageHighlight.value == 0) {
                 if (highlights.data.isEmpty()) {
                     binding.layoutLoading.root.visibility = View.GONE
                     binding.noItem.visibility = View.VISIBLE
@@ -142,15 +155,14 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
                 }
                 adapter.list = listOf()
             }
-
+            mainViewModel.nextPageHighlight.value = mainViewModel.nextPageHighlight.value!! + 1
+            mainViewModel.maxPageHighlight.value = highlights.myPage?.totalPages ?: 0
             lifecycleScope.launch(Dispatchers.IO) {
-                mainViewModel.maxPageHighlight = highlights.myPage?.totalPages ?: 0
                 val temp = arrayListOf<Highlight>()
                 temp.addAll(adapter.list)
                 if (temp.size > 0 && temp.last().id == null) temp.removeLast()
                 temp.addAll(highlights.data)
-                mainViewModel.currentPageHighlight++
-                if (mainViewModel.currentPageHighlight == mainViewModel.maxPageHighlight) {
+                if (mainViewModel.nextPageHighlight.value!! == mainViewModel.maxPageHighlight.value!!) {
                     adapter.isLoadMore = false
                 } else {
                     temp.add(Highlight())
