@@ -9,9 +9,9 @@ import com.example.worldcup2022.R
 import com.example.worldcup2022.data.Data.parseTime
 import com.example.worldcup2022.databinding.ItemCountryPointsBinding
 import com.example.worldcup2022.databinding.ItemMatchBinding
-import com.example.worldcup2022.model.Country
-import com.example.worldcup2022.model.Match
-import com.example.worldcup2022.model.Stadium
+import com.example.worldcup2022.data.dto.worldcup.Country
+import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.view.fragment.MatchGroupFragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

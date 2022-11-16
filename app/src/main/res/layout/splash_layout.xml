@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@color/maincolor"
-    android:gravity="center_horizontal"
+    android:background="@drawable/bg_splash"
+    android:gravity="center"
     android:layout_height="match_parent">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/logoApp"
-        android:layout_marginTop="150dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo"
-        android:layout_width="300dp"
-        android:layout_height="300dp" />
+<ImageView
+
+    android:adjustViewBounds="true"
+    android:layout_width="238dp"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_splash"/>
 
 </LinearLayout>

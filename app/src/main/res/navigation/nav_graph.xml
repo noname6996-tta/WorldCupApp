@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.worldcup2022.view.fragment.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_homeGroupFragment"
             app:destination="@id/homeGroupFragment" />
@@ -26,7 +26,7 @@
         android:id="@+id/tablesFragment"
         android:name="com.example.worldcup2022.view.fragment.TablesFragment"
         android:label="TablesFragment"
-        tools:layout="@layout/fragment_tables" >
+        tools:layout="@layout/fragment_tables">
         <action
             android:id="@+id/action_tablesFragment_to_groupDetalsFragment"
             app:destination="@id/groupDetalsFragment" />
@@ -40,37 +40,38 @@
         android:id="@+id/wcFunFragment"
         android:name="com.example.worldcup2022.view.fragment.WcFunFragment"
         android:label="WcFunFragment"
-        tools:layout="@layout/fragment_videowc" >
+        tools:layout="@layout/fragment_videowc">
         <action
             android:id="@+id/action_wcFunFragment_to_playSoundFragment"
             app:destination="@id/playSoundFragment" />
         <action
             android:id="@+id/action_wcFunFragment_to_cameraFragment"
             app:destination="@id/cameraFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/homeGroupFragment"
-        tools:layout="@layout/fragemnt_homegroup"
         android:name="com.example.worldcup2022.view.fragment.HomeGroupFragment"
-        android:label="HomeGroupFragment" >
+        android:label="HomeGroupFragment"
+        tools:layout="@layout/fragemnt_homegroup">
         <action
             android:id="@+id/action_homeGroupFragment_to_groupInfoFragment"
             app:destination="@id/groupInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeMatchFragment"
-        tools:layout="@layout/fragment_homematch"
         android:name="com.example.worldcup2022.view.fragment.HomeMatchFragment"
-        android:label="HomeMatchFragment" >
+        android:label="HomeMatchFragment"
+        tools:layout="@layout/fragment_homematch">
         <action
             android:id="@+id/action_homeMatchFragment_to_homeGroupFragment"
             app:destination="@id/homeGroupFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_groupinfo"
         android:id="@+id/groupInfoFragment"
         android:name="com.example.worldcup2022.view.fragment.GroupInfoFragment"
-        android:label="GroupInfoFragment" >
+        android:label="GroupInfoFragment"
+        tools:layout="@layout/fragment_groupinfo">
         <argument
             android:name="group_name"
             app:argType="string" />
@@ -79,30 +80,33 @@
             app:destination="@id/matchFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_allgroup"
         android:id="@+id/homeAllGroupFragment"
         android:name="com.example.worldcup2022.view.fragment.HomeAllGroupFragment"
-        android:label="HomeAllGroupFragment" />
+        android:label="HomeAllGroupFragment"
+        tools:layout="@layout/fragment_allgroup" />
     <fragment
-        tools:layout="@layout/fragment_match"
         android:id="@+id/matchFragment"
         android:name="com.example.worldcup2022.view.fragment.MatchFragment"
-        android:label="MatchFragment" >
+        android:label="MatchFragment"
+        tools:layout="@layout/fragment_match">
         <argument
             android:name="object_match"
-            app:argType="com.example.worldcup2022.model.Match" />
+            app:argType="com.example.worldcup2022.data.dto.worldcup.Match" />
         <action
             android:id="@+id/action_matchFragment_to_groupDetalsFragment"
             app:destination="@id/groupDetalsFragment" />
         <action
             android:id="@+id/action_matchFragment_to_stadiumFragment"
             app:destination="@id/stadiumFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_squadFragment"
+            app:destination="@id/squadFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_group_detals"
         android:id="@+id/groupDetalsFragment"
         android:name="com.example.worldcup2022.view.fragment.GroupDetalsFragment"
-        android:label="GroupDetalsFragment" >
+        android:label="GroupDetalsFragment"
+        tools:layout="@layout/fragment_group_detals">
         <argument
             android:name="group_name"
             app:argType="string" />
@@ -114,45 +118,62 @@
             app:destination="@id/matchFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_stadium"
         android:id="@+id/stadiumFragment"
         android:name="com.example.worldcup2022.view.fragment.StadiumFragment"
-        android:label="StadiumFragment" >
+        android:label="StadiumFragment"
+        tools:layout="@layout/fragment_stadium">
         <argument
             android:name="id_stadium"
-            app:argType="integer" />
+            app:argType="string" />
         <action
             android:id="@+id/action_stadiumFragment_to_stadiumSecondFragment"
             app:destination="@id/stadiumSecondFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_stadium_second"
         android:id="@+id/stadiumSecondFragment"
         android:name="com.example.worldcup2022.view.fragment.StadiumSecondFragment"
-        android:label="StadiumSecondFragment" >
-        <argument android:name="id_stadium2"
-            app:argType="integer" />
+        android:label="StadiumSecondFragment"
+        tools:layout="@layout/fragment_stadium_second">
+        <argument
+            android:name="id_stadium2"
+            app:argType="string" />
         <action
             android:id="@+id/action_stadiumSecondFragment_to_stadiumFragment"
             app:destination="@id/stadiumFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_play_sound"
         android:id="@+id/playSoundFragment"
         android:name="com.example.worldcup2022.view.fragment.PlaySoundFragment"
-        android:label="PlaySoundFragment" />
+        tools:layout="@layout/fragment_play_sound">
+        <argument
+            android:name="isInternet"
+            app:argType="integer" />
+    </fragment>
     <fragment
-        tools:layout="@layout/fragment_camera"
         android:id="@+id/cameraFragment"
         android:name="com.example.worldcup2022.view.fragment.selfie.CameraFragment"
-        android:label="CameraFragment" >
+        android:label="CameraFragment"
+        tools:layout="@layout/fragment_camera">
         <action
             android:id="@+id/action_cameraFragment_to_imagePreviewFragment"
             app:destination="@id/imagePreviewFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_image_preview"
         android:id="@+id/imagePreviewFragment"
         android:name="com.example.worldcup2022.view.fragment.selfie.ImagePreviewFragment"
-        android:label="ImagePreviewFragment" />
+        android:label="ImagePreviewFragment"
+        tools:layout="@layout/fragment_image_preview" />
+
+    <fragment
+        android:id="@+id/squadFragment"
+        android:name="com.example.worldcup2022.view.fragment.SquadFragment"
+        android:label="SquadFragment"
+        tools:layout="@layout/fragment_squad">
+        <action
+            android:id="@+id/action_squadFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+        <argument
+            android:name="country"
+            app:argType="com.example.worldcup2022.data.dto.worldcup.Country" />
+    </fragment>
 </navigation>

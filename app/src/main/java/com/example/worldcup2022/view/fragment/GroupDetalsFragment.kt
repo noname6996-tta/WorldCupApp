@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.adapter.HomeMathAdapterBorder
 import com.example.worldcup2022.adapter.MatchGroupAdapter
 import com.example.worldcup2022.databinding.FragmentGroupDetalsBinding
-import com.example.worldcup2022.model.Country
-import com.example.worldcup2022.model.Match
+import com.example.worldcup2022.data.dto.worldcup.Country
+import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.ui.component.main.MainNewActivity
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

@@ -11,18 +11,19 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
+import com.example.worldcup2022.USER_ID
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
+import com.example.worldcup2022.data.dto.worldcup.ResponseUser
+import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.databinding.ActivityMainBinding
-import com.example.worldcup2022.model.Stadium
 import com.example.worldcup2022.ui.base.BaseActivity
 import com.example.worldcup2022.utils.observe
 import com.google.android.material.navigation.NavigationBarView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.orhanobut.hawk.Hawk
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -33,9 +34,11 @@ class MainNewActivity : BaseActivity() {
     lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val mainViewModel: MainViewModel by viewModels()
+
     companion object {
         lateinit var binding: ActivityMainBinding
     }
+
     override fun initViewBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
@@ -44,40 +47,23 @@ class MainNewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
+        Hawk.init(this).build()
         initUi()
         Thread {
             preloadStadiumImage()
         }.start()
-        mainViewModel.getFullMatchs()
 
-    }
-
-    override fun observeViewModel() {
-        observe(mainViewModel.matchsLiveData, ::handleMatchsList)
-    }
-
-    private fun handleMatchsList(status: Resource<ResponseMatch>) {
-        when (status) {
-            is Resource.Loading -> {
-                Log.e("TAG", "handleMatchsList: Loading " )
-//                showLoadingView()
-            }
-            is Resource.Success -> status.data?.let { bindListData(matchs = it) }
-            is Resource.DataError -> {
-                status.errorCode?.let {  Log.e("TAG", "handleMatchsList: Error " + it)}
-
-//                showDataView(false)
-//                status.errorCode?.let { recipesListViewModel.showToastMessage(it)
-            }
+        val userId = Hawk.get<String>(USER_ID, "")
+        if (userId.isEmpty()) {
+            mainViewModel.getRegisterUser()
         }
     }
 
-    private fun bindListData(matchs: ResponseMatch) {
-        Log.e("TAG", "bindListData: " + matchs.data.size)
+    override fun observeViewModel() {
+        observe(mainViewModel.userLiveData, ::handleUserData)
     }
+
+
     private fun preloadStadiumImage() {
         val fileInString: String =
             assets.open("Stadium.json").bufferedReader().use { it.readText() }
@@ -89,6 +75,7 @@ class MainNewActivity : BaseActivity() {
                 .preload()
         }
     }
+
     private fun initUi() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navMain) as NavHostFragment
@@ -98,7 +85,6 @@ class MainNewActivity : BaseActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.homeFragment -> {
-                        Log.d(javaClass.name, "initView: ${navController.currentDestination?.displayName}")
 
                         NavigationUI.onNavDestinationSelected(
                             item,
@@ -146,7 +132,25 @@ class MainNewActivity : BaseActivity() {
             setOnItemSelectedListener(mNavigationItemSelected)
         }
     }
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    private fun handleUserData(status: Resource<ResponseUser>) {
+        when (status) {
+            is Resource.Loading -> {
+                Log.e("Home", "handleUserData: Loading ")
+            }
+            is Resource.Success -> status.data?.let { bindUserData(user = it) }
+            is Resource.DataError -> {
+                status.errorCode?.let { Log.e("Home", "handleUserData: Error " + it) }
+            }
+        }
+    }
+
+    private fun bindUserData(user: ResponseUser) {
+        Hawk.put(USER_ID, user.data)
+        Log.e("TAG", "bindUserData: " + user.data)
     }
 }

@@ -1,8 +1,10 @@
 package com.example.worldcup2022.view.fragment
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.media.AudioManager
 import android.media.MediaPlayer
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.Animation
@@ -10,14 +12,22 @@ import android.view.animation.AnimationUtils
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
+import com.example.worldcup2022.data.dto.worldcup.Sound
 import com.example.worldcup2022.databinding.FragmentPlaySoundBinding
 import com.example.worldcup2022.ui.component.main.MainNewActivity
 
 import com.proxglobal.worlcupapp.base.BaseFragment
+import java.io.IOException
 
 
 class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
+    companion object {
+        lateinit var sound: Sound
+    }
+    val args: PlaySoundFragmentArgs by navArgs()
     lateinit var mediaPlayer: MediaPlayer
     lateinit var audioManager: AudioManager
     override fun getDataBinding(): FragmentPlaySoundBinding {
@@ -30,7 +40,24 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     }
     override fun initData() {
         super.initData()
-        mediaPlayer = MediaPlayer.create(requireContext(), com.example.worldcup2022.R.raw.drum_sound)
+        val isInternet = args.isInternet
+        if (isInternet==2){
+            mediaPlayer = MediaPlayer.create(requireContext(), com.example.worldcup2022.R.raw.drum_sound)
+        } else if (isInternet==1) {
+            mediaPlayer = MediaPlayer()
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+            try {
+                mediaPlayer.setDataSource(sound.sound)
+                mediaPlayer.prepare()
+                Glide.with(requireContext()).load(sound.image)
+                    .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+                    .into(binding.imgPlay)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            Log.v(TAG,"Music is streaming")
+        }
+
     }
 
     override fun addEvent() {
@@ -42,6 +69,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
         binding.imgPlay.setOnPressListener(
             onPress = {
                 playMusic()
+                mediaPlayer.isLooping = true;
             },
             onRelease = {
                 stopPlayMusic()
@@ -54,6 +82,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     private fun playMusic() {
         mediaPlayer.start()
         var anima = AnimationUtils.loadAnimation(requireContext(),R.anim.zoom_in)
+        anima.repeatCount = Animation.INFINITE;
         binding.imgPlay.startAnimation(anima)
     }
 
@@ -105,7 +134,5 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
         } catch (e : java.lang.Exception){
             e.printStackTrace()
         }
-
-
     }
 }

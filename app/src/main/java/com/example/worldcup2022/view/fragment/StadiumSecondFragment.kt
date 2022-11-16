@@ -9,7 +9,7 @@ import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.StadiumAdapter
 import com.example.worldcup2022.databinding.FragmentStadiumBinding
 import com.example.worldcup2022.databinding.FragmentStadiumSecondBinding
-import com.example.worldcup2022.model.Stadium
+import com.example.worldcup2022.data.dto.worldcup.Stadium
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -40,7 +40,7 @@ class StadiumSecondFragment :BaseFragment<FragmentStadiumSecondBinding>(){
                 Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
             for (i in 0..stadiums.size - 1) {
                 val stadium = stadiums[i]
-                if (id == stadium.id) {
+                if (id.toString() == stadium.id) {
                     binding.tvNameSatdium.text = stadium.name
                     binding.tvLocation.text = stadium.location
                     binding.tvCapacity.text = stadium.capacity
@@ -68,7 +68,7 @@ class StadiumSecondFragment :BaseFragment<FragmentStadiumSecondBinding>(){
                 Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
             for (i in 0..stadiums.size - 1) {
                 val stadium = stadiums[i]
-                if (id != stadium.id){
+                if (id.toString() != stadium.id){
                     arrStadium.add(stadium)
                 }
 
