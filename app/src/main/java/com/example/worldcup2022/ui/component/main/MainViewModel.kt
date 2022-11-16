@@ -13,6 +13,7 @@ import com.example.worldcup2022.ui.base.BaseViewModel
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.RequestBody
 import java.net.URLEncoder
 import javax.inject.Inject
 
@@ -33,9 +34,13 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val soundsLiveDataPrivate = MutableLiveData<Resource<ResponseSound>>()
     val soundsLiveData: LiveData<Resource<ResponseSound>> get() = soundsLiveDataPrivate
 
+    val squadsLiveDataPrivate = MutableLiveData<Resource<ResponseSquad>>()
+    val squadsLiveData: LiveData<Resource<ResponseSquad>> get() = squadsLiveDataPrivate
+
     /**
      * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
      */
+
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val highlightLiveDataPrivate = MutableLiveData<Resource<ResponseHighlight>>()
     val highlightLiveData: LiveData<Resource<ResponseHighlight>> get() = highlightLiveDataPrivate
@@ -51,6 +56,22 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     var nextPageHistoryMatch = MutableLiveData(0)
     var maxPageHistoryMatch = MutableLiveData(0)
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val userLiveDataPrivate = MutableLiveData<Resource<ResponseUser>>()
+    val userLiveData: LiveData<Resource<ResponseUser>> get() = userLiveDataPrivate
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val resultGuessLiveDataPrivate = MutableLiveData<Resource<ResponseResultGuess>>()
+    val resultGuessLiveData: LiveData<Resource<ResponseResultGuess>> get() = resultGuessLiveDataPrivate
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val matchsByDateLiveDataPrivate = MutableLiveData<Resource<ResponseMatch>>()
+    val matchsByDateLiveData: LiveData<Resource<ResponseMatch>> get() = matchsByDateLiveDataPrivate
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val guessLiveDataPrivate = MutableLiveData<Resource<ResponseGuess>>()
+    val guessLiveData: LiveData<Resource<ResponseGuess>> get() = guessLiveDataPrivate
+
     /**
      *
      */
@@ -58,12 +79,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             matchsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestMatchs(
-                    "date==\"" + URLEncoder.encode(
-                        "**",
-                        "UTF-8"
-                    ) + "\""
-                ).collect {
+                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"" + ";" + "country1Name==\"" + URLEncoder.encode("#NULL#", "UTF-8") + "\"").collect {
                     matchsLiveDataPrivate.value = it
                 }
             }
@@ -89,6 +105,16 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         }
     }
 
+    fun getFullSquads() {
+        viewModelScope.launch {
+            soundsLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestSquads("countryId==\"" + URLEncoder.encode("**", "UTF-8") + "\"").collect {
+                    squadsLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
 
     /**
      *
@@ -110,6 +136,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             }
         }, 500)
     }
+
 
     /**
      *
@@ -153,6 +180,63 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             tmp.addAll(oldList)
             tmp.removeLast()
             getHistoryMatchViaID(id)
+        }
+    }
+
+    /**
+     *
+     */
+    fun getRegisterUser() {
+        viewModelScope.launch {
+            userLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.registerUser().collect {
+                    userLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    fun getResultGuess(userId: String) {
+        viewModelScope.launch {
+            resultGuessLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.getResultGuess(userId).collect {
+                    resultGuessLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    fun getMatchsByDate(date: String) {
+        viewModelScope.launch {
+            matchsByDateLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestMatchs("date==\"$date\"").collect {
+                    matchsByDateLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+
+    /**
+     *
+     */
+    fun postGuess(requestBody: RequestBody) {
+        viewModelScope.launch {
+            guessLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.postGuess(requestBody).collect {
+                    guessLiveDataPrivate.value = it
+                }
+            }
         }
     }
 }

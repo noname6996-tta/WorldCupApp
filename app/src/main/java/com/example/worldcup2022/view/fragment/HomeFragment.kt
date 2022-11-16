@@ -3,12 +3,10 @@ package com.example.worldcup2022.view.fragment
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.example.worldcup2022.LIST_DATES
 import com.example.worldcup2022.LIST_MATCHS
 import com.example.worldcup2022.adapter.HomeMatchPagerAdapter
-import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
@@ -23,6 +21,7 @@ import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
+
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private lateinit var countDownTimer: CountDownTimer
@@ -62,6 +61,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.onResume()
         mainViewModel.getFullMatchs()
     }
+
     /**
      *
      */
@@ -126,6 +126,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
     }
+
     private fun handleMatchsList(status: Resource<ResponseMatch>) {
         when (status) {
             is Resource.Loading -> {
@@ -137,10 +138,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
     }
+
     private fun bindListData(matchs: ResponseMatch) {
         Hawk.put(LIST_MATCHS, matchs.data)
         createDateList(matchs.data as ArrayList<Match>)
-        setData()
     }
 
     private fun createDateList(list: ArrayList<Match>) {
@@ -166,18 +167,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
         }
-        Hawk.put(LIST_DATES, listDates)
+        listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
+        if (listDates.size > listDatesOnl.size) {
+            Hawk.put(LIST_DATES, listDates)
+            setData()
+        }
 
     }
 
     /**
      *
      */
-    private fun setData(){
+    private fun setData() {
         listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
         if (listDatesOnl.size > 0)
             binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOnl)
-        else   binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOff)
+        else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOff)
 
         TabLayoutMediator(
             binding.tabLayout,
@@ -187,7 +192,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         ) { tab, position ->
             if (listDatesOnl.size > 0)
                 tab.text = UtilsKotlin().formatDate(UtilsKotlin().parseTime((listDatesOnl[position])))
-            else tab.text =  UtilsKotlin().formatDate(UtilsKotlin().parseTime((listDatesOff[position])))
+            else tab.text = UtilsKotlin().formatDate(UtilsKotlin().parseTime((listDatesOff[position])))
         }.attach()
     }
 

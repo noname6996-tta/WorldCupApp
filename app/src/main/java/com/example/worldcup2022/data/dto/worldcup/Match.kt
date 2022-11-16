@@ -27,6 +27,8 @@ data class Match(
     val date: String = "",
     @Json(name = "dateTime")
     val dateTime: String = "",
+    @Json(name = "dateFormat")
+    val dateFormat: String = "",
     @Json(name = "time")
     val time: String = "",
     @Json(name = "stadium")
@@ -42,10 +44,16 @@ data class Match(
     @Json(name = "country2Goal")
     val country2Goal: String = "",
     @Json(name = "idcountry1")
-    var idcountry1: Int=0,
+    var idcountry1: Int = 0,
     @Json(name = "idcountry2")
-    var idcountry2: Int=0,
+    var idcountry2: Int = 0,
     @Json(name = "idStadium")
-    var idStadium: Int=0,
+    var idStadium: Int = 0,
+    @Json(name = "percent1Win")
+    var percent1Win: Int = 0,
+    @Json(name = "percent2Win")
+    var percent2Win: Int = 0,
+    @Json(name = "percentDraw")
+    var percentDraw: Int = 0,
 
     ) : Parcelable

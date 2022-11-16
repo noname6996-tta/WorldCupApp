@@ -1,23 +1,36 @@
 package com.example.worldcup2022.view.fragment
 
 import android.annotation.SuppressLint
+import android.util.Log
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
+import com.example.worldcup2022.USER_ID
+import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Country
 import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.ResponseGuess
 import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.databinding.FragmentMatchInfoBinding
+import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.ui.component.vote.DiaLogVote
+import com.example.worldcup2022.utils.observe
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.orhanobut.hawk.Hawk
 import com.proxglobal.worlcupapp.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 import java.io.IOException
 
+@AndroidEntryPoint
 class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     lateinit var match: Match
     lateinit var dialogVote: DiaLogVote
-
+    private val mainViewModel: MainViewModel by viewModels()
     override fun getDataBinding(): FragmentMatchInfoBinding {
         return FragmentMatchInfoBinding.inflate(layoutInflater)
     }
@@ -32,42 +45,75 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     override fun initView() {
         super.initView()
         match = MatchFragment.matchFragment
+        if (match.country1 != null) {
+            binding.tvTeam1.text = match.country1!!.name
+            binding.tvProcessNameTeam1.text = match.country1!!.name
+            Glide.with(requireContext()).load(match.country1!!.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam1)
+            Glide.with(requireContext()).load(match.country1!!.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam1Prediction)
 
-        // name and image
-        try {
-            val fileInString: String =
-                requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
-            var countrys: List<Country> =
-                Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
-            for (i in 0..countrys.size - 1) {
-                val country = countrys[i]
-                if (match.idcountry1.toString() == country.id) {
-                    binding.tvTeam1.text = country.name
-                    binding.tvProcessNameTeam1.text = country.name
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam1)
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam1Prediction)
-                    match.country1= country
+            binding.tvTeam2.text = match.country2?.name
+            binding.tvProcessNameTeam2.text = match.country2?.name
+            Glide.with(requireContext()).load(match.country2?.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam2)
+            Glide.with(requireContext()).load(match.country2?.image)
+                .error(R.drawable.logo)
+                .override(100, 100)
+                .into(binding.imgTeam2Prediction)
+
+            binding.tvPercent1Win.text= match.percent1Win.toString()
+            binding.tvPercent2Win.text= match.percent2Win.toString()
+            binding.tvPercentDraw.text= match.percentDraw.toString()
+        } else {
+            // name and image
+            try {
+                val fileInString: String =
+                    requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
+                var countrys: List<Country> =
+                    Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
+                for (i in 0..countrys.size - 1) {
+                    val country = countrys[i]
+                    if (match.idcountry1.toString() == country.id) {
+                        binding.tvTeam1.text = country.name
+                        binding.tvProcessNameTeam1.text = country.name
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam1)
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam1Prediction)
+                        match.country1 = country
+                    }
+                    if (match.idcountry2.toString() == country.id) {
+                        binding.tvTeam2.text = country.name
+                        binding.tvProcessNameTeam2.text = country.name
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam2)
+                        Glide.with(requireContext()).load(country.image)
+                            .error(R.drawable.logo)
+                            .override(100, 100)
+                            .into(binding.imgTeam2Prediction)
+                        match.country2 = country
+                    }
                 }
-                if (match.idcountry2.toString() == country.id) {
-                    binding.tvTeam2.text = country.name
-                    binding.tvProcessNameTeam2.text = country.name
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam2)
-                    Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(binding.imgTeam2Prediction)
-                    match.country2= country
-                }
+            } catch (e: IOException) {
+
             }
-        } catch (e: IOException) {
-
         }
-        dialogVote = DiaLogVote(requireContext(), match)
+        dialogVote = DiaLogVote(requireContext(), match) { score1, score2 ->
+            guess(score1, score2)
+        }
         //
         val played = match.history.toString().trim()
         val separated: List<String> = played.split("-")
@@ -100,7 +146,8 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                     binding.tvNameSatdium.text = stadium.name
                     binding.tvLocationMatchStadium.text = stadium.location
                     Glide.with(requireContext()).load(stadium.image)
-                        .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+
+                        .error(R.drawable.logo).placeholder(R.drawable.logo)
                         .into(binding.imgStadium)
                 }
             }
@@ -129,4 +176,54 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
             dialogVote.show()
         }
     }
+
+    override fun addObservers() {
+        super.addObservers()
+        observe(mainViewModel.guessLiveData, ::guessData)
+    }
+
+    /**
+     *
+     */
+    private fun guess(score1: String, score2: String) {
+        binding.tvGoalsTeam1.text = score1
+        binding.tvGoalsTeam2.text = score2
+        val userId = Hawk.get<String>(USER_ID, "")
+
+        val jsonObject = JSONObject()
+        jsonObject.put("userId", userId)
+        jsonObject.put("matchId", match.id)
+        if (score1.toInt() > score1.toInt()) {
+            jsonObject.put("teamWin", match.country1?.id)
+        } else {
+            jsonObject.put("teamWin", match.country2?.id)
+        }
+        jsonObject.put("time", match.date)
+        jsonObject.put("goal", "$score1-$score2")
+
+        val jsonObjectString = jsonObject.toString()
+
+        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+        mainViewModel.postGuess(requestBody)
+
+
+    }
+
+    private fun guessData(status: Resource<ResponseGuess>) {
+        when (status) {
+            is Resource.Loading -> {
+                Log.e("Home", "handleMatchsList: Loading ")
+            }
+            is Resource.Success -> status.data?.let { bindListData(guess = it) }
+            is Resource.DataError -> {
+                status.errorCode?.let { Log.e("Home", "handleMatchsList: Error " + it) }
+            }
+        }
+    }
+
+    private fun bindListData(guess: ResponseGuess) {
+        Log.e("TAG", "bindListData: " + Gson().toJson(guess))
+
+    }
+
 }

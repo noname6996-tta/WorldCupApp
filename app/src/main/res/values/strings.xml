@@ -58,9 +58,12 @@
     <string name="search_highlights">Search highlights</string>
     <string name="no_highlight_videos_found">No highlight videos found</string>
     <string name="prediction_rate">Prediction rate</string>
-    <string name="predicted_number_of_matches_empty">Predicted number of matches: Empty</string>
-    <string name="number_of_correct_guesses_empty">Number of correct guesses: Empty</string>
     <string name="no_match_prediction_history_found">No match prediction history found</string>
     <string name="guess">Guess</string>
     <string name="full_time">Full time</string>
+    <string name="predicted_number_of_matches_empty">Predicted number of matches: %s</string>
+    <string name="number_of_correct_guesses_empty">Number of correct guesses: %s</string>
+    <string name="number_of_wrong_guesses_empty">Number of wrong guesses: %s</string>
+    <string name="odds_of_guessing_correctly_empty">Odds of guessing correctly: %s</string>
+    <string name="empty">Empty</string>
 </resources>

@@ -6,33 +6,25 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.LIST_DATES
 import com.example.worldcup2022.LIST_MATCHS
-import com.example.worldcup2022.adapter.HighlightAdapter
+import com.example.worldcup2022.R
+import com.example.worldcup2022.USER_ID
 import com.example.worldcup2022.adapter.HistoryMatchAdapter
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.HistoryMatch
-import com.example.worldcup2022.data.dto.worldcup.Match
-import com.example.worldcup2022.data.dto.worldcup.MyHistoryMatch
-import com.example.worldcup2022.data.dto.worldcup.ResponseHistoryMatch
+import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.databinding.FragmentHistoryBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.UtilsKotlin
 import com.example.worldcup2022.utils.observe
-import com.ntduc.datetimeutils.convertDate
-import com.ntduc.datetimeutils.getDateTimeFromMillis
 import com.orhanobut.hawk.Hawk
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
@@ -42,8 +34,11 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     var listMatchgOnl = ArrayList<Match>()
     var id_user = "e9f0dff3-e21a-4e93-b4ce-91481246025b"
 
+
     override fun getDataBinding(): FragmentHistoryBinding {
         return FragmentHistoryBinding.inflate(layoutInflater)
+
+
     }
 
     override fun onDestroyView() {
@@ -52,10 +47,15 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     }
 
     override fun initView() {
+        super.initView()
+        binding.tv45.text = String.format(getString(R.string.predicted_number_of_matches_empty), getString(R.string.empty))
+        binding.tv76.text = String.format(getString(R.string.number_of_correct_guesses_empty), getString(R.string.empty))
+        binding.Numere.text = String.format(getString(R.string.number_of_wrong_guesses_empty), getString(R.string.empty))
+        binding.textView6.text = String.format(getString(R.string.odds_of_guessing_correctly_empty), getString(R.string.empty))
+
         adapter = HistoryMatchAdapter(requireContext())
         binding.rcvList.adapter = adapter
-        binding.rcvList.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.rcvList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
     }
 
     override fun addObservers() {
@@ -74,6 +74,8 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
             binding.noItem.visibility = View.VISIBLE
             binding.rcvList.visibility = View.INVISIBLE
         }
+        observe(mainViewModel.resultGuessLiveData, ::handleResultGuess)
+
     }
 
     private var handleUpdateData = Handler(Looper.getMainLooper())
@@ -93,13 +95,36 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
             is Resource.DataError -> {
                 status.errorCode?.let {
                     Log.d(
-                        "ntduc_debug",
-                        "handleHistoryMatchList: Error " + it
+                        "ntduc_debug", "handleHistoryMatchList: Error " + it
                     )
                 }
+            }
+        }
+    }
 
 //                showDataView(false)
 //                status.errorCode?.let { recipesListViewModel.showToastMessage(it)
+
+
+    override fun onResume() {
+        super.onResume()
+        val userId = Hawk.get<String>(USER_ID, "")
+        if (userId.isNotEmpty()) {
+            mainViewModel.getResultGuess(userId)
+        }
+    }
+
+    /**
+     *
+     */
+    private fun handleResultGuess(status: Resource<ResponseResultGuess>) {
+        when (status) {
+            is Resource.Loading -> {
+                Log.e("Home", "handleResultGuess: Loading ")
+            }
+            is Resource.Success -> status.data?.let { bindResultGuess(result = it) }
+            is Resource.DataError -> {
+                status.errorCode?.let { Log.e("Home", "handleResultGuess: Error " + it) }
             }
         }
     }
@@ -121,8 +146,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                 }
                 adapter.list = listOf()
             }
-            mainViewModel.nextPageHistoryMatch.value =
-                mainViewModel.nextPageHistoryMatch.value!! + 1
+            mainViewModel.nextPageHistoryMatch.value = mainViewModel.nextPageHistoryMatch.value!! + 1
             mainViewModel.maxPageHistoryMatch.value = historyMatchs.myPage?.totalPages ?: 0
             lifecycleScope.launch(Dispatchers.IO) {
                 val temp = arrayListOf<MyHistoryMatch>()
@@ -132,15 +156,13 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                 val listFolderDate = arrayListOf<MyFolderDate>()
                 historyMatchs.data.forEach {
                     val pos = checkDate(
-                        it,
-                        listFolderDate
+                        it, listFolderDate
                     )
                     if (pos >= 0) {
                         listFolderDate[pos].list.add(it)
                     } else {
                         val folder = MyFolderDate(
-                            title = getNameDate(it.time!!),
-                            list = arrayListOf()
+                            title = getNameDate(it.time!!), list = arrayListOf()
                         )
                         folder.list.add(it)
                         listFolderDate.add(folder)
@@ -159,8 +181,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
                         val match = listMatchgOnl.filter { it.id == historyMatch.matchId }[0]
                         listMyHistoryMatch.add(
                             MyHistoryMatch(
-                                historyMatch = historyMatch,
-                                match = match
+                                historyMatch = historyMatch, match = match
                             )
                         )
                     }
@@ -187,8 +208,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     }
 
     private fun checkDate(
-        historyMatch: HistoryMatch,
-        listFolderDate: ArrayList<MyFolderDate>
+        historyMatch: HistoryMatch, listFolderDate: ArrayList<MyFolderDate>
     ): Int {
         for (i in listFolderDate.indices) {
             if (getNameDate(historyMatch.time!!) == listFolderDate[i].title) {
@@ -210,9 +230,23 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         val trueTime = "$day, $date $month $year "
         return trueTime
     }
-}
 
-data class MyFolderDate(
-    var title: String,
-    var list: ArrayList<HistoryMatch> = arrayListOf()
-)
+
+    data class MyFolderDate(
+        var title: String, var list: ArrayList<HistoryMatch> = arrayListOf()
+    )
+
+    private fun bindResultGuess(result: ResponseResultGuess) {
+        binding.tv45.text = String.format(getString(R.string.predicted_number_of_matches_empty), result.data.total)
+        binding.tv76.text = String.format(getString(R.string.number_of_correct_guesses_empty), result.data.rightCount)
+        binding.Numere.text = String.format(getString(R.string.number_of_wrong_guesses_empty), result.data.wrongCount)
+        if (result.data.total > 0) {
+            binding.textView6.text = String.format(getString(R.string.odds_of_guessing_correctly_empty), result.data.rightCount / result.data.total)
+        } else {
+            binding.textView6.text = String.format(getString(R.string.odds_of_guessing_correctly_empty), getString(R.string.empty))
+        }
+
+
+    }
+
+}

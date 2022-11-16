@@ -69,6 +69,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
         binding.imgPlay.setOnPressListener(
             onPress = {
                 playMusic()
+                mediaPlayer.isLooping = true;
             },
             onRelease = {
                 stopPlayMusic()
@@ -81,6 +82,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     private fun playMusic() {
         mediaPlayer.start()
         var anima = AnimationUtils.loadAnimation(requireContext(),R.anim.zoom_in)
+        anima.repeatCount = Animation.INFINITE;
         binding.imgPlay.startAnimation(anima)
     }
 

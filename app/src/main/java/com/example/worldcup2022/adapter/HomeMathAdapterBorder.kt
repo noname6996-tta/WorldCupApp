@@ -82,7 +82,7 @@ class HomeMathAdapterBorder : RecyclerView.Adapter<HomeMatchBorderViewHolder>() 
         }
 
         //
-        val time = parseTime(match.date)
+        val time = parseTime(match.dateFormat)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = time
         }.time
