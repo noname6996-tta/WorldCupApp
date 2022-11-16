@@ -97,6 +97,9 @@
         <action
             android:id="@+id/action_matchFragment_to_stadiumFragment"
             app:destination="@id/stadiumFragment" />
+        <action
+            android:id="@+id/action_matchFragment_to_squadFragment"
+            app:destination="@id/squadFragment" />
     </fragment>
     <fragment
         tools:layout="@layout/fragment_group_detals"
@@ -144,5 +147,17 @@
         <argument
             android:name="isInternet"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_squad"
+        android:id="@+id/squadFragment"
+        android:name="com.example.worldcup2022.view.fragment.SquadFragment"
+        android:label="SquadFragment" >
+        <action
+            android:id="@+id/action_squadFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
+        <argument
+            android:name="country"
+            app:argType="com.example.worldcup2022.data.dto.worldcup.Country" />
     </fragment>
 </navigation>

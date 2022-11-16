@@ -1,6 +1,5 @@
 package com.example.worldcup2022.view.fragment
 
-import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,7 +12,6 @@ import com.example.worldcup2022.model.Country
 import com.example.worldcup2022.model.Match
 import com.example.worldcup2022.model.Stadium
 import com.example.worldcup2022.ui.component.main.MainNewActivity
-
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
@@ -23,19 +21,21 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MatchFragment:BaseFragment<FragmentMatchBinding>() {
+class MatchFragment : BaseFragment<FragmentMatchBinding>() {
 
     val args: MatchFragmentArgs by navArgs()
     override fun getDataBinding(): FragmentMatchBinding {
         return FragmentMatchBinding.inflate(layoutInflater)
     }
+
     companion object {
-        lateinit var matchFragment :Match
+        lateinit var matchFragment: Match
     }
+
     override fun initData() {
         super.initData()
         MainNewActivity.binding.bottomMain.visibility = View.GONE
-        var match :Match = args.objectMatch
+        var match: Match = args.objectMatch
         matchFragment = args.objectMatch
         MatchGroupFragment.group = match.group
         try {
@@ -48,13 +48,15 @@ class MatchFragment:BaseFragment<FragmentMatchBinding>() {
                 if (match.idcountry1 == country.id) {
                     binding.tvTeam1.text = country.name
                     Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_launcher_background)
+                        .placeholder(R.drawable.ic_launcher_background)
                         .into(binding.imgteam1)
                 }
                 if (match.idcountry2 == country.id) {
                     binding.tvTeam2.text = country.name
                     Glide.with(requireContext()).load(country.image)
-                        .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_launcher_background)
+                        .placeholder(R.drawable.ic_launcher_background)
                         .into(binding.imgTeam2)
                 }
             }
@@ -93,7 +95,7 @@ class MatchFragment:BaseFragment<FragmentMatchBinding>() {
         val trueTime2 = "$day, $date $month $year"
         binding.tvDateMatchGroup.text = trueTime2
 
-        binding.tvGroupName.text = "Group "+match.group+" "
+        binding.tvGroupName.text = "Group " + match.group + " "
     }
 
     override fun initView() {
@@ -104,11 +106,11 @@ class MatchFragment:BaseFragment<FragmentMatchBinding>() {
             binding.viewPagerMatch,
             false,
             false,
-            object : TabLayoutMediator.TabConfigurationStrategy{
+            object : TabLayoutMediator.TabConfigurationStrategy {
                 override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
-                    when(position){
-                        0-> tab.text = "Match info"
-                        1-> tab.text = "Group"
+                    when (position) {
+                        0 -> tab.text = "Match info"
+                        1 -> tab.text = "Group"
                         // tam thoi
                     }
                 }
@@ -121,7 +123,13 @@ class MatchFragment:BaseFragment<FragmentMatchBinding>() {
         super.addEvent()
         binding.viewBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.imgteam1.setOnClickListener {
+            //
+            // phân truyền country từ match sang squad
 
+//            val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country)
+//            findNavController().navigate(action)
         }
     }
 }

@@ -1,9 +1,5 @@
 [
     {
-        "merged": "com.example.worldcup2022.app-mergeDevDebugResources-53:/layout/fragment_squad.xml",
-        "source": "com.example.worldcup2022.app-main-58:/layout/fragment_squad.xml"
-    },
-    {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\fragment_home.xml",
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\fragment_home.xml"
     },
@@ -14,6 +10,10 @@
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\fragment_group_detals.xml",
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\fragment_group_detals.xml"
+    },
+    {
+        "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\fragment_squad.xml",
+        "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\fragment_squad.xml"
     },
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\fragment_play_sound.xml",
@@ -46,10 +46,6 @@
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\fragment_match_info.xml",
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\fragment_match_info.xml"
-    },
-    {
-        "merged": "com.example.worldcup2022.app-mergeDevDebugResources-53:/layout/fragment_knockout_stage.xml",
-        "source": "com.example.worldcup2022.app-main-58:/layout/fragment_knockout_stage.xml"
     },
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\fragment_match.xml",
@@ -120,6 +116,10 @@
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\fragment_groupinfo.xml"
     },
     {
+        "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\item_squad.xml",
+        "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\item_squad.xml"
+    },
+    {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\activity_home.xml",
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\activity_home.xml"
     },
@@ -138,6 +138,10 @@
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\recipe_item.xml",
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-58:\\layout\\recipe_item.xml"
+    },
+    {
+        "merged": "com.example.worldcup2022.app-mergeDevDebugResources-53:/layout/item_squad.xml",
+        "source": "com.example.worldcup2022.app-main-58:/layout/item_squad.xml"
     },
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-mergeDevDebugResources-53:\\layout\\item_match_border_red.xml",

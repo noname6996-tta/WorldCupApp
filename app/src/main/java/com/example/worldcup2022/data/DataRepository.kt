@@ -6,6 +6,7 @@ import com.example.worldcup2022.data.dto.login.LoginResponse
 import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import com.example.worldcup2022.data.local.LocalData
 import com.example.worldcup2022.data.remote.RemoteData
 import kotlinx.coroutines.flow.Flow
@@ -80,6 +81,12 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
     override suspend fun requestSounds(filter: String): Flow<Resource<ResponseSound>> {
         return flow {
             emit(remoteRepository.requestSound(filter))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun requestSquads(filter: String): Flow<Resource<ResponseSquad>> {
+        return flow {
+            emit(remoteRepository.requestSquad(filter))
         }.flowOn(ioDispatcher)
     }
 }

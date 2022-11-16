@@ -185,6 +185,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="squadFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-974" />
+                            <option name="y" value="-102" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="stadiumFragment">
                     <value>
                       <LayoutPositions>
@@ -272,6 +284,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_wcFunFragment_to_playSoundFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_wcFunFragment_to_playSoundFragment2">
                               <value>
                                 <LayoutPositions />
                               </value>

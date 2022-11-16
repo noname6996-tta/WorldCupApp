@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.worldcup2022.R;
@@ -27,15 +29,37 @@ public final class FragmentSquadBinding implements ViewBinding {
   public final ImageView imageView6;
 
   @NonNull
-  public final View view12;
+  public final RecyclerView recDefenders;
+
+  @NonNull
+  public final RecyclerView recForwards;
+
+  @NonNull
+  public final RecyclerView recGoalkeeper;
+
+  @NonNull
+  public final RecyclerView recMidgielders;
+
+  @NonNull
+  public final TextView textView17;
+
+  @NonNull
+  public final View viewBack;
 
   private FragmentSquadBinding(@NonNull ConstraintLayout rootView,
       @NonNull CircleImageView circleImageView, @NonNull ImageView imageView6,
-      @NonNull View view12) {
+      @NonNull RecyclerView recDefenders, @NonNull RecyclerView recForwards,
+      @NonNull RecyclerView recGoalkeeper, @NonNull RecyclerView recMidgielders,
+      @NonNull TextView textView17, @NonNull View viewBack) {
     this.rootView = rootView;
     this.circleImageView = circleImageView;
     this.imageView6 = imageView6;
-    this.view12 = view12;
+    this.recDefenders = recDefenders;
+    this.recForwards = recForwards;
+    this.recGoalkeeper = recGoalkeeper;
+    this.recMidgielders = recMidgielders;
+    this.textView17 = textView17;
+    this.viewBack = viewBack;
   }
 
   @Override
@@ -77,14 +101,44 @@ public final class FragmentSquadBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.view12;
-      View view12 = ViewBindings.findChildViewById(rootView, id);
-      if (view12 == null) {
+      id = R.id.recDefenders;
+      RecyclerView recDefenders = ViewBindings.findChildViewById(rootView, id);
+      if (recDefenders == null) {
+        break missingId;
+      }
+
+      id = R.id.recForwards;
+      RecyclerView recForwards = ViewBindings.findChildViewById(rootView, id);
+      if (recForwards == null) {
+        break missingId;
+      }
+
+      id = R.id.recGoalkeeper;
+      RecyclerView recGoalkeeper = ViewBindings.findChildViewById(rootView, id);
+      if (recGoalkeeper == null) {
+        break missingId;
+      }
+
+      id = R.id.recMidgielders;
+      RecyclerView recMidgielders = ViewBindings.findChildViewById(rootView, id);
+      if (recMidgielders == null) {
+        break missingId;
+      }
+
+      id = R.id.textView17;
+      TextView textView17 = ViewBindings.findChildViewById(rootView, id);
+      if (textView17 == null) {
+        break missingId;
+      }
+
+      id = R.id.viewBack;
+      View viewBack = ViewBindings.findChildViewById(rootView, id);
+      if (viewBack == null) {
         break missingId;
       }
 
       return new FragmentSquadBinding((ConstraintLayout) rootView, circleImageView, imageView6,
-          view12);
+          recDefenders, recForwards, recGoalkeeper, recMidgielders, textView17, viewBack);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

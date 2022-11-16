@@ -8,6 +8,7 @@ import com.example.worldcup2022.data.DataRepositorySource
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import com.example.worldcup2022.ui.base.BaseViewModel
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,6 +33,9 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val soundsLiveDataPrivate = MutableLiveData<Resource<ResponseSound>>()
     val soundsLiveData: LiveData<Resource<ResponseSound>> get() = soundsLiveDataPrivate
 
+    val squadsLiveDataPrivate = MutableLiveData<Resource<ResponseSquad>>()
+    val squadsLiveData: LiveData<Resource<ResponseSquad>> get() = squadsLiveDataPrivate
+
     /**
      *
      */
@@ -52,6 +56,17 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             wrapEspressoIdlingResource {
                 dataRepositoryRepository.requestSounds("id==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
                     soundsLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    fun getFullSquads() {
+        viewModelScope.launch {
+            soundsLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestSquads("countryId==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
+                    squadsLiveDataPrivate.value = it
                 }
             }
         }

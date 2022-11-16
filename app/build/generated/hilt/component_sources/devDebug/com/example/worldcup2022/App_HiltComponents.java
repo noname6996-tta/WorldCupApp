@@ -12,6 +12,7 @@ import com.example.worldcup2022.ui.component.recipes.RecipesListActivity_Generat
 import com.example.worldcup2022.ui.component.recipes.RecipesListViewModel_HiltModules;
 import com.example.worldcup2022.ui.component.splash.SplashActivity_GeneratedInjector;
 import com.example.worldcup2022.view.fragment.SimulationSoundFragment_GeneratedInjector;
+import com.example.worldcup2022.view.fragment.SquadFragment_GeneratedInjector;
 import dagger.Binds;
 import dagger.Component;
 import dagger.Module;
@@ -232,6 +233,7 @@ public final class App_HiltComponents {
   )
   @FragmentScoped
   public abstract static class FragmentC implements SimulationSoundFragment_GeneratedInjector,
+      SquadFragment_GeneratedInjector,
       FragmentComponent,
       DefaultViewModelFactories.FragmentEntryPoint,
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,

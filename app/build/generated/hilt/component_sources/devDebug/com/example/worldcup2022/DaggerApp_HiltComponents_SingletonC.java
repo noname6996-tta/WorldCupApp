@@ -34,6 +34,7 @@ import com.example.worldcup2022.ui.component.splash.SplashActivity;
 import com.example.worldcup2022.usecase.errors.ErrorManager;
 import com.example.worldcup2022.utils.NetworkConnectivity;
 import com.example.worldcup2022.view.fragment.SimulationSoundFragment;
+import com.example.worldcup2022.view.fragment.SquadFragment;
 import dagger.hilt.android.ActivityRetainedLifecycle;
 import dagger.hilt.android.flags.HiltWrapper_FragmentGetContextFix_FragmentGetContextFixModule;
 import dagger.hilt.android.internal.builders.ActivityComponentBuilder;
@@ -389,6 +390,10 @@ public final class DaggerApp_HiltComponents_SingletonC extends App_HiltComponent
 
     @Override
     public void injectSimulationSoundFragment(SimulationSoundFragment arg0) {
+    }
+
+    @Override
+    public void injectSquadFragment(SquadFragment arg0) {
     }
 
     @Override

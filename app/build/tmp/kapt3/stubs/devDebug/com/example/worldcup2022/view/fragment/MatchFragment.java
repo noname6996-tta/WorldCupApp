@@ -1,6 +1,5 @@
 package com.example.worldcup2022.view.fragment;
 
-import android.util.Log;
 import android.view.View;
 import com.bumptech.glide.Glide;
 import com.example.worldcup2022.R;

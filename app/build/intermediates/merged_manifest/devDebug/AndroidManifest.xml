@@ -31,7 +31,6 @@
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.WorldCup2022"
         android:usesCleartextTraffic="true" >
         <activity

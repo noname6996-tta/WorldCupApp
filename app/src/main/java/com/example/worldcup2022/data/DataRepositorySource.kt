@@ -6,6 +6,7 @@ import com.example.worldcup2022.data.dto.login.LoginResponse
 import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -21,4 +22,5 @@ interface DataRepositorySource {
     suspend fun requestFrames(): Flow<Resource<DataFrames>>
     suspend fun requestMatchs(filter : String): Flow<Resource<ResponseMatch>>
     suspend fun requestSounds(filter : String): Flow<Resource<ResponseSound>>
+    suspend fun requestSquads(filter : String): Flow<Resource<ResponseSquad>>
 }

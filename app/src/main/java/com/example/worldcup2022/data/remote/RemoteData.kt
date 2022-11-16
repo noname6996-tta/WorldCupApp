@@ -6,13 +6,11 @@ import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.recipes.RecipesItem
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import com.example.worldcup2022.data.error.NETWORK_ERROR
 import com.example.worldcup2022.data.error.NO_INTERNET_CONNECTION
-import com.example.worldcup2022.data.remote.service.FramesService
-import com.example.worldcup2022.data.remote.service.MatchsService
+import com.example.worldcup2022.data.remote.service.*
 //import com.example.worldcup2022.data.remote.service.FramesService
-import com.example.worldcup2022.data.remote.service.RecipesService
-import com.example.worldcup2022.data.remote.service.SoundsService
 import com.example.worldcup2022.utils.NetworkConnectivity
 import retrofit2.Response
 import java.io.IOException
@@ -66,6 +64,18 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         return when (val response = processCall { soundsService.fetchSounds(filter, 0, 100) }) {
             is ResponseSound -> {
                 Resource.Success(data = response as ResponseSound)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
+    override suspend fun requestSquad(filter:String): Resource<ResponseSquad> {
+        val squadsService = serviceGenerator.createService(SquadsService::class.java)
+        return when (val response = processCall { squadsService.fetchSquads(filter, 0, 100) }) {
+            is ResponseSquad -> {
+                Resource.Success(data = response as ResponseSquad)
             }
             else -> {
                 Resource.DataError(errorCode = response as Int)

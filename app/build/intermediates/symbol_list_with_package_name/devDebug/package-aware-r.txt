@@ -2101,6 +2101,7 @@ id action_homeGroupFragment_to_groupInfoFragment
 id action_homeMatchFragment_to_homeGroupFragment
 id action_image
 id action_matchFragment_to_groupDetalsFragment
+id action_matchFragment_to_squadFragment
 id action_matchFragment_to_stadiumFragment
 id action_menu_divider
 id action_menu_presenter
@@ -2109,6 +2110,7 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_refresh
 id action_search
+id action_squadFragment_to_matchFragment
 id action_stadiumFragment_to_stadiumSecondFragment
 id action_stadiumSecondFragment_to_stadiumFragment
 id action_tablesFragment_to_groupDetalsFragment
@@ -2318,6 +2320,7 @@ id imgHarry
 id imgHeader
 id imgLaughSound
 id imgPlay
+id imgPlayer
 id imgSaxoPhone
 id imgShout
 id imgSiuuu
@@ -2516,6 +2519,9 @@ id rcSpiral
 id rcSticker
 id recAllMatch
 id recAllStadium
+id recDefenders
+id recForwards
+id recGoalkeeper
 id recGroupMatch
 id recHomeMatch
 id recMatchGroup
@@ -2527,6 +2533,7 @@ id recMatchGroupE
 id recMatchGroupF
 id recMatchGroupG
 id recMatchGroupH
+id recMidgielders
 id recSound
 id rectangles
 id recyclerView
@@ -2594,6 +2601,7 @@ id split_action_bar
 id spread
 id spread_inside
 id spring
+id squadFragment
 id square
 id src_atop
 id src_in
@@ -2650,6 +2658,7 @@ id textView13
 id textView14
 id textView15
 id textView16
+id textView17
 id textView2
 id textView3
 id textView4
@@ -2723,9 +2732,11 @@ id tvMoreGroupDetalsGroupF
 id tvMoreGroupDetalsGroupG
 id tvMoreGroupDetalsGroupH
 id tvNameCountry
+id tvNamePlayer
 id tvNameSatdium
 id tvNameSound
 id tvOpened
+id tvPositionSquad
 id tvProcessNameDraw
 id tvProcessNameTeam1
 id tvProcessNameTeam2
@@ -2757,7 +2768,6 @@ id videoWcFragment
 id view
 id view10
 id view11
-id view12
 id view13
 id view14
 id view15
@@ -2943,6 +2953,7 @@ layout item_match
 layout item_match_border_red
 layout item_match_group
 layout item_sound
+layout item_squad
 layout item_stadium
 layout item_video_wc
 layout layout_rounded_progress_bar
