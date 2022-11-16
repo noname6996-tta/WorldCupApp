@@ -6,6 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.worldcup2022.data.DataRepositorySource
 import com.example.worldcup2022.data.Resource
+import com.example.worldcup2022.data.dto.worldcup.Highlight
+import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
+import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
+import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.ui.base.BaseViewModel
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
@@ -30,6 +35,13 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
 
     val soundsLiveDataPrivate = MutableLiveData<Resource<ResponseSound>>()
     val soundsLiveData: LiveData<Resource<ResponseSound>> get() = soundsLiveDataPrivate
+
+    val squadsLiveDataPrivate = MutableLiveData<Resource<ResponseSquad>>()
+    val squadsLiveData: LiveData<Resource<ResponseSquad>> get() = squadsLiveDataPrivate
+
+    /**
+     * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
+     */
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val highlightLiveDataPrivate = MutableLiveData<Resource<ResponseHighlight>>()
@@ -73,6 +85,16 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         }
     }
 
+    fun getFullSquads() {
+        viewModelScope.launch {
+            soundsLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestSquads("countryId==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
+                    squadsLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
 
     /**
      *
@@ -87,6 +109,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             }
         }
     }
+
 
     /**
      *

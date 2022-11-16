@@ -39,6 +39,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         matchFragment = args.objectMatch
         MatchGroupFragment.group = match.group
 
+
         if (match.country1 != null) {
             binding.tvTeam1.text = match.country1!!.name
             Glide.with(requireContext()).load(match.country1!!.image)
@@ -151,7 +152,13 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         super.addEvent()
         binding.viewBack.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.imgteam1.setOnClickListener {
+            //
+            // phân truyền country từ match sang squad
 
+//            val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country)
+//            findNavController().navigate(action)
         }
     }
 }
