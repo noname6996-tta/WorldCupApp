@@ -52,7 +52,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             matchsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"").collect {
+                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\""+";"+"country1Name==\""+ URLEncoder.encode("#NULL#", "UTF-8") + "\"").collect {
                     matchsLiveDataPrivate.value = it
                 }
             }

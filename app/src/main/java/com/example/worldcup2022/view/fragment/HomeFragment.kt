@@ -140,7 +140,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun bindListData(matchs: ResponseMatch) {
         Hawk.put(LIST_MATCHS, matchs.data)
         createDateList(matchs.data as ArrayList<Match>)
-        setData()
     }
 
     private fun createDateList(list: ArrayList<Match>) {
@@ -166,7 +165,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
 
         }
-        Hawk.put(LIST_DATES, listDates)
+        listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
+        if (listDates.size>listDatesOnl.size){
+            Hawk.put(LIST_DATES, listDates)
+setData()
+        }
 
     }
 
