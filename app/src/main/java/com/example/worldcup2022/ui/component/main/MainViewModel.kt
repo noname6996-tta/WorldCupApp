@@ -6,10 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.worldcup2022.data.DataRepositorySource
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.Highlight
-import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
-import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
-import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.ui.base.BaseViewModel
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,14 +31,19 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val soundsLiveDataPrivate = MutableLiveData<Resource<ResponseSound>>()
     val soundsLiveData: LiveData<Resource<ResponseSound>> get() = soundsLiveDataPrivate
 
-    /**
-     * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
-     */
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     val highlightLiveDataPrivate = MutableLiveData<Resource<ResponseHighlight>>()
     val highlightLiveData: LiveData<Resource<ResponseHighlight>> get() = highlightLiveDataPrivate
     var currentPageHighlight = 0
     var maxPageHighlight = 0
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val userLiveDataPrivate = MutableLiveData<Resource<ResponseUser>>()
+    val userLiveData: LiveData<Resource<ResponseUser>> get() = userLiveDataPrivate
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val resultGuessLiveDataPrivate = MutableLiveData<Resource<ResponseResultGuess>>()
+    val resultGuessLiveData: LiveData<Resource<ResponseResultGuess>> get() = resultGuessLiveDataPrivate
 
     /**
      *
@@ -95,6 +97,34 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             tmp.addAll(oldList)
             tmp.removeLast()
             getHighlightsViaSearch(search, currentPageHighlight)
+        }
+    }
+
+    /**
+     *
+     */
+    fun getRegisterUser() {
+        viewModelScope.launch {
+            userLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.registerUser().collect {
+                    userLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    fun getResultGuess(userId: String) {
+        viewModelScope.launch {
+            resultGuessLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.getResultGuess(userId).collect {
+                    resultGuessLiveDataPrivate.value = it
+                }
+            }
         }
     }
 }

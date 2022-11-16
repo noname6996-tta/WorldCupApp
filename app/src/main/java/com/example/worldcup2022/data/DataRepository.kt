@@ -4,9 +4,7 @@ import com.example.worldcup2022.data.dto.frames.DataFrames
 import com.example.worldcup2022.data.dto.login.LoginRequest
 import com.example.worldcup2022.data.dto.login.LoginResponse
 import com.example.worldcup2022.data.dto.recipes.Recipes
-import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
-import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
-import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.data.local.LocalData
 import com.example.worldcup2022.data.remote.RemoteData
 import kotlinx.coroutines.flow.Flow
@@ -87,6 +85,18 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
     override suspend fun requestHighlights(filter: String, pageSize: Int): Flow<Resource<ResponseHighlight>> {
         return flow {
             emit(remoteRepository.requestHighlight(filter, pageSize))
+        }.flowOn(ioDispatcher)
+    }
+
+
+    override suspend fun registerUser(): Flow<Resource<ResponseUser>> {
+        return flow {
+            emit(remoteRepository.registerUser())
+        }.flowOn(ioDispatcher)
+    }
+    override suspend fun getResultGuess(userId: String): Flow<Resource<ResponseResultGuess>> {
+        return flow {
+            emit(remoteRepository.getResultGuess(userId))
         }.flowOn(ioDispatcher)
     }
 }
