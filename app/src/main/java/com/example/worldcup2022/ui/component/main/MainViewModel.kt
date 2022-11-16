@@ -8,10 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.worldcup2022.data.DataRepositorySource
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.Highlight
-import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
-import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
-import com.example.worldcup2022.data.dto.worldcup.ResponseSound
+import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.ui.base.BaseViewModel
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -44,6 +41,15 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val highlightLiveData: LiveData<Resource<ResponseHighlight>> get() = highlightLiveDataPrivate
     var nextPageHighlight = MutableLiveData(0)
     var maxPageHighlight = MutableLiveData(0)
+
+    /**
+     * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
+     */
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val historyMatchLiveDataPrivate = MutableLiveData<Resource<ResponseHistoryMatch>>()
+    val historyMatchLiveData: LiveData<Resource<ResponseHistoryMatch>> get() = historyMatchLiveDataPrivate
+    var nextPageHistoryMatch = MutableLiveData(0)
+    var maxPageHistoryMatch = MutableLiveData(0)
 
     /**
      *
@@ -87,10 +93,10 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     /**
      *
      */
-    private var handleUpdateData = Handler(Looper.getMainLooper())
+    private var handleUpdateDataHighlight = Handler(Looper.getMainLooper())
     fun getHighlightsViaSearch(search: CharSequence) {
-        handleUpdateData.removeCallbacksAndMessages(null)
-        handleUpdateData.postDelayed({
+        handleUpdateDataHighlight.removeCallbacksAndMessages(null)
+        handleUpdateDataHighlight.postDelayed({
             viewModelScope.launch {
                 highlightLiveDataPrivate.value = Resource.Loading()
                 wrapEspressoIdlingResource {
@@ -114,6 +120,39 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             tmp.addAll(oldList)
             tmp.removeLast()
             getHighlightsViaSearch(search)
+        }
+    }
+
+    /**
+     *
+     */
+    private var handleUpdateDataHistoryMatch = Handler(Looper.getMainLooper())
+    fun getHistoryMatchViaID(id: String) {
+        handleUpdateDataHistoryMatch.removeCallbacksAndMessages(null)
+        handleUpdateDataHistoryMatch.postDelayed({
+            viewModelScope.launch {
+                historyMatchLiveDataPrivate.value = Resource.Loading()
+                wrapEspressoIdlingResource {
+                    dataRepositoryRepository.requestHistoryMatchs(
+                        filter = "userId==\"$id\"",
+                        pageSize = nextPageHistoryMatch.value ?: 0
+                    ).collect {
+                        historyMatchLiveDataPrivate.value = it
+                    }
+                }
+            }
+        }, 500)
+    }
+
+    /**
+     *
+     */
+    fun loadMoreHistoryMatch(id: String, oldList: List<HistoryMatch>) {
+        if (nextPageHistoryMatch.value!! < maxPageHistoryMatch.value!!) {
+            val tmp: ArrayList<HistoryMatch> = arrayListOf()
+            tmp.addAll(oldList)
+            tmp.removeLast()
+            getHistoryMatchViaID(id)
         }
     }
 }

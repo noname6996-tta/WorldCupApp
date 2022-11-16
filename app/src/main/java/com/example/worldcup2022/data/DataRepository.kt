@@ -5,6 +5,7 @@ import com.example.worldcup2022.data.dto.login.LoginRequest
 import com.example.worldcup2022.data.dto.login.LoginResponse
 import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
+import com.example.worldcup2022.data.dto.worldcup.ResponseHistoryMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
 import com.example.worldcup2022.data.local.LocalData
@@ -87,6 +88,12 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
     override suspend fun requestHighlights(filter: String, pageSize: Int): Flow<Resource<ResponseHighlight>> {
         return flow {
             emit(remoteRepository.requestHighlight(filter, pageSize))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun requestHistoryMatchs(filter: String, pageSize: Int): Flow<Resource<ResponseHistoryMatch>> {
+        return flow {
+            emit(remoteRepository.requestHistoryMatch(filter, pageSize))
         }.flowOn(ioDispatcher)
     }
 }

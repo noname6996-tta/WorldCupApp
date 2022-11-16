@@ -1,24 +1,218 @@
 package com.example.worldcup2022.view.fragment
 
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.worldcup2022.LIST_DATES
+import com.example.worldcup2022.LIST_MATCHS
+import com.example.worldcup2022.adapter.HighlightAdapter
+import com.example.worldcup2022.adapter.HistoryMatchAdapter
+import com.example.worldcup2022.data.Resource
+import com.example.worldcup2022.data.dto.worldcup.HistoryMatch
+import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.MyHistoryMatch
+import com.example.worldcup2022.data.dto.worldcup.ResponseHistoryMatch
 import com.example.worldcup2022.databinding.FragmentHistoryBinding
-import com.example.worldcup2022.databinding.FragmentHomeBinding
+import com.example.worldcup2022.ui.component.main.MainViewModel
+import com.example.worldcup2022.utils.UtilsKotlin
+import com.example.worldcup2022.utils.observe
+import com.ntduc.datetimeutils.convertDate
+import com.ntduc.datetimeutils.getDateTimeFromMillis
+import com.orhanobut.hawk.Hawk
 import com.proxglobal.worlcupapp.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
-class HistoryFragment : BaseFragment<FragmentHistoryBinding>(){
+@AndroidEntryPoint
+class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
+    private val mainViewModel: MainViewModel by viewModels()
+    private lateinit var adapter: HistoryMatchAdapter
+    var listDatesOnl = ArrayList<String>()
+    var listMatchgOnl = ArrayList<Match>()
+    var id_user = "e9f0dff3-e21a-4e93-b4ce-91481246025b"
+
     override fun getDataBinding(): FragmentHistoryBinding {
         return FragmentHistoryBinding.inflate(layoutInflater)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mainViewModel.historyMatchLiveDataPrivate.value = null
+    }
+
     override fun initView() {
-        super.initView()
+        adapter = HistoryMatchAdapter(requireContext())
+        binding.rcvList.adapter = adapter
+        binding.rcvList.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+    }
+
+    override fun addObservers() {
+        observe(mainViewModel.historyMatchLiveData, ::handleHistoryMatchList)
     }
 
     override fun initData() {
-        super.initData()
+        listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
+        listMatchgOnl = Hawk.get<java.util.ArrayList<Match>>(LIST_MATCHS, java.util.ArrayList())
+
+        if (listDatesOnl.size > 0) {
+            mainViewModel.nextPageHistoryMatch.value = 0
+            mainViewModel.getHistoryMatchViaID(id_user)
+        } else {
+            binding.layoutLoading.root.visibility = View.GONE
+            binding.noItem.visibility = View.VISIBLE
+            binding.rcvList.visibility = View.INVISIBLE
+        }
+    }
+
+    private var handleUpdateData = Handler(Looper.getMainLooper())
+    private fun handleHistoryMatchList(status: Resource<ResponseHistoryMatch>) {
+        when (status) {
+            is Resource.Loading -> {
+                if (mainViewModel.nextPageHistoryMatch.value == 0) {
+                    showLoadingView()
+                }
+            }
+            is Resource.Success -> status.data?.let {
+                handleUpdateData.removeCallbacksAndMessages(null)
+                handleUpdateData.post {
+                    bindListData(historyMatchs = it)
+                }
+            }
+            is Resource.DataError -> {
+                status.errorCode?.let {
+                    Log.d(
+                        "ntduc_debug",
+                        "handleHistoryMatchList: Error " + it
+                    )
+                }
+
+//                showDataView(false)
+//                status.errorCode?.let { recipesListViewModel.showToastMessage(it)
+            }
+        }
+    }
+
+    private fun showLoadingView() {
+        binding.layoutLoading.root.visibility = View.VISIBLE
+        binding.noItem.visibility = View.INVISIBLE
+        binding.rcvList.visibility = View.INVISIBLE
+    }
+
+    private fun bindListData(historyMatchs: ResponseHistoryMatch) {
+        if (historyMatchs.data != null) {
+            if (mainViewModel.nextPageHighlight.value == 0) {
+                if (historyMatchs.data.isEmpty()) {
+                    binding.layoutLoading.root.visibility = View.GONE
+                    binding.noItem.visibility = View.VISIBLE
+                    binding.rcvList.visibility = View.INVISIBLE
+                    return
+                }
+                adapter.list = listOf()
+            }
+            mainViewModel.nextPageHistoryMatch.value =
+                mainViewModel.nextPageHistoryMatch.value!! + 1
+            mainViewModel.maxPageHistoryMatch.value = historyMatchs.myPage?.totalPages ?: 0
+            lifecycleScope.launch(Dispatchers.IO) {
+                val temp = arrayListOf<MyHistoryMatch>()
+                temp.addAll(adapter.list)
+                if (temp.size > 0 && temp.last().historyMatch.id == null && temp.last().historyMatch.time == null) temp.removeLast()
+
+                val listFolderDate = arrayListOf<MyFolderDate>()
+                historyMatchs.data.forEach {
+                    val pos = checkDate(
+                        it,
+                        listFolderDate
+                    )
+                    if (pos >= 0) {
+                        listFolderDate[pos].list.add(it)
+                    } else {
+                        val folder = MyFolderDate(
+                            title = getNameDate(it.time!!),
+                            list = arrayListOf()
+                        )
+                        folder.list.add(it)
+                        listFolderDate.add(folder)
+                    }
+                }
+
+                val listMyHistoryMatch = arrayListOf<MyHistoryMatch>()
+                listFolderDate.forEach {
+                    val title = MyHistoryMatch()
+                    title.historyMatch.time = it.title
+                    if (!adapter.list.contains(title)) {
+                        listMyHistoryMatch.add(title)
+                    }
+
+                    it.list.forEach { historyMatch ->
+                        val match = listMatchgOnl.filter { it.id == historyMatch.matchId }[0]
+                        listMyHistoryMatch.add(
+                            MyHistoryMatch(
+                                historyMatch = historyMatch,
+                                match = match
+                            )
+                        )
+                    }
+                }
+
+                temp.addAll(listMyHistoryMatch)
+                if (mainViewModel.nextPageHighlight.value!! == mainViewModel.maxPageHighlight.value!!) {
+                    adapter.isLoadMore = false
+                } else {
+                    temp.add(MyHistoryMatch())
+                    adapter.isLoadMore = true
+                }
+                withContext(Dispatchers.Main) {
+                    binding.layoutLoading.root.visibility = View.GONE
+                    binding.noItem.visibility = View.INVISIBLE
+                    binding.rcvList.visibility = View.VISIBLE
+
+                    adapter.updateData(temp)
+                }
+            }
+        } else {
+            Log.d("ntduc_debug", "bindListData: data null")
+        }
+    }
+
+    private fun checkDate(
+        historyMatch: HistoryMatch,
+        listFolderDate: ArrayList<MyFolderDate>
+    ): Int {
+        for (i in listFolderDate.indices) {
+            if (getNameDate(historyMatch.time!!) == listFolderDate[i].title) {
+                return i
+            }
+        }
+        return -1
+    }
+
+    private fun getNameDate(time: String): String {
+        val t = UtilsKotlin().parseTime(time)
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = t
+        }
+        val month = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.ENGLISH)
+        val day = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.ENGLISH)
+        val date = calendar[Calendar.DAY_OF_MONTH]
+        val year = calendar[Calendar.YEAR]
+        val trueTime = "$day, $date $month $year "
+        return trueTime
     }
 }
+
+data class MyFolderDate(
+    var title: String,
+    var list: ArrayList<HistoryMatch> = arrayListOf()
+)

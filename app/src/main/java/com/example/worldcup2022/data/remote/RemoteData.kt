@@ -5,16 +5,13 @@ import com.example.worldcup2022.data.dto.frames.DataFrames
 import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.recipes.RecipesItem
 import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
+import com.example.worldcup2022.data.dto.worldcup.ResponseHistoryMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
 import com.example.worldcup2022.data.error.NETWORK_ERROR
 import com.example.worldcup2022.data.error.NO_INTERNET_CONNECTION
-import com.example.worldcup2022.data.remote.service.FramesService
-import com.example.worldcup2022.data.remote.service.HighlightsService
-import com.example.worldcup2022.data.remote.service.MatchsService
+import com.example.worldcup2022.data.remote.service.*
 //import com.example.worldcup2022.data.remote.service.FramesService
-import com.example.worldcup2022.data.remote.service.RecipesService
-import com.example.worldcup2022.data.remote.service.SoundsService
 import com.example.worldcup2022.utils.NetworkConnectivity
 import retrofit2.Response
 import java.io.IOException
@@ -96,6 +93,22 @@ constructor(
             processCall { highlightsService.fetchHighlights(filter, pageSize, 10) }) {
             is ResponseHighlight -> {
                 Resource.Success(data = response as ResponseHighlight)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    override suspend fun requestHistoryMatch(id: String, pageSize: Int): Resource<ResponseHistoryMatch> {
+        val historyMatchService = serviceGenerator.createService(HistoryMatchService::class.java)
+        return when (val response =
+            processCall { historyMatchService.fetchHistoryMatchs(id, pageSize, 10) }) {
+            is ResponseHistoryMatch -> {
+                Resource.Success(data = response as ResponseHistoryMatch)
             }
             else -> {
                 Resource.DataError(errorCode = response as Int)

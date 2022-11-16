@@ -37,10 +37,9 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
         return FragmentVideowcBinding.inflate(layoutInflater)
     }
 
-    override fun onStop() {
-        super.onStop()
-        mainViewModel.nextPageHighlight.value = 0
-        mainViewModel.getHighlightsViaSearch("")
+    override fun onDestroyView() {
+        super.onDestroyView()
+        mainViewModel.highlightLiveDataPrivate.value = null
     }
 
     override fun initView() {

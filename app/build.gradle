@@ -169,10 +169,13 @@ dependencies {
 
     // save cache
     implementation "com.orhanobut:hawk:2.0.1"
+
     def utilsVersion = "1.2.9"
     implementation "com.github.ntduc-let.Utils:ActivityUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:ContextUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:ToastUtils:$utilsVersion"
+    implementation "com.github.ntduc-let.Utils:StringUtils:$utilsVersion"
+    implementation "com.github.ntduc-let.Utils:DateTimeUtils:$utilsVersion"
 }
 kapt {
     correctErrorTypes true
