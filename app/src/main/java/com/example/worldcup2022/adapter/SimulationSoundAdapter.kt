@@ -33,7 +33,7 @@ class SimulationSoundAdapter : RecyclerView.Adapter<SimulationSoundViewHolder>()
         val sound = sounds[position]
         holder.binding.tvNameSound.text = sound.name + " "
         Glide.with(holder.itemView.context).load(sound.image)
-            .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
+            .error(R.drawable.logo).placeholder(R.drawable.logo)
             .into(holder.binding.imgSound)
 
         holder.binding.imgSound.setOnClickListener {

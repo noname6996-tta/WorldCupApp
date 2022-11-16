@@ -6,16 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.worldcup2022.data.DataRepositorySource
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.Highlight
-import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
-import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
-import com.example.worldcup2022.data.dto.worldcup.ResponseSound
-import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.ui.base.BaseViewModel
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.RequestBody
 import java.net.URLEncoder
 import javax.inject.Inject
 
@@ -57,6 +53,14 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val resultGuessLiveDataPrivate = MutableLiveData<Resource<ResponseResultGuess>>()
     val resultGuessLiveData: LiveData<Resource<ResponseResultGuess>> get() = resultGuessLiveDataPrivate
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val matchsByDateLiveDataPrivate = MutableLiveData<Resource<ResponseMatch>>()
+    val matchsByDateLiveData: LiveData<Resource<ResponseMatch>> get() = matchsByDateLiveDataPrivate
+
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val guessLiveDataPrivate = MutableLiveData<Resource<ResponseGuess>>()
+    val guessLiveData: LiveData<Resource<ResponseGuess>> get() = guessLiveDataPrivate
+
     /**
      *
      */
@@ -64,7 +68,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             matchsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\""+";"+"country1Name==\""+ URLEncoder.encode("#NULL#", "UTF-8") + "\"").collect {
+                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"" + ";" + "country1Name==\"" + URLEncoder.encode("#NULL#", "UTF-8") + "\"").collect {
                     matchsLiveDataPrivate.value = it
                 }
             }
@@ -89,7 +93,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             soundsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestSquads("countryId==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
+                dataRepositoryRepository.requestSquads("countryId==\"" + URLEncoder.encode("**", "UTF-8") + "\"").collect {
                     squadsLiveDataPrivate.value = it
                 }
             }
@@ -146,6 +150,35 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             wrapEspressoIdlingResource {
                 dataRepositoryRepository.getResultGuess(userId).collect {
                     resultGuessLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    fun getMatchsByDate(date: String) {
+        viewModelScope.launch {
+            matchsByDateLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestMatchs("date==\"$date\"").collect {
+                    matchsByDateLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+
+    /**
+     *
+     */
+    fun postGuess(requestBody: RequestBody) {
+        viewModelScope.launch {
+            guessLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.postGuess(requestBody).collect {
+                    guessLiveDataPrivate.value = it
                 }
             }
         }

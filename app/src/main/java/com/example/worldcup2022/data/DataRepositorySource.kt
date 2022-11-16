@@ -10,6 +10,7 @@ import com.example.worldcup2022.data.dto.worldcup.ResponseSound
 import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import com.example.worldcup2022.data.dto.worldcup.*
 import kotlinx.coroutines.flow.Flow
+import okhttp3.RequestBody
 
 /**
  * Created by TruyenIT
@@ -28,4 +29,5 @@ interface DataRepositorySource {
     suspend fun requestHighlights(filter: String, pageSize: Int): Flow<Resource<ResponseHighlight>>
     suspend fun registerUser(): Flow<Resource<ResponseUser>>
     suspend fun getResultGuess(userId: String): Flow<Resource<ResponseResultGuess>>
+    suspend fun postGuess(requestBody: RequestBody): Flow<Resource<ResponseGuess>>
 }

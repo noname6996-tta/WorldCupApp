@@ -379,6 +379,7 @@
                 app:layout_constraintTop_toTopOf="@+id/firstBar" />
 
             <TextView
+                android:id="@+id/tvPercent1Win"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/intermedium"
@@ -421,6 +422,7 @@
                 app:layout_constraintTop_toTopOf="@+id/secondBar" />
 
             <TextView
+                android:id="@+id/tvPercent2Win"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/intermedium"
@@ -464,6 +466,7 @@
                 app:layout_constraintTop_toTopOf="@+id/thirdBar" />
 
             <TextView
+                android:id="@+id/tvPercentDraw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/intermedium"

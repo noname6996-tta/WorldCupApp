@@ -14,6 +14,7 @@ import com.example.worldcup2022.data.remote.RemoteData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import okhttp3.RequestBody
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
@@ -107,6 +108,12 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
     override suspend fun getResultGuess(userId: String): Flow<Resource<ResponseResultGuess>> {
         return flow {
             emit(remoteRepository.getResultGuess(userId))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun postGuess(requestBody: RequestBody): Flow<Resource<ResponseGuess>> {
+        return flow {
+            emit(remoteRepository.postGuess(requestBody))
         }.flowOn(ioDispatcher)
     }
 }
