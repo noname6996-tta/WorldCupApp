@@ -90,7 +90,6 @@ class SimulationSoundFragment : BaseFragment<FragmentSimulationSoundBinding>() {
     }
 
     private fun bindListData(matchs: ResponseSound) {
-        Log.e("BBBBBBB", "bindListData: " + matchs.data.size)
         binding.layoutConstrainOffline.visibility = View.GONE
         binding.recSound.visibility = View.VISIBLE
         for (i in 0..matchs.data.size - 1) {

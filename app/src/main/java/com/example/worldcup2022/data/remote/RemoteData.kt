@@ -1,5 +1,6 @@
 package com.example.worldcup2022.data.remote
 
+//import com.example.worldcup2022.data.remote.service.FramesService
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.frames.DataFrames
 import com.example.worldcup2022.data.dto.recipes.Recipes
@@ -8,7 +9,6 @@ import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.data.error.NETWORK_ERROR
 import com.example.worldcup2022.data.error.NO_INTERNET_CONNECTION
 import com.example.worldcup2022.data.remote.service.*
-//import com.example.worldcup2022.data.remote.service.FramesService
 import com.example.worldcup2022.utils.NetworkConnectivity
 import retrofit2.Response
 import java.io.IOException
@@ -81,6 +81,18 @@ constructor(
         }
     }
 
+    override suspend fun requestSquad(filter: String): Resource<ResponseSquad> {
+        val squadsService = serviceGenerator.createService(SquadsService::class.java)
+        return when (val response = processCall { squadsService.fetchSquads(filter, 0, 100) }) {
+            is ResponseSquad -> {
+                Resource.Success(data = response as ResponseSquad)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
     /**
      *
      */
@@ -97,9 +109,11 @@ constructor(
         }
     }
 
+
     /**
      *
      */
+
     override suspend fun registerUser(): Resource<ResponseUser> {
         val highlightsService = serviceGenerator.createService(UserService::class.java)
         return when (val response =
