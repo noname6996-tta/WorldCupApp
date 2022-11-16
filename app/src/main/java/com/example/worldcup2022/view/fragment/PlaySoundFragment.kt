@@ -27,6 +27,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     companion object {
         lateinit var sound: Sound
     }
+    lateinit var anima : Animation
     val args: PlaySoundFragmentArgs by navArgs()
     lateinit var mediaPlayer: MediaPlayer
     lateinit var audioManager: AudioManager
@@ -49,6 +50,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
             try {
                 mediaPlayer.setDataSource(sound.sound)
                 mediaPlayer.prepare()
+                binding.tvNameSound.text = sound.name+"  "
                 Glide.with(requireContext()).load(sound.image)
                     .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
                     .into(binding.imgPlay)
@@ -70,6 +72,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
             onPress = {
                 playMusic()
                 mediaPlayer.isLooping = true;
+                anima.repeatCount = 100000
             },
             onRelease = {
                 stopPlayMusic()
@@ -81,7 +84,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
 
     private fun playMusic() {
         mediaPlayer.start()
-        var anima = AnimationUtils.loadAnimation(requireContext(),R.anim.zoom_in)
+        anima = AnimationUtils.loadAnimation(requireContext(),R.anim.zoom_in)
         anima.repeatCount = Animation.INFINITE;
         binding.imgPlay.startAnimation(anima)
     }

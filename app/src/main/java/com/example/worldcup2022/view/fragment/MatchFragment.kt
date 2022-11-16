@@ -43,12 +43,12 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         if (match.country1 != null) {
             binding.tvTeam1.text = match.country1!!.name
             Glide.with(requireContext()).load(match.country1!!.image)
-                .error(R.drawable.logo).placeholder(R.drawable.logo)
+                .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
                 .override(100, 100)
                 .into(binding.imgteam1)
             binding.tvTeam2.text = match.country2!!.name
             Glide.with(requireContext()).load(match.country2!!.image)
-                .error(R.drawable.logo).placeholder(R.drawable.logo)
+                .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
                 .override(100, 100)
                 .into(binding.imgTeam2)
         } else {
@@ -62,14 +62,14 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
                     if (match.idcountry1.toString() == country.id) {
                         binding.tvTeam1.text = country.name
                         Glide.with(requireContext()).load(country.image)
-                            .error(R.drawable.logo).placeholder(R.drawable.logo)
+                            .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
                             .override(100, 100)
                             .into(binding.imgteam1)
                     }
                     if (match.idcountry2.toString() == country.id) {
                         binding.tvTeam2.text = country.name
                         Glide.with(requireContext()).load(country.image)
-                            .error(R.drawable.logo).placeholder(R.drawable.logo)
+                            .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
                             .override(100, 100)
                             .into(binding.imgTeam2)
                     }
@@ -154,11 +154,11 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
             findNavController().popBackStack()
         }
         binding.imgteam1.setOnClickListener {
-            //
-            // phân truyền country từ match sang squad
-
-//            val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country)
-//            findNavController().navigate(action)
+//
+//             phân truyền country từ match sang squad default: Belgium
+            var country = Country("ef1e393e-64e5-4fbe-8a32-34221d3cb32e",1668525725950,"Belgium","F","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAFVBMVEUAAADvM0D92iW+pBz/3ib4ri7uI0H4ag0rAAAA6ElEQVR4nO3PMREAIAwEsAIF/5Jr4icucZCqsNM7qe9bWemwsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsfFP4wF6L9AwC9pq5wAAAABJRU5ErkJggg==",0,0,0,0,0,0,0)
+            val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country)
+            findNavController().navigate(action)
         }
     }
 }

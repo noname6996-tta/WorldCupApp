@@ -85,11 +85,11 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         }
     }
 
-    fun getFullSquads() {
+    fun getFullSquads(s: String) {
         viewModelScope.launch {
-            soundsLiveDataPrivate.value = Resource.Loading()
+            squadsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestSquads("countryId==\""+URLEncoder.encode("**","UTF-8")+"\"").collect {
+                dataRepositoryRepository.requestSquads("countryId==\"$s\"").collect {
                     squadsLiveDataPrivate.value = it
                 }
             }

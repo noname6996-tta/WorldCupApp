@@ -44,7 +44,7 @@
                 app:layout_constraintTop_toTopOf="@+id/viewBack" />
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+                android:id="@+id/imgCountryFlag"
                 android:layout_width="97dp"
                 android:layout_height="97dp"
                 android:layout_marginTop="42dp"
@@ -55,6 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvNameCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -62,9 +63,9 @@
                 android:text="Netherlands"
                 android:textAllCaps="true"
                 android:textColor="@color/maincolor"
-                app:layout_constraintEnd_toEndOf="@+id/circleImageView"
-                app:layout_constraintStart_toStartOf="@+id/circleImageView"
-                app:layout_constraintTop_toBottomOf="@+id/circleImageView" />
+                app:layout_constraintEnd_toEndOf="@+id/imgCountryFlag"
+                app:layout_constraintStart_toStartOf="@+id/imgCountryFlag"
+                app:layout_constraintTop_toBottomOf="@+id/imgCountryFlag" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,6 +93,7 @@
                     android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgCoach"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:src="@drawable/ic_launcher_background" />
@@ -103,6 +105,7 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/tvNameCoach"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/inter"

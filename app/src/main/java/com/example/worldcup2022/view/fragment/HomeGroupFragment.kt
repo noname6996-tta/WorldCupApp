@@ -1,5 +1,6 @@
 package com.example.worldcup2022.view.fragment
 
+import androidx.navigation.fragment.findNavController
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.GroupPagerAdapter
 import com.example.worldcup2022.databinding.FragemntHomegroupBinding
@@ -25,9 +26,15 @@ class HomeGroupFragment: BaseFragment<FragemntHomegroupBinding>() {
             }
 
         }).attach()
+
+        binding.viewBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun initData() {
         super.initData()
     }
+
+
 }

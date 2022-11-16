@@ -1,0 +1,179 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.worldcup.soccerapp.footballapp.sports.dev"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="22"
+8-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:6:5-67
+11-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:7:5-79
+12-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:7:22-76
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:8:5-76
+13-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:8:22-73
+14    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+14-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:9:5-76
+14-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:9:22-73
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:10:5-81
+15-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:10:22-78
+16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+16-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:11:5-80
+16-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:11:22-77
+17    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+17-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:12:5-14:40
+17-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:13:9-66
+18    <uses-permission android:name="android.permission.CAMERA" />
+18-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:15:5-65
+18-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:15:22-62
+19    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+19-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:16:5-88
+19-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:16:22-85
+20    <uses-permission android:name="android.permission.VIBRATE" />
+20-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:17:5-66
+20-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:17:22-63
+21
+22    <application
+22-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:20:5-66:19
+23        android:name="com.example.worldcup2022.App"
+23-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:21:9-28
+24        android:allowBackup="false"
+24-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:22:9-36
+25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+25-->[androidx.core:core:1.8.0] C:\Users\DELL\.gradle\caches\transforms-3\8e8de8a661085a6b0b468553764689f5\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+26        android:debuggable="true"
+27        android:icon="@drawable/logo"
+27-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:23:9-38
+28        android:label="@string/app_name"
+28-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:24:9-41
+29        android:largeHeap="true"
+29-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:25:9-33
+30        android:networkSecurityConfig="@xml/network_security_config"
+30-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:26:9-69
+31        android:requestLegacyExternalStorage="true"
+31-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:27:9-52
+32        android:supportsRtl="true"
+32-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:28:9-35
+33        android:testOnly="true"
+34        android:theme="@style/Theme.WorldCup2022"
+34-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:29:9-50
+35        android:usesCleartextTraffic="true" >
+35-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:30:9-44
+36        <activity
+36-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:32:9-34:60
+37            android:name="com.example.worldcup2022.ui.component.login.LoginActivity"
+37-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:33:13-61
+38            android:label="@string/title_activity_login" />
+38-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:34:13-57
+39        <activity android:name="com.example.worldcup2022.view.activity.MainActivity" />
+39-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:35:9-64
+39-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:35:19-61
+40        <activity android:name="com.example.worldcup2022.ui.component.main.MainNewActivity" />
+40-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:36:9-71
+40-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:36:19-68
+41        <activity
+41-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:37:9-46:20
+42            android:name="com.example.worldcup2022.ui.component.splash.SplashActivity"
+42-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:38:13-63
+43            android:exported="true"
+43-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:39:13-36
+44            android:theme="@style/Theme.WorldCup2022" >
+44-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:40:13-54
+45            <intent-filter>
+45-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:41:13-45:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:42:17-69
+46-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:42:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:44:17-77
+48-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:44:27-74
+49            </intent-filter>
+50        </activity>
+51        <activity
+51-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:47:9-53:20
+52            android:name="com.example.worldcup2022.ui.component.recipes.RecipesListActivity"
+52-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:48:13-69
+53            android:label="@string/title_activity_recipes" >
+53-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:49:13-59
+54            <meta-data
+54-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:50:13-52:54
+55                android:name="android.app.searchable"
+55-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:51:17-54
+56                android:resource="@xml/searchable" />
+56-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:52:17-51
+57        </activity>
+58        <activity
+58-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:55:9-61:35
+59            android:name="com.ntduc.videoplayer.video.player.VideoPlayerActivity"
+59-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:56:13-82
+60            android:configChanges="keyboard|keyboardHidden|navigation|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+60-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:57:13-133
+61            android:exported="true"
+61-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:58:13-36
+62            android:launchMode="singleTask"
+62-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:59:13-44
+63            android:supportsPictureInPicture="true" />
+63-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:60:13-52
+64
+65        <meta-data
+65-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:63:9-65:57
+66            android:name="preloaded_fonts"
+66-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:64:13-43
+67            android:resource="@array/preloaded_fonts" />
+67-->D:\Androidclass\WorldCup2022\app\src\main\AndroidManifest.xml:65:13-54
+68
+69        <provider
+69-->[com.squareup.picasso:picasso:2.71828] C:\Users\DELL\.gradle\caches\transforms-3\2c92fade6d086bf36618379539d420b7\transformed\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+70            android:name="com.squareup.picasso.PicassoProvider"
+70-->[com.squareup.picasso:picasso:2.71828] C:\Users\DELL\.gradle\caches\transforms-3\2c92fade6d086bf36618379539d420b7\transformed\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+71            android:authorities="com.worldcup.soccerapp.footballapp.sports.dev.com.squareup.picasso"
+71-->[com.squareup.picasso:picasso:2.71828] C:\Users\DELL\.gradle\caches\transforms-3\2c92fade6d086bf36618379539d420b7\transformed\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+72            android:exported="false" />
+72-->[com.squareup.picasso:picasso:2.71828] C:\Users\DELL\.gradle\caches\transforms-3\2c92fade6d086bf36618379539d420b7\transformed\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+73
+74        <uses-library
+74-->[androidx.window:window:1.0.0] C:\Users\DELL\.gradle\caches\transforms-3\b80701dce26b1ad751cc9a0edbe53523\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+75            android:name="androidx.window.extensions"
+75-->[androidx.window:window:1.0.0] C:\Users\DELL\.gradle\caches\transforms-3\b80701dce26b1ad751cc9a0edbe53523\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+76            android:required="false" />
+76-->[androidx.window:window:1.0.0] C:\Users\DELL\.gradle\caches\transforms-3\b80701dce26b1ad751cc9a0edbe53523\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+77        <uses-library
+77-->[androidx.window:window:1.0.0] C:\Users\DELL\.gradle\caches\transforms-3\b80701dce26b1ad751cc9a0edbe53523\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+78            android:name="androidx.window.sidecar"
+78-->[androidx.window:window:1.0.0] C:\Users\DELL\.gradle\caches\transforms-3\b80701dce26b1ad751cc9a0edbe53523\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+79            android:required="false" />
+79-->[androidx.window:window:1.0.0] C:\Users\DELL\.gradle\caches\transforms-3\b80701dce26b1ad751cc9a0edbe53523\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+80
+81        <provider
+81-->[androidx.emoji2:emoji2:1.2.0] C:\Users\DELL\.gradle\caches\transforms-3\d42cae4935975f1b8392f1f51a4d9ced\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+82            android:name="androidx.startup.InitializationProvider"
+82-->[androidx.emoji2:emoji2:1.2.0] C:\Users\DELL\.gradle\caches\transforms-3\d42cae4935975f1b8392f1f51a4d9ced\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+83            android:authorities="com.worldcup.soccerapp.footballapp.sports.dev.androidx-startup"
+83-->[androidx.emoji2:emoji2:1.2.0] C:\Users\DELL\.gradle\caches\transforms-3\d42cae4935975f1b8392f1f51a4d9ced\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+84            android:exported="false" >
+84-->[androidx.emoji2:emoji2:1.2.0] C:\Users\DELL\.gradle\caches\transforms-3\d42cae4935975f1b8392f1f51a4d9ced\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+85            <meta-data
+85-->[androidx.emoji2:emoji2:1.2.0] C:\Users\DELL\.gradle\caches\transforms-3\d42cae4935975f1b8392f1f51a4d9ced\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+86                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+86-->[androidx.emoji2:emoji2:1.2.0] C:\Users\DELL\.gradle\caches\transforms-3\d42cae4935975f1b8392f1f51a4d9ced\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+87                android:value="androidx.startup" />
+87-->[androidx.emoji2:emoji2:1.2.0] C:\Users\DELL\.gradle\caches\transforms-3\d42cae4935975f1b8392f1f51a4d9ced\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+88            <meta-data
+88-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\DELL\.gradle\caches\transforms-3\c6dd3c73086ac0274444712d466200b6\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+89                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+89-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\DELL\.gradle\caches\transforms-3\c6dd3c73086ac0274444712d466200b6\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+90                android:value="androidx.startup" />
+90-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\DELL\.gradle\caches\transforms-3\c6dd3c73086ac0274444712d466200b6\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+91        </provider>
+92    </application>
+93
+94</manifest>

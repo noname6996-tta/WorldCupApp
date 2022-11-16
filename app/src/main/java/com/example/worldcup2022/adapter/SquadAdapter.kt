@@ -1,6 +1,7 @@
 package com.example.worldcup2022.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,12 @@ class SquadAdapter : RecyclerView.Adapter<SquadViewHolder>(){
         return SquadViewHolder(binding)
     }
 
+     fun setListSquad(squads : List<Squad>,context: Context){
+        this.squads = squads
+        this.context = context
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: SquadViewHolder, position: Int) {
         val squad = squads[position]
         holder.binding.tvNamePlayer.text = squad.name
@@ -26,6 +33,7 @@ class SquadAdapter : RecyclerView.Adapter<SquadViewHolder>(){
         Glide.with(holder.itemView.context).load(squad.image)
             .error(R.drawable.logoapp).placeholder(R.drawable.logoapp)
             .into(holder.binding.imgPlayer)
+        Log.e("dadasdasdas",squad.image.toString())
     }
 
     override fun getItemCount(): Int {
