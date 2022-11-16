@@ -7,7 +7,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.adapter.GroupMatchAdapter
 import com.example.worldcup2022.databinding.FragmentGroupinfoBinding
-import com.example.worldcup2022.model.Match
+import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.ui.component.main.MainNewActivity
 
 import com.google.gson.Gson

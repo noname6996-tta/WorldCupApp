@@ -1,7 +1,0 @@
-#Fri Nov 11 17:32:29 ICT 2022
-base.1=D\:\\Androidclass\\WorldCup2022\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes2.dex
-path.1=classes2.dex
-base.0=D\:\\Androidclass\\WorldCup2022\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
-renamed.1=classes2.dex
-renamed.0=classes.dex
-path.0=classes.dex

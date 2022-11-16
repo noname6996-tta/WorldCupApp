@@ -4,12 +4,19 @@ import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.frames.DataFrames
 import com.example.worldcup2022.data.dto.recipes.Recipes
 import com.example.worldcup2022.data.dto.recipes.RecipesItem
+import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
 import com.example.worldcup2022.data.dto.worldcup.ResponseSquad
 import com.example.worldcup2022.data.error.NETWORK_ERROR
 import com.example.worldcup2022.data.error.NO_INTERNET_CONNECTION
+<<<<<<< HEAD
 import com.example.worldcup2022.data.remote.service.*
+=======
+import com.example.worldcup2022.data.remote.service.FramesService
+import com.example.worldcup2022.data.remote.service.HighlightsService
+import com.example.worldcup2022.data.remote.service.MatchsService
+>>>>>>> ee756542d893a45d858e7a962093bf8133f9a454
 //import com.example.worldcup2022.data.remote.service.FramesService
 import com.example.worldcup2022.utils.NetworkConnectivity
 import retrofit2.Response
@@ -22,7 +29,10 @@ import javax.inject.Inject
  */
 
 class RemoteData @Inject
-constructor(private val serviceGenerator: ServiceGenerator, private val networkConnectivity: NetworkConnectivity) : RemoteDataSource {
+constructor(
+    private val serviceGenerator: ServiceGenerator,
+    private val networkConnectivity: NetworkConnectivity
+) : RemoteDataSource {
     override suspend fun requestRecipes(): Resource<Recipes> {
         val recipesService = serviceGenerator.createService(RecipesService::class.java)
         return when (val response = processCall(recipesService::fetchRecipes)) {
@@ -35,6 +45,9 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         }
     }
 
+    /**
+     *
+     */
     override suspend fun requestFrames(): Resource<DataFrames> {
         val framesService = serviceGenerator.createService(FramesService::class.java)
         return when (val response = processCall(framesService::fetchFrames)) {
@@ -47,9 +60,12 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         }
     }
 
-    override suspend fun requestMatch(filter:String): Resource<ResponseMatch> {
+    /**
+     *
+     */
+    override suspend fun requestMatch(filter: String): Resource<ResponseMatch> {
         val matchsService = serviceGenerator.createService(MatchsService::class.java)
-        return when (val response = processCall { matchsService.fetchMatchs(filter, 0, 100) }) {
+        return when (val response = processCall { matchsService.fetchMatchs(filter, 0, 100,"dateTime") }) {
             is ResponseMatch -> {
                 Resource.Success(data = response as ResponseMatch)
             }
@@ -59,6 +75,9 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         }
     }
 
+    /**
+     *
+     */
     override suspend fun requestSound(filter:String): Resource<ResponseSound> {
         val soundsService = serviceGenerator.createService(SoundsService::class.java)
         return when (val response = processCall { soundsService.fetchSounds(filter, 0, 100) }) {
@@ -71,11 +90,23 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         }
     }
 
+<<<<<<< HEAD
     override suspend fun requestSquad(filter:String): Resource<ResponseSquad> {
         val squadsService = serviceGenerator.createService(SquadsService::class.java)
         return when (val response = processCall { squadsService.fetchSquads(filter, 0, 100) }) {
             is ResponseSquad -> {
                 Resource.Success(data = response as ResponseSquad)
+=======
+    /**
+     *
+     */
+    override suspend fun requestHighlight(filter: String, pageSize: Int): Resource<ResponseHighlight> {
+        val highlightsService = serviceGenerator.createService(HighlightsService::class.java)
+        return when (val response =
+            processCall { highlightsService.fetchHighlights(filter, pageSize, 10) }) {
+            is ResponseHighlight -> {
+                Resource.Success(data = response as ResponseHighlight)
+>>>>>>> ee756542d893a45d858e7a962093bf8133f9a454
             }
             else -> {
                 Resource.DataError(errorCode = response as Int)
@@ -83,6 +114,12 @@ constructor(private val serviceGenerator: ServiceGenerator, private val networkC
         }
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     *
+     */
+>>>>>>> ee756542d893a45d858e7a962093bf8133f9a454
     private suspend fun processCall(responseCall: suspend () -> Response<*>): Any? {
         if (!networkConnectivity.isConnected()) {
             return NO_INTERNET_CONNECTION

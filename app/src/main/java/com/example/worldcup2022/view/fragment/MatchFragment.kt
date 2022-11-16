@@ -8,9 +8,9 @@ import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.MatchPagerAdapter
 import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.databinding.FragmentMatchBinding
-import com.example.worldcup2022.model.Country
-import com.example.worldcup2022.model.Match
-import com.example.worldcup2022.model.Stadium
+import com.example.worldcup2022.data.dto.worldcup.Country
+import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.ui.component.main.MainNewActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -45,14 +45,14 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
                 Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
             for (i in 0..countrys.size - 1) {
                 val country = countrys[i]
-                if (match.idcountry1 == country.id) {
+                if (match.idcountry1.toString() == country.id) {
                     binding.tvTeam1.text = country.name
                     Glide.with(requireContext()).load(country.image)
                         .error(R.drawable.ic_launcher_background)
                         .placeholder(R.drawable.ic_launcher_background)
                         .into(binding.imgteam1)
                 }
-                if (match.idcountry2 == country.id) {
+                if (match.idcountry2.toString() == country.id) {
                     binding.tvTeam2.text = country.name
                     Glide.with(requireContext()).load(country.image)
                         .error(R.drawable.ic_launcher_background)
@@ -71,7 +71,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
                 Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
             for (i in 0..stadiums.size - 1) {
                 val stadium = stadiums[i]
-                if (match.idStadium == stadium.id) {
+                if (match.idStadium.toString() == stadium.id) {
                     binding.tvStadiumMatch.text = stadium.name
                 }
             }

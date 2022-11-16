@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.adapter.MatchGroupAdapter
 import com.example.worldcup2022.databinding.FragmentHomeBinding
 import com.example.worldcup2022.databinding.FragmentTablesBinding
-import com.example.worldcup2022.model.Country
+import com.example.worldcup2022.data.dto.worldcup.Country
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.proxglobal.worlcupapp.base.BaseFragment

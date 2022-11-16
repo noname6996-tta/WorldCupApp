@@ -3,3 +3,4 @@ rootProject.name = "WorldCup2022"
 
 
 include ':permissionx'
+include ':VideoPlayer'

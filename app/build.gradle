@@ -114,6 +114,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_ktx"
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation project(path: ':VideoPlayer')
     androidTestImplementation "androidx.test.ext:junit-ktx:$androidXJunitVersion"
     /**-------------------testing libs------------------------------------------**/
     //UI Testing , AndroidJUnitRunner and JUnit Rules &Espresso dependencies
@@ -165,6 +166,13 @@ dependencies {
 
     //gson
     implementation 'com.google.code.gson:gson:2.10'
+
+    // save cache
+    implementation "com.orhanobut:hawk:2.0.1"
+    def utilsVersion = "1.2.9"
+    implementation "com.github.ntduc-let.Utils:ActivityUtils:$utilsVersion"
+    implementation "com.github.ntduc-let.Utils:ContextUtils:$utilsVersion"
+    implementation "com.github.ntduc-let.Utils:ToastUtils:$utilsVersion"
 }
 kapt {
     correctErrorTypes true
