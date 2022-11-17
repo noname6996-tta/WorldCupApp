@@ -487,7 +487,7 @@ open class VideoPlayerActivity : Activity() {
             mPrefs!!.orientation = Utils.Orientation.VIDEO
             setOrientation(this@VideoPlayerActivity, mPrefs!!.orientation)
             updateButtonRotation()
-            showText(playerView!!, getString(mPrefs!!.orientation.description), 2500)
+//            showText(playerView!!, getString(mPrefs!!.orientation.description), 2500)
             resetHideCallbacks()
         }
 
