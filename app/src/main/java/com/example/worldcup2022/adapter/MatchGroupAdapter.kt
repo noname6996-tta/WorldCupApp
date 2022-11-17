@@ -42,6 +42,12 @@ class MatchGroupAdapter : RecyclerView.Adapter<MatchGroupViewHolder>() {
         Glide.with(holder.itemView.context).load(country.image)
             .error(R.drawable.ic_launcher_background)
             .into(holder.binding.imgFlagCountry)
+        holder.binding.tvNumberPlayed.text = country.played.toString()
+        holder.binding.tvNumberWon.text = country.won.toString()
+        holder.binding.tvNumberDraw.text = country.draw.toString()
+        holder.binding.tvNumberLost.text = country.lost.toString()
+        holder.binding.tvNumberGoalDiff.text = country.goalDifference.toString()
+        holder.binding.tvNumberPoint.text = country.point.toString()
     }
 
     override fun getItemCount(): Int {

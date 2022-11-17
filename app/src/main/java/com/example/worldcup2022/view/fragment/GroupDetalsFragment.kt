@@ -1,25 +1,33 @@
 package com.example.worldcup2022.view.fragment
 
+import android.util.Log
 import android.view.View
-import androidx.navigation.fragment.NavHostFragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.adapter.HomeMathAdapterBorder
 import com.example.worldcup2022.adapter.MatchGroupAdapter
-import com.example.worldcup2022.databinding.FragmentGroupDetalsBinding
+import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Country
 import com.example.worldcup2022.data.dto.worldcup.Match
+import com.example.worldcup2022.data.dto.worldcup.ResponseCountry
+import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
+import com.example.worldcup2022.databinding.FragmentGroupDetalsBinding
 import com.example.worldcup2022.ui.component.main.MainNewActivity
+import com.example.worldcup2022.ui.component.main.MainViewModel
+import com.example.worldcup2022.utils.observe
+import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.proxglobal.worlcupapp.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
-import kotlin.collections.ArrayList
 
-class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>(){
-    val args : GroupInfoFragmentArgs by navArgs()
-    var groupMatch : String = ""
+@AndroidEntryPoint
+class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>() {
+
+    val args: GroupInfoFragmentArgs by navArgs()
+    var groupMatch: String = ""
     lateinit var arrCountrys: ArrayList<Country>
     private val matchGroupAdapter = MatchGroupAdapter()
 
@@ -30,12 +38,13 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>(){
         return FragmentGroupDetalsBinding.inflate(layoutInflater)
     }
 
+    private val mainViewModel: MainViewModel by viewModels()
     override fun initView() {
         super.initView()
         MainNewActivity.binding.bottomMain.visibility = View.GONE
         groupMatch = args.groupName
-        binding.textView5.text = "Group "+groupMatch+" "
-        binding.tvLogoGroupName.text = "Group "+groupMatch+" "
+        binding.textView5.text = "Group " + groupMatch + " "
+        binding.tvLogoGroupName.text = "Group " + groupMatch + " "
         binding.recMatchGroup.adapter = matchGroupAdapter
         arrCountrys = ArrayList()
 
@@ -91,10 +100,78 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>(){
             MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().popBackStack()
         }
-        homeMatchAdapter.setClickShowMatch{
+        homeMatchAdapter.setClickShowMatch {
             val action = GroupDetalsFragmentDirections.actionGroupDetalsFragmentToMatchFragment(it)
             findNavController().navigate(action)
         }
 
+    }
+
+    override fun addObservers() {
+        super.addObservers()
+        observe(mainViewModel.countrysLiveData, ::handleSoundsList)
+        observe(mainViewModel.matchsByGroupLiveData, ::handleMatchList)
+    }
+
+    override fun initViewModel() {
+        super.initViewModel()
+        mainViewModel.getFullCountry()
+        mainViewModel.getMatchsByGroup(args.groupName)
+    }
+
+    private fun handleSoundsList(status: Resource<ResponseCountry>) {
+        when (status) {
+            is Resource.Loading -> {
+                Log.e("handleCountryList", "handleCountryList: Loading ")
+            }
+            is Resource.Success -> status.data?.let { bindListData(matchs = it) }
+            is Resource.DataError -> {
+                status.errorCode?.let {
+                    Log.e(
+                        "handleCountryList",
+                        "handleCountryList: Error " + it.toString()
+                    )
+                }
+            }
+        }
+    }
+
+    private fun bindListData(matchs: ResponseCountry) {
+        arrCountrys = ArrayList()
+        for (i in 0..matchs.data.size - 1) {
+            if (matchs.data[i].group.equals(args.groupName)) {
+                arrCountrys.add(matchs.data[i])
+            }
+        }
+        matchGroupAdapter.setListMatchCountrys(arrCountrys, requireContext())
+    }
+
+    private fun handleMatchList(status: Resource<ResponseMatch>) {
+        when (status) {
+            is Resource.Loading -> {
+                Log.e("handleMatchList", "handleMatchList: Loading ")
+            }
+            is Resource.Success -> status.data?.let { bindListDataMatchByGroup(matchs = it) }
+            is Resource.DataError -> {
+                status.errorCode?.let {
+                    Log.e(
+                        "handleMatchList",
+                        "handleMatchList: Error " + it.toString()
+                    )
+                }
+            }
+        }
+    }
+
+    private fun bindListDataMatchByGroup(matchs: ResponseMatch) {
+        arrMatchs = ArrayList()
+        Log.e("handleMatchList",matchs.data.size.toString()+groupMatch)
+        for (i in 0..matchs.data.size - 1) {
+            if (matchs.data[i].group.equals(args.groupName)) {
+                arrMatchs.add(matchs.data[i])
+                Log.e("adasdasdasda",matchs.data[i].toString())
+            }
+        }
+        homeMatchAdapter.setListMatch(arrMatchs, requireContext())
     }
 }

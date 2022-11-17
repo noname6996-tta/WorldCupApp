@@ -205,14 +205,13 @@
                         android:id="@+id/tvMoreGroupDetalsGroupA"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="19dp"
                         android:layout_marginBottom="19dp"
                         android:fontFamily="@font/inter_bold"
                         android:text="@string/group_details"
                         android:textColor="@color/maincolor"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/viewMoreGroupDetalsGroupA"
                         app:layout_constraintTop_toBottomOf="@+id/recMatchGroupA" />
 
                     <ImageView
@@ -222,6 +221,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupA" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupA"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupA" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -404,6 +412,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupB" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupB"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupB" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -586,6 +603,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupC" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupC"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupC" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -768,6 +794,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupD" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupD"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupD" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -950,6 +985,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupE" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupE"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupE" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -1132,6 +1176,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupF" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupF"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupF" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -1314,6 +1367,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupG" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupG"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupG" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -1496,6 +1558,15 @@
                         android:src="@drawable/ic_baseline_navigate_next_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/tvMoreGroupDetalsGroupH" />
+
+                    <View
+                        android:id="@+id/viewMoreGroupDetalsGroupH"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recMatchGroupH" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 

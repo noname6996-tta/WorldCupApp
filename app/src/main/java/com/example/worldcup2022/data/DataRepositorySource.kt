@@ -23,6 +23,7 @@ interface DataRepositorySource {
     suspend fun requestSelfieFrame(): Flow<Resource<ResponseSelfieFrame>>
     suspend fun requestSounds(filter: String): Flow<Resource<ResponseSound>>
     suspend fun requestSquads(filter: String): Flow<Resource<ResponseSquad>>
+    suspend fun requestCountry(filter: String): Flow<Resource<ResponseCountry>>
     suspend fun requestHighlights(filter: String, pageSize: Int): Flow<Resource<ResponseHighlight>>
     suspend fun requestHistoryMatchs(filter: String, pageSize: Int): Flow<Resource<ResponseHistoryMatch>>
     suspend fun registerUser(): Flow<Resource<ResponseUser>>

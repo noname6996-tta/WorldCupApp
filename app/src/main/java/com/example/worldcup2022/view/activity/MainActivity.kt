@@ -55,22 +55,22 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.navMain) as NavHostFragment
         navController = navHostFragment.findNavController()
-//        navController.addOnDestinationChangedListener(object : NavController.OnDestinationChangedListener{
-//            override fun onDestinationChanged(
-//                controller: NavController,
-//                destination: NavDestination,
-//                arguments: Bundle?
-//            ) {
-//                when(destination.id){
-//                    R.id.stadiumFragment, R.id.stadiumSecondFragment ->{
-//                        binding.imgHeader.visibility = View.GONE
-//                    }
-//                    else -> {
-//                        binding.imgHeader.visibility = View.VISIBLE
-//                    }
-//                }
-//            }
-//        })
+        navController.addOnDestinationChangedListener(object : NavController.OnDestinationChangedListener{
+            override fun onDestinationChanged(
+                controller: NavController,
+                destination: NavDestination,
+                arguments: Bundle?
+            ) {
+                when(destination.id){
+                    R.id.matchFragment, R.id.homeGroupFragment,R.id.groupInfoFragment,R.id.squadFragment,R.id.groupDetalsFragment,R.id.playSoundFragment ->{
+                        binding.bottomMain.visibility = View.GONE
+                    }
+                    else -> {
+                        binding.bottomMain.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
         val mNavigationItemSelected = object : NavigationBarView.OnItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {

@@ -54,7 +54,8 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         } else {
             try {
                 val fileInString: String =
-                    requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
+                    requireContext().assets.open("country.json").bufferedReader()
+                        .use { it.readText() }
                 var countrys: List<Country> =
                     Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
                 for (i in 0..countrys.size - 1) {
@@ -84,7 +85,8 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         } else {
             try {
                 val fileInString: String =
-                    requireContext().assets.open("Stadium.json").bufferedReader().use { it.readText() }
+                    requireContext().assets.open("Stadium.json").bufferedReader()
+                        .use { it.readText() }
                 var stadiums: List<Stadium> =
                     Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
                 for (i in 0..stadiums.size - 1) {
@@ -154,10 +156,13 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
             findNavController().popBackStack()
         }
         binding.imgteam1.setOnClickListener {
-//
-//             phân truyền country từ match sang squad default: Belgium
-            var country = Country("ef1e393e-64e5-4fbe-8a32-34221d3cb32e",1668525725950,"Belgium","F","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPEAAADRCAMAAAAquaQNAAAAFVBMVEUAAADvM0D92iW+pBz/3ib4ri7uI0H4ag0rAAAA6ElEQVR4nO3PMREAIAwEsAIF/5Jr4icucZCqsNM7qe9bWemwsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsbGxsfFP4wF6L9AwC9pq5wAAAABJRU5ErkJggg==",0,0,0,0,0,0,0)
-            val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country)
+            var country = args.objectMatch.country1
+            val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country!!)
+            findNavController().navigate(action)
+        }
+        binding.imgTeam2.setOnClickListener {
+            var country = args.objectMatch.country2
+            val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country!!)
             findNavController().navigate(action)
         }
     }

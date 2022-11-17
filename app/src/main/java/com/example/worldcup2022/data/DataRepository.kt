@@ -95,6 +95,12 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
         }.flowOn(ioDispatcher)
     }
 
+    override suspend fun requestCountry(filter: String): Flow<Resource<ResponseCountry>> {
+        return flow {
+            emit(remoteRepository.requestCountry(filter))
+        }.flowOn(ioDispatcher)
+    }
+
     override suspend fun requestHighlights(filter: String, pageSize: Int): Flow<Resource<ResponseHighlight>> {
         return flow {
             emit(remoteRepository.requestHighlight(filter, pageSize))

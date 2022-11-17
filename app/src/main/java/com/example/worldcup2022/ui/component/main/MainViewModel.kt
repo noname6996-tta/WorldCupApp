@@ -8,12 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.worldcup2022.data.DataRepositorySource
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
-import com.example.worldcup2022.data.dto.worldcup.ResponseSelfieFrame
-import com.example.worldcup2022.data.dto.worldcup.SelfieFrame
 import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.ui.base.BaseViewModel
-import com.example.worldcup2022.utils.mutableLiveDataOf
 import com.example.worldcup2022.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -42,6 +38,9 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
 
     val squadsLiveDataPrivate = MutableLiveData<Resource<ResponseSquad>>()
     val squadsLiveData: LiveData<Resource<ResponseSquad>> get() = squadsLiveDataPrivate
+
+    val countrysLiveDataPrivate = MutableLiveData<Resource<ResponseCountry>>()
+    val countrysLiveData: LiveData<Resource<ResponseCountry>> get() = countrysLiveDataPrivate
 
     /**
      * Data --> LiveData, Exposed as LiveData, Locally in viewModel as MutableLiveData
@@ -78,6 +77,10 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
     val guessLiveDataPrivate = MutableLiveData<Resource<ResponseGuess>>()
     val guessLiveData: LiveData<Resource<ResponseGuess>> get() = guessLiveDataPrivate
 
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val matchsByGroupLiveDataPrivate = MutableLiveData<Resource<ResponseMatch>>()
+    val matchsByGroupLiveData: LiveData<Resource<ResponseMatch>> get() = matchsByGroupLiveDataPrivate
+
     /**
      *
      */
@@ -85,7 +88,8 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             matchsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"" + ";" + "country1Name==\"" + URLEncoder.encode("#NULL#", "UTF-8") + "\"").collect {
+                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"" + ";" + "country1Name==\"" + URLEncoder.encode("#NULL#", "UTF-8") + "\""
+                ).collect {
                     matchsLiveDataPrivate.value = it
                 }
             }
@@ -102,6 +106,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             }
         }
     }
+
     /**
      *
      */
@@ -120,13 +125,33 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             }
         }
     }
-
+    /**
+     *
+     */
     fun getFullSquads(s: String) {
         viewModelScope.launch {
             squadsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
                 dataRepositoryRepository.requestSquads("countryId==\"$s\"").collect {
                     squadsLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+    /**
+     *
+     */
+    fun getFullCountry() {
+        viewModelScope.launch {
+            countrysLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestCountry(
+                    "id==\"" + URLEncoder.encode(
+                        "**",
+                        "UTF-8"
+                    ) + "\""
+                ).collect {
+                    countrysLiveDataPrivate.value = it
                 }
             }
         }
@@ -236,6 +261,20 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
             wrapEspressoIdlingResource {
                 dataRepositoryRepository.requestMatchs("date==\"$date\"").collect {
                     matchsByDateLiveDataPrivate.value = it
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    fun getMatchsByGroup(group: String) {
+        viewModelScope.launch {
+            matchsByGroupLiveDataPrivate.value = Resource.Loading()
+            wrapEspressoIdlingResource {
+                dataRepositoryRepository.requestMatchs("group==\"$group\"").collect {
+                    matchsByGroupLiveDataPrivate.value = it
                 }
             }
         }

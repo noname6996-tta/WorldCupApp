@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentTransaction
 import com.example.worldcup2022.R
 import com.example.worldcup2022.databinding.FragmentWcfunBinding
+import com.example.worldcup2022.view.activity.MainActivity
 import com.proxglobal.worlcupapp.base.BaseFragment
 
 class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
@@ -89,5 +91,9 @@ class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        requireActivity().findViewById<View>(R.id.bottomMain).isVisible = true
+    }
 
 }

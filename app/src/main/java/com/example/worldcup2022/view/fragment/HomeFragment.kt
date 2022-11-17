@@ -164,8 +164,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     }
                 }
             }
-
-
         }
         listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
         if (listDates.size > listDatesOnl.size) {
