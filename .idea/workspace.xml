@@ -15,11 +15,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="639a1f16-570d-4b16-88c1-e10655b4c0f1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/VideoPlayer/src/main/res/drawable-mdpi/bg_native_ad.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_native_ad.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_radius_ad_selfie.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/border_radius_ad_sound.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_native_ads.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
@@ -30,112 +25,21 @@
       <change beforePath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/WorldCup2022.app.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/WorldCup2022.app.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/permissionx/WorldCup2022.permissionx.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/permissionx/WorldCup2022.permissionx.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/permissionx/WorldCup2022.permissionx.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compile_library_classes_jar/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compile_library_classes_jar/debug/classes.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compile_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compile_r_class_jar/debug/R.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compile_symbol_list/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compile_symbol_list/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compiled_local_resources/debug/out/layout_activity_player.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/compiled_local_resources/debug/out/layout_activity_player.xml.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/full_jar/debug/full.jar" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/full_jar/debug/full.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/merged.dir/values-notouch/values-notouch.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/merged.dir/values-television-v13/values-television-v13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/merged.dir/values-v19/values-v19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/merged.dir/values/values.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/incremental/debug/packageDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/local_only_symbol_list/debug/R-def.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/local_only_symbol_list/debug/R-def.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/packaged_res/debug/layout/activity_player.xml" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/packaged_res/debug/layout/activity_player.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/runtime_library_classes_jar/debug/classes.jar" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/runtime_library_classes_jar/debug/classes.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/inputs/source-to-output.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/internal-name-to-source.tab_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/jvm/kotlin/source-to-classes.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.keystream.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.len" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.len" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab.values.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/caches-jvm/lookups/lookups.tab_i" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/cacheable/last-build.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/localstate/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/kotlin/compileDebugKotlin/localstate/build-history.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/file_chooser/permissions/PermissionActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/file_chooser/permissions/PermissionActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/file_chooser/tool/DirAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/file_chooser/tool/DirAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/MediaMetadataCompatExtKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/MediaMetadataCompatExtKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/MediaStoreChooserActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/MediaStoreChooserActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/Prefs.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/Prefs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/SettingsActivity$SettingsFragment.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/SettingsActivity$SettingsFragment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$Companion.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$Companion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$PlayerListener$onPlaybackStateChanged$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$PlayerListener$onPlaybackStateChanged$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$PlayerListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$PlayerListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$dataSourceFactory$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$dataSourceFactory$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$onCreate$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$onCreate$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$onCreate$17$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$onCreate$18$onAnimationEnd$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$onCreate$18.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$onPictureInPictureModeChanged$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity$onPictureInPictureModeChanged$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/player/VideoPlayerActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/utils/SubtitleUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/utils/SubtitleUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/utils/Utils$Orientation.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/utils/Utils$Orientation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/utils/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/build/tmp/kotlin-classes/debug/com/ntduc/videoplayer/video/utils/Utils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/src/main/java/com/ntduc/videoplayer/video/player/VideoPlayerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/src/main/java/com/ntduc/videoplayer/video/player/VideoPlayerActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/src/main/java/com/ntduc/videoplayer/video/utils/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/src/main/java/com/ntduc/videoplayer/video/utils/Utils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VideoPlayer/src/main/res/layout/activity_player.xml" beforeDir="false" afterPath="$PROJECT_DIR$/VideoPlayer/src/main/res/layout/activity_player.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/adapter/HomeMathAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/adapter/HomeMathAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/adapter/SimulationSoundAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/adapter/SimulationSoundAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/ui/component/main/MainNewActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/ui/component/main/MainNewActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/ui/component/splash/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/ui/component/splash/SplashActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/GroupDetalsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/GroupDetalsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/GroupInfoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/GroupInfoFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/HistoryFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/HistoryFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/HomeGroupFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/HomeGroupFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/HomeMatchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/HomeMatchFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/MatchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/MatchFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/PlaySoundFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/PlaySoundFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/SelfieCameraFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/SelfieCameraFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/SimulationSoundFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/SimulationSoundFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/StadiumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/StadiumFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/TablesFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/TablesFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/VideoWcFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/VideoWcFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragemnt_homegroup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragemnt_homegroup.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_group_detals.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_group_detals.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_groupinfo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_groupinfo.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_match.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_match.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_play_sound.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_play_sound.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_stadium.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_stadium.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tables.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tables.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_videowc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_videowc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_selfie_frame.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_selfie_frame.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_sound.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_sound.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/MatchInFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/MatchInFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_match_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_match_info.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[b1c83152]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R9YRB0GZ8PW]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -204,13 +108,14 @@
     <property name="android-custom-view/Volumes/Windows 10 Pro/Github/fifa88-wc2022/gpuv/src/main/java/com/daasuu/gpuv/player/GPUPlayerView.java_SELECTED" value="GPUPlayerView" />
     <property name="android-custom-view/Volumes/Windows 10 Pro/Github/fifa88-wc2022/gpuv/src/main/java/com/daasuu/gpuv/widget/SampleCameraGLView.java_SELECTED" value="SampleCameraGLView" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\fifa88-wc2022\app" />
       <recent name="$PROJECT_DIR$/app/src/main/res/xml" />
       <recent name="$PROJECT_DIR$/app/src/main/res/raw" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/utils" />
@@ -321,7 +226,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/selfie/CameraFragment.kt</url>
-          <line>96</line>
+          <line>95</line>
           <properties>
             <option name="lambda-ordinal" value="0" />
           </properties>
@@ -329,7 +234,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/HomeFragment.kt</url>
-          <line>38</line>
+          <line>42</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
@@ -339,12 +244,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/selfie/ImagePreviewFragment.kt</url>
-          <line>127</line>
+          <line>128</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/worldcup2022/view/fragment/WcFunFragment.kt</url>
-          <line>39</line>
+          <line>41</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>

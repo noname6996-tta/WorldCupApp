@@ -1,8 +1,10 @@
 package com.example.worldcup2022.view.fragment
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -17,6 +19,9 @@ import com.example.worldcup2022.utils.observe
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.orhanobut.hawk.Hawk
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.callback.RewardCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -65,12 +70,6 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                 .error(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgTeam2Prediction)
-            binding.firstBar.setProgressPercentage(match.percent1Win.toDouble())
-            binding.secondBar.setProgressPercentage(match.percent2Win.toDouble())
-            binding.thirdBar.setProgressPercentage(match.percentDraw.toDouble())
-            binding.tvPercent1Win.text = match.percent1Win.toString() + "%"
-            binding.tvPercent2Win.text = match.percent2Win.toString() + "%"
-            binding.tvPercentDraw.text = match.percentDraw.toString() + "%"
         } else {
             // name and image
             try {
@@ -165,6 +164,17 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
 
     }
 
+    private fun showWhoWillWin() {
+        binding.rlAdsProgressGuess.visibility = View.GONE
+
+        binding.firstBar.setProgressPercentage(match.percent1Win.toDouble())
+        binding.secondBar.setProgressPercentage(match.percent2Win.toDouble())
+        binding.thirdBar.setProgressPercentage(match.percentDraw.toDouble())
+        binding.tvPercent1Win.text = match.percent1Win.toString() + "%"
+        binding.tvPercent2Win.text = match.percent2Win.toString() + "%"
+        binding.tvPercentDraw.text = match.percentDraw.toString() + "%"
+    }
+
     override fun addEvent() {
         super.addEvent()
         binding.viewDetails.setOnClickListener {
@@ -174,6 +184,25 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
 
         binding.tvVote.setOnClickListener {
             dialogVote.show()
+        }
+
+        binding.rlAdsProgressGuess.setOnClickListener {
+            ProxAdsConfig.instance.showRewardAds(
+                activity = requireActivity(),
+                id_show_ads = "id_reward_who_will_win",
+                adsId = getString(R.string.id_reward_ads),
+                callback = object : AdsCallback() {
+                    override fun onClosed() {
+                        showWhoWillWin()
+                    }
+
+                    override fun onError(message: String?) {
+                        Log.d("ntduc_debug", "RewardAds onError: $message")
+                        showWhoWillWin()
+                    }
+                },
+                rewardCallback = object : RewardCallback() {}
+            )
         }
     }
 

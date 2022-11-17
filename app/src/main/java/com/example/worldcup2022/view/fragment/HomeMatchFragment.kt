@@ -121,7 +121,6 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
 
         }
         homeMatchAdapter.setListMatch(arrMatchs, requireContext())
-
     }
 
     override fun getDataBinding(): FragmentHomematchBinding {
@@ -213,11 +212,25 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
         Hawk.put(LIST_MATCHS, matchs.data)
         matchsOnl = Hawk.get<ArrayList<com.example.worldcup2022.data.dto.worldcup.Match>>(LIST_MATCHS, ArrayList())
         Log.e("TAG", "bindListData: "+ matchsOnl.size )
-        initData()
+        arrMatchs.clear()
 
-//        arrMatchs.clear()
-//        arrMatchs.addAll(matchs.data)
-        arrMatchs.add(1, Match())
-        homeMatchAdapter.setListMatch(arrMatchs, requireContext())
+        if (matchsOnl.isNotEmpty()) {
+            for (i in 0..matchsOnl.size - 1) {
+                val calendar1 = Calendar.getInstance().apply {
+                    timeInMillis = parseTime(matchsOnl[i].dateFormat)
+                }.time
+                val day1 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar1)
+                val calendar2 = Calendar.getInstance().apply {
+                    timeInMillis = UtilsKotlin().parseTime(daymatch)
+                }.time
+                val day2 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar2)
+
+                if (day1.equals(day2)) {
+                    arrMatchs.add(matchsOnl[i])
+                }
+            }
+            arrMatchs.add(1, Match())
+            homeMatchAdapter.setListMatch(arrMatchs, requireContext())
+        }
     }
 }
