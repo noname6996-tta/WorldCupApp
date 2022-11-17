@@ -12,6 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import com.example.worldcup2022.BuildConfig
 import com.example.worldcup2022.R
 import com.example.worldcup2022.USER_ID
 import com.example.worldcup2022.data.Resource
@@ -24,6 +25,7 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.orhanobut.hawk.Hawk
+import com.proxglobal.proxads.ProxUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -57,6 +59,15 @@ class MainNewActivity : BaseActivity() {
         if (userId.isEmpty()) {
             mainViewModel.getRegisterUser()
         }
+
+        //Push Update
+        ProxUtils.INSTANCE.initFirebaseRemoteConfig(
+            activity = this,
+            appVersionCode = BuildConfig.VERSION_CODE,
+            isDebug = BuildConfig.DEBUG,
+            iconAppId = R.drawable.logo,
+            appName = getString(R.string.app_name)
+        )
     }
 
     override fun observeViewModel() {

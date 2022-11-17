@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/skeleton"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/_4sdp">
 
     <ImageView
-        android:adjustViewBounds="true"
         android:id="@+id/iv_selfie_frame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/cr7"/>
+        android:adjustViewBounds="true"
+        android:src="@drawable/cr7" />
+
+    <TextView
+        android:id="@+id/txt_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:background="@drawable/border_radius_ad_selfie"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="1dp"
+        android:text="@string/ad"
+        android:textColor="@color/white"
+        android:textSize="12dp"
+        android:visibility="visible" />
 </FrameLayout>

@@ -6,6 +6,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
     id 'kotlin-parcelize'
+    id 'com.google.gms.google-services'
 }
 
 
@@ -24,6 +25,7 @@ android {
     buildscript {
         repositories {
             google()
+            mavenCentral()  // Maven Central repository
         }
         dependencies {
             classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.2")
@@ -55,11 +57,29 @@ android {
     buildTypes {
         debug {
             debuggable true
+
+            resValue "string", "id_sdk_applovin", "sf3RVH4wpqBZ1X_gTbTAyQrr0lOrrn0DFWm8x-nqe-HXOBiCS3wI12cV4JxnUWVztqcSkBwkUJIa3LeL-E-TDH"
+            resValue "string", "id_sdk_admob", "ca-app-pub-3940256099942544~3347511713"
+
+            resValue "string", "id_open_ads", "3d619f7a51efdf6e"
+            resValue "string", "id_splash_ads", "40ccf0ef3183cf1a"
+            resValue "string", "id_native_ads", "928ee81c15b27748"
+            resValue "string", "id_inter_ads", "c0989a2d8cd8da4d"
+            resValue "string", "id_reward_ads", "591489f1c35804a0"
         }
         release {
             debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            resValue "string", "id_sdk_applovin", "sf3RVH4wpqBZ1X_gTbTAyQrr0lOrrn0DFWm8x-nqe-HXOBiCS3wI12cV4JxnUWVztqcSkBwkUJIa3LeL-E-TDH"
+            resValue "string", "id_sdk_admob", "ca-app-pub-3548016532531500~7459723087"
+
+            resValue "string", "id_open_ads", "3d619f7a51efdf6e"
+            resValue "string", "id_splash_ads", "40ccf0ef3183cf1a"
+            resValue "string", "id_native_ads", "928ee81c15b27748"
+            resValue "string", "id_inter_ads", "c0989a2d8cd8da4d"
+            resValue "string", "id_reward_ads", "591489f1c35804a0"
         }
     }
     flavorDimensions "default"
@@ -184,12 +204,20 @@ dependencies {
     // save cache
     implementation "com.orhanobut:hawk:2.0.1"
 
+    //Utils-DucNT
     def utilsVersion = "1.2.9"
     implementation "com.github.ntduc-let.Utils:ActivityUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:ContextUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:ToastUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:StringUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:DateTimeUtils:$utilsVersion"
+
+    //ads
+    implementation "prox-lib:prox-utils-max:2.4.4"
+
+    //firebase
+    implementation platform('com.google.firebase:firebase-bom:31.0.3')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
 kapt {
     correctErrorTypes true

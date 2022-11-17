@@ -1,5 +1,6 @@
 package com.example.worldcup2022.view.fragment
 
+import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -13,6 +14,8 @@ import com.example.worldcup2022.data.dto.worldcup.Stadium
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import java.io.IOException
 
@@ -82,6 +85,18 @@ class StadiumFragment :BaseFragment<FragmentStadiumBinding>(){
             val action = StadiumFragmentDirections.actionStadiumFragmentToStadiumSecondFragment(it.id)
             findNavController().navigate(action)
         }
+
+        ProxAdsConfig.instance.showNativeAds(
+            activity = requireActivity(),
+            container = binding.adContainer,
+            id_show_ads = "id_native_detail_stadium",
+            adId = getString(R.string.id_native_ads),
+            callback = object : AdsCallback() {
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "NativeAds onError: $message")
+                }
+            }
+        )
     }
 
     override fun addEvent() {

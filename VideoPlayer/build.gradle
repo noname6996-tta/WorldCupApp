@@ -83,4 +83,7 @@ dependencies {
 
     def preference_version = "1.2.0"
     implementation "androidx.preference:preference-ktx:$preference_version"
+
+    //ads
+    implementation "prox-lib:prox-utils-max:2.4.4"
 }

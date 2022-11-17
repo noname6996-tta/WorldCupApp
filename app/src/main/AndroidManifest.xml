@@ -73,6 +73,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+
+        <meta-data android:name="applovin.sdk.key"
+            android:value="@string/id_sdk_applovin"/>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/id_sdk_admob" />
     </application>
 
 </manifest>

@@ -138,5 +138,4 @@ class UtilsKotlin {
         val result1 = df1.parse(timeInString)
         return result1.time
     }
-
 }

@@ -1,10 +1,12 @@
 package com.example.worldcup2022.view.fragment
 
 import android.Manifest
-import android.graphics.drawable.Drawable
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
@@ -15,18 +17,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
 import com.example.worldcup2022.R
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.SelfieFrame
 import com.example.worldcup2022.databinding.FragmentSelfieCameraBinding
 import com.example.worldcup2022.databinding.ItemSelfieFrameBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
-import com.example.worldcup2022.utils.setOnClickListenerWithScaleAnimation
 import com.permissionx.guolindev.PermissionX
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.callback.RewardCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 
 class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
@@ -34,9 +34,11 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
         return FragmentSelfieCameraBinding.inflate(layoutInflater)
     }
 
-    private val adapter by lazy { SelfieFrameAdapter {
-        goToCameraFragment(it)
-    } }
+    private val adapter by lazy {
+        SelfieFrameAdapter { item, hasAds ->
+            goToCameraFragment(item, hasAds)
+        }
+    }
     private val mainViewModel by activityViewModels<MainViewModel>()
 
     override fun addObservers() {
@@ -67,19 +69,56 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
         mainViewModel.getSelfieFrame()
     }
 
-    private fun goToCameraFragment(item: SelfieFrame) {
+    private fun goToCameraFragment(item: SelfieFrame, hasAds: Boolean) {
         PermissionX.init(this).permissions(Manifest.permission.CAMERA)
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
-                    findNavController().navigate(
-                        R.id.action_wcFunFragment_to_cameraFragment,
-                        bundleOf("link" to item.linkImage),
-                        navOptions {
-                            anim {
-                                enter = R.anim.slide_in_left
+                    if (hasAds){
+                        val callback = object : AdsCallback() {
+                            override fun onClosed() {
+                                findNavController().navigate(
+                                    R.id.action_wcFunFragment_to_cameraFragment,
+                                    bundleOf("link" to item.linkImage),
+                                    navOptions {
+                                        anim {
+                                            enter = R.anim.slide_in_left
+                                        }
+                                    }
+                                )
+                            }
+
+                            override fun onError(message: String?) {
+                                Log.d("ntduc_debug", "RewardAds onError: $message")
+                                findNavController().navigate(
+                                    R.id.action_wcFunFragment_to_cameraFragment,
+                                    bundleOf("link" to item.linkImage),
+                                    navOptions {
+                                        anim {
+                                            enter = R.anim.slide_in_left
+                                        }
+                                    }
+                                )
                             }
                         }
-                    )
+
+                        ProxAdsConfig.instance.showRewardAds(
+                            activity = requireActivity(),
+                            id_show_ads = "id_reward_click_selfie",
+                            adsId = getString(R.string.id_reward_ads),
+                            callback = callback,
+                            rewardCallback = object : RewardCallback() {}
+                        )
+                    }else{
+                        findNavController().navigate(
+                            R.id.action_wcFunFragment_to_cameraFragment,
+                            bundleOf("link" to item.linkImage),
+                            navOptions {
+                                anim {
+                                    enter = R.anim.slide_in_left
+                                }
+                            }
+                        )
+                    }
                 }
             }
     }
@@ -89,12 +128,16 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
     }
 }
 
-class SelfieFrameViewHolder(private val binding: ItemSelfieFrameBinding, private val onItemClick: (SelfieFrame) -> Unit) :
+class SelfieFrameViewHolder(
+    private val binding: ItemSelfieFrameBinding,
+    private val onItemClick: (SelfieFrame, Boolean) -> Unit
+) :
     RecyclerView.ViewHolder(binding.root) {
-    fun bindData(item: SelfieFrame) {
+    fun bindData(item: SelfieFrame, position: Int) {
 //        binding.skeleton.showSkeleton()
         Glide.with(itemView)
             .load(item.linkImage)
+            .thumbnail(0.05f)
 //            .addListener(object : RequestListener<Drawable> {
 //                override fun onLoadFailed(
 //                    e: GlideException?,
@@ -117,17 +160,18 @@ class SelfieFrameViewHolder(private val binding: ItemSelfieFrameBinding, private
 //                }
 //
 //            })
-            .override(500,500)
+            .override(500, 500)
             .into(binding.ivSelfieFrame)
 
+        binding.txtAd.visibility = if (position < 5) View.GONE else View.VISIBLE
 
         binding.ivSelfieFrame.setOnClickListener {
-            onItemClick(item)
+            onItemClick(item, binding.txtAd.visibility == View.VISIBLE)
         }
     }
 }
 
-class SelfieFrameAdapter(private val onItemClick: (SelfieFrame) -> Unit) :
+class SelfieFrameAdapter(private val onItemClick: (SelfieFrame, Boolean) -> Unit) :
     ListAdapter<SelfieFrame, SelfieFrameViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelfieFrameViewHolder {
         val binding =
@@ -136,7 +180,7 @@ class SelfieFrameAdapter(private val onItemClick: (SelfieFrame) -> Unit) :
     }
 
     override fun onBindViewHolder(holder: SelfieFrameViewHolder, position: Int) {
-        holder.bindData(getItem(position))
+        holder.bindData(getItem(position), position)
     }
 
     companion object {

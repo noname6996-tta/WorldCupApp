@@ -24,6 +24,7 @@ import android.provider.Settings
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import android.util.Base64
+import android.util.Log
 import android.util.Rational
 import android.view.*
 import android.view.accessibility.CaptioningManager
@@ -99,6 +100,8 @@ import com.ntduc.videoplayer.video.player.dtpv.DoubleTapPlayerView
 import com.ntduc.videoplayer.video.player.dtpv.youtube.YouTubeOverlay
 import com.ntduc.videoplayer.video.player.dtpv.youtube.YouTubeOverlay.PerformListener
 import com.ntduc.videoplayer.video.utils.Utils
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import java.io.File
 import java.lang.reflect.InvocationTargetException
 import java.util.*
@@ -178,11 +181,11 @@ open class VideoPlayerActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         mPrefs = Prefs(this) //Load SharedPreferences
 
-        if (getVisibilityRotation() == View.VISIBLE) {
-            // Xoay màn hình càng sớm càng tốt, trước khi inflater để tránh gặp trục trặc với animation khởi tạo activity
-            // Rotate ASAP, before super/inflating to avoid glitches with activity launch animation
-            setOrientation(this, mPrefs!!.orientation) //Xoay Activity
-        }
+//        if (getVisibilityRotation() == View.VISIBLE) {
+//            // Xoay màn hình càng sớm càng tốt, trước khi inflater để tránh gặp trục trặc với animation khởi tạo activity
+//            // Rotate ASAP, before super/inflating to avoid glitches with activity launch animation
+//            setOrientation(this, mPrefs!!.orientation) //Xoay Activity
+//        }
 
         super.onCreate(savedInstanceState)
 
@@ -310,6 +313,18 @@ open class VideoPlayerActivity : Activity() {
 //            }
             focusPlay = true
         }
+
+        ProxAdsConfig.instance.showNativeAds(
+            activity = this,
+            container =findViewById(R.id.ad_container),
+            id_show_ads = "id_native_video",
+            adId = "928ee81c15b27748",
+            callback = object : AdsCallback() {
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "NativeAds onError: $message")
+                }
+            }
+        )
 
         //Xét Main View
         coordinatorLayout = findViewById(R.id.coordinatorLayout)
@@ -522,7 +537,7 @@ open class VideoPlayerActivity : Activity() {
                 }
                 view.setPadding(
                     0, windowInsets.systemWindowInsetTop,
-                    0, windowInsets.systemWindowInsetBottom
+                    0, 0
                 )
                 val insetLeft = windowInsets.systemWindowInsetLeft
                 val insetRight = windowInsets.systemWindowInsetRight
@@ -558,6 +573,10 @@ open class VideoPlayerActivity : Activity() {
                 findViewById<View>(R.id.exo_progress).setPadding(
                     windowInsets.systemWindowInsetLeft, 0,
                     windowInsets.systemWindowInsetRight, 0
+                )
+                findViewById<View>(R.id.ad_container).setPadding(
+                    windowInsets.systemWindowInsetLeft, 0,
+                    windowInsets.systemWindowInsetRight, windowInsets.systemWindowInsetBottom
                 )
                 setViewMargins(
                     findViewById(R.id.exo_error_message),
