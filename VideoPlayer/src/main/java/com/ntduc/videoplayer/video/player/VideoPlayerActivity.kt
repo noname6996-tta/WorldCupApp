@@ -484,9 +484,7 @@ open class VideoPlayerActivity : Activity() {
         updateButtonRotation()
         buttonRotation!!.visibility = getVisibilityRotation()
         buttonRotation!!.setOnClickListener {
-            mPrefs!!.orientation = getNextOrientation(
-                mPrefs!!.orientation
-            )
+            mPrefs!!.orientation = Utils.Orientation.VIDEO
             setOrientation(this@VideoPlayerActivity, mPrefs!!.orientation)
             updateButtonRotation()
             showText(playerView!!, getString(mPrefs!!.orientation.description), 2500)
@@ -2326,23 +2324,23 @@ open class VideoPlayerActivity : Activity() {
         } catch (e: Settings.SettingNotFoundException) {
             e.printStackTrace()
         }
-        if (mPrefs!!.orientation === Utils.Orientation.VIDEO) {
-            if (auto) {
-                buttonRotation!!.setImageResource(getDrawableResScreenLockRotation())
-            } else if (portrait) {
-                buttonRotation!!.setImageResource(getDrawableResScreenLockPortrait())
-            } else {
-                buttonRotation!!.setImageResource(getDrawableResScreenLockLandscape())
-            }
-        } else {
-            if (auto) {
+//        if (mPrefs!!.orientation === Utils.Orientation.VIDEO) {
+//            if (auto) {
+//                buttonRotation!!.setImageResource(getDrawableResScreenLockRotation())
+//            } else if (portrait) {
+//                buttonRotation!!.setImageResource(getDrawableResScreenLockPortrait())
+//            } else {
+//                buttonRotation!!.setImageResource(getDrawableResScreenLockLandscape())
+//            }
+//        } else {
+//            if (auto) {
                 buttonRotation!!.setImageResource(getDrawableResScreenRotation())
-            } else if (portrait) {
-                buttonRotation!!.setImageResource(getDrawableResScreenPortrait())
-            } else {
-                buttonRotation!!.setImageResource(getDrawableResScreenLandscape())
-            }
-        }
+//            } else if (portrait) {
+//                buttonRotation!!.setImageResource(getDrawableResScreenPortrait())
+//            } else {
+//                buttonRotation!!.setImageResource(getDrawableResScreenLandscape())
+//            }
+//        }
     }
 
     private val dataSourceFactory: DefaultDataSourceFactory by lazy {
