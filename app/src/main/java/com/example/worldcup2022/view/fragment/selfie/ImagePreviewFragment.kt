@@ -45,6 +45,7 @@ class ImagePreviewFragment : BaseFragment<FragmentImagePreviewBinding>() {
             requireArguments().clear()
             Glide.with(this@ImagePreviewFragment)
                 .load(bitmap)
+                .override(500,500)
                 .into(binding.ivPreview)
 
             binding.ivBack.increaseClickArea(20.dp)

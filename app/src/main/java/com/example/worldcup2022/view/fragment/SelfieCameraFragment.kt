@@ -1,7 +1,6 @@
 package com.example.worldcup2022.view.fragment
 
 import android.Manifest
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,17 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.worldcup2022.R
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.SelfieFrame
 import com.example.worldcup2022.databinding.FragmentSelfieCameraBinding
 import com.example.worldcup2022.databinding.ItemSelfieFrameBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
-import com.example.worldcup2022.utils.setOnClickListenerWithScaleAnimation
+import com.example.worldcup2022.utils.dp
 import com.permissionx.guolindev.PermissionX
 import com.proxglobal.worlcupapp.base.BaseFragment
 
@@ -34,9 +30,11 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
         return FragmentSelfieCameraBinding.inflate(layoutInflater)
     }
 
-    private val adapter by lazy { SelfieFrameAdapter {
-        goToCameraFragment(it)
-    } }
+    private val adapter by lazy {
+        SelfieFrameAdapter {
+            goToCameraFragment(it)
+        }
+    }
     private val mainViewModel by activityViewModels<MainViewModel>()
 
     override fun addObservers() {
@@ -44,7 +42,10 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
         mainViewModel.selfieFrames.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Success -> {
-                    adapter.submitList(it.data!!.data)
+                    val result = it.data?.data?.toMutableList()?.apply {
+                        removeIf { it.name == "spain" }
+                    }
+                    adapter.submitList(result)
                 }
                 else -> {
 
@@ -69,6 +70,14 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
 
     private fun goToCameraFragment(item: SelfieFrame) {
         PermissionX.init(this).permissions(Manifest.permission.CAMERA)
+            .onForwardToSettings { scope, deniedList ->
+                scope.showForwardToSettingsDialog(
+                    deniedList,
+                    "You need to allow necessary permissions in Settings manually",
+                    "OK",
+                    "Cancel"
+                )
+            }
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
                     findNavController().navigate(
@@ -89,7 +98,10 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
     }
 }
 
-class SelfieFrameViewHolder(private val binding: ItemSelfieFrameBinding, private val onItemClick: (SelfieFrame) -> Unit) :
+class SelfieFrameViewHolder(
+    private val binding: ItemSelfieFrameBinding,
+    private val onItemClick: (SelfieFrame) -> Unit
+) :
     RecyclerView.ViewHolder(binding.root) {
     fun bindData(item: SelfieFrame) {
 //        binding.skeleton.showSkeleton()
@@ -117,7 +129,9 @@ class SelfieFrameViewHolder(private val binding: ItemSelfieFrameBinding, private
 //                }
 //
 //            })
-            .override(500,500)
+            .placeholder(R.drawable.logo)
+            .optionalTransform(RoundedCorners(5.dp))
+            .override(500, 500)
             .into(binding.ivSelfieFrame)
 
 
