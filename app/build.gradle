@@ -106,6 +106,8 @@ android {
         }
     }
     defaultConfig {
+
+        signingConfig signingConfigs.release
         testInstrumentationRunnerArguments clearPackageData: 'true'
     }
     testOptions {
