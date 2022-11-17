@@ -6,7 +6,6 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs'
     id 'kotlin-parcelize'
-    id 'com.google.gms.google-services'
 }
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
@@ -229,9 +228,6 @@ dependencies {
     //ads
     implementation "prox-lib:prox-utils-max:2.4.4"
 
-    //firebase
-    implementation platform('com.google.firebase:firebase-bom:31.0.3')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
 kapt {
     correctErrorTypes true
