@@ -4,161 +4,180 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/maincolor">
+
     <ImageView
         android:id="@+id/imgHeader"
-        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="110dp"
+        android:scaleType="centerCrop"
         android:src="@drawable/header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+
+    <RelativeLayout
+        android:id="@+id/rlBanner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgHeader">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpInstallApp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#330814">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone" />
 
-            <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:visibility="visible"
+            app:cardCornerRadius="4dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="9dp"
-                android:weightSum="4"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="80dp"
+                android:background="#330814">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_right"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginTop="9dp"
+                    android:layout_marginBottom="9dp"
+                    android:weightSum="4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/tvDayCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_extrabold"
-                        android:text="18"
-                        android:textColor="@color/white"
-                        android:textSize="30dp" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_right"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/intermedium"
-                        android:text="Days"
-                        android:textColor="@color/text_color_real"
-                        android:textSize="11dp" />
+                        <TextView
+                            android:id="@+id/tvDayCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_extrabold"
+                            android:text="18"
+                            android:textColor="@color/white"
+                            android:textSize="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/intermedium"
+                            android:text="Days"
+                            android:textColor="@color/text_color_real"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_right"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvHoursCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_extrabold"
+                            android:text="18"
+                            android:textColor="@color/white"
+                            android:textSize="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/intermedium"
+                            android:text="Hours"
+                            android:textColor="@color/text_color_real"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_right"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvMinutesCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_extrabold"
+                            android:text="18"
+                            android:textColor="@color/white"
+                            android:textSize="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/intermedium"
+                            android:text="Minutes"
+                            android:textColor="@color/text_color_real"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvSeconds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_extrabold"
+                            android:text="18"
+                            android:textColor="@color/white"
+                            android:textSize="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/intermedium"
+                            android:text="Seconds"
+                            android:textColor="@color/text_color_real"
+                            android:textSize="11dp" />
+                    </LinearLayout>
                 </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_right"
-                    android:gravity="center"
-                    android:orientation="vertical">
+    </RelativeLayout>
 
-                    <TextView
-                        android:id="@+id/tvHoursCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_extrabold"
-                        android:text="18"
-                        android:textColor="@color/white"
-                        android:textSize="30dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/intermedium"
-                        android:text="Hours"
-                        android:textColor="@color/text_color_real"
-                        android:textSize="11dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_right"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvMinutesCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_extrabold"
-                        android:text="18"
-                        android:textColor="@color/white"
-                        android:textSize="30dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/intermedium"
-                        android:text="Minutes"
-                        android:textColor="@color/text_color_real"
-                        android:textSize="11dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvSeconds"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_extrabold"
-                        android:text="18"
-                        android:textColor="@color/white"
-                        android:textSize="30dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/intermedium"
-                        android:text="Seconds"
-                        android:textColor="@color/text_color_real"
-                        android:textSize="11dp" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        app:tabTextAppearance="@style/tab_text"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
         android:background="@null"
         android:scrollbars="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/rlBanner"
         app:tabIndicator="@drawable/tab_indicator"
         app:tabIndicatorColor="#FFD101"
         app:tabIndicatorGravity="bottom"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="#FFD101"
+        app:tabTextAppearance="@style/tab_text"
         app:tabTextColor="#FFFFFF" />
 
     <View

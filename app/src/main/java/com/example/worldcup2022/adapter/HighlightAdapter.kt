@@ -47,6 +47,7 @@ class HighlightAdapter(
                 Glide.with(context)
                     .load(item.image)
                     .placeholder(R.drawable.ic_loading_3x4)
+                    .override(200,200)
                     .error(R.drawable.ic_loading_3x4)
                     .into(holder.binding.img)
 

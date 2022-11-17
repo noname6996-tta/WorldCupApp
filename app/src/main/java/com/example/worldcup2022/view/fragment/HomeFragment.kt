@@ -1,12 +1,15 @@
 package com.example.worldcup2022.view.fragment
 
 import android.os.CountDownTimer
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.worldcup2022.LIST_DATES
 import com.example.worldcup2022.LIST_MATCHS
+import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HomeMatchPagerAdapter
+import com.example.worldcup2022.adapter.InstallAppAdapter
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
@@ -25,6 +28,7 @@ import java.util.*
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private lateinit var countDownTimer: CountDownTimer
+    private lateinit var adapter: InstallAppAdapter
     private val mainViewModel: MainViewModel by viewModels()
     override fun getDataBinding(): FragmentHomeBinding {
         return FragmentHomeBinding.inflate(layoutInflater)
@@ -40,6 +44,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         countDownTime()
         createListDateOff()
         setData()
+        setBanner()
+
     }
 
     override fun addEvent() {
@@ -73,8 +79,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         //milliseconds
         var different = endDate.time - currentTime.time
-        if (different>0){
+        if (different > 0) {
             binding.cardView.visibility = View.VISIBLE
+            binding.vpInstallApp.visibility = View.GONE
             countDownTimer = object : CountDownTimer(different, 1000) {
 
                 override fun onTick(millisUntilFinished: Long) {
@@ -105,8 +112,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                 }
             }.start()
-        }else{
+        } else {
             binding.cardView.visibility = View.GONE
+            binding.vpInstallApp.visibility = View.VISIBLE
+
         }
 
     }
@@ -202,5 +211,38 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }.attach()
     }
 
+    /**
+     *
+     */
+    private fun setBanner() {
+        val list = ArrayList<Int>()
+        list.add(R.drawable.ic_banner_1)
+        list.add(R.drawable.ic_banner_2)
+        adapter = InstallAppAdapter(requireContext(), list)
+        adapter.setOnClickItemListener {
+            if (it == 0) {
+                UtilsKotlin().openApp(requireActivity(), "com.screen.mirroring.miracast.tv.cast.smart.view")
+            } else {
+                UtilsKotlin().openApp(requireActivity(), "com.last.fm.live.radio.stations")
+            }
+        }
+        binding.vpInstallApp.adapter = adapter
 
+        val handler = Handler()
+        val update = Runnable {
+            if (binding.vpInstallApp.getCurrentItem() == 1) { //adapter is your custom ViewPager's adapter
+                binding.vpInstallApp.setCurrentItem(0);
+            }
+            else {
+                binding.vpInstallApp.setCurrentItem(binding.vpInstallApp.getCurrentItem() + 1, true);
+            }
+
+        }
+        var timer = Timer()// This will create a new Thread
+        timer!!.schedule(object : TimerTask() {
+            override fun run() {
+                handler.post(update)
+            }
+        }, 500, 2000)
+    }
 }

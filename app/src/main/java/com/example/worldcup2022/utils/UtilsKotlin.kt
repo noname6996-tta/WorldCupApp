@@ -1,8 +1,12 @@
 package com.example.worldcup2022.utils
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.Intent
 import android.graphics.*
+import android.net.Uri
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -137,6 +141,14 @@ class UtilsKotlin {
         val df1: DateFormat = SimpleDateFormat("EEE dd MMM")
         val result1 = df1.parse(timeInString)
         return result1.time
+    }
+
+    fun openApp(activity: Activity, packageName: String) {
+        try {
+            activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+        } catch (e: ActivityNotFoundException) {
+            activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+        }
     }
 
 }

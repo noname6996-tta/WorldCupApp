@@ -75,7 +75,6 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-
         <service
             android:name=".notification.FirebaseService"
             android:exported="false">

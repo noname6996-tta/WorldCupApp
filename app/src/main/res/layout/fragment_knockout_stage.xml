@@ -33,7 +33,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -48,12 +48,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="A1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -75,7 +75,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="B2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 03"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -122,12 +122,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -141,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="C1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -149,7 +149,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="D2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 04"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -181,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -196,12 +196,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -215,7 +215,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="E1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -223,7 +223,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="F2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -234,7 +234,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 05"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -255,7 +255,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -270,12 +270,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -289,7 +289,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="G1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -297,7 +297,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="H2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -308,7 +308,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 06"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -401,7 +401,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/4 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -416,12 +416,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -435,7 +435,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -443,7 +443,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -454,7 +454,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 10"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -475,7 +475,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/4 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -490,12 +490,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -509,7 +509,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -517,7 +517,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -528,7 +528,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 09"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -587,7 +587,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/2 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -602,12 +602,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -621,7 +621,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W4"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -629,7 +629,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W4"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -640,7 +640,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 14"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -700,7 +700,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="3rd. place"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -715,12 +715,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -734,7 +734,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="L2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -742,7 +742,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="L2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -753,7 +753,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 17"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -775,7 +775,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -790,12 +790,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -809,7 +809,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -817,7 +817,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -828,7 +828,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 18"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -888,7 +888,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/2 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -903,12 +903,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -922,7 +922,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W4"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -930,7 +930,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W4"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -941,7 +941,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 15"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -991,7 +991,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/4 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1006,12 +1006,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1025,7 +1025,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1033,7 +1033,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1044,7 +1044,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 11"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1075,7 +1075,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/4 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1090,12 +1090,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1109,7 +1109,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1117,7 +1117,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="W8"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1128,7 +1128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 10"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1224,7 +1224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1239,12 +1239,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1258,7 +1258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="B1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1266,7 +1266,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="A2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1277,7 +1277,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 05"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1300,7 +1300,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1315,12 +1315,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1334,7 +1334,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="D1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1342,7 +1342,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="C2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1353,7 +1353,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 04"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1373,7 +1373,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1388,12 +1388,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1407,7 +1407,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="F1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1415,7 +1415,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="E2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1426,7 +1426,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 06"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1446,7 +1446,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="1/8 Final"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
@@ -1461,12 +1461,12 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:src="@drawable/ic_launcher_background" />
+                        android:src="@drawable/logo" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1480,7 +1480,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:layout_marginRight="14dp"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="H1"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1488,7 +1488,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_medium"
+                        android:fontFamily="@font/intermedium"
                         android:text="G2"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
@@ -1499,7 +1499,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="3dp"
-                    android:fontFamily="@font/inter_medium"
+                    android:fontFamily="@font/intermedium"
                     android:text="Dec 07"
                     android:textColor="@color/black"
                     android:textSize="12dp" />
