@@ -40,47 +40,7 @@ class GroupMatchAdapter : RecyclerView.Adapter<GroupchMatchViewHolder>() {
     override fun onBindViewHolder(holder: GroupchMatchViewHolder, position: Int) {
         val match = matchs[position]
         holder.binding.tvGroupMatch.text = "Group " + match.group + " "
-        try {
-            val fileInString: String =
-                context.assets.open("country.json").bufferedReader().use { it.readText() }
-            var countrys: List<Country> =
-                Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
-            for (i in 0..countrys.size - 1) {
-                val country = countrys[i]
-                if (match.idcountry1.toString() == country.id) {
-                    holder.binding.tvTeam1.text = country.name
-                    Glide.with(holder.itemView.context).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(holder.binding.imgTeam1)
-                }
-                if (match.idcountry2.toString()== country.id) {
-                    holder.binding.tvTeam2.text = country.name
-                    Glide.with(holder.itemView.context).load(country.image)
-                        .error(R.drawable.ic_launcher_background)
-                        .into(holder.binding.imgTeam2)
-                }
-            }
-        } catch (e: IOException) {
-
-        }
-
-        // set name stadium
-        try {
-            val fileInString: String =
-                context.assets.open("Stadium.json").bufferedReader().use { it.readText() }
-            var stadiums: List<Stadium> =
-                Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
-            for (i in 0..stadiums.size - 1) {
-                val stadium = stadiums[i]
-                if (match.idStadium.toString() == stadium.id) {
-                    holder.binding.tvStadiumMatch.text = stadium.name
-                }
-            }
-        } catch (e: IOException) {
-
-        }
-
-        //
+//        //
         val time = parseTime(match.dateFormat)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = time
@@ -96,12 +56,23 @@ class GroupMatchAdapter : RecyclerView.Adapter<GroupchMatchViewHolder>() {
         val year = SimpleDateFormat("yyyy", Locale.ENGLISH).format(calendar)
         val trueTime2 = "$day, $date $month $year "
         holder.binding.tvDateMatchGroup.text = trueTime2
-
+//
         holder.binding.layoutMatchGroupInfo.setOnClickListener {
             onClickMatch?.let {
                 it(matchs[position])
             }
         }
+        holder.binding.tvTeam1.text = match.country1?.name.toString()
+        holder.binding.tvTeam2.text = match.country2?.name.toString()
+        holder.binding.tvTimeMatch.text = match.time.toString()
+        holder.binding.tvStadiumMatch.text = match.stadium.name.toString()
+        Glide.with(holder.itemView.context).load(match.country1?.image)
+            .error(R.drawable.logo)
+            .into(holder.binding.imgTeam1)
+
+        Glide.with(holder.itemView.context).load(match.country2?.image)
+            .error(R.drawable.logo)
+            .into(holder.binding.imgTeam2)
     }
 
     override fun getItemCount(): Int {

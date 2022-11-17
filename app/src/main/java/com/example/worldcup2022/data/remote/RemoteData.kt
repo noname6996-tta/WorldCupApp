@@ -91,12 +91,29 @@ constructor(
             }
         }
     }
-
+    /**
+     *
+     */
     override suspend fun requestSquad(filter: String): Resource<ResponseSquad> {
         val squadsService = serviceGenerator.createService(SquadsService::class.java)
         return when (val response = processCall { squadsService.fetchSquads(filter, 0, 100) }) {
             is ResponseSquad -> {
                 Resource.Success(data = response as ResponseSquad)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    override suspend fun requestCountry(filter: String): Resource<ResponseCountry> {
+        val squadsService = serviceGenerator.createService(CountryService::class.java)
+        return when (val response = processCall { squadsService.fetchCountry(filter, 0, 100) }) {
+            is ResponseCountry -> {
+                Resource.Success(data = response as ResponseCountry)
             }
             else -> {
                 Resource.DataError(errorCode = response as Int)

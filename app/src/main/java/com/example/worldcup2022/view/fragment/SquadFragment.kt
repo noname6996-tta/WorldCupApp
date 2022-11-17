@@ -126,7 +126,7 @@ class SquadFragment : BaseFragment<FragmentSquadBinding>() {
             when (squad.position) {
                 "COACH" -> {
                     binding.tvNameCoach.text = squad.name
-                    Glide.with(requireContext()).load(squad.image)
+                    Glide.with(requireContext()).load("https://"+squad.image)
                         .error(R.drawable.logo)
                         .into(binding.imgCoach)
                 }

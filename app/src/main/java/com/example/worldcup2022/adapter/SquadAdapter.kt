@@ -30,7 +30,7 @@ class SquadAdapter : RecyclerView.Adapter<SquadViewHolder>(){
         val squad = squads[position]
         holder.binding.tvNamePlayer.text = squad.name
         holder.binding.tvPositionSquad.text = squad.position
-        Glide.with(holder.itemView.context).load(squad.image)
+        Glide.with(holder.itemView.context).load("https://"+squad.image)
             .error(R.drawable.logo).placeholder(R.drawable.logo)
             .into(holder.binding.imgPlayer)
         Log.e("dadasdasdas",squad.image.toString())

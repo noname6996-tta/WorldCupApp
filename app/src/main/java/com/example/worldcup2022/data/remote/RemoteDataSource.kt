@@ -24,6 +24,7 @@ internal interface RemoteDataSource {
     suspend fun requestSelfieFrame(): Resource<ResponseSelfieFrame>
     suspend fun requestSound(filter : String): Resource<ResponseSound>
     suspend fun requestSquad(filter : String): Resource<ResponseSquad>
+    suspend fun requestCountry(filter : String): Resource<ResponseCountry>
     suspend fun requestHighlight(filter : String, pageSize: Int): Resource<ResponseHighlight>
     suspend fun requestHistoryMatch(filter : String, pageSize: Int): Resource<ResponseHistoryMatch>
     suspend fun registerUser(): Resource<ResponseUser>
