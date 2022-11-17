@@ -154,11 +154,11 @@
                 android:layout_marginLeft="11dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="11dp"
-                android:progressTint="@color/maincolor"
                 android:indeterminate="false"
                 android:max="100"
                 android:minWidth="0dp"
                 android:progress="1"
+                android:progressTint="@color/maincolor"
                 app:layout_constraintEnd_toStartOf="@+id/tvSumPlayed"
                 app:layout_constraintStart_toEndOf="@+id/tvWinTeam1"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -171,13 +171,13 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="11dp"
-                android:progressTint="@color/maincolor"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="11dp"
                 android:indeterminate="false"
                 android:max="100"
                 android:minWidth="0dp"
                 android:progress="1"
+                android:progressTint="@color/maincolor"
                 app:layout_constraintEnd_toStartOf="@+id/tvWinTeam2"
                 app:layout_constraintStart_toEndOf="@+id/tvSumPlayed"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -207,276 +207,331 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDraw" />
 
-            <View
+
+            <RelativeLayout
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
-                android:layout_height="133dp"
-                android:layout_marginLeft="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
                 android:background="@drawable/border_radius_purple"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                app:layout_constraintTop_toBottomOf="@+id/textView11">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgTeam1Prediction"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/logo"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toTopOf="@+id/view3" />
+                <ImageView
+                    android:id="@+id/ivVoteSuccess"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_bg_vote_win"
+                    android:visibility="gone" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgTeam2Prediction"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/logo"
-                app:layout_constraintEnd_toEndOf="@+id/view3"
-                app:layout_constraintTop_toTopOf="@+id/view3" />
+                <ImageView
+                    android:id="@+id/ivResultGuess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_false_65x25"
+                    android:visibility="gone" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:layout_marginTop="26dp"
-                android:src="@drawable/vs_img"
-                app:layout_constraintEnd_toEndOf="@+id/view3"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toTopOf="@+id/view3" />
+                <LinearLayout
+                    android:id="@+id/llGuess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivResultGuess"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
-            <View
-                android:id="@+id/view4"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="23dp"
-                android:background="#59000000"
-                app:layout_constraintStart_toEndOf="@+id/imgTeam1Prediction"
-                app:layout_constraintTop_toTopOf="@+id/view3" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgTeam1Prediction"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/logo"
+                        app:layout_constraintStart_toStartOf="@+id/view3"
+                        app:layout_constraintTop_toTopOf="@+id/view3" />
 
-            <View
-                android:id="@+id/view5"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginRight="28dp"
-                android:background="#59000000"
-                app:layout_constraintEnd_toStartOf="@+id/imgTeam2Prediction"
-                app:layout_constraintTop_toTopOf="@+id/view3" />
+                    <TextView
+                        android:id="@+id/tvGoalsTeam1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="#59000000"
+                        android:fontFamily="@font/inter_bold"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="28dp" />
 
-            <TextView
-                android:id="@+id/tvGoalsTeam1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_bold"
-                android:text="1"
-                android:textColor="@color/white"
-                android:textSize="28dp"
-                app:layout_constraintBottom_toBottomOf="@+id/view4"
-                app:layout_constraintEnd_toEndOf="@+id/view4"
-                app:layout_constraintStart_toStartOf="@+id/view4"
-                app:layout_constraintTop_toTopOf="@+id/view4" />
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/vs_img" />
 
-            <TextView
-                android:id="@+id/tvGoalsTeam2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_bold"
-                android:text="4"
-                android:textColor="@color/white"
-                android:textSize="28dp"
-                app:layout_constraintBottom_toBottomOf="@+id/view5"
-                app:layout_constraintEnd_toEndOf="@+id/view5"
-                app:layout_constraintStart_toStartOf="@+id/view5"
-                app:layout_constraintTop_toTopOf="@+id/view5" />
+                    <TextView
+                        android:id="@+id/tvGoalsTeam2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="#59000000"
+                        android:fontFamily="@font/inter_bold"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="@color/white"
+                        android:textSize="28dp" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgTeam2Prediction"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:src="@drawable/logo" />
+                </LinearLayout>
+
+                <TextView
+
+                    android:id="@+id/tvVote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/llGuess"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/border_radius_yellow"
+                    android:fontFamily="@font/intermedium"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"
+                    android:text="@string/enter_your_prediction"
+                    android:textColor="@color/maincolor"
+                    android:textSize="12dp" />
+            </RelativeLayout>
 
 
-
-            <TextView
-                android:id="@+id/tvVote"
-                android:layout_marginTop="26dp"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="10dp"
-                android:background="@drawable/border_radius_yellow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/intermedium"
-                android:text="@string/enter_your_prediction"
-                android:textColor="@color/maincolor"
-                android:textSize="12dp"
-                app:layout_constraintEnd_toEndOf="@+id/view3"
-                app:layout_constraintStart_toStartOf="@+id/view3"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-            <View
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/view7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/border_radius_purple"
+                app:layout_constraintTop_toBottomOf="@+id/view3">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvMatchName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/inter_bold"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            app:layout_constraintStart_toStartOf="@+id/view7"
+                            app:layout_constraintTop_toTopOf="@+id/view7" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/inter_bold"
+                            android:text="@string/who_will_win"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            app:layout_constraintStart_toEndOf="@+id/tvMatchName"
+                            app:layout_constraintTop_toTopOf="@+id/view7" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp">
+
+                        <com.mackhartley.roundedprogressbar.RoundedProgressBar
+                            android:id="@+id/firstBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="39dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+
+                            app:rpbBackgroundColor="#80FFFFFF"
+                            app:rpbBackgroundTextColor="#7A7A7A"
+                            app:rpbCornerRadius="6dp"
+
+                            app:rpbProgressColor="@color/white"
+                            app:rpbProgressTextColor="@color/maincolor"
+                            app:rpbShowProgressText="false"
+                            app:rpbTextPadding="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvProcessNameTeam1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginHorizontal="26dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/intermedium"
+                            android:textColor="@color/maincolor"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvPercent1Win"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="26dp"
+                            android:fontFamily="@font/intermedium"
+                            android:text="0%"
+                            android:textColor="@color/maincolor"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp">
+
+                        <com.mackhartley.roundedprogressbar.RoundedProgressBar
+                            android:id="@+id/secondBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="39dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+
+                            app:rpbBackgroundColor="#80FFFFFF"
+                            app:rpbBackgroundTextColor="#7A7A7A"
+                            app:rpbCornerRadius="6dp"
+
+                            app:rpbProgressColor="@color/white"
+                            app:rpbProgressTextColor="@color/maincolor"
+                            app:rpbShowProgressText="false"
+                            app:rpbTextPadding="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvProcessNameTeam2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginHorizontal="26dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/intermedium"
+                            android:textColor="@color/maincolor"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvPercent2Win"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="26dp"
+                            android:fontFamily="@font/intermedium"
+                            android:text="0%"
+                            android:textColor="@color/maincolor"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp">
+
+                        <com.mackhartley.roundedprogressbar.RoundedProgressBar
+                            android:id="@+id/thirdBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="39dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginRight="16dp"
+
+                            app:rpbBackgroundColor="#80FFFFFF"
+                            app:rpbBackgroundTextColor="#7A7A7A"
+                            app:rpbCornerRadius="6dp"
+
+                            app:rpbProgressColor="@color/white"
+                            app:rpbProgressTextColor="@color/maincolor"
+                            app:rpbShowProgressText="false"
+                            app:rpbTextPadding="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvProcessNameDraw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginHorizontal="26dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/intermedium"
+                            android:textColor="@color/maincolor"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvPercentDraw"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="26dp"
+                            android:fontFamily="@font/intermedium"
+                            android:text="0%"
+                            android:textColor="@color/maincolor"
+                            android:textSize="12dp" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlAdsProgressGuess"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#80000000"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_padlock_1" />
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="16dp"
-                android:background="@drawable/border_radius_purple"
+                android:background="#00000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view3" />
 
-            <TextView
-                android:id="@+id/tvMatchName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/inter_bold"
-                android:textColor="@color/white"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="@+id/view7"
-                app:layout_constraintTop_toTopOf="@+id/view7" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="@string/who_will_win"
-                android:textColor="@color/white"
-                android:textSize="14dp"
-                app:layout_constraintStart_toEndOf="@+id/tvMatchName"
-                app:layout_constraintTop_toTopOf="@+id/view7" />
-
-            <com.mackhartley.roundedprogressbar.RoundedProgressBar
-                android:id="@+id/firstBar"
-                android:layout_width="0dp"
-                android:layout_height="39dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/view7"
-                app:layout_constraintStart_toStartOf="@+id/view7"
-                app:layout_constraintTop_toBottomOf="@+id/tvMatchName"
-                app:rpbBackgroundColor="#80FFFFFF"
-                app:rpbBackgroundTextColor="#7A7A7A"
-                app:rpbCornerRadius="6dp"
-                app:rpbProgressColor="@color/maincolor"
-                app:rpbProgressTextColor="@color/maincolor"
-                app:rpbShowProgressText="false"
-                app:rpbTextPadding="12dp" />
-
-            <TextView
-                android:id="@+id/tvProcessNameTeam1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12dp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/intermedium"
-                android:textColor="@color/maincolor"
-                app:layout_constraintBottom_toBottomOf="@+id/firstBar"
-                app:layout_constraintStart_toStartOf="@+id/firstBar"
-                app:layout_constraintTop_toTopOf="@+id/firstBar" />
-
-            <TextView
-                android:id="@+id/tvPercent1Win"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/intermedium"
-                android:text="0%"
-                android:textColor="@color/maincolor"
-                android:textSize="12dp"
-                android:layout_marginRight="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/firstBar"
-                app:layout_constraintEnd_toEndOf="@+id/firstBar"
-                app:layout_constraintTop_toTopOf="@+id/firstBar" />
-
-            <com.mackhartley.roundedprogressbar.RoundedProgressBar
-                android:id="@+id/secondBar"
-                android:layout_width="0dp"
-                android:layout_height="39dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/view7"
-                app:layout_constraintStart_toStartOf="@+id/view7"
-                app:layout_constraintTop_toBottomOf="@+id/firstBar"
-                app:rpbBackgroundColor="#80FFFFFF"
-                app:rpbBackgroundTextColor="#7A7A7A"
-                app:rpbCornerRadius="6dp"
-                app:rpbProgressColor="#858585"
-                app:rpbProgressTextColor="@color/maincolor"
-                app:rpbShowProgressText="false"
-                app:rpbTextPadding="12dp" />
-
-            <TextView
-                android:id="@+id/tvProcessNameTeam2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12dp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/intermedium"
-                android:textColor="@color/maincolor"
-                app:layout_constraintBottom_toBottomOf="@+id/secondBar"
-                app:layout_constraintStart_toStartOf="@+id/secondBar"
-                app:layout_constraintTop_toTopOf="@+id/secondBar" />
-
-            <TextView
-                android:id="@+id/tvPercent2Win"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/intermedium"
-                android:text="0%"
-                android:textColor="@color/maincolor"
-                android:textSize="12dp"
-                android:layout_marginRight="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/secondBar"
-                app:layout_constraintEnd_toEndOf="@+id/secondBar"
-                app:layout_constraintTop_toTopOf="@+id/secondBar" />
-
-            <com.mackhartley.roundedprogressbar.RoundedProgressBar
-                android:id="@+id/thirdBar"
-                android:layout_width="0dp"
-                android:layout_height="39dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/view7"
-                app:layout_constraintStart_toStartOf="@+id/view7"
-                app:layout_constraintTop_toBottomOf="@+id/secondBar"
-                app:rpbBackgroundColor="#80FFFFFF"
-                app:rpbBackgroundTextColor="#7A7A7A"
-                app:rpbCornerRadius="6dp"
-                app:rpbProgressColor="#858585"
-                app:rpbProgressTextColor="@color/maincolor"
-                app:rpbShowProgressText="false"
-                app:rpbTextPadding="12dp" />
-
-            <TextView
-                android:id="@+id/tvProcessNameDraw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Drawn"
-                android:textSize="12dp"
-                android:layout_marginLeft="10dp"
-                android:fontFamily="@font/intermedium"
-                android:textColor="@color/maincolor"
-                app:layout_constraintBottom_toBottomOf="@+id/thirdBar"
-                app:layout_constraintStart_toStartOf="@+id/thirdBar"
-                app:layout_constraintTop_toTopOf="@+id/thirdBar" />
-
-            <TextView
-                android:id="@+id/tvPercentDraw"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/intermedium"
-                android:text="0%"
-                android:textColor="@color/maincolor"
-                android:textSize="12dp"
-                android:layout_marginRight="10dp"
-                app:layout_constraintBottom_toBottomOf="@+id/thirdBar"
-                app:layout_constraintEnd_toEndOf="@+id/thirdBar"
-                app:layout_constraintTop_toTopOf="@+id/thirdBar" />
 
             <TextView
                 android:id="@+id/textView13"

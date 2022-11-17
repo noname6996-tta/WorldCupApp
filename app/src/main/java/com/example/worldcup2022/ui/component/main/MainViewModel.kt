@@ -85,7 +85,7 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
         viewModelScope.launch {
             matchsLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"" + ";" + "country1Name==\"" + URLEncoder.encode("#NULL#", "UTF-8") + "\"").collect {
+                dataRepositoryRepository.requestMatchs("date==\"" + URLEncoder.encode("**", "UTF-8") + "\"" + ";" + "country1Name==\"" +"#NULL#" + "\"").collect {
                     matchsLiveDataPrivate.value = it
                 }
             }
@@ -254,5 +254,23 @@ constructor(private val dataRepositoryRepository: DataRepositorySource) : BaseVi
                 }
             }
         }
+    }
+
+
+    /**
+     *
+     */
+    fun getHistoryMatchByUserIdAndID(id: String) {
+            viewModelScope.launch {
+                historyMatchLiveDataPrivate.value = Resource.Loading()
+                wrapEspressoIdlingResource {
+                    dataRepositoryRepository.requestHistoryMatchs(
+                        filter = id,
+                        pageSize = nextPageHistoryMatch.value ?: 0
+                    ).collect {
+                        historyMatchLiveDataPrivate.value = it
+                    }
+                }
+            }
     }
 }

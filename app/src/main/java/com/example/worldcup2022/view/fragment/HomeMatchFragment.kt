@@ -55,7 +55,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
 
     override fun addObservers() {
         super.addObservers()
-        observe(mainViewModel.matchsByDateLiveData, ::handleMatchsList)
+        observe(mainViewModel.matchsLiveData, ::handleMatchsList)
     }
     override fun initView() {
         super.initView()
@@ -89,6 +89,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
                         timeInMillis = UtilsKotlin().parseTime(daymatch)
                     }.time
                     val day2 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar2)
+
                     if (day1.equals(day2)) {
                         arrMatchs.add(matchsOnl[i])
                     }
@@ -145,7 +146,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
 
     override fun onResume() {
         super.onResume()
-        mainViewModel.getMatchsByDate(daymatch)
+        mainViewModel.getFullMatchs()
     }
 
     private fun handleMatchsList(status: Resource<ResponseMatch>) {
@@ -160,9 +161,10 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
         }
     }
     private fun bindListData(matchs: ResponseMatch) {
-        arrMatchs.clear()
-        arrMatchs.addAll(matchs.data)
-        homeMatchAdapter.setListMatch(arrMatchs, requireContext())
+        Hawk.put(LIST_MATCHS, matchs.data)
+        matchsOnl = Hawk.get<ArrayList<com.example.worldcup2022.data.dto.worldcup.Match>>(LIST_MATCHS, ArrayList())
+        Log.e("TAG", "bindListData: "+ matchsOnl.size )
+        initData()
 
     }
 }

@@ -41,7 +41,6 @@ class HomeMathAdapter : RecyclerView.Adapter<HomeMatchViewHolder>() {
 
     override fun onBindViewHolder(holder: HomeMatchViewHolder, position: Int) {
         val match = matchs[position]
-        Log.e("TAG", "onBindViewHolder: " + Gson().toJson(match.stadium))
         holder.binding.tvGroupMatch.text = "Group " + match.group + " "
 
         if (match.country1 != null ) {

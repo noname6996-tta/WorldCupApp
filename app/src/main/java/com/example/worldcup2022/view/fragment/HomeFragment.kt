@@ -73,36 +73,42 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         //milliseconds
         var different = endDate.time - currentTime.time
-        countDownTimer = object : CountDownTimer(different, 1000) {
+        if (different>0){
+            binding.cardView.visibility = View.VISIBLE
+            countDownTimer = object : CountDownTimer(different, 1000) {
 
-            override fun onTick(millisUntilFinished: Long) {
-                var diff = millisUntilFinished
-                val secondsInMilli: Long = 1000
-                val minutesInMilli = secondsInMilli * 60
-                val hoursInMilli = minutesInMilli * 60
-                val daysInMilli = hoursInMilli * 24
+                override fun onTick(millisUntilFinished: Long) {
+                    var diff = millisUntilFinished
+                    val secondsInMilli: Long = 1000
+                    val minutesInMilli = secondsInMilli * 60
+                    val hoursInMilli = minutesInMilli * 60
+                    val daysInMilli = hoursInMilli * 24
 
-                val elapsedDays = diff / daysInMilli
-                diff %= daysInMilli
+                    val elapsedDays = diff / daysInMilli
+                    diff %= daysInMilli
 
-                val elapsedHours = diff / hoursInMilli
-                diff %= hoursInMilli
+                    val elapsedHours = diff / hoursInMilli
+                    diff %= hoursInMilli
 
-                val elapsedMinutes = diff / minutesInMilli
-                diff %= minutesInMilli
+                    val elapsedMinutes = diff / minutesInMilli
+                    diff %= minutesInMilli
 
-                val elapsedSeconds = diff / secondsInMilli
+                    val elapsedSeconds = diff / secondsInMilli
 
-                binding.tvDayCount.text = elapsedDays.toString()
-                binding.tvHoursCount.text = elapsedHours.toString()
-                binding.tvMinutesCount.text = elapsedMinutes.toString()
-                binding.tvSeconds.text = elapsedSeconds.toString()
-            }
+                    binding.tvDayCount.text = elapsedDays.toString()
+                    binding.tvHoursCount.text = elapsedHours.toString()
+                    binding.tvMinutesCount.text = elapsedMinutes.toString()
+                    binding.tvSeconds.text = elapsedSeconds.toString()
+                }
 
-            override fun onFinish() {
+                override fun onFinish() {
 
-            }
-        }.start()
+                }
+            }.start()
+        }else{
+            binding.cardView.visibility = View.GONE
+        }
+
     }
 
     /**

@@ -177,7 +177,7 @@ constructor(
     override suspend fun requestHistoryMatch(id: String, pageSize: Int): Resource<ResponseHistoryMatch> {
         val historyMatchService = serviceGenerator.createService(HistoryMatchService::class.java)
         return when (val response =
-            processCall { historyMatchService.fetchHistoryMatchs(id, pageSize, 10) }) {
+            processCall { historyMatchService.fetchHistoryMatchs(id, pageSize, 100) }) {
             is ResponseHistoryMatch -> {
                 Resource.Success(data = response as ResponseHistoryMatch)
             }

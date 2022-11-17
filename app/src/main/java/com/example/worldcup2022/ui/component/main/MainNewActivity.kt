@@ -47,6 +47,7 @@ class MainNewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         Hawk.init(this).build()
         initUi()
         Thread {

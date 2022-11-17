@@ -2,16 +2,14 @@ package com.example.worldcup2022.view.fragment
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
 import com.example.worldcup2022.USER_ID
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.dto.worldcup.Country
-import com.example.worldcup2022.data.dto.worldcup.Match
-import com.example.worldcup2022.data.dto.worldcup.ResponseGuess
-import com.example.worldcup2022.data.dto.worldcup.Stadium
+import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.databinding.FragmentMatchInfoBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.ui.component.vote.DiaLogVote
@@ -67,10 +65,12 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                 .error(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgTeam2Prediction)
-
-            binding.tvPercent1Win.text= match.percent1Win.toString()
-            binding.tvPercent2Win.text= match.percent2Win.toString()
-            binding.tvPercentDraw.text= match.percentDraw.toString()
+            binding.firstBar.setProgressPercentage(match.percent1Win.toDouble())
+            binding.secondBar.setProgressPercentage(match.percent2Win.toDouble())
+            binding.thirdBar.setProgressPercentage(match.percentDraw.toDouble())
+            binding.tvPercent1Win.text = match.percent1Win.toString() + "%"
+            binding.tvPercent2Win.text = match.percent2Win.toString() + "%"
+            binding.tvPercentDraw.text = match.percentDraw.toString() + "%"
         } else {
             // name and image
             try {
@@ -180,6 +180,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     override fun addObservers() {
         super.addObservers()
         observe(mainViewModel.guessLiveData, ::guessData)
+        observe(mainViewModel.historyMatchLiveData, ::handleHistoryMatchList)
     }
 
     /**
@@ -226,4 +227,58 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        val userId = Hawk.get<String>(USER_ID, "")
+        mainViewModel.getHistoryMatchByUserIdAndID("userId==\"" + userId + "\"" + "," + "id==\"" + match.id + "\"")
+    }
+
+    private fun handleHistoryMatchList(status: Resource<ResponseHistoryMatch>) {
+        when (status) {
+            is Resource.Loading -> {
+
+            }
+            is Resource.Success -> status.data?.let {
+
+                bindListHistoryData(historyMatchs = it)
+            }
+            is Resource.DataError -> {
+                status.errorCode?.let {
+                    Log.d(
+                        "ntduc_debug", "handleHistoryMatchList: Error " + it
+                    )
+                }
+            }
+        }
+    }
+
+    private fun bindListHistoryData(historyMatchs: ResponseHistoryMatch) {
+        if (!historyMatchs.data.isNullOrEmpty()) {
+            val matchHistory = historyMatchs.data?.get(0)
+            if (matchHistory != null) {
+                val separated: List<String> = matchHistory.goal!!.split("-")
+                val score1 = separated[0].trim().toString()
+                val score2 = separated[1].trim().toString()
+                binding.tvGoalsTeam1.text = score1
+                binding.tvGoalsTeam2.text = score2
+                if (matchHistory.isRight != null) {
+                    if (matchHistory.goal.equals(match.goal)) {
+                        binding.ivResultGuess.setImageResource(R.drawable.ic_win_50x30)
+                        binding.ivResultGuess.visibility = View.VISIBLE
+                        binding.ivVoteSuccess.visibility = View.VISIBLE
+                        binding.tvVote.visibility = View.GONE
+                    } else {
+                        binding.ivResultGuess.setImageResource(R.drawable.ic_false)
+                        binding.ivResultGuess.visibility = View.VISIBLE
+                        binding.ivVoteSuccess.visibility = View.GONE
+                        binding.tvVote.visibility = View.GONE
+                    }
+                }
+
+            }
+
+        }
+
+
+    }
 }

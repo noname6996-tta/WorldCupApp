@@ -32,7 +32,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     private lateinit var adapter: HistoryMatchAdapter
     var listDatesOnl = ArrayList<String>()
     var listMatchgOnl = ArrayList<Match>()
-    var id_user = "e9f0dff3-e21a-4e93-b4ce-91481246025b"
+
 
 
     override fun getDataBinding(): FragmentHistoryBinding {
@@ -63,17 +63,8 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     }
 
     override fun initData() {
-        listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
-        listMatchgOnl = Hawk.get<java.util.ArrayList<Match>>(LIST_MATCHS, java.util.ArrayList())
 
-        if (listDatesOnl.size > 0) {
-            mainViewModel.nextPageHistoryMatch.value = 0
-            mainViewModel.getHistoryMatchViaID(id_user)
-        } else {
-            binding.layoutLoading.root.visibility = View.GONE
-            binding.noItem.visibility = View.VISIBLE
-            binding.rcvList.visibility = View.INVISIBLE
-        }
+
         observe(mainViewModel.resultGuessLiveData, ::handleResultGuess)
 
     }
@@ -112,6 +103,16 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         if (userId.isNotEmpty()) {
             mainViewModel.getResultGuess(userId)
         }
+        listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
+        listMatchgOnl = Hawk.get<java.util.ArrayList<Match>>(LIST_MATCHS, java.util.ArrayList())
+        if (listMatchgOnl.size > 0) {
+            mainViewModel.nextPageHistoryMatch.value = 0
+            mainViewModel.getHistoryMatchViaID(userId)
+        } else {
+            binding.layoutLoading.root.visibility = View.GONE
+            binding.noItem.visibility = View.VISIBLE
+            binding.rcvList.visibility = View.INVISIBLE
+        }
     }
 
     /**
@@ -120,11 +121,10 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
     private fun handleResultGuess(status: Resource<ResponseResultGuess>) {
         when (status) {
             is Resource.Loading -> {
-                Log.e("Home", "handleResultGuess: Loading ")
             }
             is Resource.Success -> status.data?.let { bindResultGuess(result = it) }
             is Resource.DataError -> {
-                status.errorCode?.let { Log.e("Home", "handleResultGuess: Error " + it) }
+                status.errorCode?.let {  }
             }
         }
     }

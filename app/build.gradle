@@ -7,6 +7,9 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'kotlin-parcelize'
 }
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'com.google.firebase.firebase-perf'
 
 
 android {
@@ -192,6 +195,15 @@ dependencies {
     implementation "com.github.ntduc-let.Utils:ToastUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:StringUtils:$utilsVersion"
     implementation "com.github.ntduc-let.Utils:DateTimeUtils:$utilsVersion"
+
+    // firebase notification
+
+    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-config-ktx'
+    implementation 'com.google.firebase:firebase-perf-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
 }
 kapt {
     correctErrorTypes true
