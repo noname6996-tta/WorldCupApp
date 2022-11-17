@@ -93,11 +93,6 @@ class CameraFragment : BaseFragment<FragmentCameraBinding>() {
                 }
             }
         }
-
-        findNavController().addOnDestinationChangedListener { controller, destination, arguments ->
-            Log.d("CameraFragment", "addObservers: change to preview")
-            if (destination.id == R.id.imagePreviewFragment) hideLoadingArea()
-        }
     }
 
     private fun showLoadingArea() {
@@ -169,7 +164,6 @@ class CameraFragment : BaseFragment<FragmentCameraBinding>() {
             imageCapture = ImageCapture.Builder()
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
                 .setTargetAspectRatio(AspectRatio.RATIO_4_3)
-                .setTargetRotation(Surface.ROTATION_0)
                 .build()
 
 
