@@ -9,6 +9,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.SimulationSoundAdapter
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.ResponseSound
@@ -16,6 +17,9 @@ import com.example.worldcup2022.data.dto.worldcup.Sound
 import com.example.worldcup2022.databinding.FragmentSimulationSoundBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.callback.RewardCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,10 +36,35 @@ class SimulationSoundFragment : BaseFragment<FragmentSimulationSoundBinding>() {
     override fun addEvent() {
         super.addEvent()
         if (checkForInternet(requireContext())){
-            adpter.setClickShowMatch {
-                PlaySoundFragment.sound = it
-                val action = WcFunFragmentDirections.actionWcFunFragmentToPlaySoundFragment(1)
-                findNavController().navigate(action)
+            adpter.setClickShowMatch { sound, hasAds ->
+                if (hasAds){
+                    val callback = object : AdsCallback() {
+                        override fun onClosed() {
+                            PlaySoundFragment.sound = sound
+                            val action = WcFunFragmentDirections.actionWcFunFragmentToPlaySoundFragment(1)
+                            findNavController().navigate(action)
+                        }
+
+                        override fun onError(message: String?) {
+                            Log.d("ntduc_debug", "RewardAds onError: $message")
+                            PlaySoundFragment.sound = sound
+                            val action = WcFunFragmentDirections.actionWcFunFragmentToPlaySoundFragment(1)
+                            findNavController().navigate(action)
+                        }
+                    }
+
+                    ProxAdsConfig.instance.showRewardAds(
+                        activity = requireActivity(),
+                        id_show_ads = "id_reward_play_sound",
+                        adsId = getString(R.string.id_reward_ads),
+                        callback = callback,
+                        rewardCallback = object : RewardCallback() {}
+                    )
+                }else{
+                    PlaySoundFragment.sound = sound
+                    val action = WcFunFragmentDirections.actionWcFunFragmentToPlaySoundFragment(1)
+                    findNavController().navigate(action)
+                }
             }
         }
         else {

@@ -33,6 +33,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402746594422:android:2124d5d16ea30150f83b57",
+        "android_client_info": {
+          "package_name": "com.worldcup.soccerapp.footballapp.sportsa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402746594422-d5dk0017tr6f3m9cdu3aubf87060ompf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuRXqTbKwh2ftoWFNmXHnjuwhoM6F4Ors"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402746594422-d5dk0017tr6f3m9cdu3aubf87060ompf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

@@ -1,11 +1,13 @@
 package com.example.worldcup2022.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.LIST_MATCHS
+import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HomeMathAdapter
 import com.example.worldcup2022.data.Data.parseTime
 import com.example.worldcup2022.data.Resource
@@ -17,11 +19,16 @@ import com.example.worldcup2022.utils.UtilsKotlin
 import com.example.worldcup2022.utils.observe
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.ntduc.datetimeutils.currentMillis
+import com.ntduc.datetimeutils.getDateTimeFromMillis
 import com.orhanobut.hawk.Hawk
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.Instant
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -30,6 +37,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
     companion object {
         private const val ARG_DATE = "ARG_DATE"
     }
+
     private val mainViewModel: MainViewModel by viewModels()
     private val homeMatchAdapter = HomeMathAdapter()
     lateinit var matchs: List<Match>
@@ -57,6 +65,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
         super.addObservers()
         observe(mainViewModel.matchsLiveData, ::handleMatchsList)
     }
+
     override fun initView() {
         super.initView()
         binding.recHomeMatch.adapter = homeMatchAdapter
@@ -65,10 +74,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
         binding.recHomeMatch.layoutManager = linearLayoutManager
         setTime()
-        binding.tvAllGroup.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToHomeGroupFragment()
-            findNavController().navigate(action)
-        }
+
     }
 
     override fun initData() {
@@ -123,7 +129,10 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
     }
 
     private fun setTime() {
-        matchsOnl = Hawk.get<ArrayList<com.example.worldcup2022.data.dto.worldcup.Match>>(LIST_MATCHS, ArrayList())
+        matchsOnl = Hawk.get<ArrayList<com.example.worldcup2022.data.dto.worldcup.Match>>(
+            LIST_MATCHS,
+            ArrayList()
+        )
         val time = UtilsKotlin().parseTime(daymatch)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = time
@@ -138,8 +147,47 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
 
     override fun addEvent() {
         super.addEvent()
+        homeMatchAdapter.setOnLoadAdsListener {
+            ProxAdsConfig.instance.showNativeAds(
+                activity = requireActivity(),
+                container = it,
+                id_show_ads = "id_native_home",
+                adId = getString(R.string.id_native_ads),
+                callback = object : AdsCallback() {
+                    override fun onError(message: String?) {
+                        Log.d("ntduc_debug", "NativeAds onError: $message")
+                    }
+                }
+            )
+        }
         homeMatchAdapter.setClickShowMatch {
-            val action = HomeFragmentDirections.actionHomeFragmentToMatchFragment(it)
+            val callback = object : AdsCallback() {
+                override fun onClosed() {
+                    val action = HomeFragmentDirections.actionHomeFragmentToMatchFragment(it)
+                    findNavController().navigate(action)
+                }
+
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "InterstitialAds onError: $message")
+                    val action = HomeFragmentDirections.actionHomeFragmentToMatchFragment(it)
+                    findNavController().navigate(action)
+                }
+            }
+            if (parseTime(it.dateFormat) < currentMillis) {
+                ProxAdsConfig.instance.showInterstitialAds(
+                    activity = requireActivity(),
+                    id_show_ads = "id_inter_home_click_item_match",
+                    adsId = getString(R.string.id_inter_ads),
+                    callback = callback
+                )
+            } else {
+                val action = HomeFragmentDirections.actionHomeFragmentToMatchFragment(it)
+                findNavController().navigate(action)
+            }
+        }
+
+        binding.tvAllGroup.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToHomeGroupFragment()
             findNavController().navigate(action)
         }
     }
@@ -160,11 +208,16 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
             }
         }
     }
+
     private fun bindListData(matchs: ResponseMatch) {
         Hawk.put(LIST_MATCHS, matchs.data)
         matchsOnl = Hawk.get<ArrayList<com.example.worldcup2022.data.dto.worldcup.Match>>(LIST_MATCHS, ArrayList())
         Log.e("TAG", "bindListData: "+ matchsOnl.size )
         initData()
 
+//        arrMatchs.clear()
+//        arrMatchs.addAll(matchs.data)
+        arrMatchs.add(1, Match())
+        homeMatchAdapter.setListMatch(arrMatchs, requireContext())
     }
 }

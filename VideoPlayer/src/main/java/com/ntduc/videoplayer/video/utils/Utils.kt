@@ -9,6 +9,7 @@ import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.content.res.Configuration
@@ -357,10 +358,10 @@ object Utils {
     //Xoay Activity
     @SuppressLint("SourceLockedOrientationActivity")
     fun setOrientation(activity: Activity, orientation: Orientation?) {
+        val format = VideoPlayerActivity.player!!.videoFormat
         when (orientation) {
             Orientation.VIDEO -> if (VideoPlayerActivity.player != null) {
-                val format = VideoPlayerActivity.player!!.videoFormat
-                if (format != null && isPortrait(format)) activity.requestedOrientation =
+                if (format != null && activity.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) activity.requestedOrientation =
                     ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT else activity.requestedOrientation =
                     ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
             } else {

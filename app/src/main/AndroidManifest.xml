@@ -82,6 +82,12 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <meta-data android:name="applovin.sdk.key"
+            android:value="@string/id_sdk_applovin"/>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/id_sdk_admob" />
     </application>
 
 </manifest>

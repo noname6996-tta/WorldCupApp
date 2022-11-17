@@ -6,19 +6,24 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HomeMathAdapterBorder
 import com.example.worldcup2022.adapter.MatchGroupAdapter
 import com.example.worldcup2022.data.Resource
+import com.example.worldcup2022.data.Data
+import com.example.worldcup2022.databinding.FragmentGroupDetalsBinding
 import com.example.worldcup2022.data.dto.worldcup.Country
 import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.data.dto.worldcup.ResponseCountry
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
-import com.example.worldcup2022.databinding.FragmentGroupDetalsBinding
 import com.example.worldcup2022.ui.component.main.MainNewActivity
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
 import com.google.common.reflect.TypeToken
 import com.google.gson.Gson
+import com.ntduc.datetimeutils.currentMillis
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
@@ -57,6 +62,18 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>() {
         val linearLayoutManager2 = LinearLayoutManager(requireContext())
         linearLayoutManager2.orientation = LinearLayoutManager.VERTICAL
         binding.recAllMatch.layoutManager = linearLayoutManager2
+
+        ProxAdsConfig.instance.showNativeAds(
+            activity = requireActivity(),
+            container = binding.adContainer,
+            id_show_ads = "id_native_group_details",
+            adId = getString(R.string.id_native_ads),
+            callback = object : AdsCallback() {
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "NativeAds onError: $message")
+                }
+            }
+        )
     }
 
     override fun initData() {
@@ -100,9 +117,30 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>() {
             MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().popBackStack()
         }
-        homeMatchAdapter.setClickShowMatch {
-            val action = GroupDetalsFragmentDirections.actionGroupDetalsFragmentToMatchFragment(it)
-            findNavController().navigate(action)
+        homeMatchAdapter.setClickShowMatch{
+            val callback = object : AdsCallback() {
+                override fun onClosed() {
+                    val action = GroupDetalsFragmentDirections.actionGroupDetalsFragmentToMatchFragment(it)
+                    findNavController().navigate(action)
+                }
+
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "InterstitialAds onError: $message")
+                    val action = GroupDetalsFragmentDirections.actionGroupDetalsFragmentToMatchFragment(it)
+                    findNavController().navigate(action)
+                }
+            }
+            if (Data.parseTime(it.dateFormat) < currentMillis) {
+                ProxAdsConfig.instance.showInterstitialAds(
+                    activity = requireActivity(),
+                    id_show_ads = "id_inter_group_details_click_item_match",
+                    adsId = getString(R.string.id_inter_ads),
+                    callback = callback
+                )
+            } else {
+                val action = GroupDetalsFragmentDirections.actionGroupDetalsFragmentToMatchFragment(it)
+                findNavController().navigate(action)
+            }
         }
 
     }

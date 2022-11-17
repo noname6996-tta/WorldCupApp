@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HighlightAdapter
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Highlight
@@ -22,6 +23,8 @@ import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
 import com.ntduc.activityutils.hideKeyboard
 import com.ntduc.videoplayer.video.player.VideoPlayerActivity
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -56,6 +59,18 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
             }
         }
         binding.rcvList.layoutManager = layoutManager
+
+        ProxAdsConfig.instance.showNativeAds(
+            activity = requireActivity(),
+            container = binding.adContainer,
+            id_show_ads = "id_native_search_video_wc",
+            adId = getString(R.string.id_native_ads),
+            callback = object : AdsCallback() {
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "NativeAds onError: $message")
+                }
+            }
+        )
     }
 
     override fun addEvent() {
@@ -103,12 +118,31 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
         })
 
         adapter.setOnClickItemListener {
-            val intentOpenVideo = Intent(requireContext(), VideoPlayerActivity::class.java)
-            intentOpenVideo.setDataAndType(it.image?.toUri(), null)
-            intentOpenVideo.putExtra(VideoPlayerActivity.API_TITLE, it.name)
-            intentOpenVideo.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            startActivity(intentOpenVideo)
+            val callback = object : AdsCallback() {
+                override fun onClosed() {
+                    startPlayVideo(it)
+                }
+
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "InterstitialAds onError: $message")
+                    startPlayVideo(it)
+                }
+            }
+            ProxAdsConfig.instance.showInterstitialAds(
+                activity = requireActivity(),
+                id_show_ads = "id_inter_click_video",
+                adsId = getString(R.string.id_inter_ads),
+                callback = callback
+            )
         }
+    }
+
+    private fun startPlayVideo(video: Highlight) {
+        val intentOpenVideo = Intent(requireContext(), VideoPlayerActivity::class.java)
+        intentOpenVideo.setDataAndType(video.image?.toUri(), null)
+        intentOpenVideo.putExtra(VideoPlayerActivity.API_TITLE, video.name)
+        intentOpenVideo.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        startActivity(intentOpenVideo)
     }
 
     override fun addObservers() {

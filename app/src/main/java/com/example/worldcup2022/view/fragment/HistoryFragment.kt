@@ -19,6 +19,8 @@ import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.UtilsKotlin
 import com.example.worldcup2022.utils.observe
 import com.orhanobut.hawk.Hawk
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -56,6 +58,18 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding>() {
         adapter = HistoryMatchAdapter(requireContext())
         binding.rcvList.adapter = adapter
         binding.rcvList.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        ProxAdsConfig.instance.showNativeAds(
+            activity = requireActivity(),
+            container = binding.adContainer,
+            id_show_ads = "id_native_statistics",
+            adId = getString(R.string.id_native_ads),
+            callback = object : AdsCallback() {
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "NativeAds onError: $message")
+                }
+            }
+        )
     }
 
     override fun addObservers() {

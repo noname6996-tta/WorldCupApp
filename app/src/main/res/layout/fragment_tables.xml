@@ -43,6 +43,15 @@
                 android:src="@drawable/ruler_group"
                 app:layout_constraintStart_toEndOf="@+id/tvTables"
                 app:layout_constraintTop_toBottomOf="@+id/imgHeader"/>
+
+            <FrameLayout
+                android:id="@+id/ad_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="12dp"
+                android:background="@drawable/bg_native_ad"
+                app:layout_constraintTop_toBottomOf="@+id/tvTables" />
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardViewGroupA"
                 android:layout_width="match_parent"
@@ -53,7 +62,7 @@
                 app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTables"
+                app:layout_constraintTop_toBottomOf="@+id/ad_container"
                 app:strokeColor="#7F1431"
                 app:strokeWidth="1dp">
 

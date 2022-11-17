@@ -1,11 +1,14 @@
 package com.example.worldcup2022.view.fragment
 
+import android.util.Log
 import androidx.navigation.fragment.findNavController
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.GroupPagerAdapter
 import com.example.worldcup2022.databinding.FragemntHomegroupBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 
 class HomeGroupFragment: BaseFragment<FragemntHomegroupBinding>() {
@@ -30,6 +33,18 @@ class HomeGroupFragment: BaseFragment<FragemntHomegroupBinding>() {
         binding.viewBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        ProxAdsConfig.instance.showNativeAds(
+            activity = requireActivity(),
+            container = binding.adContainer,
+            id_show_ads = "id_native_gs_kos",
+            adId = getString(R.string.id_native_ads),
+            callback = object : AdsCallback() {
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "NativeAds onError: $message")
+                }
+            }
+        )
     }
 
     override fun initData() {

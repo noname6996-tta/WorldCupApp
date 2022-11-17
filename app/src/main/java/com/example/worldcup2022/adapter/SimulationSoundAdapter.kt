@@ -2,6 +2,7 @@ package com.example.worldcup2022.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -24,8 +25,8 @@ class SimulationSoundAdapter : RecyclerView.Adapter<SimulationSoundViewHolder>()
         notifyDataSetChanged()
     }
 
-    private var onClickSound: ((Sound) -> Unit)? = null
-    fun setClickShowMatch(sound: ((Sound) -> Unit)) {
+    private var onClickSound: ((Sound, Boolean) -> Unit)? = null
+    fun setClickShowMatch(sound: ((Sound, Boolean) -> Unit)) {
         onClickSound = sound
     }
 
@@ -36,9 +37,10 @@ class SimulationSoundAdapter : RecyclerView.Adapter<SimulationSoundViewHolder>()
             .error(R.drawable.logo).placeholder(R.drawable.logo)
             .into(holder.binding.imgSound)
 
+        holder.binding.txtAd.visibility = if (position < 5) View.GONE else View.VISIBLE
         holder.binding.imgSound.setOnClickListener {
             onClickSound?.let {
-                it(sounds[position])
+                it(sounds[position], holder.binding.txtAd.visibility == View.VISIBLE)
             }
         }
     }
@@ -49,6 +51,7 @@ class SimulationSoundAdapter : RecyclerView.Adapter<SimulationSoundViewHolder>()
 
 }
 
-class SimulationSoundViewHolder(val binding: ItemSoundBinding) : RecyclerView.ViewHolder(binding.root) {
+class SimulationSoundViewHolder(val binding: ItemSoundBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
 }

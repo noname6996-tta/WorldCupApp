@@ -18,6 +18,8 @@ import com.example.worldcup2022.R
 import com.example.worldcup2022.data.dto.worldcup.Sound
 import com.example.worldcup2022.databinding.FragmentPlaySoundBinding
 import com.example.worldcup2022.ui.component.main.MainNewActivity
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 
 import com.proxglobal.worlcupapp.base.BaseFragment
 import java.io.IOException
@@ -60,6 +62,17 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
             Log.v(TAG,"Music is streaming")
         }
 
+        ProxAdsConfig.instance.showNativeAds(
+            activity = requireActivity(),
+            container = binding.adContainer,
+            id_show_ads = "id_native_play_sound",
+            adId = getString(R.string.id_native_ads),
+            callback = object : AdsCallback() {
+                override fun onError(message: String?) {
+                    Log.d("ntduc_debug", "NativeAds onError: $message")
+                }
+            }
+        )
     }
 
     override fun addEvent() {
