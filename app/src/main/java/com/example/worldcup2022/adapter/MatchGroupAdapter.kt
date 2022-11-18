@@ -40,7 +40,7 @@ class MatchGroupAdapter : RecyclerView.Adapter<MatchGroupViewHolder>() {
         val country = countrys[position]
         holder.binding.tvNameCountry.text = country.name
         Glide.with(holder.itemView.context).load(country.image)
-            .error(R.drawable.ic_launcher_background)
+            .error(R.drawable.logo)
             .into(holder.binding.imgFlagCountry)
         holder.binding.tvNumberPlayed.text = country.played.toString()
         holder.binding.tvNumberWon.text = country.won.toString()

@@ -47,7 +47,7 @@ class StadiumSecondFragment :BaseFragment<FragmentStadiumSecondBinding>(){
                     binding.tvOpened.text = stadium.opened
                     binding.tvDescStadium.text = stadium.content
                     Glide.with(requireContext()).load(stadium.image)
-                        .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+                        .error(R.drawable.logo).placeholder(R.drawable.logo)
                         .into(binding.imgStadium)
                 }
             }

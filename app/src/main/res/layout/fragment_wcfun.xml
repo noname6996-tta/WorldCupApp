@@ -15,43 +15,90 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
+    <RelativeLayout
         android:id="@+id/view9"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/border_radius_white"
+        android:layout_height="86dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/imgHeader">
 
-    <ImageView
-        android:id="@+id/viewFirstLayout"
-        android:layout_width="0dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="2dp"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="4dp"
-        android:src="@drawable/simulation_sound"
-        app:layout_constraintBottom_toBottomOf="@+id/view9"
-        app:layout_constraintEnd_toStartOf="@+id/viewSencondLayout"
-        app:layout_constraintStart_toStartOf="@+id/view9" />
+        <View
 
-    <ImageView
-        android:id="@+id/viewSencondLayout"
-        android:layout_width="0dp"
-        android:layout_height="86dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="4dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/selfie_camera_white"
-        app:layout_constraintBottom_toBottomOf="@+id/view9"
-        app:layout_constraintStart_toEndOf="@+id/viewFirstLayout"
-        app:layout_constraintEnd_toEndOf="@+id/view9" />
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/border_radius_white"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp">
+
+            <RelativeLayout
+                android:id="@+id/rlFirstLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="43dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Simulation sound"
+                    android:textColor="#7F1431"
+                    android:textSize="13dp" />
+                <ImageView
+                    android:id="@+id/viewFirstLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/simulation_sound"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/rlSencondLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+
+                <TextView
+                    android:textSize="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="43dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Selfie camera"
+                    android:textColor="#7F1431" />
+
+                <ImageView
+                    android:id="@+id/viewSencondLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/selfie_camera"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
     <FrameLayout
         android:id="@+id/frameWcFun"

@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
 import com.example.worldcup2022.USER_ID
+import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.*
 import com.example.worldcup2022.databinding.FragmentMatchInfoBinding
@@ -26,6 +27,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import java.io.IOException
+import java.util.*
 
 @AndroidEntryPoint
 class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
@@ -158,7 +160,13 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
         val matchName = binding.tvTeam1.text.toString() + " vs " + binding.tvTeam2.text.toString() + " "
         binding.tvMatchName.text = matchName.toString()
 
-
+        val time = Data.parseTime(match.dateFormat)
+        val current = Calendar.getInstance().timeInMillis
+        if (current > time) {
+            binding.rlVote.visibility = View.GONE
+        } else {
+            binding.rlVote.visibility = View.VISIBLE
+        }
     }
 
     private fun showWhoWillWin() {
@@ -180,6 +188,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
         }
 
         binding.tvVote.setOnClickListener {
+
             dialogVote.show()
         }
 

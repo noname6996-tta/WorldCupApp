@@ -73,7 +73,7 @@ constructor(
         return when (val response =
             processCall { selfieFrameService.fetch("group=in=(player, team)", 0, 100) }) {
             is ResponseSelfieFrame -> Resource.Success(data = response)
-            else -> Resource.DataError(errorCode = (response as ResponseSelfieFrame).code)
+            else -> Resource.DataError(errorCode = (response as Int))
         }
     }
 

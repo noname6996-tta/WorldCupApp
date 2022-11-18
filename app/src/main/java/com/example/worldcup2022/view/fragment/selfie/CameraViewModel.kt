@@ -235,15 +235,24 @@ class CameraViewModel(
 }
 
 fun ImageProxy.toBitmap(): Bitmap {
+
+
     val planeProxy = planes[0]
     val buffer: ByteBuffer = planeProxy.buffer
     val bytes = ByteArray(buffer.remaining())
     buffer.get(bytes)
-    return BitmapFactory.decodeByteArray(bytes, 0, bytes.size).rotate(imageInfo.rotationDegrees)
+    return BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
 }
 
 fun Bitmap.rotate(degrees: Int): Bitmap =
+
     Bitmap.createBitmap(this, 0, 0, width, height, Matrix().apply {
-        postRotate(degrees.toFloat()) // rotate image
-        preScale(1f, -1f) // mirror image
+
+        Log.e("TAG", "rotate: $degrees" )
+        if (degrees==270){
+            postRotate(degrees.toFloat()) // rotate image
+            preScale(1f, -1f) // mirror image
+        }else if (degrees==0){
+            preScale(-1f, 1f) // mirror image
+        }
     }, true)

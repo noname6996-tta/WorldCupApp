@@ -299,22 +299,35 @@
                         android:src="@drawable/logo" />
                 </LinearLayout>
 
-                <TextView
-
-                    android:id="@+id/tvVote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <RelativeLayout
                     android:layout_below="@+id/llGuess"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/border_radius_yellow"
-                    android:fontFamily="@font/intermedium"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    android:text="@string/enter_your_prediction"
-                    android:textColor="@color/maincolor"
-                    android:textSize="12dp" />
+android:id="@+id/rlVote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+
+                        android:id="@+id/tvVote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/border_radius_yellow"
+                        android:fontFamily="@font/intermedium"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp"
+                        android:text="@string/enter_your_prediction"
+                        android:textColor="@color/maincolor"
+                        android:textSize="12dp" />
+                    <com.github.ybq.android.spinkit.SpinKitView
+                        style="@style/SpinKitView.MultiplePulse"
+                        app:SpinKit_Color="#F8E694"
+                        android:layout_centerInParent="true"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"/>
+                </RelativeLayout>
+
+
             </RelativeLayout>
 
 

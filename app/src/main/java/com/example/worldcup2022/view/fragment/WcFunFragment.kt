@@ -43,7 +43,7 @@ class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
         super.initView()
         if (reCreateBinding) {
             setView()
-            binding.viewFirstLayout.setOnClickListener {
+            binding.rlFirstLayout.setOnClickListener {
                 isViewFirst = true
                 setView()
                 val fragmentTransaction: FragmentTransaction =
@@ -52,7 +52,7 @@ class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
                 fragmentTransaction.commit()
             }
 
-            binding.viewSencondLayout.setOnClickListener {
+            binding.rlSencondLayout.setOnClickListener {
                 isViewFirst = false
                 setView()
                 val fragmentTransaction: FragmentTransaction =
@@ -74,20 +74,12 @@ class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
 
     private fun setView() {
         if (isViewFirst) {
-            binding.viewFirstLayout.setImageResource(R.drawable.simulation_sound)
-            binding.viewFirstLayout.layoutParams.height = 160
-            binding.viewSencondLayout.setImageResource(R.drawable.selfie_camera_white)
-            binding.viewSencondLayout.layoutParams.height = 90
-            binding.viewFirstLayout.requestLayout()
-            binding.viewSencondLayout.requestLayout()
+            binding.viewFirstLayout.visibility = View.VISIBLE
+            binding.viewSencondLayout.visibility = View.GONE
 
         } else {
-            binding.viewSencondLayout.setImageResource(R.drawable.selfie_camera)
-            binding.viewSencondLayout.layoutParams.height = 160
-            binding.viewFirstLayout.setImageResource(R.drawable.simulation_sound_white)
-            binding.viewFirstLayout.layoutParams.height = 90
-            binding.viewFirstLayout.requestLayout()
-            binding.viewSencondLayout.requestLayout()
+            binding.viewFirstLayout.visibility = View.GONE
+            binding.viewSencondLayout.visibility = View.VISIBLE
         }
     }
 

@@ -29,7 +29,8 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     companion object {
         lateinit var sound: Sound
     }
-    lateinit var anima : Animation
+
+    lateinit var anima: Animation
     val args: PlaySoundFragmentArgs by navArgs()
     lateinit var mediaPlayer: MediaPlayer
     lateinit var audioManager: AudioManager
@@ -41,25 +42,26 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
         super.initView()
         MainNewActivity.binding.bottomMain.visibility = View.GONE
     }
+
     override fun initData() {
         super.initData()
         val isInternet = args.isInternet
-        if (isInternet==2){
+        if (isInternet == 2) {
             mediaPlayer = MediaPlayer.create(requireContext(), com.example.worldcup2022.R.raw.drum_sound)
-        } else if (isInternet==1) {
+        } else if (isInternet == 1) {
             mediaPlayer = MediaPlayer()
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
             try {
                 mediaPlayer.setDataSource(sound.sound)
                 mediaPlayer.prepare()
-                binding.tvNameSound.text = sound.name+"  "
+                binding.tvNameSound.text = sound.name + "  "
                 Glide.with(requireContext()).load(sound.image)
-                    .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.logo).placeholder(R.drawable.logo)
                     .into(binding.imgPlay)
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-            Log.v(TAG,"Music is streaming")
+            Log.v(TAG, "Music is streaming")
         }
 
         ProxAdsConfig.instance.showNativeAds(
@@ -78,6 +80,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     override fun addEvent() {
         super.addEvent()
         binding.viewBack.setOnClickListener {
+            mediaPlayer.stop()
             MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().navigateUp()
         }
@@ -97,7 +100,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
 
     private fun playMusic() {
         mediaPlayer.start()
-        anima = AnimationUtils.loadAnimation(requireContext(),R.anim.zoom_in)
+        anima = AnimationUtils.loadAnimation(requireContext(), R.anim.zoom_in)
         anima.repeatCount = Animation.INFINITE;
         binding.imgPlay.startAnimation(anima)
     }
@@ -123,7 +126,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
         }
     }
 
-    private fun eventSeekBar(){
+    private fun eventSeekBar() {
         try {
             audioManager = requireActivity().getSystemService(Context.AUDIO_SERVICE) as AudioManager
             binding.seekBar.setMax(
@@ -147,7 +150,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
                 }
             })
 
-        } catch (e : java.lang.Exception){
+        } catch (e: java.lang.Exception) {
             e.printStackTrace()
         }
     }

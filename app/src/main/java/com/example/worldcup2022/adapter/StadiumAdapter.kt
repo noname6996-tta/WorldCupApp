@@ -37,7 +37,7 @@ class StadiumAdapter : RecyclerView.Adapter<StadiumViewHolder>() {
         holder.binding.tvStadiumLocation.text= stadium.location
         holder.binding.tvStadiumName.text = stadium.name
         Glide.with(holder.itemView.context).load(stadium.image)
-            .error(R.drawable.ic_launcher_background).placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.logo).placeholder(R.drawable.logo)
             .into(holder.binding.imgStadium)
         holder.binding.layoutStadium.setOnClickListener {
             onClickStadium?.let {

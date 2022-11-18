@@ -1,6 +1,7 @@
 package com.example.worldcup2022.data.remote
 
 import com.example.worldcup2022.BASE_URL
+import com.example.worldcup2022.BuildConfig
 import com.example.worldcup2022.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
 import com.example.worldcup2022.data.remote.moshiFactories.MyStandardJsonAdapters
 import com.squareup.moshi.Moshi
@@ -38,20 +39,15 @@ class ServiceGenerator @Inject constructor() {
         chain.proceed(request)
     }
 
-    //    private val logger: HttpLoggingInterceptor
-//        get() {
-//            val loggingInterceptor = HttpLoggingInterceptor()
-//            if (BuildConfig.DEBUG) {
-//                loggingInterceptor.apply { level = HttpLoggingInterceptor.Level.BODY }
-//            }
-//            return loggingInterceptor
-//        }
-    private val logger: HttpLoggingInterceptor
+        private val logger: HttpLoggingInterceptor
         get() {
             val loggingInterceptor = HttpLoggingInterceptor()
-            loggingInterceptor.apply { level = HttpLoggingInterceptor.Level.BODY }
+            if (BuildConfig.DEBUG) {
+                loggingInterceptor.apply { level = HttpLoggingInterceptor.Level.BODY }
+            }
             return loggingInterceptor
         }
+
 
     init {
         okHttpBuilder.addInterceptor(headerInterceptor)

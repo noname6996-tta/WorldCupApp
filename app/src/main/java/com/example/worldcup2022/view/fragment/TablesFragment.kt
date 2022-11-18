@@ -26,6 +26,7 @@ import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import java.io.IOException
 
 @AndroidEntryPoint
 class TablesFragment : BaseFragment<FragmentTablesBinding>() {
@@ -119,45 +120,45 @@ class TablesFragment : BaseFragment<FragmentTablesBinding>() {
 
     override fun initData() {
         super.initData()
-//        try {
-//            val fileInString: String =
-//                requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
-//            var countrys: List<Country> =
-//                Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
-//            for (i in 0..countrys.size - 1) {
-//                val country = countrys[i]
-//                when(countrys[i].group){
-//                    "A" -> arrCountrysA.add(countrys[i])
-//                    "B" -> arrCountrysB.add(countrys[i])
-//                    "C" -> arrCountrysC.add(countrys[i])
-//                    "D" -> arrCountrysD.add(countrys[i])
-//                    "E" -> arrCountrysE.add(countrys[i])
-//                    "F" -> arrCountrysF.add(countrys[i])
-//                    "G" -> arrCountrysG.add(countrys[i])
-//                    "H" -> arrCountrysH.add(countrys[i])
-//                    else -> {
-//
-//                    }
-//                }
-//            }
-//        } catch (e: IOException) {
-//
-//        }
-//        matchGroupAdapterA.setListMatchCountrys(arrCountrysA,requireContext())
-//        //
-//        matchGroupAdapterB.setListMatchCountrys(arrCountrysB,requireContext())
-//        //
-//        matchGroupAdapterC.setListMatchCountrys(arrCountrysC,requireContext())
-//        //
-//        matchGroupAdapterD.setListMatchCountrys(arrCountrysD,requireContext())
-//        //
-//        matchGroupAdapterE.setListMatchCountrys(arrCountrysE,requireContext())
-//        //
-//        matchGroupAdapterF.setListMatchCountrys(arrCountrysF,requireContext())
-//        //
-//        matchGroupAdapterG.setListMatchCountrys(arrCountrysG,requireContext())
-//        //
-//        matchGroupAdapterH.setListMatchCountrys(arrCountrysH,requireContext())
+        try {
+            val fileInString: String =
+                requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
+            var countrys: List<Country> =
+                Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
+            for (i in 0..countrys.size - 1) {
+                val country = countrys[i]
+                when(countrys[i].group){
+                    "A" -> arrCountrysA.add(countrys[i])
+                    "B" -> arrCountrysB.add(countrys[i])
+                    "C" -> arrCountrysC.add(countrys[i])
+                    "D" -> arrCountrysD.add(countrys[i])
+                    "E" -> arrCountrysE.add(countrys[i])
+                    "F" -> arrCountrysF.add(countrys[i])
+                    "G" -> arrCountrysG.add(countrys[i])
+                    "H" -> arrCountrysH.add(countrys[i])
+                    else -> {
+
+                    }
+                }
+            }
+        } catch (e: IOException) {
+
+        }
+        matchGroupAdapterA.setListMatchCountrys(arrCountrysA,requireContext())
+        //
+        matchGroupAdapterB.setListMatchCountrys(arrCountrysB,requireContext())
+        //
+        matchGroupAdapterC.setListMatchCountrys(arrCountrysC,requireContext())
+        //
+        matchGroupAdapterD.setListMatchCountrys(arrCountrysD,requireContext())
+        //
+        matchGroupAdapterE.setListMatchCountrys(arrCountrysE,requireContext())
+        //
+        matchGroupAdapterF.setListMatchCountrys(arrCountrysF,requireContext())
+        //
+        matchGroupAdapterG.setListMatchCountrys(arrCountrysG,requireContext())
+        //
+        matchGroupAdapterH.setListMatchCountrys(arrCountrysH,requireContext())
     }
 
     override fun addEvent() {
