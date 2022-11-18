@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.worldcup2022.app-mergeDebugResources-88:/values-notouch/values-notouch.xml",
+            "map": [
+                {
+                    "source": "D:\\Androidclass\\WorldCup2022\\VideoPlayer\\build\\intermediates\\packaged_res\\debug\\values-notouch\\values-notouch.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "184"
+                    }
+                }
+            ]
+        }
+    ]
+}

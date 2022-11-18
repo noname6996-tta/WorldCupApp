@@ -95,5 +95,4 @@
     <exclude-output />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
-  <component name="TestModuleProperties" production-module="WorldCup2022.permissionx.main" />
 </module>

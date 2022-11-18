@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+    <HorizontalScrollView
+        android:id="@+id/rlViewBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/bgchangeView"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="BGChange"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/rcBrush"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Brush"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/rcDispersion"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Dispersion"
+                android:textColor="#FFFFFF"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/rcSticker"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Sticker"
+                android:textColor="#FFFFFF"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/rcFrame"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Frame"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/rcSky"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Sky"
+                android:textColor="#FFFFFF"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/rcAdjust"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:text="Adjust"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/rcSpiral"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Spiral"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/rcDrip"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Drip"
+                android:textColor="#FFFFFF" />
+
+
+            <TextView
+                android:id="@+id/rcCrop"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:background="#588286"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Crop"
+                android:textColor="#FFFFFF" />
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+
+    <ImageView
+        android:id="@+id/imgViewBeauty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rlViewBottom"
+        android:layout_marginBottom="5dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

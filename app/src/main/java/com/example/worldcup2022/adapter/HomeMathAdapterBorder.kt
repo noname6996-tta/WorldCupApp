@@ -2,12 +2,16 @@ package com.example.worldcup2022.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
+import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.databinding.ItemMatchBorderRedBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class HomeMathAdapterBorder : RecyclerView.Adapter<HomeMatchBorderViewHolder>() {
     private var matchs: List<Match> = listOf()
@@ -37,7 +41,23 @@ class HomeMathAdapterBorder : RecyclerView.Adapter<HomeMatchBorderViewHolder>() 
                 it(matchs[position])
             }
         }
-
+        val time = Data.parseTime(match.dateFormat)
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = time
+        }.time
+        val hours = SimpleDateFormat("HH", Locale.ROOT).format(calendar)
+        val minus = SimpleDateFormat("mm", Locale.ROOT).format(calendar)
+        val trueTime = "$hours : $minus"
+        val current = Calendar.getInstance().timeInMillis
+        if (current > time) {
+            holder.binding.tvTimeMatch.visibility = View.GONE
+            holder.binding.tvTimeGoal.visibility = View.VISIBLE
+            holder.binding.tvTimeGoal.text = match.goal
+        } else {
+            holder.binding.tvTimeMatch.text = trueTime
+            holder.binding.tvTimeMatch.visibility = View.VISIBLE
+            holder.binding.tvTimeGoal.visibility = View.GONE
+        }
         holder.binding.tvGroupMatch.text = "Group " + match.group + " "
         holder.binding.tvTeam1.text = match.country1?.name.toString()
         holder.binding.tvTeam2.text = match.country2?.name.toString()

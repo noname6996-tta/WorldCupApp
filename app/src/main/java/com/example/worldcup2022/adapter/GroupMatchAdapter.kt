@@ -1,11 +1,14 @@
 package com.example.worldcup2022.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
+import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.Data.parseTime
 import com.example.worldcup2022.databinding.ItemMatchGroupBinding
 import com.example.worldcup2022.data.dto.worldcup.Country
@@ -42,6 +45,7 @@ class GroupMatchAdapter : RecyclerView.Adapter<GroupchMatchViewHolder>() {
         holder.binding.tvGroupMatch.text = "Group " + match.group + " "
 //        //
         val time = parseTime(match.dateFormat)
+
         val calendar = Calendar.getInstance().apply {
             timeInMillis = time
         }.time
@@ -61,6 +65,16 @@ class GroupMatchAdapter : RecyclerView.Adapter<GroupchMatchViewHolder>() {
             onClickMatch?.let {
                 it(matchs[position])
             }
+        }
+        val current = Calendar.getInstance().timeInMillis
+        if (current > time) {
+            holder.binding.tvTimeMatch.visibility = View.GONE
+            holder.binding.tvTimeGoal.visibility = View.VISIBLE
+            holder.binding.tvTimeGoal.text = match.goal
+        } else {
+            holder.binding.tvTimeMatch.text = trueTime
+            holder.binding.tvTimeMatch.visibility = View.VISIBLE
+            holder.binding.tvTimeGoal.visibility = View.GONE
         }
         holder.binding.tvTeam1.text = match.country1?.name.toString()
         holder.binding.tvTeam2.text = match.country2?.name.toString()

@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.ui.component.main.MainViewModel","classAnnotations":["dagger.hilt.android.lifecycle.HiltViewModel"],"interfaces":[],"superClasses":["com.example.worldcup2022.ui.base.BaseViewModel","androidx.lifecycle.ViewModel","java.lang.Object"]}
