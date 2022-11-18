@@ -91,6 +91,7 @@ constructor(
             }
         }
     }
+
     /**
      *
      */
@@ -203,6 +204,24 @@ constructor(
             }
         }
     }
+
+
+    /**
+     *
+     */
+    override suspend fun registerNoti(requestBody: RequestBody): Resource<ResponseNoti> {
+        val postGuess = serviceGenerator.createService(PushNotiService::class.java)
+        return when (val response =
+            processCall { postGuess.registerNoti(requestBody) }) {
+            is ResponseNoti -> {
+                Resource.Success(data = response as ResponseNoti)
+            }
+            else -> {
+                Resource.DataError(errorCode = response as Int)
+            }
+        }
+    }
+
 
     /**
      *

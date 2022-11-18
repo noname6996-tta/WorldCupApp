@@ -130,4 +130,10 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
             emit(remoteRepository.postGuess(requestBody))
         }.flowOn(ioDispatcher)
     }
+
+    override suspend fun registerNoti(requestBody: RequestBody): Flow<Resource<ResponseNoti>> {
+        return flow {
+            emit(remoteRepository.registerNoti(requestBody))
+        }.flowOn(ioDispatcher)
+    }
 }

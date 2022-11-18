@@ -1,10 +1,8 @@
 package com.example.worldcup2022.view.fragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -40,7 +38,6 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
 
     override fun initData() {
         super.initData()
-
 
     }
 
@@ -308,6 +305,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
 
         }
 
-
     }
+
+
 }

@@ -29,4 +29,5 @@ interface DataRepositorySource {
     suspend fun registerUser(): Flow<Resource<ResponseUser>>
     suspend fun getResultGuess(userId: String): Flow<Resource<ResponseResultGuess>>
     suspend fun postGuess(requestBody: RequestBody): Flow<Resource<ResponseGuess>>
+    suspend fun registerNoti(requestBody: RequestBody): Flow<Resource<ResponseNoti>>
 }

@@ -27,6 +27,9 @@ import com.google.gson.reflect.TypeToken
 import com.orhanobut.hawk.Hawk
 import com.proxglobal.proxads.ProxUtils
 import dagger.hilt.android.AndroidEntryPoint
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 /**
  * Created by TruyenDev on 14/11/2022.
@@ -69,6 +72,8 @@ class MainNewActivity : BaseActivity() {
             iconAppId = R.drawable.logo,
             appName = getString(R.string.app_name)
         )
+
+        registerNoti()
     }
 
     override fun observeViewModel() {
@@ -164,5 +169,17 @@ class MainNewActivity : BaseActivity() {
     private fun bindUserData(user: ResponseUser) {
         Hawk.put(USER_ID, user.data)
         Log.e("TAG", "bindUserData: " + user.data)
+    }
+
+
+    private fun registerNoti() {
+        Log.e("TAG", "registerNoti: "+ "fcm" )
+        val fcm = Hawk.get<String>("FCM", "")
+        Log.e("TAG", "registerNoti: "+ fcm )
+        val jsonObject = JSONObject()
+        jsonObject.put("deviceId", fcm)
+        val jsonObjectString = jsonObject.toString()
+        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+        mainViewModel.registerNoti(requestBody)
     }
 }
