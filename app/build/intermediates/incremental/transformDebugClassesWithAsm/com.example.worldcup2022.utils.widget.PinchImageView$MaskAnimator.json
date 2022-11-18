@@ -1,1 +1,0 @@
-{"className":"com.example.worldcup2022.utils.widget.PinchImageView$MaskAnimator","classAnnotations":[],"interfaces":["android.animation.ValueAnimator$AnimatorUpdateListener","java.lang.Cloneable"],"superClasses":["android.animation.ValueAnimator","android.animation.Animator","java.lang.Object"]}

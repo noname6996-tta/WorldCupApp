@@ -43,6 +43,12 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         MatchGroupFragment.group = match.group
 
 
+        if (match.country1Goal != null) {
+            binding.tvGoalsTeam1.text = match.country1Goal
+        }
+        if (match.country2Goal != null) {
+            binding.tvGoalsTeam2.text = match.country2Goal
+        }
         if (match.country1 != null) {
             binding.tvTeam1.text = match.country1!!.name
             Glide.with(requireContext()).load(match.country1!!.image)
