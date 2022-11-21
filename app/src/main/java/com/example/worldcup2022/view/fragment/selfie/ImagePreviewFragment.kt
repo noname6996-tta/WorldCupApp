@@ -21,6 +21,7 @@ import com.example.worldcup2022.databinding.FragmentImagePreviewBinding
 import com.example.worldcup2022.utils.dp
 import com.example.worldcup2022.utils.increaseClickArea
 import com.example.worldcup2022.utils.setOnClickListenerWithScaleAnimation
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.proxads.adsv2.callback.RewardCallback
 import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
@@ -85,6 +86,8 @@ class ImagePreviewFragment : BaseFragment<FragmentImagePreviewBinding>() {
         }
 
         binding.btnSave.setOnClickListenerWithScaleAnimation {
+            FirebaseAnalytics.getInstance(requireContext()).logEvent("Result_click_Save", Bundle())
+
             if (!isSaved){
                 ProxAdsConfig.instance.showRewardAds(
                     activity = requireActivity(),

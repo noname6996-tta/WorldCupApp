@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.worldcup2022.R
 import com.example.worldcup2022.databinding.FragmentWcfunBinding
 import com.example.worldcup2022.view.activity.MainActivity
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.proxglobal.worlcupapp.base.BaseFragment
 
 class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
@@ -44,6 +45,8 @@ class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
         if (reCreateBinding) {
             setView()
             binding.rlFirstLayout.setOnClickListener {
+                FirebaseAnalytics.getInstance(requireContext()).logEvent("Fun_click_Simulationsound", Bundle())
+
                 isViewFirst = true
                 setView()
                 val fragmentTransaction: FragmentTransaction =
@@ -53,6 +56,8 @@ class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
             }
 
             binding.rlSencondLayout.setOnClickListener {
+                FirebaseAnalytics.getInstance(requireContext()).logEvent("Fun_click_Selfiecamera", Bundle())
+
                 isViewFirst = false
                 setView()
                 val fragmentTransaction: FragmentTransaction =
@@ -60,6 +65,8 @@ class WcFunFragment : BaseFragment<FragmentWcfunBinding>() {
                 fragmentTransaction.replace(R.id.frameWcFun, SelfieCameraFragment())
                 fragmentTransaction.commit()
             }
+
+            FirebaseAnalytics.getInstance(requireContext()).logEvent("Fun_click_Simulationsound", Bundle())
 
             val fragmentTransaction: FragmentTransaction =
                 requireActivity().getSupportFragmentManager().beginTransaction()

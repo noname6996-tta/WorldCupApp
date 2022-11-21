@@ -2,6 +2,7 @@ package com.example.worldcup2022.view.fragment
 
 import android.Manifest
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +26,7 @@ import com.example.worldcup2022.databinding.FragmentSelfieCameraBinding
 import com.example.worldcup2022.databinding.ItemSelfieFrameBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.dp
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.permissionx.guolindev.PermissionX
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.proxads.adsv2.callback.RewardCallback
@@ -86,6 +88,10 @@ class SelfieCameraFragment : BaseFragment<FragmentSelfieCameraBinding>() {
             }
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
+                    val bundle = Bundle()
+                    bundle.putString("name", item.name)
+                    FirebaseAnalytics.getInstance(requireContext()).logEvent("Selfie_click_Itempicture", bundle)
+
                     if (hasAds){
                         val callback = object : AdsCallback() {
                             override fun onClosed() {

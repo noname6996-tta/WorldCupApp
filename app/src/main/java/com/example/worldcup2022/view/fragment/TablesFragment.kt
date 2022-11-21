@@ -19,6 +19,7 @@ import com.example.worldcup2022.data.dto.worldcup.Country
 import com.example.worldcup2022.data.dto.worldcup.ResponseCountry
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ntduc.datetimeutils.currentMillis
@@ -190,6 +191,8 @@ class TablesFragment : BaseFragment<FragmentTablesBinding>() {
     }
 
     private fun navigationToGroupDetalsFragment(group: String) {
+        FirebaseAnalytics.getInstance(requireContext()).logEvent("Table_GroupDetail", Bundle())
+
         val callback = object : AdsCallback() {
             override fun onClosed() {
                 val action =

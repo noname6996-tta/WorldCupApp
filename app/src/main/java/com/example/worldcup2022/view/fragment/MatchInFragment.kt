@@ -1,6 +1,7 @@
 package com.example.worldcup2022.view.fragment
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -15,6 +16,7 @@ import com.example.worldcup2022.databinding.FragmentMatchInfoBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.ui.component.vote.DiaLogVote
 import com.example.worldcup2022.utils.observe
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.orhanobut.hawk.Hawk
@@ -188,11 +190,14 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
         }
 
         binding.tvVote.setOnClickListener {
+            FirebaseAnalytics.getInstance(requireContext()).logEvent("MD_click_EnterPredict", Bundle())
 
             dialogVote.show()
         }
 
         binding.rlAdsProgressGuess.setOnClickListener {
+            FirebaseAnalytics.getInstance(requireContext()).logEvent("MD_click_Whowillwin", Bundle())
+
             ProxAdsConfig.instance.showRewardAds(
                 activity = requireActivity(),
                 id_show_ads = "id_reward_who_will_win",

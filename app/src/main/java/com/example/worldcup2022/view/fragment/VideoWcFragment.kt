@@ -2,6 +2,7 @@ package com.example.worldcup2022.view.fragment
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
@@ -22,6 +23,7 @@ import com.example.worldcup2022.data.dto.worldcup.ResponseHighlight
 import com.example.worldcup2022.databinding.FragmentVideowcBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.ntduc.activityutils.hideKeyboard
 import com.ntduc.videoplayer.video.player.VideoPlayerActivity
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
@@ -78,6 +80,10 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
         binding.btnDeleteSearch.setOnClickListener {
             binding.edtSearch.setText("")
             requireActivity().hideKeyboard()
+        }
+
+        binding.edtSearch.setOnClickListener {
+            FirebaseAnalytics.getInstance(requireContext()).logEvent("VD_click_Search", Bundle())
         }
 
         binding.edtSearch.setOnFocusChangeListener { _, hasFocus ->
@@ -139,6 +145,10 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
     }
 
     private fun startPlayVideo(video: Highlight) {
+        val bundle = Bundle()
+        bundle.putString("uri", video.image)
+        FirebaseAnalytics.getInstance(requireContext()).logEvent("VD_click_Video", bundle)
+
         val listTitle = arrayListOf<String>()
         val listUri = arrayListOf<Uri>()
 
