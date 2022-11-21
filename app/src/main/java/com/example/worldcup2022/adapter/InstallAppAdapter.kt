@@ -7,17 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
-import com.example.worldcup2022.data.dto.worldcup.Highlight
-import com.example.worldcup2022.databinding.ItemHighlightBinding
 import com.example.worldcup2022.databinding.ItemInstallAppBinding
-import com.example.worldcup2022.databinding.ItemLoadingBinding
-import java.util.*
 
 class InstallAppAdapter(
     val context: Context,
     var list: List<Int> = listOf()
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
+    private val newList: List<Int> =
+        listOf(list.last()) + list + listOf(list.first())
     private var onClickItemListener: ((pos: Int) -> Unit)? = null
     fun setOnClickItemListener(listener: ((pos: Int) -> Unit)) {
         onClickItemListener = listener
@@ -30,14 +27,14 @@ class InstallAppAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = list[position]
+        val item = newList[position]
 
-        when(holder){
+        when (holder) {
             is InstallViewHolder -> {
                 Glide.with(context)
                     .load(item)
-                    .placeholder(R.drawable.ic_loading_3x4)
-                    .error(R.drawable.ic_loading_3x4)
+                    .placeholder(R.drawable.logo)
+                    .error(R.drawable.logo)
                     .into(holder.binding.ivBanner)
 
 
@@ -51,9 +48,8 @@ class InstallAppAdapter(
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return newList.size
     }
-
 
 
     @SuppressLint("NotifyDataSetChanged")

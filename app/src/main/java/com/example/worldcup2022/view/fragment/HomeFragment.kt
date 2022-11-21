@@ -5,6 +5,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
 import com.example.worldcup2022.LIST_DATES
 import com.example.worldcup2022.LIST_MATCHS
 import com.example.worldcup2022.R
@@ -24,6 +25,7 @@ import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
@@ -193,8 +195,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
      */
     private fun setData() {
         listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
-        if (listDatesOnl.size > 0)
+
+
+        if (listDatesOnl.size > 0){
             binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOnl)
+            for (i in 0..listDatesOnl.size){
+                val currentTime = Calendar.getInstance().time
+                val endDateDay = listDatesOnl[i]
+                val format1 = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val endDate = format1.parse(endDateDay)
+               if (endDate.time > currentTime.time){
+                   binding.viewPagerHome.currentItem = i-1
+                   break
+               }
+            }
+        }
+
         else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOff)
 
         TabLayoutMediator(
@@ -225,14 +241,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
         }
         binding.vpInstallApp.adapter = adapter
+        binding.vpInstallApp.currentItem = 1
+        onInfinitePageChangeCallback(list.size + 2)
 
         val handler = Handler()
         val update = Runnable {
-            if (binding.vpInstallApp.getCurrentItem() == 1) { //adapter is your custom ViewPager's adapter
-                binding.vpInstallApp.setCurrentItem(0);
+            if (binding.vpInstallApp.currentItem ==  3) { //adapter is your custom ViewPager's adapter
+                binding.vpInstallApp.setCurrentItem(0, false)
             }
             else {
-                binding.vpInstallApp.setCurrentItem(binding.vpInstallApp.getCurrentItem() + 1, true);
+                binding.vpInstallApp.setCurrentItem(binding.vpInstallApp.currentItem + 1, true);
             }
 
         }
@@ -241,6 +259,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             override fun run() {
                 handler.post(update)
             }
-        }, 500, 2000)
+        }, 2000, 3000)
+
+
     }
+
+    private fun onInfinitePageChangeCallback(listSize: Int) {
+        binding.vpInstallApp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+
+                if (state == ViewPager2.SCROLL_STATE_IDLE) {
+                    when (binding.vpInstallApp.currentItem) {
+                        listSize - 1 -> binding.vpInstallApp.setCurrentItem(1, false)
+                        0 -> binding.vpInstallApp.setCurrentItem(listSize - 2, false)
+                    }
+                }
+            }
+
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+
+                if (position != 0 && position != listSize - 1) {
+                    // pageIndicatorView.setSelected(position-1)
+                }
+            }
+        })
+    }
+
+
 }

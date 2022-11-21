@@ -211,7 +211,6 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
     private fun bindListData(matchs: ResponseMatch) {
         Hawk.put(LIST_MATCHS, matchs.data)
         matchsOnl = Hawk.get<ArrayList<com.example.worldcup2022.data.dto.worldcup.Match>>(LIST_MATCHS, ArrayList())
-        Log.e("TAG", "bindListData: "+ matchsOnl.size )
         arrMatchs.clear()
 
         if (matchsOnl.isNotEmpty()) {

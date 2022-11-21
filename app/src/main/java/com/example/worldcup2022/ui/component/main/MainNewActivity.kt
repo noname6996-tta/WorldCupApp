@@ -173,9 +173,7 @@ class MainNewActivity : BaseActivity() {
 
 
     private fun registerNoti() {
-        Log.e("TAG", "registerNoti: "+ "fcm" )
         val fcm = Hawk.get<String>("FCM", "")
-        Log.e("TAG", "registerNoti: "+ fcm )
         val jsonObject = JSONObject()
         jsonObject.put("deviceId", fcm)
         val jsonObjectString = jsonObject.toString()
