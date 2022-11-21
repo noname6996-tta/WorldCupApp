@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="wrap_content"
@@ -32,49 +31,61 @@
         app:layout_constraintStart_toEndOf="@+id/iv_back"
         app:layout_constraintTop_toTopOf="@+id/iv_back" />
 
-    <TextView
-        android:id="@+id/textView17"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_64sdp"
         android:layout_marginBottom="@dimen/_38sdp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="Share"
-        android:textColor="@color/white"
+        app:cardBackgroundColor="@color/yellow"
+        app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_save"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:id="@+id/iv_share"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="43dp"
+            android:layout_marginVertical="12dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/share"
+            android:textColor="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_1sdp"
-        android:src="@drawable/ic_share"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
-        app:layout_constraintEnd_toEndOf="@+id/textView17"
-        app:layout_constraintStart_toStartOf="@+id/textView17" />
-
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_64sdp"
         android:layout_marginBottom="@dimen/_38sdp"
-        android:fontFamily="@font/roboto_regular"
-        android:text="@string/save"
-        android:textColor="@color/white"
+        app:cardBackgroundColor="@color/yellow"
+        app:cardCornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_share">
 
-    <ImageView
-        android:id="@+id/iv_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_1sdp"
-        android:src="@drawable/ic_download"
-        app:layout_constraintBottom_toTopOf="@+id/textView17"
-        app:layout_constraintEnd_toEndOf="@+id/textView18"
-        app:layout_constraintStart_toStartOf="@+id/textView18" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:background="@drawable/border_radius_ad_save"
+            android:fontFamily="@font/inter_medium"
+            android:paddingHorizontal="6dp"
+            android:text="@string/ad"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="43dp"
+            android:layout_marginVertical="12dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/save"
+            android:textColor="@color/white" />
+
+    </androidx.cardview.widget.CardView>
 
     <com.example.worldcup2022.utils.widget.PinchImageView
         android:id="@+id/iv_preview"

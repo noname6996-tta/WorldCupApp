@@ -1,6 +1,7 @@
 package com.example.worldcup2022.view.fragment
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.text.Editable
@@ -138,9 +139,20 @@ class VideoWcFragment : BaseFragment<FragmentVideowcBinding>() {
     }
 
     private fun startPlayVideo(video: Highlight) {
+        val listTitle = arrayListOf<String>()
+        val listUri = arrayListOf<Uri>()
+
+        adapter.list.forEach {
+            if (it.image != null && it.name != null){
+                listTitle.add(it.name)
+                listUri.add(it.image.toUri())
+            }
+        }
         val intentOpenVideo = Intent(requireContext(), VideoPlayerActivity::class.java)
+        intentOpenVideo.putParcelableArrayListExtra(VideoPlayerActivity.API_PLAYLIST, listUri)
+        intentOpenVideo.putStringArrayListExtra(VideoPlayerActivity.API_LIST_TITLE, listTitle)
         intentOpenVideo.setDataAndType(video.image?.toUri(), null)
-        intentOpenVideo.putExtra(VideoPlayerActivity.API_TITLE, video.name)
+//        intentOpenVideo.putExtra(VideoPlayerActivity.API_TITLE, video.name)
         intentOpenVideo.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         startActivity(intentOpenVideo)
     }

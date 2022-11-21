@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.FileProvider
@@ -20,6 +21,9 @@ import com.example.worldcup2022.databinding.FragmentImagePreviewBinding
 import com.example.worldcup2022.utils.dp
 import com.example.worldcup2022.utils.increaseClickArea
 import com.example.worldcup2022.utils.setOnClickListenerWithScaleAnimation
+import com.proxglobal.proxads.adsv2.callback.AdsCallback
+import com.proxglobal.proxads.adsv2.callback.RewardCallback
+import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,6 +36,8 @@ class ImagePreviewFragment : BaseFragment<FragmentImagePreviewBinding>() {
     }
 
     private lateinit var bitmap: Bitmap
+
+    var isSaved = false
 
     override fun initView() {
         super.initView()
@@ -49,8 +55,8 @@ class ImagePreviewFragment : BaseFragment<FragmentImagePreviewBinding>() {
                 .into(binding.ivPreview)
 
             binding.ivBack.increaseClickArea(20.dp)
-            binding.ivSave.increaseClickArea(10.dp)
-            binding.ivShare.increaseClickArea(10.dp)
+            binding.btnSave.increaseClickArea(10.dp)
+            binding.btnSave.increaseClickArea(10.dp)
         }
     }
 
@@ -74,12 +80,31 @@ class ImagePreviewFragment : BaseFragment<FragmentImagePreviewBinding>() {
             findNavController().navigateUp()
         }
 
-        binding.ivShare.setOnClickListenerWithScaleAnimation {
+        binding.btnShare.setOnClickListenerWithScaleAnimation {
             shareImage()
         }
 
-        binding.ivSave.setOnClickListenerWithScaleAnimation {
-            saveImage()
+        binding.btnSave.setOnClickListenerWithScaleAnimation {
+            if (!isSaved){
+                ProxAdsConfig.instance.showRewardAds(
+                    activity = requireActivity(),
+                    id_show_ads = "id_reward_click_save_selfie",
+                    adsId = getString(R.string.id_reward_ads),
+                    callback = object : AdsCallback() {
+                        override fun onClosed() {
+                            saveImage()
+                        }
+
+                        override fun onError(message: String?) {
+                            Log.d("ntduc_debug", "RewardAds onError: $message")
+                            saveImage()
+                        }
+                    },
+                    rewardCallback = object : RewardCallback() {}
+                )
+            }else{
+                saveImage()
+            }
         }
     }
 
@@ -104,6 +129,7 @@ class ImagePreviewFragment : BaseFragment<FragmentImagePreviewBinding>() {
             it.close()
         }
         Toast.makeText(requireContext(), getString(R.string.success), Toast.LENGTH_SHORT).show()
+        isSaved = true
     }
 
     private fun shareImage() {
