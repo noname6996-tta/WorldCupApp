@@ -265,7 +265,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     override fun onResume() {
         super.onResume()
         val userId = Hawk.get<String>(USER_ID, "")
-        mainViewModel.getHistoryMatchByUserIdAndID("userId==\"" + userId + "\"" + "," + "id==\"" + match.id + "\"")
+        mainViewModel.getHistoryMatchByUserIdAndID("userId==\"" + userId + "\"" + ";" + "matchId==\"" + match.id + "\"")
     }
 
     private fun handleHistoryMatchList(status: Resource<ResponseHistoryMatch>) {

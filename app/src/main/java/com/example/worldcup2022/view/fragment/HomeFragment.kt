@@ -2,6 +2,7 @@ package com.example.worldcup2022.view.fragment
 
 import android.os.CountDownTimer
 import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -39,7 +40,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     var listDatesOff = ArrayList<String>()
     var listDatesOnl = ArrayList<String>()
 
-
+    var handler: Handler? = null
+    var timer: Timer? = null
+    var update : Runnable ?=null
     override fun initView() {
         super.initView()
         MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
@@ -197,21 +200,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
 
 
-        if (listDatesOnl.size > 0){
+        if (listDatesOnl.size > 0) {
             binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOnl)
-            for (i in 0..listDatesOnl.size){
+            for (i in 0..listDatesOnl.size) {
                 val currentTime = Calendar.getInstance().time
                 val endDateDay = listDatesOnl[i]
                 val format1 = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val endDate = format1.parse(endDateDay)
-               if (endDate.time > currentTime.time){
-                   binding.viewPagerHome.currentItem = i-1
-                   break
-               }
+                if (endDate.time > currentTime.time) {
+                    binding.viewPagerHome.currentItem = i - 1
+                    break
+                }
             }
-        }
-
-        else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOff)
+        } else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOff)
 
         TabLayoutMediator(
             binding.tabLayout,
@@ -243,26 +244,25 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.vpInstallApp.adapter = adapter
         binding.vpInstallApp.currentItem = 1
         onInfinitePageChangeCallback(list.size + 2)
+        if (handler == null) {
+            handler = Handler(Looper.myLooper()!!)
+        }
 
-        val handler = Handler()
-        val update = Runnable {
-            if (binding.vpInstallApp.currentItem ==  3) { //adapter is your custom ViewPager's adapter
+         update = Runnable {
+            if (binding.vpInstallApp.currentItem == 3) { //adapter is your custom ViewPager's adapter
                 binding.vpInstallApp.setCurrentItem(0, false)
-            }
-            else {
+            } else {
                 binding.vpInstallApp.setCurrentItem(binding.vpInstallApp.currentItem + 1, true);
             }
-
+            handler!!.postDelayed(update!!, 3000)
         }
-        var timer = Timer()// This will create a new Thread
-        timer!!.schedule(object : TimerTask() {
-            override fun run() {
-                handler.post(update)
-            }
-        }, 2000, 3000)
+
+        handler!!.removeCallbacksAndMessages(null)
+        handler!!.postDelayed(update!!, 3000)
 
 
     }
+
 
     private fun onInfinitePageChangeCallback(listSize: Int) {
         binding.vpInstallApp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

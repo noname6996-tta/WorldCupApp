@@ -105,7 +105,6 @@ class SimulationSoundFragment : BaseFragment<FragmentSimulationSoundBinding>() {
     private fun handleSoundsList(status: Resource<ResponseSound>) {
         when (status) {
             is Resource.Loading -> {
-                Log.e("TAG", "handleSoundsList: Loading ")
             }
             is Resource.Success -> status.data?.let { bindListData(matchs = it) }
             is Resource.DataError -> {
