@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|top"
             android:background="@drawable/border_radius_ad_save"
-            android:fontFamily="@font/inter_medium"
+            android:fontFamily="@font/intermedium"
             android:paddingHorizontal="6dp"
             android:text="@string/ad"
             android:textColor="@color/white" />
@@ -94,7 +94,7 @@
         android:layout_marginHorizontal="@dimen/_13sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_9sdp"
-        app:layout_constraintBottom_toTopOf="@+id/iv_save"
+        app:layout_constraintBottom_toTopOf="@+id/btn_save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_back" />

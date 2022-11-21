@@ -19,8 +19,8 @@ android {
         applicationId 'com.worldcup.soccerapp.footballapp.sports'
         minSdkVersion 22
         targetSdkVersion 33
-        versionCode 14
-        versionName "1.4"
+        versionCode 15
+        versionName "1.5"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "com.task.CustomTestRunner"
     }
