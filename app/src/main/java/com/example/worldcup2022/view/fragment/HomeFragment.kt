@@ -241,6 +241,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             override fun run() {
                 handler.post(update)
             }
-        }, 500, 2000)
+        }, 3000, 2000)
     }
 }

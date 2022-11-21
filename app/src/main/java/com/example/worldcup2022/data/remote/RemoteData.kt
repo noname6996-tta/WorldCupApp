@@ -112,7 +112,7 @@ constructor(
      */
     override suspend fun requestCountry(filter: String): Resource<ResponseCountry> {
         val squadsService = serviceGenerator.createService(CountryService::class.java)
-        return when (val response = processCall { squadsService.fetchCountry(filter, 0, 100) }) {
+        return when (val response = processCall { squadsService.fetchCountry(filter, 0, 100,"point") }) {
             is ResponseCountry -> {
                 Resource.Success(data = response as ResponseCountry)
             }

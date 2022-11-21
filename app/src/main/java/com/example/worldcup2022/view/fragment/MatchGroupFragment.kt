@@ -57,6 +57,7 @@ class MatchGroupFragment : BaseFragment<FragmentMatchGroupBinding>() {
         } catch (e: IOException) {
 
         }
+
         matchGroupAdapter.setListMatchCountrys(arrCountrys,requireContext())
     }
 
@@ -102,6 +103,7 @@ class MatchGroupFragment : BaseFragment<FragmentMatchGroupBinding>() {
                 arrCountrys.add(matchs.data[i])
             }
         }
+        arrCountrys.reverse()
         matchGroupAdapter.setListMatchCountrys(arrCountrys, requireContext())
     }
 }

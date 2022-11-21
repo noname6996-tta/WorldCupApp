@@ -128,6 +128,9 @@
         <action
             android:id="@+id/action_stadiumFragment_to_stadiumSecondFragment"
             app:destination="@id/stadiumSecondFragment" />
+        <action
+            android:id="@+id/action_stadiumFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
     </fragment>
     <fragment
         android:id="@+id/stadiumSecondFragment"
@@ -140,6 +143,9 @@
         <action
             android:id="@+id/action_stadiumSecondFragment_to_stadiumFragment"
             app:destination="@id/stadiumFragment" />
+        <action
+            android:id="@+id/action_stadiumSecondFragment_to_matchFragment"
+            app:destination="@id/matchFragment" />
     </fragment>
     <fragment
         android:id="@+id/playSoundFragment"

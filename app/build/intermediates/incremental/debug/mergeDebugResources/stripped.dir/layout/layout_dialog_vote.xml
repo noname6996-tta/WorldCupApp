@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border_radius_purple"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="20dp">
+
+    <LinearLayout
+        android:id="@+id/llScores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginVertical="20dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/ivFlag1"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:src="@drawable/logo" />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/ivOctopus1"
+                android:rotation="20"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_octopus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </RelativeLayout>
+
+
+
+        <EditText
+            android:id="@+id/edtScores1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:hint="-"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="30dp" />
+
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_vs" />
+
+        <EditText
+            android:id="@+id/edtScores2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/inter_bold"
+            android:gravity="center"
+            android:hint="-"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="30dp" />
+
+
+        <RelativeLayout
+
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginVertical="20dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/ivFlag2"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:src="@drawable/logo" />
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/ivOctopus2"
+                android:rotation="20"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_octopus"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/btnOctopus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llScores"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/btn_octopus" />
+
+    <TextView
+        android:id="@+id/tvSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnOctopus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_radius_yellow"
+        android:fontFamily="@font/interregular"
+        android:gravity="center"
+        android:paddingVertical="10dp"
+        android:text="Save"
+        android:textColor="#7F1431"
+        android:textSize="12dp" />
+
+
+</RelativeLayout>

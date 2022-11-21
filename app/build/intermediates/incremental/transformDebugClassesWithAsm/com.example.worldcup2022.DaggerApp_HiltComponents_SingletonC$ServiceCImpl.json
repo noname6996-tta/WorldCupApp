@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.DaggerApp_HiltComponents_SingletonC$ServiceCImpl","classAnnotations":[],"interfaces":["dagger.hilt.android.components.ServiceComponent","dagger.hilt.internal.GeneratedComponent"],"superClasses":["com.example.worldcup2022.App_HiltComponents$ServiceC","java.lang.Object"]}

@@ -62,7 +62,6 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>() {
         val linearLayoutManager2 = LinearLayoutManager(requireContext())
         linearLayoutManager2.orientation = LinearLayoutManager.VERTICAL
         binding.recAllMatch.layoutManager = linearLayoutManager2
-
         ProxAdsConfig.instance.showNativeAds(
             activity = requireActivity(),
             container = binding.adContainer,

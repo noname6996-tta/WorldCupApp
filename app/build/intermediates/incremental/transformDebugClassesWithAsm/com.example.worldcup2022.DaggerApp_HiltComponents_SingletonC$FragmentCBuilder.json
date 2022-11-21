@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.DaggerApp_HiltComponents_SingletonC$FragmentCBuilder","classAnnotations":[],"interfaces":["com.example.worldcup2022.App_HiltComponents$FragmentC$Builder","dagger.hilt.android.internal.builders.FragmentComponentBuilder"],"superClasses":["java.lang.Object"]}

@@ -53,6 +53,8 @@ class HomeMathAdapterBorder : RecyclerView.Adapter<HomeMatchBorderViewHolder>() 
             holder.binding.tvTimeMatch.visibility = View.GONE
             holder.binding.tvTimeGoal.visibility = View.VISIBLE
             holder.binding.tvTimeGoal.text = match.goal
+            holder.binding.tvStadiumMatch.visibility = View.GONE
+            holder.binding.tvFullTime.visibility = View.VISIBLE
         } else {
             holder.binding.tvTimeMatch.text = trueTime
             holder.binding.tvTimeMatch.visibility = View.VISIBLE
@@ -63,6 +65,16 @@ class HomeMathAdapterBorder : RecyclerView.Adapter<HomeMatchBorderViewHolder>() 
         holder.binding.tvTeam2.text = match.country2?.name.toString()
         holder.binding.tvTimeMatch.text = match.time.toString()
         holder.binding.tvStadiumMatch.text = match.stadium.name.toString()
+        //
+        holder.binding.tvTimeMatch.text = trueTime
+
+        val month = SimpleDateFormat("MMM", Locale.ENGLISH).format(calendar)
+        val day = SimpleDateFormat("EEE", Locale.ENGLISH).format(calendar)
+        val date = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar)
+        val year = SimpleDateFormat("yyyy", Locale.ENGLISH).format(calendar)
+        val trueTime2 = "$day, $date $month $year "
+        //
+        holder.binding.tvDateMatch.text = trueTime2
         Glide.with(holder.itemView.context).load(match.country1?.image)
             .error(R.drawable.logo)
             .into(holder.binding.imgTeam1)
