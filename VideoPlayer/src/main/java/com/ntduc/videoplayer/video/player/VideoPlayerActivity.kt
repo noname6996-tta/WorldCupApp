@@ -6,7 +6,6 @@ import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.*
 import android.content.*
-import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.Color
 import android.graphics.Typeface
@@ -32,7 +31,6 @@ import android.widget.*
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.documentfile.provider.DocumentFile
@@ -40,6 +38,7 @@ import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.MediaItem.SubtitleConfiguration
+import com.google.android.exoplayer2.Player.REPEAT_MODE_ONE
 import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
@@ -60,6 +59,9 @@ import com.google.android.exoplayer2.util.Util
 import com.google.android.material.snackbar.Snackbar
 import com.ntduc.videoplayer.R
 import com.ntduc.videoplayer.video.player.SubtitleFinder.Companion.isUriCompatible
+import com.ntduc.videoplayer.video.player.dtpv.DoubleTapPlayerView
+import com.ntduc.videoplayer.video.player.dtpv.youtube.YouTubeOverlay
+import com.ntduc.videoplayer.video.player.dtpv.youtube.YouTubeOverlay.PerformListener
 import com.ntduc.videoplayer.video.utils.SubtitleUtils.buildSubtitle
 import com.ntduc.videoplayer.video.utils.SubtitleUtils.clearCache
 import com.ntduc.videoplayer.video.utils.SubtitleUtils.convertToUTF
@@ -69,6 +71,7 @@ import com.ntduc.videoplayer.video.utils.SubtitleUtils.findSubtitle
 import com.ntduc.videoplayer.video.utils.SubtitleUtils.findUriInScope
 import com.ntduc.videoplayer.video.utils.SubtitleUtils.isSubtitle
 import com.ntduc.videoplayer.video.utils.SubtitleUtils.normalizeFontScale
+import com.ntduc.videoplayer.video.utils.Utils
 import com.ntduc.videoplayer.video.utils.Utils.adjustVolume
 import com.ntduc.videoplayer.video.utils.Utils.alternativeChooser
 import com.ntduc.videoplayer.video.utils.Utils.deviceLanguages
@@ -76,15 +79,12 @@ import com.ntduc.videoplayer.video.utils.Utils.fileExists
 import com.ntduc.videoplayer.video.utils.Utils.formatMilis
 import com.ntduc.videoplayer.video.utils.Utils.formatMilisSign
 import com.ntduc.videoplayer.video.utils.Utils.getFileName
-import com.ntduc.videoplayer.video.utils.Utils.getNextOrientation
 import com.ntduc.videoplayer.video.utils.Utils.getRational
 import com.ntduc.videoplayer.video.utils.Utils.getSystemComponent
 import com.ntduc.videoplayer.video.utils.Utils.isPiPSupported
-import com.ntduc.videoplayer.video.utils.Utils.isPortrait
 import com.ntduc.videoplayer.video.utils.Utils.isProgressiveContainerUri
 import com.ntduc.videoplayer.video.utils.Utils.isSupportedNetworkUri
 import com.ntduc.videoplayer.video.utils.Utils.isTablet
-import com.ntduc.videoplayer.video.utils.Utils.isTvBox
 import com.ntduc.videoplayer.video.utils.Utils.markChapters
 import com.ntduc.videoplayer.video.utils.Utils.moviesFolderUri
 import com.ntduc.videoplayer.video.utils.Utils.muteVolume
@@ -96,18 +96,14 @@ import com.ntduc.videoplayer.video.utils.Utils.setViewParams
 import com.ntduc.videoplayer.video.utils.Utils.showText
 import com.ntduc.videoplayer.video.utils.Utils.switchFrameRate
 import com.ntduc.videoplayer.video.utils.Utils.toggleSystemUi
-import com.ntduc.videoplayer.video.player.dtpv.DoubleTapPlayerView
-import com.ntduc.videoplayer.video.player.dtpv.youtube.YouTubeOverlay
-import com.ntduc.videoplayer.video.player.dtpv.youtube.YouTubeOverlay.PerformListener
-import com.ntduc.videoplayer.video.utils.Utils
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import java.io.File
 import java.lang.reflect.InvocationTargetException
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.collections.ArrayList
 import kotlin.math.abs
+
 
 open class VideoPlayerActivity : Activity() {
     private var playerListener: PlayerListener? = null
@@ -121,6 +117,7 @@ open class VideoPlayerActivity : Activity() {
     var mPrefs: Prefs? = null
     private var isPlaylist = false
     private var playlist: ArrayList<Uri>? = null
+    private var listTitle: ArrayList<String>? = null
     private var currentPlaylistItems: ArrayList<MediaMetadataCompat> = ArrayList()
     private var currentPlay: Int = -1
     private var mBrightnessControl: BrightnessControl? = null
@@ -240,23 +237,29 @@ open class VideoPlayerActivity : Activity() {
             resetApiAccess()
 
             val uri = launchIntent.data
-            apiTitle = launchIntent.getStringExtra(API_TITLE)
+//            apiTitle = launchIntent.getStringExtra(API_TITLE)
             mPrefs!!.updateMedia(this, uri, type) //Lưu information Video
-//
-//            playlist = try {
-//                launchIntent.getParcelableArrayListExtra(API_PLAYLIST)
-//            } catch (e: Exception) {
-//                null
-//            }
-//            if (playlist != null) {
-//                for (i in 0 until playlist!!.size) {
-//                    if (playlist!![i] == uri) {
-//                        currentPlay = i
-//                    }
-//                }
-//            }
-//            isPlaylist = playlist != null && currentPlay != -1
-//
+
+            listTitle = try {
+                launchIntent.getStringArrayListExtra(API_LIST_TITLE)
+            } catch (e: Exception) {
+                null
+            }
+
+            playlist = try {
+                launchIntent.getParcelableArrayListExtra(API_PLAYLIST)
+            } catch (e: Exception) {
+                null
+            }
+            if (playlist != null) {
+                for (i in 0 until playlist!!.size) {
+                    if (playlist!![i] == uri) {
+                        currentPlay = i
+                    }
+                }
+            }
+            isPlaylist = playlist != null && currentPlay != -1
+
 //            //Kiểm tra video có phụ đề không
 //            if (isSubtitle(uri, type)) {
 //                handleSubtitles(uri)
@@ -316,7 +319,7 @@ open class VideoPlayerActivity : Activity() {
 
         ProxAdsConfig.instance.showNativeAds(
             activity = this,
-            container =findViewById(R.id.ad_container),
+            container = findViewById(R.id.ad_container),
             id_show_ads = "id_native_video",
             adId = "928ee81c15b27748",
             callback = object : AdsCallback() {
@@ -1261,7 +1264,17 @@ open class VideoPlayerActivity : Activity() {
         mediaSessionConnector.setPlayer(player)
 
         if (mPrefs!!.mediaUri != null) {
-            val title = getFileName(this@VideoPlayerActivity, mPrefs!!.mediaUri!!)
+            val title: String? = if (listTitle == null || listTitle!!.isEmpty()) {
+                getFileName(this, mPrefs!!.mediaUri!!)
+            } else {
+                currentPlay = player!!.currentMediaItemIndex
+
+                try {
+                    listTitle!![currentPlay]
+                } catch (e: Exception) {
+                    ""
+                }
+            }
             if (title != null) {
                 mediaSessionConnector.setMediaMetadataProvider {
                     return@setMediaMetadataProvider MediaMetadataCompat.Builder()
@@ -1327,10 +1340,21 @@ open class VideoPlayerActivity : Activity() {
             if (mPrefs!!.position == 0L || apiAccess) {
                 play = true
             }
+
             if (apiTitle != null) {
                 titleView!!.text = apiTitle
             } else {
-                titleView!!.text = getFileName(this, mPrefs!!.mediaUri!!)
+                if (listTitle == null || listTitle!!.isEmpty()) {
+                    titleView!!.text = getFileName(this, mPrefs!!.mediaUri!!)
+                } else {
+                    currentPlay = player!!.currentMediaItemIndex
+
+                    titleView!!.text = try {
+                        listTitle!![currentPlay]
+                    } catch (e: Exception) {
+                        ""
+                    }
+                }
             }
             titleView!!.visibility = View.VISIBLE
             updateButtons(true)
@@ -1355,6 +1379,7 @@ open class VideoPlayerActivity : Activity() {
             playerView!!.showController()
         }
         player!!.addListener(playerListener!!)
+        player!!.repeatMode = REPEAT_MODE_ONE
         player!!.prepare()
         if (restorePlayState) {
             restorePlayState = false
@@ -1368,7 +1393,17 @@ open class VideoPlayerActivity : Activity() {
     private fun convertPlayList(playlist: ArrayList<Uri>): ArrayList<MediaMetadataCompat> {
         val result = ArrayList<MediaMetadataCompat>()
         playlist.forEach {
-            val title = getFileName(this@VideoPlayerActivity, it)
+            val title: String? = if (listTitle == null || listTitle!!.isEmpty()) {
+                getFileName(this, it)
+            } else {
+                currentPlay = player!!.currentMediaItemIndex
+
+                try {
+                    listTitle!![currentPlay]
+                } catch (e: Exception) {
+                    ""
+                }
+            }
             result.add(
                 MediaMetadataCompat.Builder()
                     .putString(MediaMetadataCompat.METADATA_KEY_DISPLAY_TITLE, title)
@@ -1497,7 +1532,17 @@ open class VideoPlayerActivity : Activity() {
                 if (apiTitle != null) {
                     titleView!!.text = apiTitle
                 } else {
-                    titleView!!.text = getFileName(this@VideoPlayerActivity, mPrefs!!.mediaUri!!)
+                    if (listTitle == null || listTitle!!.isEmpty()) {
+                        titleView!!.text = getFileName(this@VideoPlayerActivity, mPrefs!!.mediaUri!!)
+                    } else {
+                        currentPlay = player!!.currentMediaItemIndex
+
+                        titleView!!.text = try {
+                            listTitle!![currentPlay]
+                        } catch (e: Exception) {
+                            ""
+                        }
+                    }
                 }
 
                 val duration = player!!.duration
@@ -1505,29 +1550,29 @@ open class VideoPlayerActivity : Activity() {
                 frameRendered = true
                 if (videoLoading) {
                     videoLoading = false
-                    if (getVisibilityRotation() == View.VISIBLE) {
-                        if (mPrefs!!.orientation === Utils.Orientation.UNSPECIFIED) {
-                            mPrefs!!.orientation = getNextOrientation(
-                                mPrefs!!.orientation
-                            )
-                            setOrientation(this@VideoPlayerActivity, mPrefs!!.orientation)
-                        }
-
-                        val format = player!!.videoFormat
-                        if (format != null) {
-                            if (mPrefs!!.orientation === Utils.Orientation.VIDEO) {
-                                if (isPortrait(format)) {
-                                    this@VideoPlayerActivity.requestedOrientation =
-                                        ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
-                                } else {
-                                    this@VideoPlayerActivity.requestedOrientation =
-                                        ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-                                }
-                                updateButtonRotation()
-                            }
-                            updateSubtitleViewMargin(format)
-                        }
-                    }
+//                    if (getVisibilityRotation() == View.VISIBLE) {
+//                        if (mPrefs!!.orientation === Utils.Orientation.UNSPECIFIED) {
+//                            mPrefs!!.orientation = getNextOrientation(
+//                                mPrefs!!.orientation
+//                            )
+//                            setOrientation(this@VideoPlayerActivity, mPrefs!!.orientation)
+//                        }
+//
+//                        val format = player!!.videoFormat
+//                        if (format != null) {
+//                            if (mPrefs!!.orientation === Utils.Orientation.VIDEO) {
+//                                if (isPortrait(format)) {
+//                                    this@VideoPlayerActivity.requestedOrientation =
+//                                        ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
+//                                } else {
+//                                    this@VideoPlayerActivity.requestedOrientation =
+//                                        ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+//                                }
+//                                updateButtonRotation()
+//                            }
+//                            updateSubtitleViewMargin(format)
+//                        }
+//                    }
 
                     if (duration != C.TIME_UNSET && duration > TimeUnit.MINUTES.toMillis(20)) {
                         timeBar!!.setKeyTimeIncrement(TimeUnit.MINUTES.toMillis(1))
@@ -1560,7 +1605,8 @@ open class VideoPlayerActivity : Activity() {
                             }
                             displayManager!!.registerDisplayListener(displayListener, null)
                         }
-                        switched = switchFrameRate(this@VideoPlayerActivity, mPrefs!!.mediaUri!!, play)
+                        switched =
+                            switchFrameRate(this@VideoPlayerActivity, mPrefs!!.mediaUri!!, play)
                     }
                     if (!switched) {
                         if (displayManager != null) {
@@ -2334,7 +2380,7 @@ open class VideoPlayerActivity : Activity() {
 //            }
 //        } else {
 //            if (auto) {
-                buttonRotation!!.setImageResource(getDrawableResScreenRotation())
+        buttonRotation!!.setImageResource(getDrawableResScreenRotation())
 //            } else if (portrait) {
 //                buttonRotation!!.setImageResource(getDrawableResScreenPortrait())
 //            } else {
@@ -2392,6 +2438,7 @@ open class VideoPlayerActivity : Activity() {
         const val API_TITLE = "title"
         const val API_END_BY = "end_by"
         const val API_PLAYLIST = "playlist"
+        const val API_LIST_TITLE = "list_title"
     }
 
     //Folder Open
@@ -2559,12 +2606,12 @@ open class VideoPlayerActivity : Activity() {
 
     //Next
     open fun isShowNextButton(): Boolean {
-        return false
+        return true
     }
 
     //Previous
     open fun isShowPreviousButton(): Boolean {
-        return false
+        return true
     }
 
     //FastForward

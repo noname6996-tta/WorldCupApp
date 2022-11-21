@@ -17,6 +17,7 @@ import com.example.worldcup2022.databinding.FragmentHomematchBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.UtilsKotlin
 import com.example.worldcup2022.utils.observe
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.ntduc.datetimeutils.currentMillis
@@ -160,6 +161,8 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
             )
         }
         homeMatchAdapter.setClickShowMatch {
+            FirebaseAnalytics.getInstance(requireContext()).logEvent("Home_click_Itemmatch", Bundle())
+
             val callback = object : AdsCallback() {
                 override fun onClosed() {
                     val action = HomeFragmentDirections.actionHomeFragmentToMatchFragment(it)

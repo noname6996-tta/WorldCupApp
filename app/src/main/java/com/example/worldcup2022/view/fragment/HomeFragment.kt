@@ -1,5 +1,6 @@
 package com.example.worldcup2022.view.fragment
 
+import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
@@ -21,6 +22,7 @@ import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.UtilsKotlin
 import com.example.worldcup2022.utils.observe
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.orhanobut.hawk.Hawk
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -211,7 +213,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     break
                 }
             }
-        } else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle, listDatesOnl)
+        } else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle, listDatesOff)
 
 
         TabLayoutMediator(
@@ -235,7 +237,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         list.add(R.drawable.ic_banner_2)
         adapter = InstallAppAdapter(requireContext(), list)
         adapter.setOnClickItemListener {
+            FirebaseAnalytics.getInstance(requireContext()).logEvent("Home_click_adbanner", Bundle())
             if (it %2== 0) {
+
                 UtilsKotlin().openApp(requireActivity(), "com.screen.mirroring.miracast.tv.cast.smart.view")
             } else {
                 UtilsKotlin().openApp(requireActivity(), "com.last.fm.live.radio.stations")

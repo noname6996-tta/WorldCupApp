@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ import com.example.worldcup2022.data.dto.worldcup.Sound
 import com.example.worldcup2022.databinding.FragmentSimulationSoundBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.proxads.adsv2.callback.RewardCallback
 import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
@@ -37,6 +39,10 @@ class SimulationSoundFragment : BaseFragment<FragmentSimulationSoundBinding>() {
         super.addEvent()
         if (checkForInternet(requireContext())){
             adpter.setClickShowMatch { sound, hasAds ->
+                val bundle = Bundle()
+                bundle.putString("name", sound.name)
+                FirebaseAnalytics.getInstance(requireContext()).logEvent("Sound_click_Itemsound", bundle)
+
                 if (hasAds){
                     val callback = object : AdsCallback() {
                         override fun onClosed() {
