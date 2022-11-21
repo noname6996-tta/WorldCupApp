@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.worldcup2022.R
+import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.dto.worldcup.MyHistoryMatch
 import com.example.worldcup2022.databinding.*
 import com.ntduc.stringutils.highlight
+import java.text.SimpleDateFormat
 import java.util.*
 
 class HistoryMatchAdapter(
@@ -78,7 +80,15 @@ class HistoryMatchAdapter(
                     txtGroup.text = "Group ${item.match.group}"
                     txtTeam1.text = item.match.country1?.name
                     txtTeam2.text = item.match.country2?.name
-                    txtTime.text = item.match.time
+
+                    val time = Data.parseTime(item.match.dateFormat)
+                    val calendar = Calendar.getInstance().apply {
+                        timeInMillis = time
+                    }.time
+                    val hours = SimpleDateFormat("HH", Locale.ROOT).format(calendar)
+                    val minus = SimpleDateFormat("mm", Locale.ROOT).format(calendar)
+                    val trueTime = "$hours : $minus"
+                    txtTime.text = trueTime
 
                     txtGuess.text =
                         "${context.getString(R.string.guess)}: ${item.historyMatch.goal}".highlight(
