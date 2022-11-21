@@ -235,7 +235,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         list.add(R.drawable.ic_banner_2)
         adapter = InstallAppAdapter(requireContext(), list)
         adapter.setOnClickItemListener {
-            if (it == 0) {
+            if (it %2== 0) {
                 UtilsKotlin().openApp(requireActivity(), "com.screen.mirroring.miracast.tv.cast.smart.view")
             } else {
                 UtilsKotlin().openApp(requireActivity(), "com.last.fm.live.radio.stations")

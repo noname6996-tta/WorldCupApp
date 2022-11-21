@@ -18,5 +18,7 @@ data class Highlight(
     @Json(name = "group")
     val group: String? = null,
     @Json(name = "image")
-    val image: String? = null
+    val image: String? = null,
+    @Json(name = "thumbnail")
+    val thumbnail: String? = null
 ) : Parcelable

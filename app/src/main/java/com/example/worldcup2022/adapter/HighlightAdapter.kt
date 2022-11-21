@@ -45,7 +45,7 @@ class HighlightAdapter(
         when(holder){
             is HighlightViewHolder -> {
                 Glide.with(context)
-                    .load(item.image)
+                    .load(item.thumbnail)
                     .placeholder(R.drawable.ic_loading_3x4)
                     .override(200,200)
                     .error(R.drawable.ic_loading_3x4)
