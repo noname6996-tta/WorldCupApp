@@ -39,7 +39,6 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         super.initData()
         MainNewActivity.binding.bottomMain.visibility = View.GONE
         var match: Match = args.objectMatch
-        matchFragment = args.objectMatch
         MatchGroupFragment.group = match.group
 
 
@@ -140,6 +139,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
 
     override fun initView() {
         super.initView()
+        matchFragment = args.objectMatch
         MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
         binding.viewPagerMatch.adapter = MatchPagerAdapter(requireActivity())
         TabLayoutMediator(binding.tabLayoutMatch,

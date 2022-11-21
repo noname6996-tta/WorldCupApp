@@ -144,7 +144,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                     binding.tvNameSatdium.text = stadium.name
                     binding.tvLocationMatchStadium.text = stadium.location
                     Glide.with(requireContext()).load(stadium.image)
-
+                        .override(500, 500)
                         .error(R.drawable.logo).placeholder(R.drawable.logo)
                         .into(binding.imgStadium)
                 }

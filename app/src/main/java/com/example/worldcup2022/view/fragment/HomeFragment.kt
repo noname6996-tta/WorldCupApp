@@ -194,8 +194,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun setData() {
         listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
         if (listDatesOnl.size > 0)
-            binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOnl)
-        else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOff)
+            binding.viewPagerHome.adapter = HomeMatchPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle, listDatesOnl)
+        else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle, listDatesOff)
 
         TabLayoutMediator(
             binding.tabLayout,
