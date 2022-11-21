@@ -199,9 +199,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private fun setData() {
         listDatesOnl = Hawk.get<ArrayList<String>>(LIST_DATES, ArrayList())
 
-
         if (listDatesOnl.size > 0) {
-            binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOnl)
+            binding.viewPagerHome.adapter = HomeMatchPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle, listDatesOnl)
             for (i in 0..listDatesOnl.size) {
                 val currentTime = Calendar.getInstance().time
                 val endDateDay = listDatesOnl[i]
@@ -212,7 +211,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     break
                 }
             }
-        } else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(requireActivity(), listDatesOff)
+        } else binding.viewPagerHome.adapter = HomeMatchPagerAdapter(childFragmentManager, viewLifecycleOwner.lifecycle, listDatesOnl)
+
 
         TabLayoutMediator(
             binding.tabLayout,

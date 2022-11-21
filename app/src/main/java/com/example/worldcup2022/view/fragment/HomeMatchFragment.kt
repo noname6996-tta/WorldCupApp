@@ -227,7 +227,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
                     arrMatchs.add(matchsOnl[i])
                 }
             }
-            arrMatchs.add(1, Match())
+            if (arrMatchs.isNotEmpty()) arrMatchs.add(1, Match())
             homeMatchAdapter.setListMatch(arrMatchs, requireContext())
         }
     }
