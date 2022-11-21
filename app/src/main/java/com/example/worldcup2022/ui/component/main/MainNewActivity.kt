@@ -1,5 +1,6 @@
 package com.example.worldcup2022.ui.component.main
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -22,10 +23,14 @@ import com.example.worldcup2022.databinding.ActivityMainBinding
 import com.example.worldcup2022.ui.base.BaseActivity
 import com.example.worldcup2022.utils.observe
 import com.google.android.material.navigation.NavigationBarView
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.orhanobut.hawk.Hawk
 import com.proxglobal.proxads.ProxUtils
+import com.proxglobal.rate.ProxRateConfig
+import com.proxglobal.rate.ProxRateDialog
+import com.proxglobal.rate.RatingDialogListener
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -37,6 +42,7 @@ import org.json.JSONObject
 @AndroidEntryPoint
 class MainNewActivity : BaseActivity() {
     lateinit var navController: NavController
+    lateinit var navHostFragment: NavHostFragment
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val mainViewModel: MainViewModel by viewModels()
 
@@ -94,8 +100,7 @@ class MainNewActivity : BaseActivity() {
     }
 
     private fun initUi() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.navMain) as NavHostFragment
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.navMain) as NavHostFragment
         navController = navHostFragment.findNavController()
 
         val mNavigationItemSelected = object : NavigationBarView.OnItemSelectedListener {
@@ -147,6 +152,87 @@ class MainNewActivity : BaseActivity() {
         binding.bottomMain.setupWithNavController(navController)
         binding.bottomMain.apply {
             setOnItemSelectedListener(mNavigationItemSelected)
+        }
+        initDialogRate()
+
+        val sp = getSharedPreferences("prox", Context.MODE_PRIVATE)
+        var count_start = sp.getInt("key_count_start", 1)
+        if (count_start > 1) {
+            try {
+                ProxRateDialog.showIfNeed(this, supportFragmentManager)
+            } catch (e: Exception) {
+            }
+        }
+        count_start++
+        sp.edit().putInt("key_count_start", count_start).apply()
+    }
+
+    private fun initDialogRate() {
+        val config = ProxRateConfig()
+        config.listener = object : RatingDialogListener() {
+            override fun onSubmitButtonClicked(rate: Int, comment: String) {
+                val bundle = Bundle()
+                bundle.putString("event_type", "rated")
+                bundle.putString("comment", comment)
+                bundle.putString("star", "$rate star")
+                FirebaseAnalytics.getInstance(this@MainNewActivity)
+                    .logEvent("prox_rating_layout", bundle)
+            }
+
+            override fun onLaterButtonClicked() {
+                val bundle = Bundle()
+                bundle.putString("event_type", "cancel")
+                FirebaseAnalytics.getInstance(this@MainNewActivity)
+                    .logEvent("prox_rating_layout", bundle)
+
+                if (isExit) {
+                    finish()
+                }
+            }
+
+            override fun onChangeStar(rate: Int) {
+                if (rate >= 4) {
+                    val bundle = Bundle()
+                    bundle.putString("event_type", "rated")
+                    bundle.putString("star", "$rate star")
+                    FirebaseAnalytics.getInstance(this@MainNewActivity)
+                        .logEvent("prox_rating_layout", bundle)
+
+                    if (isExit) {
+                        finish()
+                    }
+                }
+            }
+
+            override fun onDone() {
+                if (isExit) {
+                    finish()
+                }
+            }
+        }
+        ProxRateDialog.init()
+        ProxRateDialog.setConfig(config)
+    }
+
+    private var isExit = false
+    override fun onBackPressed() {
+        val backStackEntryCount = navHostFragment.childFragmentManager.backStackEntryCount
+        if (backStackEntryCount > 0) {
+            if (!navController.popBackStack()) {
+                finish()
+            }
+            return
+        } else {
+            if (!ProxRateDialog.isRated(this)) {
+                isExit = true
+                try {
+                    ProxRateDialog.showAlways(supportFragmentManager)
+                } catch (e: Exception) {
+                    finish()
+                }
+            } else {
+                finish()
+            }
         }
     }
 
