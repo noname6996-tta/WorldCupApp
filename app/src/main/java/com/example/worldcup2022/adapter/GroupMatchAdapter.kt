@@ -71,6 +71,8 @@ class GroupMatchAdapter : RecyclerView.Adapter<GroupchMatchViewHolder>() {
             holder.binding.tvTimeMatch.visibility = View.GONE
             holder.binding.tvTimeGoal.visibility = View.VISIBLE
             holder.binding.tvTimeGoal.text = match.goal
+            holder.binding.tvStadiumMatch.visibility = View.GONE
+            holder.binding.tvFullTime.visibility = View.VISIBLE
         } else {
             holder.binding.tvTimeMatch.text = trueTime
             holder.binding.tvTimeMatch.visibility = View.VISIBLE

@@ -54,200 +54,192 @@
             <View
                 android:id="@+id/viewBack"
                 android:layout_width="86dp"
-                android:layout_height="0dp"
+                android:layout_height="40dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvGroupname"
                 app:layout_constraintEnd_toEndOf="@+id/tvGroupname"
                 app:layout_constraintStart_toStartOf="@+id/imgbackGroup"
                 app:layout_constraintTop_toTopOf="@+id/tvGroupname" />
 
-
-            <ImageView
-                android:id="@+id/view2"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewMatch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="10dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/match_header"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/border_radius_purple_20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvGroupname" />
+                app:layout_constraintTop_toBottomOf="@+id/viewBack">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:fontFamily="@font/inter_bold"
-                android:text="@string/fifa_world_cup_2022"
-                android:textColor="@color/white"
-                android:textFontWeight="400"
-                android:textSize="14dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/view2" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/draw"
 
-            <TextView
-                android:id="@+id/tvGroupName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/intermedium"
-                android:text="@string/group_a"
-                android:textColor="@color/gray2"
-                android:textSize="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    app:layout_constraintBottom_toBottomOf="@+id/layoutMatch"
+                    app:layout_constraintEnd_toEndOf="@+id/layoutMatch"
+                    app:layout_constraintStart_toStartOf="@+id/layoutMatch"
+                    app:layout_constraintTop_toTopOf="@+id/layoutMatch" />
 
-            <TextView
-                android:id="@+id/tvTimeMatch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_extrabold"
-                android:text="@string/time"
-                android:textColor="@color/white"
-                android:textFontWeight="400"
-                android:textSize="20dp"
-                app:layout_constraintBottom_toBottomOf="@+id/view2"
-                app:layout_constraintEnd_toEndOf="@+id/view2"
-                app:layout_constraintStart_toStartOf="@+id/view2"
-                app:layout_constraintTop_toTopOf="@+id/view2" />
-
-            <TextView
-                android:id="@+id/tvGoal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/inter_extrabold"
-                android:text="@string/time"
-                android:textColor="@color/white"
-                android:textFontWeight="400"
-                android:textSize="20dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/view2"
-                app:layout_constraintEnd_toEndOf="@+id/view2"
-                app:layout_constraintStart_toStartOf="@+id/view2"
-                app:layout_constraintTop_toTopOf="@+id/view2" />
-
-            <TextView
-                android:id="@+id/tvDateMatchGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:fontFamily="@font/intermedium"
-                android:text="@string/sun_nov_20"
-                android:textColor="@color/gray2"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvTimeMatch"
-                app:layout_constraintEnd_toEndOf="@+id/view2"
-                app:layout_constraintStart_toStartOf="@+id/view2" />
-
-            <TextView
-                android:id="@+id/tvStadiumMatch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
-                android:maxWidth="100dp"
-                android:maxLines="2"
-                android:text="@string/ai_bay_stadium"
-                android:textColor="@color/gray2"
-                android:textSize="12dp"
-                app:layout_constraintEnd_toStartOf="@+id/imgTeam2"
-                app:layout_constraintStart_toEndOf="@+id/imgteam1"
-                app:layout_constraintTop_toBottomOf="@+id/tvTimeMatch" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgteam1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="26dp"
-                android:layout_marginBottom="90dp"
-                android:src="@drawable/ic_launcher_background"
-                app:layout_constraintBottom_toBottomOf="@+id/view2"
-                app:layout_constraintStart_toStartOf="@+id/view2" />
-
-            <TextView
-                android:id="@+id/tvTeam1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/inter_bold"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/imgteam1"
-                app:layout_constraintStart_toStartOf="@+id/imgteam1"
-                app:layout_constraintTop_toBottomOf="@+id/imgteam1" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/inter_bold"
-                android:orientation="horizontal"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTeam1">
-
-                <TextView
-                    android:textSize="12dp"
-                    android:maxLines="3"
-                    android:ellipsize="marquee"
-                    android:id="@+id/tvGoalsTeam1"
+                <LinearLayout
+                    android:id="@+id/layoutMatch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:textColor="@color/white" />
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
 
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="@string/fifa_world_cup_2022"
+                        android:textColor="@color/white"
+                        android:textFontWeight="400"
+                        android:textSize="14dp" />
 
-                <TextView
-                    android:textSize="12dp"
-                    android:maxLines="3"
-                    android:ellipsize="marquee"
-                    android:id="@+id/tvGoalsTeam2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:textColor="@color/white" />
+                    <TextView
+                        android:id="@+id/tvGroupName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/intermedium"
+                        android:text="@string/group_a"
+                        android:textColor="@color/gray2"
+                        android:textSize="12dp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="3">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgTeam2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginEnd="26dp"
-                android:layout_marginBottom="90dp"
-                android:src="@drawable/ic_launcher_background"
-                app:layout_constraintBottom_toBottomOf="@+id/view2"
-                app:layout_constraintEnd_toEndOf="@+id/view2" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvTeam2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/inter_bold"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="@+id/imgTeam2"
-                app:layout_constraintStart_toStartOf="@+id/imgTeam2"
-                app:layout_constraintTop_toBottomOf="@+id/imgTeam2" />
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgteam1"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="30dp"
+                                android:src="@drawable/logo" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="14dp"
-                android:src="@drawable/bell_match_faluse"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/view2"
-                app:layout_constraintTop_toTopOf="@+id/view2" />
+                            <TextView
+                                android:id="@+id/tvTeam1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Netherlands"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tvGoalsTeam1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:text="adasdasdasda"
+                                android:layout_marginRight="2dp"
+                                android:layout_marginLeft="2dp"
+                                android:textColor="#FFFFFF"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvDateMatchGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="38dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/intermedium"
+                                android:text="@string/sun_nov_20"
+                                android:textColor="@color/gray2"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/tvTimeMatch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_extrabold"
+                                android:text="@string/time"
+                                android:textColor="@color/white"
+                                android:textFontWeight="400"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/tvGoal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_extrabold"
+                                android:text="@string/time"
+                                android:textColor="@color/white"
+                                android:textFontWeight="400"
+                                android:textSize="20dp"
+                                android:visibility="gone"/>
+
+                            <TextView
+                                android:id="@+id/tvStadiumMatch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:maxWidth="100dp"
+                                android:maxLines="2"
+                                android:text="@string/ai_bay_stadium"
+                                android:textColor="@color/gray2"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgteam2"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="30dp"
+                                android:src="@drawable/logo" />
+
+                            <TextView
+                                android:id="@+id/tvTeam2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Ecuador"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tvGoalsTeam2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="6dp"
+                                android:layout_marginRight="2dp"
+                                android:layout_marginLeft="2dp"
+                                android:text="adasdasdasda"
+                                android:textColor="#FFFFFF"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayoutMatch"
@@ -258,7 +250,7 @@
                 android:scrollbars="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:layout_constraintTop_toBottomOf="@+id/viewMatch"
                 app:tabIndicator="@drawable/tab_indicator"
                 app:tabIndicatorColor="@color/maincolor"
                 app:tabIndicatorGravity="bottom"

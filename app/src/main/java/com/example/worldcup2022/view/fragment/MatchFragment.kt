@@ -44,9 +44,12 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
 
 
         if (match.country1Goal != null) {
+            binding.tvGoalsTeam1.visibility = View.VISIBLE
             binding.tvGoalsTeam1.text = match.country1Goal
+
         }
         if (match.country2Goal != null) {
+            binding.tvGoalsTeam2.visibility = View.VISIBLE
             binding.tvGoalsTeam2.text = match.country2Goal
         }
         if (match.country1 != null) {
@@ -59,7 +62,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
             Glide.with(requireContext()).load(match.country2!!.image)
                 .error(R.drawable.logo).placeholder(R.drawable.logo)
                 .override(100, 100)
-                .into(binding.imgTeam2)
+                .into(binding.imgteam2)
         } else {
             try {
                 val fileInString: String =
@@ -81,7 +84,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
                         Glide.with(requireContext()).load(country.image)
                             .error(R.drawable.logo).placeholder(R.drawable.logo)
                             .override(100, 100)
-                            .into(binding.imgTeam2)
+                            .into(binding.imgteam2)
                     }
                 }
             } catch (e: IOException) {
@@ -180,7 +183,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
             val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country!!)
             findNavController().navigate(action)
         }
-        binding.imgTeam2.setOnClickListener {
+        binding.imgteam2.setOnClickListener {
             var country = args.objectMatch.country2
             val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country!!)
             findNavController().navigate(action)

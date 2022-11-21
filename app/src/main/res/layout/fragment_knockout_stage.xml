@@ -45,12 +45,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgA1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgB2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -119,12 +121,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgC1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgD2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -193,12 +197,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgE1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgF2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -267,12 +273,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgG1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgH2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -413,12 +421,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -487,12 +497,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team3"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team4"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -599,12 +611,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_2team1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_2team2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -712,12 +726,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img3placeTeam1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img3placeTeam2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -787,12 +803,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgFinal1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgFinal2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -900,12 +918,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_2team3"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_2team4"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -1003,12 +1023,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team5"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team6"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -1087,12 +1109,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team7"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img1_4team8"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -1236,12 +1260,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgB1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgA2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -1312,12 +1338,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgD1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgC2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -1385,12 +1413,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgF1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgE2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />
@@ -1458,12 +1488,14 @@
                     android:gravity="center">
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgH1"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_marginRight="14dp"
                         android:src="@drawable/logo" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgG2"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:src="@drawable/logo" />

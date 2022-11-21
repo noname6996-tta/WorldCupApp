@@ -8,5 +8,5 @@ import retrofit2.http.Query
 
 interface CountryService {
     @GET("country/search")
-    suspend fun fetchCountry(@Query("filter") filter: String, @Query("pageIndex") pageIndex: Int, @Query("pageSize") pageSize: Int): Response<ResponseCountry>
+    suspend fun fetchCountry(@Query("filter") filter: String, @Query("pageIndex") pageIndex: Int, @Query("pageSize") pageSize: Int, @Query("sort") sort : String): Response<ResponseCountry>
 }

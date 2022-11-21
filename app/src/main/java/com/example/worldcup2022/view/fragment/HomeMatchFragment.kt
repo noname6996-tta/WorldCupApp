@@ -223,7 +223,6 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
                     timeInMillis = UtilsKotlin().parseTime(daymatch)
                 }.time
                 val day2 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar2)
-
                 if (day1.equals(day2)) {
                     arrMatchs.add(matchsOnl[i])
                 }

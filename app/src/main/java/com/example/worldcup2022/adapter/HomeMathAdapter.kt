@@ -58,7 +58,7 @@ class HomeMathAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when (holder) {
             is HomeMatchViewHolder -> {
                 holder.binding.tvGroupMatch.text = "Group " + match.group + " "
-        holder.binding.tvGroupMatch.text = "Group " + match.group + " "
+                holder.binding.tvGroupMatch.text = "Group " + match.group + " "
 
                 if (match.country1 != null) {
                     holder.binding.tvTeam1.text = match.country1?.name
@@ -137,6 +137,8 @@ class HomeMathAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     holder.binding.tvTimeMatch.visibility = View.GONE
                     holder.binding.tvTimeGoal.visibility = View.VISIBLE
                     holder.binding.tvTimeGoal.text = match.goal
+                    holder.binding.tvStadiumMatch.visibility = View.GONE
+                    holder.binding.tvFullTime.visibility = View.VISIBLE
                 } else {
                     holder.binding.tvTimeMatch.text = trueTime
                     holder.binding.tvTimeMatch.visibility = View.VISIBLE

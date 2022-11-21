@@ -285,6 +285,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
             }
         })
+
     }
 
 

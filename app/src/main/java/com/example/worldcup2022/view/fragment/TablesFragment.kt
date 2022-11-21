@@ -2,31 +2,25 @@ package com.example.worldcup2022.view.fragment
 
 import android.util.Log
 import androidx.fragment.app.viewModels
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.MatchGroupAdapter
 import com.example.worldcup2022.data.Resource
-import com.example.worldcup2022.data.Data
-import com.example.worldcup2022.databinding.FragmentHomeBinding
-import com.example.worldcup2022.databinding.FragmentTablesBinding
 import com.example.worldcup2022.data.dto.worldcup.Country
 import com.example.worldcup2022.data.dto.worldcup.ResponseCountry
+import com.example.worldcup2022.databinding.FragmentTablesBinding
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.ntduc.datetimeutils.currentMillis
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
 import com.proxglobal.proxads.adsv2.remote_config.ProxAdsConfig
 import com.proxglobal.worlcupapp.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
+import java.util.*
+
 
 @AndroidEntryPoint
 class TablesFragment : BaseFragment<FragmentTablesBinding>() {
@@ -263,20 +257,28 @@ class TablesFragment : BaseFragment<FragmentTablesBinding>() {
                 }
             }
         }
+        arrCountrysA.reverse()
         matchGroupAdapterA.setListMatchCountrys(arrCountrysA, requireContext())
         //
+        arrCountrysB.reverse()
         matchGroupAdapterB.setListMatchCountrys(arrCountrysB, requireContext())
         //
+        arrCountrysC.reverse()
         matchGroupAdapterC.setListMatchCountrys(arrCountrysC, requireContext())
         //
+        arrCountrysD.reverse()
         matchGroupAdapterD.setListMatchCountrys(arrCountrysD, requireContext())
         //
+        arrCountrysE.reverse()
         matchGroupAdapterE.setListMatchCountrys(arrCountrysE, requireContext())
         //
+        arrCountrysF.reverse()
         matchGroupAdapterF.setListMatchCountrys(arrCountrysF, requireContext())
         //
+        arrCountrysG.reverse()
         matchGroupAdapterG.setListMatchCountrys(arrCountrysG, requireContext())
         //
+        arrCountrysH.reverse()
         matchGroupAdapterH.setListMatchCountrys(arrCountrysH, requireContext())
     }
 }

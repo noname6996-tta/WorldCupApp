@@ -29,7 +29,7 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     companion object {
         lateinit var sound: Sound
     }
-
+    var isPlay = false
     lateinit var anima: Animation
     val args: PlaySoundFragmentArgs by navArgs()
     lateinit var mediaPlayer: MediaPlayer
@@ -84,16 +84,28 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
             MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().navigateUp()
         }
-        binding.imgPlay.setOnPressListener(
-            onPress = {
+//        binding.imgPlay.setOnPressListener(
+//            onPress = {
+//                playMusic()
+//                mediaPlayer.isLooping = true;
+//                anima.repeatCount = 100000
+//            },
+//            onRelease = {
+//                stopPlayMusic()
+//            }
+//        )
+        binding.imgPlay.setOnClickListener {
+            if (isPlay == false){
+                isPlay = true
                 playMusic()
-                mediaPlayer.isLooping = true;
-                anima.repeatCount = 100000
-            },
-            onRelease = {
+                mediaPlayer.isLooping = true
+                anima.repeatCount = Animation.INFINITE;
+                anima.setRepeatMode(Animation.INFINITE)
+            } else {
+                isPlay = false
                 stopPlayMusic()
             }
-        )
+        }
         eventSeekBar()
 
     }
@@ -101,7 +113,6 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
     private fun playMusic() {
         mediaPlayer.start()
         anima = AnimationUtils.loadAnimation(requireContext(), R.anim.zoom_in)
-        anima.repeatCount = Animation.INFINITE;
         binding.imgPlay.startAnimation(anima)
     }
 

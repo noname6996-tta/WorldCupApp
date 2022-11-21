@@ -3,22 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/maincolor"
-    android:layout_height="156dp">
+    android:layout_height="156dp"
+    android:background="@color/maincolor">
 
     <TextView
         android:id="@+id/tvDateMatchGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/inter_bold"
         android:text="Sun Nov 20, 2022"
         android:textColor="@color/white"
         android:textSize="12dp"
         android:textStyle="italic"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView2"
         app:layout_constraintStart_toStartOf="parent" />
+
     <View
         android:layout_width="240dp"
         android:layout_height="14dp"
@@ -70,22 +71,22 @@
                 android:id="@+id/tvTimeMatch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
                 android:fontFamily="@font/inter_bold"
                 android:text="00:00"
                 android:textColor="#FF2626"
                 android:textFontWeight="700"
                 android:textSize="12dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <TextView
                 android:id="@+id/tvStadiumMatch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/inter"
                 android:maxWidth="200dp"
                 android:maxLines="1"
@@ -93,82 +94,99 @@
                 android:textColor="@color/black"
                 android:textFontWeight="400"
                 android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgTeam1" />
+
+            <TextView
+                android:id="@+id/tvFullTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter"
+                android:maxWidth="200dp"
+                android:maxLines="1"
+                android:visibility="gone"
+                android:text="Full Time"
+                android:textColor="@color/black"
+                android:textFontWeight="400"
+                android:textSize="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgTeam1" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgTeam1"
-                app:civ_border_color="@color/maincolor"
-                app:civ_border_width="1dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
                 android:src="@drawable/ic_launcher_background"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tvTimeMatch"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:civ_border_color="@color/maincolor"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgTeam2"
-                app:civ_border_color="@color/maincolor"
-                app:civ_border_width="1dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/ic_launcher_background"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tvTimeMatch"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:civ_border_color="@color/maincolor"
+                app:civ_border_width="1dp"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <TextView
                 android:id="@+id/tvTeam1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginRight="12dp"
+                android:ellipsize="end"
                 android:fontFamily="@font/inter_bold"
                 android:maxLines="1"
-                android:ellipsize="end"
                 android:text="Qatar"
                 android:textColor="@color/black"
                 android:textFontWeight="600"
                 android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imgTeam1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <TextView
                 android:id="@+id/tvTeam2"
                 android:layout_width="0dp"
-                android:gravity="right"
-                android:layout_margin="12dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
-                android:fontFamily="@font/inter_bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="12dp"
                 android:ellipsize="end"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="right"
                 android:maxLines="1"
                 android:text="Qatar"
                 android:textColor="@color/black"
                 android:textFontWeight="600"
                 android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imgTeam2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <ImageView
-                android:visibility="gone"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_margin="-1dp"
                 android:layout_marginBottom="-1dp"
                 android:src="@drawable/bell_faluse"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
             <TextView
-                android:visibility="gone"
                 android:id="@+id/tvTimeGoal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -177,10 +195,11 @@
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:visibility="gone"
+                android:layout_marginTop="13dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/view" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
