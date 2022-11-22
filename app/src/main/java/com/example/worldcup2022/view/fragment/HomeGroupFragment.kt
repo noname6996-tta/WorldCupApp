@@ -21,7 +21,6 @@ class HomeGroupFragment: BaseFragment<FragemntHomegroupBinding>() {
 
     override fun initView() {
         super.initView()
-        MainNewActivity.binding.bottomMain.visibility = View.GONE
         binding.viewPagerHomeGroup.adapter = GroupPagerAdapter(requireActivity())
         TabLayoutMediator(binding.tabLayoutHomeGroup, binding.viewPagerHomeGroup,object : TabLayoutMediator.TabConfigurationStrategy{
             override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {
