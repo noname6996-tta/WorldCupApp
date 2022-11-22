@@ -180,6 +180,7 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>() {
                 arrCountrys.add(matchs.data[i])
             }
         }
+        arrCountrys.reverse()
         matchGroupAdapter.setListMatchCountrys(arrCountrys, requireContext())
     }
 

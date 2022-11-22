@@ -172,8 +172,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         val itr = list.iterator()
 
         while (itr.hasNext()) {
-
-            var date = itr.next().dateFormat
+            var date =UtilsKotlin().formatDate_dd_MM_yyyy( UtilsKotlin().parseTime_yyyy_MM_dd_T_HH_mm_ssZ(itr.next().dateFormat))
             if (listDates.size == 0) {
                 listDates.add(date)
             } else {
@@ -207,7 +206,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             for (i in 0..listDatesOnl.size) {
                 val currentTime = Calendar.getInstance().time
                 val endDateDay = listDatesOnl[i]
-                val format1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault())
+                val format1 = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val endDate = format1.parse(endDateDay)
                 if (endDate!!.time > currentTime.time) {
                     binding.viewPagerHome.currentItem = i - 1
@@ -223,7 +222,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             false,
             false) { tab, position ->
             if (listDatesOnl.size > 0){
-                tab.text = UtilsKotlin().formatDate(Data.parseTime((listDatesOnl[position])))
+                tab.text = UtilsKotlin().formatDate(UtilsKotlin().parseTime((listDatesOnl[position])))
             }
 
             else tab.text =

@@ -62,6 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:background="@null"
+        android:textColorHint="#99000000"
         android:hint="@string/search_highlights"
         android:imeOptions="actionSearch"
         android:inputType="text"

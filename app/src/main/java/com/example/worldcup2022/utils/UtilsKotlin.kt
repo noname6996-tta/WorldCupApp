@@ -95,7 +95,8 @@ class UtilsKotlin {
 
     fun saveToInternalStorageCrop(croppedBitmap: Bitmap, context: Context): String? {
 
-        var sharp = floatArrayOf(-0.15f, -0.15f, -0.15f, -0.15f, 2.2f, -0.15f, -0.15f, -0.15f, -0.15f)
+        var sharp =
+            floatArrayOf(-0.15f, -0.15f, -0.15f, -0.15f, 2.2f, -0.15f, -0.15f, -0.15f, -0.15f)
         //you call the method above and just paste the bitmap you want to apply it and the float of above
 //        val bitmapImage = doSharpen(croppedBitmap!! , sharp)
         val bitmapImage = replaceColor(croppedBitmap!!, Color.GRAY, Color.BLACK)
@@ -136,6 +137,17 @@ class UtilsKotlin {
         }.time
         return SimpleDateFormat("EEE dd MMM", Locale.ENGLISH).format(calendar)
     }
+    fun formatDate_dd_MM_yyyy(time: Long): String {
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = time
+        }.time
+        return SimpleDateFormat("dd/MM/yyyy", Locale.ROOT).format(calendar)
+    }
+    fun parseTime_yyyy_MM_dd_T_HH_mm_ssZ(timeInString: String): Long {
+        val df1: DateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+        val result1 = df1.parse(timeInString)
+        return result1.time
+    }
 
     fun parseTimeEEEddMMM(timeInString: String): Long {
         val df1: DateFormat = SimpleDateFormat("EEE dd MMM")
@@ -145,9 +157,19 @@ class UtilsKotlin {
 
     fun openApp(activity: Activity, packageName: String) {
         try {
-            activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+            activity.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=$packageName")
+                )
+            )
         } catch (e: ActivityNotFoundException) {
-            activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
+            activity.startActivity(
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+                )
+            )
         }
     }
 

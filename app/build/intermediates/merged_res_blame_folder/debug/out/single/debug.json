@@ -396,6 +396,10 @@
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-92:\\layout\\activity_home.xml"
     },
     {
+        "merged": "com.example.worldcup2022.app-merged_res-90:/layout_fragment_videowc.xml.flat",
+        "source": "com.example.worldcup2022.app-main-92:/layout/fragment_videowc.xml"
+    },
+    {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-merged_res-90:\\drawable_border_radius_ad_selfie.xml.flat",
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-92:\\drawable\\border_radius_ad_selfie.xml"
     },
@@ -654,10 +658,6 @@
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-merged_res-90:\\drawable_prediction.png.flat",
         "source": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-main-92:\\drawable\\prediction.png"
-    },
-    {
-        "merged": "com.example.worldcup2022.app-merged_res-90:/navigation_nav_graph.xml.flat",
-        "source": "com.example.worldcup2022.app-main-92:/navigation/nav_graph.xml"
     },
     {
         "merged": "C:\\Users\\DELL\\.gradle\\daemon\\7.4\\com.example.worldcup2022.app-merged_res-90:\\drawable_ic_sync_black_24dp.xml.flat",

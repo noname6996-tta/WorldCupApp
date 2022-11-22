@@ -94,7 +94,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
                     }.time
                     val day1 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar1)
                     val calendar2 = Calendar.getInstance().apply {
-                        timeInMillis = parseTime(daymatch)
+                        timeInMillis = UtilsKotlin().parseTime(daymatch)
                     }.time
                     val day2 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar2)
 
@@ -134,7 +134,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
             LIST_MATCHS,
             ArrayList()
         )
-        val time = parseTime(daymatch)
+        val time = UtilsKotlin().parseTime(daymatch)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = time
         }
@@ -224,7 +224,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
                 }.time
                 val day1 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar1)
                 val calendar2 = Calendar.getInstance().apply {
-                    timeInMillis = parseTime(daymatch)
+                    timeInMillis = UtilsKotlin().parseTime(daymatch)
                 }.time
                 val day2 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar2)
                 if (day1.equals(day2)) {
