@@ -1,5 +1,6 @@
 package com.example.worldcup2022.view.fragment
 
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.navigation.fragment.findNavController
@@ -10,7 +11,6 @@ import com.example.worldcup2022.adapter.MatchPagerAdapter
 import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.dto.worldcup.Country
 import com.example.worldcup2022.data.dto.worldcup.Match
-import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.databinding.FragmentMatchBinding
 import com.example.worldcup2022.ui.component.main.MainNewActivity
 import com.google.android.material.tabs.TabLayout
@@ -26,39 +26,35 @@ import java.util.*
 
 class MatchFragment : BaseFragment<FragmentMatchBinding>() {
 
+    private var match: Match? = null
+
     val args: MatchFragmentArgs by navArgs()
     override fun getDataBinding(): FragmentMatchBinding {
         return FragmentMatchBinding.inflate(layoutInflater)
     }
 
-    companion object {
-        lateinit var matchFragment: Match
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        match = args.objectMatch
+        super.onViewCreated(view, savedInstanceState)
     }
 
     override fun initData() {
         super.initData()
-        MainNewActivity.binding.bottomMain.visibility = View.GONE
-        var match: Match = args.objectMatch
-        MatchGroupFragment.group = match.group
+        MatchGroupFragment.group = match!!.group
 
+        binding.tvGoalsTeam1.visibility = View.VISIBLE
+        binding.tvGoalsTeam1.text = match!!.country1Goal
 
-        if (match.country1Goal != null) {
-            binding.tvGoalsTeam1.visibility = View.VISIBLE
-            binding.tvGoalsTeam1.text = match.country1Goal
-
-        }
-        if (match.country2Goal != null) {
-            binding.tvGoalsTeam2.visibility = View.VISIBLE
-            binding.tvGoalsTeam2.text = match.country2Goal
-        }
-        if (match.country1 != null) {
-            binding.tvTeam1.text = match.country1!!.name
-            Glide.with(requireContext()).load(match.country1!!.image)
+        binding.tvGoalsTeam2.visibility = View.VISIBLE
+        binding.tvGoalsTeam2.text = match!!.country2Goal
+        if (match!!.country1 != null) {
+            binding.tvTeam1.text = match!!.country1!!.name
+            Glide.with(requireContext()).load(match!!.country1!!.image)
                 .error(R.drawable.logo).placeholder(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgteam1)
-            binding.tvTeam2.text = match.country2!!.name
-            Glide.with(requireContext()).load(match.country2!!.image)
+            binding.tvTeam2.text = match!!.country2!!.name
+            Glide.with(requireContext()).load(match!!.country2!!.image)
                 .error(R.drawable.logo).placeholder(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgteam2)
@@ -71,14 +67,14 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
                     Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
                 for (i in 0..countrys.size - 1) {
                     val country = countrys[i]
-                    if (match.idcountry1.toString() == country.id) {
+                    if (match!!.idcountry1.toString() == country.id) {
                         binding.tvTeam1.text = country.name
                         Glide.with(requireContext()).load(country.image)
                             .error(R.drawable.logo).placeholder(R.drawable.logo)
                             .override(100, 100)
                             .into(binding.imgteam1)
                     }
-                    if (match.idcountry2.toString() == country.id) {
+                    if (match!!.idcountry2.toString() == country.id) {
                         binding.tvTeam2.text = country.name
                         Glide.with(requireContext()).load(country.image)
                             .error(R.drawable.logo).placeholder(R.drawable.logo)
@@ -91,27 +87,9 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
             }
         }
 
-        if (match.stadium != null) {
-            binding.tvStadiumMatch.text = match.stadium.name
-        } else {
-            try {
-                val fileInString: String =
-                    requireContext().assets.open("Stadium.json").bufferedReader()
-                        .use { it.readText() }
-                var stadiums: List<Stadium> =
-                    Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
-                for (i in 0..stadiums.size - 1) {
-                    val stadium = stadiums[i]
-                    if (match.idStadium.toString() == stadium.id) {
-                        binding.tvStadiumMatch.text = stadium.name
-                    }
-                }
-            } catch (e: IOException) {
+        binding.tvStadiumMatch.text = match!!.stadium.name
 
-            }
-        }
-
-        val time = Data.parseTime(match.dateFormat)
+        val time = Data.parseTime(match!!.dateFormat)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = time
         }.time
@@ -122,7 +100,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
         if (current > time) {
             binding.tvTimeMatch.visibility = View.GONE
             binding.tvGoal.visibility = View.VISIBLE
-            binding.tvGoal.text = match.goal
+            binding.tvGoal.text = match!!.goal
         } else {
             binding.tvTimeMatch.text = trueTime
             binding.tvTimeMatch.visibility = View.VISIBLE
@@ -137,14 +115,15 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
 
         binding.tvDateMatchGroup.text = trueTime2
 
-        binding.tvGroupName.text = "Group " + match.group + " "
+        binding.tvGroupName.text = "Group " + match!!.group + " "
     }
 
     override fun initView() {
         super.initView()
-        matchFragment = args.objectMatch
-        MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
-        binding.viewPagerMatch.adapter = MatchPagerAdapter(requireActivity())
+        binding.viewPagerMatch.adapter = MatchPagerAdapter(
+            requireActivity(),
+            arrayListOf(MatchInFragment().newInstance(match), MatchGroupFragment())
+        )
         TabLayoutMediator(binding.tabLayoutMatch,
             binding.viewPagerMatch,
             false,
@@ -179,12 +158,12 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
             findNavController().popBackStack()
         }
         binding.imgteam1.setOnClickListener {
-            var country = args.objectMatch.country1
+            var country = match!!.country1
             val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country!!)
             findNavController().navigate(action)
         }
         binding.imgteam2.setOnClickListener {
-            var country = args.objectMatch.country2
+            var country = match!!.country2
             val action = MatchFragmentDirections.actionMatchFragmentToSquadFragment(country!!)
             findNavController().navigate(action)
         }

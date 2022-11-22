@@ -1267,8 +1267,6 @@ open class VideoPlayerActivity : Activity() {
             val title: String? = if (listTitle == null || listTitle!!.isEmpty()) {
                 getFileName(this, mPrefs!!.mediaUri!!)
             } else {
-                currentPlay = player!!.currentMediaItemIndex
-
                 try {
                     listTitle!![currentPlay]
                 } catch (e: Exception) {
@@ -1347,8 +1345,6 @@ open class VideoPlayerActivity : Activity() {
                 if (listTitle == null || listTitle!!.isEmpty()) {
                     titleView!!.text = getFileName(this, mPrefs!!.mediaUri!!)
                 } else {
-                    currentPlay = player!!.currentMediaItemIndex
-
                     titleView!!.text = try {
                         listTitle!![currentPlay]
                     } catch (e: Exception) {
@@ -1396,8 +1392,6 @@ open class VideoPlayerActivity : Activity() {
             val title: String? = if (listTitle == null || listTitle!!.isEmpty()) {
                 getFileName(this, it)
             } else {
-                currentPlay = player!!.currentMediaItemIndex
-
                 try {
                     listTitle!![currentPlay]
                 } catch (e: Exception) {

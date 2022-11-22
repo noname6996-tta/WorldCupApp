@@ -40,7 +40,6 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
 
     override fun initView() {
         super.initView()
-        MainNewActivity.binding.bottomMain.visibility = View.GONE
     }
 
     override fun initData() {
@@ -81,7 +80,6 @@ class PlaySoundFragment : BaseFragment<FragmentPlaySoundBinding>() {
         super.addEvent()
         binding.viewBack.setOnClickListener {
             mediaPlayer.stop()
-            MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().navigateUp()
         }
 //        binding.imgPlay.setOnPressListener(

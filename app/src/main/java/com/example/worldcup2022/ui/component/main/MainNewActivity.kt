@@ -4,8 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,7 +24,6 @@ import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.databinding.ActivityMainBinding
 import com.example.worldcup2022.ui.base.BaseActivity
 import com.example.worldcup2022.utils.observe
-import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -45,10 +46,7 @@ class MainNewActivity : BaseActivity() {
     lateinit var navHostFragment: NavHostFragment
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val mainViewModel: MainViewModel by viewModels()
-
-    companion object {
-        lateinit var binding: ActivityMainBinding
-    }
+    private lateinit var binding: ActivityMainBinding
 
     override fun initViewBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -102,56 +100,16 @@ class MainNewActivity : BaseActivity() {
     private fun initUi() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.navMain) as NavHostFragment
         navController = navHostFragment.findNavController()
-
-        val mNavigationItemSelected = object : NavigationBarView.OnItemSelectedListener {
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                when (item.itemId) {
-                    R.id.homeFragment -> {
-
-                        NavigationUI.onNavDestinationSelected(
-                            item,
-                            navController
-                        )
-                        return true
-                    }
-                    R.id.tablesFragment -> {
-                        NavigationUI.onNavDestinationSelected(
-                            item,
-                            navController
-                        )
-                        return true
-                    }
-                    R.id.videoWcFragment -> {
-                        NavigationUI.onNavDestinationSelected(
-                            item,
-                            navController
-                        )
-                        return true
-                    }
-                    R.id.wcFunFragment -> {
-                        NavigationUI.onNavDestinationSelected(
-                            item,
-                            navController
-                        )
-                        return true
-                    }
-                    R.id.historyFragment -> {
-                        NavigationUI.onNavDestinationSelected(
-                            item,
-                            navController
-                        )
-                        return true
-                    }
-                    else -> {
-                        return false
-                    }
+        binding.bottomMain.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _: NavController?, navDestination: NavDestination, _: Bundle? ->
+            when (navDestination.id) {
+                R.id.groupDetalsFragment, R.id.matchFragment, R.id.playSoundFragment -> {
+                    binding.bottomMain.visibility = View.GONE
+                }
+                else -> {
+                    binding.bottomMain.visibility = View.VISIBLE
                 }
             }
-        }
-
-        binding.bottomMain.setupWithNavController(navController)
-        binding.bottomMain.apply {
-            setOnItemSelectedListener(mNavigationItemSelected)
         }
         initDialogRate()
 

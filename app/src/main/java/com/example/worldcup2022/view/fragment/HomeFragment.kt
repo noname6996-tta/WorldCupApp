@@ -47,7 +47,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     var update : Runnable ?=null
     override fun initView() {
         super.initView()
-        MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
         countDownTime()
         createListDateOff()
         setData()
@@ -239,7 +238,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         adapter.setOnClickItemListener {
             FirebaseAnalytics.getInstance(requireContext()).logEvent("Home_click_adbanner", Bundle())
             if (it %2== 0) {
-
                 UtilsKotlin().openApp(requireActivity(), "com.screen.mirroring.miracast.tv.cast.smart.view")
             } else {
                 UtilsKotlin().openApp(requireActivity(), "com.last.fm.live.radio.stations")

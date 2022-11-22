@@ -46,7 +46,6 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>() {
     private val mainViewModel: MainViewModel by viewModels()
     override fun initView() {
         super.initView()
-        MainNewActivity.binding.bottomMain.visibility = View.GONE
         groupMatch = args.groupName
         binding.textView5.text = "Group " + groupMatch + " "
         binding.tvLogoGroupName.text = "Group " + groupMatch + " "
@@ -113,7 +112,6 @@ class GroupDetalsFragment : BaseFragment<FragmentGroupDetalsBinding>() {
     override fun addEvent() {
         super.addEvent()
         binding.vireBack.setOnClickListener {
-            MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
             findNavController().popBackStack()
         }
         homeMatchAdapter.setClickShowMatch{
