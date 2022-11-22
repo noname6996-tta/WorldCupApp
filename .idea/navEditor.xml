@@ -147,6 +147,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="homeKnockoutFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="849" />
+                            <option name="y" value="1443" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="homeMatchFragment">
                     <value>
                       <LayoutPositions>
@@ -255,6 +267,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_stadiumFragment_to_matchFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_stadiumFragment_to_stadiumSecondFragment">
                               <value>
                                 <LayoutPositions />
@@ -276,6 +293,11 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_stadiumSecondFragment_to_matchFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_stadiumSecondFragment_to_stadiumFragment">
                               <value>
                                 <LayoutPositions />

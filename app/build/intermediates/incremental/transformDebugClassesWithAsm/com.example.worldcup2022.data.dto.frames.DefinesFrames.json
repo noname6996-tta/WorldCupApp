@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.data.dto.frames.DefinesFrames","classAnnotations":["com.squareup.moshi.JsonClass","kotlinx.android.parcel.Parcelize"],"interfaces":["android.os.Parcelable"],"superClasses":["java.lang.Object"]}

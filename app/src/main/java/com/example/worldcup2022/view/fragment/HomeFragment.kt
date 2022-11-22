@@ -13,6 +13,7 @@ import com.example.worldcup2022.LIST_MATCHS
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HomeMatchPagerAdapter
 import com.example.worldcup2022.adapter.InstallAppAdapter
+import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
@@ -44,7 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     var handler: Handler? = null
     var timer: Timer? = null
-    var update : Runnable ?=null
+    var update: Runnable? = null
     override fun initView() {
         super.initView()
         MainNewActivity.binding.bottomMain.visibility = View.VISIBLE
@@ -172,7 +173,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         while (itr.hasNext()) {
 
-            var date = itr.next().date
+            var date = itr.next().dateFormat
             if (listDates.size == 0) {
                 listDates.add(date)
             } else {
@@ -206,9 +207,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             for (i in 0..listDatesOnl.size) {
                 val currentTime = Calendar.getInstance().time
                 val endDateDay = listDatesOnl[i]
-                val format1 = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val format1 = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.getDefault())
                 val endDate = format1.parse(endDateDay)
-                if (endDate.time > currentTime.time) {
+                if (endDate!!.time > currentTime.time) {
                     binding.viewPagerHome.currentItem = i - 1
                     break
                 }
@@ -220,11 +221,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             binding.tabLayout,
             binding.viewPagerHome,
             false,
-            false
-        ) { tab, position ->
-            if (listDatesOnl.size > 0)
-                tab.text = UtilsKotlin().formatDate(UtilsKotlin().parseTime((listDatesOnl[position])))
-            else tab.text = UtilsKotlin().formatDate(UtilsKotlin().parseTime((listDatesOff[position])))
+            false) { tab, position ->
+            if (listDatesOnl.size > 0){
+                tab.text = UtilsKotlin().formatDate(Data.parseTime((listDatesOnl[position])))
+            }
+
+            else tab.text =
+                UtilsKotlin().formatDate(UtilsKotlin().parseTime((listDatesOff[position])))
         }.attach()
     }
 
@@ -252,7 +255,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             handler = Handler(Looper.myLooper()!!)
         }
 
-         update = Runnable {
+        update = Runnable {
             if (binding.vpInstallApp.currentItem == 3) { //adapter is your custom ViewPager's adapter
                 binding.vpInstallApp.setCurrentItem(0, false)
             } else {

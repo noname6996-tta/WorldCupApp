@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.adapter.HomeMatchPagerAdapter","classAnnotations":[],"interfaces":["androidx.viewpager2.adapter.StatefulAdapter"],"superClasses":["androidx.viewpager2.adapter.FragmentStateAdapter","androidx.recyclerview.widget.RecyclerView$Adapter","java.lang.Object"]}

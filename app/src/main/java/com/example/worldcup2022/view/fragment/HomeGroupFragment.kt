@@ -1,10 +1,13 @@
 package com.example.worldcup2022.view.fragment
 
 import android.util.Log
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.GroupPagerAdapter
 import com.example.worldcup2022.databinding.FragemntHomegroupBinding
+import com.example.worldcup2022.ui.component.main.MainNewActivity
+import com.example.worldcup2022.view.activity.MainActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.proxglobal.proxads.adsv2.callback.AdsCallback
@@ -18,6 +21,7 @@ class HomeGroupFragment: BaseFragment<FragemntHomegroupBinding>() {
 
     override fun initView() {
         super.initView()
+        MainNewActivity.binding.bottomMain.visibility = View.GONE
         binding.viewPagerHomeGroup.adapter = GroupPagerAdapter(requireActivity())
         TabLayoutMediator(binding.tabLayoutHomeGroup, binding.viewPagerHomeGroup,object : TabLayoutMediator.TabConfigurationStrategy{
             override fun onConfigureTab(tab: TabLayout.Tab, position: Int) {

@@ -13,7 +13,10 @@ import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.observe
 import com.orhanobut.hawk.Hawk
 import com.proxglobal.worlcupapp.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class HomeKnockoutFragment : BaseFragment<FragmentKnockoutStageBinding>() {
     private val mainViewModel: MainViewModel by viewModels()
     lateinit var matchsOnl: List<com.example.worldcup2022.data.dto.worldcup.Match>
@@ -138,3 +141,5 @@ class HomeKnockoutFragment : BaseFragment<FragmentKnockoutStageBinding>() {
         }
     }
 }
+
+

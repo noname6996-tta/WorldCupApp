@@ -76,9 +76,6 @@ class MainActivity : AppCompatActivity() {
                 when (item.itemId) {
                     R.id.homeFragment -> {
                         Log.d(javaClass.name, "initView: ${navController.currentDestination?.displayName}")
-//                        if (navController.currentDestination?.displayName== "fragment_allgroup" ){
-//                                navController.popBackStack()
-//                            }
                         NavigationUI.onNavDestinationSelected(
                             item,
                             navController

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.worldcup2022.LIST_MATCHS
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HomeMathAdapter
+import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.Data.parseTime
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Match
@@ -93,7 +94,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
                     }.time
                     val day1 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar1)
                     val calendar2 = Calendar.getInstance().apply {
-                        timeInMillis = UtilsKotlin().parseTime(daymatch)
+                        timeInMillis = parseTime(daymatch)
                     }.time
                     val day2 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar2)
 
@@ -133,7 +134,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
             LIST_MATCHS,
             ArrayList()
         )
-        val time = UtilsKotlin().parseTime(daymatch)
+        val time = parseTime(daymatch)
         val calendar = Calendar.getInstance().apply {
             timeInMillis = time
         }
@@ -223,7 +224,7 @@ class HomeMatchFragment : BaseFragment<FragmentHomematchBinding>() {
                 }.time
                 val day1 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar1)
                 val calendar2 = Calendar.getInstance().apply {
-                    timeInMillis = UtilsKotlin().parseTime(daymatch)
+                    timeInMillis = parseTime(daymatch)
                 }.time
                 val day2 = SimpleDateFormat("dd", Locale.ENGLISH).format(calendar2)
                 if (day1.equals(day2)) {
