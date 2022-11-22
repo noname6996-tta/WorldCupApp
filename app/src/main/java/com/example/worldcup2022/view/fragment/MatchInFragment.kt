@@ -33,9 +33,29 @@ import java.util.*
 
 @AndroidEntryPoint
 class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
-    lateinit var match: Match
+    private var match: Match? = null
     lateinit var dialogVote: DiaLogVote
     private val mainViewModel: MainViewModel by viewModels()
+
+    companion object{
+        private const val API_MATCH = "match"
+    }
+
+    fun newInstance(match: Match?): MatchInFragment {
+        val args = Bundle()
+        args.putParcelable(API_MATCH, match)
+        val fragment = MatchInFragment()
+        fragment.arguments = args
+        return fragment
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null) {
+            match = requireArguments().getParcelable(API_MATCH)
+        }
+    }
+
     override fun getDataBinding(): FragmentMatchInfoBinding {
         return FragmentMatchInfoBinding.inflate(layoutInflater)
     }
@@ -48,26 +68,25 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     @SuppressLint("ResourceAsColor")
     override fun initView() {
         super.initView()
-        match = MatchFragment.matchFragment
-        if (match.country1 != null) {
-            binding.tvTeam1.text = match.country1!!.name
-            binding.tvProcessNameTeam1.text = match.country1!!.name
-            Glide.with(requireContext()).load(match.country1!!.image)
+        if (match!!.country1 != null) {
+            binding.tvTeam1.text = match!!.country1!!.name
+            binding.tvProcessNameTeam1.text = match!!.country1!!.name
+            Glide.with(requireContext()).load(match!!.country1!!.image)
                 .error(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgTeam1)
-            Glide.with(requireContext()).load(match.country1!!.image)
+            Glide.with(requireContext()).load(match!!.country1!!.image)
                 .error(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgTeam1Prediction)
 
-            binding.tvTeam2.text = match.country2?.name
-            binding.tvProcessNameTeam2.text = match.country2?.name
-            Glide.with(requireContext()).load(match.country2?.image)
+            binding.tvTeam2.text = match!!.country2?.name
+            binding.tvProcessNameTeam2.text = match!!.country2?.name
+            Glide.with(requireContext()).load(match!!.country2?.image)
                 .error(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgTeam2)
-            Glide.with(requireContext()).load(match.country2?.image)
+            Glide.with(requireContext()).load(match!!.country2?.image)
                 .error(R.drawable.logo)
                 .override(100, 100)
                 .into(binding.imgTeam2Prediction)
@@ -75,12 +94,13 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
             // name and image
             try {
                 val fileInString: String =
-                    requireContext().assets.open("country.json").bufferedReader().use { it.readText() }
+                    requireContext().assets.open("country.json").bufferedReader()
+                        .use { it.readText() }
                 var countrys: List<Country> =
                     Gson().fromJson(fileInString, object : TypeToken<List<Country>>() {}.type)
                 for (i in 0..countrys.size - 1) {
                     val country = countrys[i]
-                    if (match.idcountry1.toString() == country.id) {
+                    if (match!!.idcountry1.toString() == country.id) {
                         binding.tvTeam1.text = country.name
                         binding.tvProcessNameTeam1.text = country.name
                         Glide.with(requireContext()).load(country.image)
@@ -91,9 +111,9 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                             .error(R.drawable.logo)
                             .override(100, 100)
                             .into(binding.imgTeam1Prediction)
-                        match.country1 = country
+                        match!!.country1 = country
                     }
-                    if (match.idcountry2.toString() == country.id) {
+                    if (match!!.idcountry2.toString() == country.id) {
                         binding.tvTeam2.text = country.name
                         binding.tvProcessNameTeam2.text = country.name
                         Glide.with(requireContext()).load(country.image)
@@ -104,24 +124,25 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                             .error(R.drawable.logo)
                             .override(100, 100)
                             .into(binding.imgTeam2Prediction)
-                        match.country2 = country
+                        match!!.country2 = country
                     }
                 }
             } catch (e: IOException) {
 
             }
         }
-        dialogVote = DiaLogVote(requireContext(), match) { score1, score2 ->
+        dialogVote = DiaLogVote(requireContext(), match!!) { score1, score2 ->
             guess(score1, score2)
         }
         //
-        val played = match.history.toString().trim()
+        val played = match!!.history.toString().trim()
         val separated: List<String> = played.split("-")
         val winsTeam1 = separated[0].trim().toString()
         val draw = separated[1].trim().toString()
         val winsTeam2 = separated[2].trim().toString()
 
-        val sumPlayed: Int = winsTeam1.trim().toInt() + winsTeam2.trim().toInt() + draw.trim().toInt()
+        val sumPlayed: Int =
+            winsTeam1.trim().toInt() + winsTeam2.trim().toInt() + draw.trim().toInt()
 
         val pencentTeam1 = (winsTeam1.toDouble() / sumPlayed) * 100
         binding.progessBarTeam1.setProgress(pencentTeam1.toInt())
@@ -142,7 +163,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                 Gson().fromJson(fileInString, object : TypeToken<List<Stadium>>() {}.type)
             for (i in 0..stadiums.size - 1) {
                 val stadium = stadiums[i]
-                if (match.idStadium.toString() == stadium.id) {
+                if (match!!.idStadium.toString() == stadium.id) {
                     binding.tvNameSatdium.text = stadium.name
                     binding.tvLocationMatchStadium.text = stadium.location
                     Glide.with(requireContext()).load(stadium.image)
@@ -159,10 +180,11 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
         binding.tvGoalsTeam1.text = "?"
         binding.tvGoalsTeam2.text = "?"
 
-        val matchName = binding.tvTeam1.text.toString() + " vs " + binding.tvTeam2.text.toString() + " "
+        val matchName =
+            binding.tvTeam1.text.toString() + " vs " + binding.tvTeam2.text.toString() + " "
         binding.tvMatchName.text = matchName.toString()
 
-        val time = Data.parseTime(match.dateFormat)
+        val time = Data.parseTime(match!!.dateFormat)
         val current = Calendar.getInstance().timeInMillis
         if (current > time) {
             binding.rlVote.visibility = View.GONE
@@ -174,29 +196,32 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     private fun showWhoWillWin() {
         binding.rlAdsProgressGuess.visibility = View.GONE
 
-        binding.firstBar.setProgressPercentage(match.percent1Win.toDouble())
-        binding.secondBar.setProgressPercentage(match.percent2Win.toDouble())
-        binding.thirdBar.setProgressPercentage(match.percentDraw.toDouble())
-        binding.tvPercent1Win.text = match.percent1Win.toString() + "%"
-        binding.tvPercent2Win.text = match.percent2Win.toString() + "%"
-        binding.tvPercentDraw.text = match.percentDraw.toString() + "%"
+        binding.firstBar.setProgressPercentage(match!!.percent1Win.toDouble())
+        binding.secondBar.setProgressPercentage(match!!.percent2Win.toDouble())
+        binding.thirdBar.setProgressPercentage(match!!.percentDraw.toDouble())
+        binding.tvPercent1Win.text = match!!.percent1Win.toString() + "%"
+        binding.tvPercent2Win.text = match!!.percent2Win.toString() + "%"
+        binding.tvPercentDraw.text = match!!.percentDraw.toString() + "%"
     }
 
     override fun addEvent() {
         super.addEvent()
         binding.viewDetails.setOnClickListener {
-            val action = MatchFragmentDirections.actionMatchFragmentToStadiumFragment(match.idStadium.toString())
+            val action =
+                MatchFragmentDirections.actionMatchFragmentToStadiumFragment(match!!.idStadium.toString())
             findNavController().navigate(action)
         }
 
         binding.tvVote.setOnClickListener {
-            FirebaseAnalytics.getInstance(requireContext()).logEvent("MD_click_EnterPredict", Bundle())
+            FirebaseAnalytics.getInstance(requireContext())
+                .logEvent("MD_click_EnterPredict", Bundle())
 
             dialogVote.show()
         }
 
         binding.rlAdsProgressGuess.setOnClickListener {
-            FirebaseAnalytics.getInstance(requireContext()).logEvent("MD_click_Whowillwin", Bundle())
+            FirebaseAnalytics.getInstance(requireContext())
+                .logEvent("MD_click_Whowillwin", Bundle())
 
             ProxAdsConfig.instance.showRewardAds(
                 activity = requireActivity(),
@@ -233,13 +258,13 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
 
         val jsonObject = JSONObject()
         jsonObject.put("userId", userId)
-        jsonObject.put("matchId", match.id)
+        jsonObject.put("matchId", match!!.id)
         if (score1.toInt() > score1.toInt()) {
-            jsonObject.put("teamWin", match.country1?.id)
+            jsonObject.put("teamWin", match!!.country1?.id)
         } else {
-            jsonObject.put("teamWin", match.country2?.id)
+            jsonObject.put("teamWin", match!!.country2?.id)
         }
-        jsonObject.put("time", match.date)
+        jsonObject.put("time", match!!.date)
         jsonObject.put("goal", "$score1-$score2")
 
         val jsonObjectString = jsonObject.toString()
@@ -270,7 +295,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
     override fun onResume() {
         super.onResume()
         val userId = Hawk.get<String>(USER_ID, "")
-        mainViewModel.getHistoryMatchByUserIdAndID("userId==\"" + userId + "\"" + ";" + "matchId==\"" + match.id + "\"")
+        mainViewModel.getHistoryMatchByUserIdAndID("userId==\"" + userId + "\"" + ";" + "matchId==\"" + match!!.id + "\"")
     }
 
     private fun handleHistoryMatchList(status: Resource<ResponseHistoryMatch>) {
@@ -302,7 +327,7 @@ class MatchInFragment : BaseFragment<FragmentMatchInfoBinding>() {
                 binding.tvGoalsTeam1.text = score1
                 binding.tvGoalsTeam2.text = score2
                 if (matchHistory.isRight != null) {
-                    if (matchHistory.goal.equals(match.goal)) {
+                    if (matchHistory.goal.equals(match!!.goal)) {
                         binding.ivResultGuess.setImageResource(R.drawable.ic_win_50x30)
                         binding.ivResultGuess.visibility = View.VISIBLE
                         binding.ivVoteSuccess.visibility = View.VISIBLE

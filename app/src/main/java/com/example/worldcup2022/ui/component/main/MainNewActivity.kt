@@ -4,8 +4,10 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -45,10 +47,7 @@ class MainNewActivity : BaseActivity() {
     lateinit var navHostFragment: NavHostFragment
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val mainViewModel: MainViewModel by viewModels()
-
-    companion object {
-        lateinit var binding: ActivityMainBinding
-    }
+    private lateinit var binding: ActivityMainBinding
 
     override fun initViewBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -102,11 +101,22 @@ class MainNewActivity : BaseActivity() {
     private fun initUi() {
         navHostFragment = supportFragmentManager.findFragmentById(R.id.navMain) as NavHostFragment
         navController = navHostFragment.findNavController()
-
+        binding.bottomMain.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener { _: NavController?, navDestination: NavDestination, _: Bundle? ->
+            when (navDestination.id) {
+                R.id.groupDetalsFragment, R.id.matchFragment, R.id.playSoundFragment -> {
+                    binding.bottomMain.visibility = View.GONE
+                }
+                else -> {
+                    binding.bottomMain.visibility = View.VISIBLE
+                }
+            }
+        }
         val mNavigationItemSelected = object : NavigationBarView.OnItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.homeFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconHome", Bundle())
 
                         NavigationUI.onNavDestinationSelected(
                             item,
@@ -115,6 +125,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.tablesFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconTables", Bundle())
+
                         NavigationUI.onNavDestinationSelected(
                             item,
                             navController
@@ -122,6 +134,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.videoWcFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconVideoWc", Bundle())
+
                         NavigationUI.onNavDestinationSelected(
                             item,
                             navController
@@ -129,6 +143,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.wcFunFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconWcfun", Bundle())
+
                         NavigationUI.onNavDestinationSelected(
                             item,
                             navController
@@ -136,6 +152,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.historyFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconStatistics", Bundle())
+
                         NavigationUI.onNavDestinationSelected(
                             item,
                             navController
@@ -148,11 +166,8 @@ class MainNewActivity : BaseActivity() {
                 }
             }
         }
+        binding.bottomMain.setOnItemSelectedListener(mNavigationItemSelected)
 
-        binding.bottomMain.setupWithNavController(navController)
-        binding.bottomMain.apply {
-            setOnItemSelectedListener(mNavigationItemSelected)
-        }
         initDialogRate()
 
         val sp = getSharedPreferences("prox", Context.MODE_PRIVATE)
