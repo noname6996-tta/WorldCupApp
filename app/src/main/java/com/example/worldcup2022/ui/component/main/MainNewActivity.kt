@@ -24,6 +24,7 @@ import com.example.worldcup2022.data.dto.worldcup.Stadium
 import com.example.worldcup2022.databinding.ActivityMainBinding
 import com.example.worldcup2022.ui.base.BaseActivity
 import com.example.worldcup2022.utils.observe
+import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -111,6 +112,62 @@ class MainNewActivity : BaseActivity() {
                 }
             }
         }
+        val mNavigationItemSelected = object : NavigationBarView.OnItemSelectedListener {
+            override fun onNavigationItemSelected(item: MenuItem): Boolean {
+                when (item.itemId) {
+                    R.id.homeFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconHome", Bundle())
+
+                        NavigationUI.onNavDestinationSelected(
+                            item,
+                            navController
+                        )
+                        return true
+                    }
+                    R.id.tablesFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconTables", Bundle())
+
+                        NavigationUI.onNavDestinationSelected(
+                            item,
+                            navController
+                        )
+                        return true
+                    }
+                    R.id.videoWcFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconVideoWc", Bundle())
+
+                        NavigationUI.onNavDestinationSelected(
+                            item,
+                            navController
+                        )
+                        return true
+                    }
+                    R.id.wcFunFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconWcfun", Bundle())
+
+                        NavigationUI.onNavDestinationSelected(
+                            item,
+                            navController
+                        )
+                        return true
+                    }
+                    R.id.historyFragment -> {
+                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconStatistics", Bundle())
+
+                        NavigationUI.onNavDestinationSelected(
+                            item,
+                            navController
+                        )
+                        return true
+                    }
+                    else -> {
+                        return false
+                    }
+                }
+            }
+        }
+        binding.bottomMain.setOnItemSelectedListener(mNavigationItemSelected)
+
         initDialogRate()
 
         val sp = getSharedPreferences("prox", Context.MODE_PRIVATE)
