@@ -104,11 +104,11 @@ class MainNewActivity : BaseActivity() {
         binding.bottomMain.setupWithNavController(navController)
         navController.addOnDestinationChangedListener { _: NavController?, navDestination: NavDestination, _: Bundle? ->
             when (navDestination.id) {
-                R.id.groupDetalsFragment, R.id.matchFragment, R.id.playSoundFragment -> {
-                    binding.bottomMain.visibility = View.GONE
+                R.id.homeFragment, R.id.tablesFragment, R.id.videoWcFragment, R.id.wcFunFragment, R.id.historyFragment -> {
+                    binding.bottomMain.visibility = View.VISIBLE
                 }
                 else -> {
-                    binding.bottomMain.visibility = View.VISIBLE
+                    binding.bottomMain.visibility = View.GONE
                 }
             }
         }
@@ -116,7 +116,8 @@ class MainNewActivity : BaseActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.homeFragment -> {
-                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconHome", Bundle())
+                        FirebaseAnalytics.getInstance(this@MainNewActivity)
+                            .logEvent("Layout_click_IconHome", Bundle())
 
                         NavigationUI.onNavDestinationSelected(
                             item,
@@ -125,7 +126,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.tablesFragment -> {
-                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconTables", Bundle())
+                        FirebaseAnalytics.getInstance(this@MainNewActivity)
+                            .logEvent("Layout_click_IconTables", Bundle())
 
                         NavigationUI.onNavDestinationSelected(
                             item,
@@ -134,7 +136,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.videoWcFragment -> {
-                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconVideoWc", Bundle())
+                        FirebaseAnalytics.getInstance(this@MainNewActivity)
+                            .logEvent("Layout_click_IconVideoWc", Bundle())
 
                         NavigationUI.onNavDestinationSelected(
                             item,
@@ -143,7 +146,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.wcFunFragment -> {
-                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconWcfun", Bundle())
+                        FirebaseAnalytics.getInstance(this@MainNewActivity)
+                            .logEvent("Layout_click_IconWcfun", Bundle())
 
                         NavigationUI.onNavDestinationSelected(
                             item,
@@ -152,7 +156,8 @@ class MainNewActivity : BaseActivity() {
                         return true
                     }
                     R.id.historyFragment -> {
-                        FirebaseAnalytics.getInstance(this@MainNewActivity).logEvent("Layout_click_IconStatistics", Bundle())
+                        FirebaseAnalytics.getInstance(this@MainNewActivity)
+                            .logEvent("Layout_click_IconStatistics", Bundle())
 
                         NavigationUI.onNavDestinationSelected(
                             item,
