@@ -20,7 +20,7 @@ import java.io.IOException
 @AndroidEntryPoint
 class MatchGroupFragment : BaseFragment<FragmentMatchGroupBinding>() {
     companion object {
-        lateinit var group: String
+        var group: String = ""
     }
 
     private val mainViewModel: MainViewModel by viewModels()
@@ -103,7 +103,12 @@ class MatchGroupFragment : BaseFragment<FragmentMatchGroupBinding>() {
                 arrCountrys.add(matchs.data[i])
             }
         }
-        arrCountrys.reverse()
-        matchGroupAdapter.setListMatchCountrys(arrCountrys, requireContext())
+        var arrCountrys1 = arrCountrys.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrys1.reverse()
+        matchGroupAdapter.setListMatchCountrys(arrCountrys1, requireContext())
     }
 }

@@ -39,12 +39,14 @@
             app:layout_constraintWidth_min="0dp" />
 
         <TextView
+            android:gravity="center"
             android:id="@+id/tvNameSound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/inter_bold"
+            android:maxLines="2"
             android:text="@string/netherlands"
             android:textColor="@color/black"
             android:textSize="14dp"

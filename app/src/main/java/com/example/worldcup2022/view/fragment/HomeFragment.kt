@@ -13,12 +13,10 @@ import com.example.worldcup2022.LIST_MATCHS
 import com.example.worldcup2022.R
 import com.example.worldcup2022.adapter.HomeMatchPagerAdapter
 import com.example.worldcup2022.adapter.InstallAppAdapter
-import com.example.worldcup2022.data.Data
 import com.example.worldcup2022.data.Resource
 import com.example.worldcup2022.data.dto.worldcup.Match
 import com.example.worldcup2022.data.dto.worldcup.ResponseMatch
 import com.example.worldcup2022.databinding.FragmentHomeBinding
-import com.example.worldcup2022.ui.component.main.MainNewActivity
 import com.example.worldcup2022.ui.component.main.MainViewModel
 import com.example.worldcup2022.utils.UtilsKotlin
 import com.example.worldcup2022.utils.observe

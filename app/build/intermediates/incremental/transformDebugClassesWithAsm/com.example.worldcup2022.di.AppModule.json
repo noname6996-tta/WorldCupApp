@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.di.AppModule","classAnnotations":["dagger.Module","dagger.hilt.InstallIn"],"interfaces":[],"superClasses":["java.lang.Object"]}

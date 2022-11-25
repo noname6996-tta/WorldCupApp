@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.usecase.errors.ErrorManager_Factory","classAnnotations":["dagger.internal.DaggerGenerated"],"interfaces":["dagger.internal.Factory","javax.inject.Provider"],"superClasses":["java.lang.Object"]}

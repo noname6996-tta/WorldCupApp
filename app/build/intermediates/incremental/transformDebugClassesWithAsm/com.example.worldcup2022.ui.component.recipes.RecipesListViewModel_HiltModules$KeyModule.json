@@ -1,0 +1,1 @@
+{"className":"com.example.worldcup2022.ui.component.recipes.RecipesListViewModel_HiltModules$KeyModule","classAnnotations":["dagger.Module","dagger.hilt.InstallIn"],"interfaces":[],"superClasses":["java.lang.Object"]}

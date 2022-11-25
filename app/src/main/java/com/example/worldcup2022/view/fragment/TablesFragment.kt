@@ -261,28 +261,68 @@ class TablesFragment : BaseFragment<FragmentTablesBinding>() {
                 }
             }
         }
-        arrCountrysA.reverse()
-        matchGroupAdapterA.setListMatchCountrys(arrCountrysA, requireContext())
+        var arrCountrysA1 = arrCountrysA.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysA1.reverse()
+        matchGroupAdapterA.setListMatchCountrys(arrCountrysA1, requireContext())
         //
-        arrCountrysB.reverse()
-        matchGroupAdapterB.setListMatchCountrys(arrCountrysB, requireContext())
+        var arrCountrysB1 = arrCountrysB.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysB1.reverse()
+        matchGroupAdapterB.setListMatchCountrys(arrCountrysB1, requireContext())
         //
-        arrCountrysC.reverse()
-        matchGroupAdapterC.setListMatchCountrys(arrCountrysC, requireContext())
+        var arrCountrysC1 = arrCountrysC.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysC1.reverse()
+        matchGroupAdapterC.setListMatchCountrys(arrCountrysC1, requireContext())
         //
-        arrCountrysD.reverse()
-        matchGroupAdapterD.setListMatchCountrys(arrCountrysD, requireContext())
+        var arrCountrysD1 = arrCountrysD.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysD1.reverse()
+        matchGroupAdapterD.setListMatchCountrys(arrCountrysD1, requireContext())
         //
-        arrCountrysE.reverse()
-        matchGroupAdapterE.setListMatchCountrys(arrCountrysE, requireContext())
+        var arrCountrysE1 = arrCountrysE.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysE1.reverse()
+        matchGroupAdapterE.setListMatchCountrys(arrCountrysE1, requireContext())
         //
-        arrCountrysF.reverse()
-        matchGroupAdapterF.setListMatchCountrys(arrCountrysF, requireContext())
+        var arrCountrysF1 = arrCountrysF.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysF1.reverse()
+        matchGroupAdapterF.setListMatchCountrys(arrCountrysF1, requireContext())
         //
-        arrCountrysG.reverse()
-        matchGroupAdapterG.setListMatchCountrys(arrCountrysG, requireContext())
+        var arrCountrysG1 = arrCountrysG.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysG1.reverse()
+        matchGroupAdapterG.setListMatchCountrys(arrCountrysG1, requireContext())
         //
-        arrCountrysH.reverse()
-        matchGroupAdapterH.setListMatchCountrys(arrCountrysH, requireContext())
+        var arrCountrysH1 = arrCountrysH.sortedWith { a, b ->
+            if (a.point == b.point) {
+                return@sortedWith a.goalDifference.compareTo(b.goalDifference)
+            } else (a.point.compareTo(b.point))
+        }.toMutableList()
+        arrCountrysH1.reverse()
+        matchGroupAdapterH.setListMatchCountrys(arrCountrysH1, requireContext())
     }
 }

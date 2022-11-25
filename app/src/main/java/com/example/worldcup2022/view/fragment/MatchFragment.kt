@@ -40,6 +40,7 @@ class MatchFragment : BaseFragment<FragmentMatchBinding>() {
 
     override fun initData() {
         super.initData()
+        MatchGroupFragment.group = ""
         MatchGroupFragment.group = match!!.group
 
         binding.tvGoalsTeam1.visibility = View.VISIBLE
