@@ -3754,6 +3754,7 @@ drawable al_exo_styled_controls_subtitle_off
 drawable al_exo_styled_controls_subtitle_on
 drawable al_exo_styled_controls_vr
 drawable alarm_sound
+drawable applovin_creative_debugger_report_ad_rounded_button
 drawable applovin_exo_edit_mode_logo
 drawable applovin_exo_ic_audiotrack
 drawable applovin_exo_ic_check
@@ -4163,6 +4164,7 @@ drawable permissionx_ic_alert
 drawable permissionx_ic_install
 drawable permissionx_ic_notification
 drawable permissionx_ic_setting
+drawable playlistmusic
 drawable prediction
 drawable preference_list_divider_material
 drawable rating_circle_pink
@@ -4594,6 +4596,7 @@ id edtScores1
 id edtScores2
 id edt_search
 id elastic
+id email_report_tv
 id end
 id endToStart
 id end_padder
@@ -5104,6 +5107,7 @@ id recMidgielders
 id recSound
 id rectangles
 id recycler_view
+id report_ad_button
 id restart
 id reverse
 id reverseSawtooth
@@ -5627,6 +5631,7 @@ layout ads_native_small_15
 layout ads_native_small_16
 layout ads_native_small_21
 layout ads_native_small_22
+layout applovin_debugger_list_item_detail
 layout applovin_exo_list_divider
 layout applovin_exo_player_control_view
 layout applovin_exo_player_view
@@ -5643,6 +5648,7 @@ layout bottom_remote_update
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout controls
+layout creative_debugger_displayed_ad_detail_activity
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -5774,7 +5780,6 @@ layout md_listitem
 layout md_listitem_multichoice
 layout md_listitem_singlechoice
 layout mediation_debugger_ad_unit_detail_activity
-layout mediation_debugger_list_item_detail
 layout mediation_debugger_list_item_right_detail
 layout mediation_debugger_list_section
 layout mediation_debugger_list_section_centered
@@ -5870,6 +5875,7 @@ layout text_view_with_theme_line_height
 layout text_view_without_line_height
 layout yt_overlay
 layout yt_seconds_view
+menu creative_debugger_displayed_ad_activity_menu
 menu details_menu
 menu main_actions
 menu mediation_debugger_activity_menu
@@ -6007,6 +6013,8 @@ string androidx_startup
 string app_display_name
 string app_name
 string appbar_scrolling_view_behavior
+string applovin_creative_debugger_disabled_text
+string applovin_creative_debugger_no_ads_text
 string applovin_list_item_image_description
 string back
 string bottom_sheet_behavior
@@ -7612,6 +7620,10 @@ style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
 style YTOSecondsTextAppearance
+style com_applovin_creative_CreativeDebuggerActivity_ActionBar
+style com_applovin_creative_CreativeDebuggerActivity_ActionBar_TitleTextStyle
+style com_applovin_creative_CreativeDebuggerActivity_Theme
+style com_applovin_creative_debugger_ui_DisplayedAdActivity_ReportAdButton
 style com_applovin_mediation_MaxDebuggerActivity_ActionBar
 style com_applovin_mediation_MaxDebuggerActivity_ActionBar_Live
 style com_applovin_mediation_MaxDebuggerActivity_ActionBar_TitleTextStyle

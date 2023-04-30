@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/maincolor">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutConstrainOffline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imgDrum"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/drum_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgSiuuu"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgSiuuu"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/siu_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgHarry"
+                app:layout_constraintStart_toEndOf="@+id/imgDrum"
+                app:layout_constraintTop_toTopOf="@+id/imgDrum" />
+
+            <ImageView
+                android:id="@+id/imgHarry"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/harry_sound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgSiuuu"
+                app:layout_constraintTop_toTopOf="@+id/imgDrum" />
+
+            <ImageView
+                android:id="@+id/imgVuvuzela"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/vuvu_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgWhislte"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgDrum" />
+
+            <ImageView
+                android:id="@+id/imgWhislte"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/whistle_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgCarhorn"
+                app:layout_constraintStart_toEndOf="@+id/imgVuvuzela"
+                app:layout_constraintTop_toTopOf="@+id/imgVuvuzela" />
+
+            <ImageView
+                android:id="@+id/imgCarhorn"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/carhorn_sound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgWhislte"
+                app:layout_constraintTop_toTopOf="@+id/imgVuvuzela" />
+
+            <ImageView
+                android:id="@+id/imgSaxoPhone"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/saxophone_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgSiuuu"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgVuvuzela" />
+
+            <ImageView
+                android:id="@+id/imgFailSound"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/fail_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgHarry"
+                app:layout_constraintStart_toEndOf="@+id/imgSaxoPhone"
+                app:layout_constraintTop_toTopOf="@+id/imgSaxoPhone" />
+
+            <ImageView
+                android:id="@+id/imgGoal"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/goal_sound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgFailSound"
+                app:layout_constraintTop_toTopOf="@+id/imgSaxoPhone" />
+
+            <ImageView
+                android:id="@+id/imgClapping"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/clapping_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgWhislte"
+                app:layout_constraintHorizontal_bias="0.487"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgSaxoPhone" />
+
+            <ImageView
+                android:id="@+id/imgShout"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/shout_sound"
+                app:layout_constraintEnd_toStartOf="@+id/imgCarhorn"
+                app:layout_constraintStart_toEndOf="@+id/imgClapping"
+                app:layout_constraintTop_toTopOf="@+id/imgClapping" />
+
+            <ImageView
+                android:id="@+id/imgLaughSound"
+                android:layout_width="110dp"
+                android:layout_height="130dp"
+                android:src="@drawable/laugh_sound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgShout"
+                app:layout_constraintTop_toTopOf="@+id/imgClapping" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:background="@color/maincolor"
+                app:layout_constraintTop_toBottomOf="@+id/imgClapping" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recSound"
+        android:layout_marginRight="6dp"
+        android:layout_marginLeft="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

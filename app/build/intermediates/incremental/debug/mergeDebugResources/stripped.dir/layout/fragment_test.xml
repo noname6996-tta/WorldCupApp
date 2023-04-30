@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@id/ad_container"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgHeader"
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/header"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgbackGroup"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_baseline_arrow_back_24_maincolor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgHeader" />
+
+            <TextView
+                android:id="@+id/tvGroupname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="Match  "
+                android:textColor="@color/maincolor"
+                android:textFontWeight="700"
+                android:textSize="16dp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toEndOf="@+id/imgbackGroup"
+                app:layout_constraintTop_toBottomOf="@+id/imgHeader" />
+
+            <View
+                android:id="@+id/viewBack"
+                android:layout_width="86dp"
+                android:layout_height="40dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tvGroupname"
+                app:layout_constraintEnd_toEndOf="@+id/tvGroupname"
+                app:layout_constraintStart_toStartOf="@+id/imgbackGroup"
+                app:layout_constraintTop_toTopOf="@+id/tvGroupname" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/viewMatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/border_radius_purple_20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewBack">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/draw"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/layoutMatch"
+                    app:layout_constraintEnd_toEndOf="@+id/layoutMatch"
+                    app:layout_constraintStart_toStartOf="@+id/layoutMatch"
+                    app:layout_constraintTop_toTopOf="@+id/layoutMatch" />
+
+                <LinearLayout
+                    android:id="@+id/layoutMatch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/inter_bold"
+                        android:text="@string/fifa_world_cup_2022"
+                        android:textColor="@color/white"
+                        android:textFontWeight="400"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:id="@+id/tvGroupName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/intermedium"
+                        android:text="@string/group_a"
+                        android:textColor="@color/gray2"
+                        android:textSize="12dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgteam1"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="30dp"
+                                android:src="@drawable/logo" />
+
+                            <TextView
+                                android:id="@+id/tvTeam1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Netherlands"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tvGoalsTeam1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="24dp"
+                                android:text="adasdasdasda"
+                                android:textColor="#FFFFFF"
+                                android:visibility="gone" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvDateMatchGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="38dp"
+                                android:layout_marginBottom="2dp"
+                                android:fontFamily="@font/intermedium"
+                                android:text="@string/sun_nov_20"
+                                android:textColor="@color/gray2"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:id="@+id/tvTimeMatch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_extrabold"
+                                android:text="@string/time"
+                                android:textColor="@color/white"
+                                android:textFontWeight="400"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/tvGoal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/inter_extrabold"
+                                android:text="@string/time"
+                                android:textColor="@color/white"
+                                android:textFontWeight="400"
+                                android:textSize="20dp"
+                                android:visibility="gone"/>
+
+                            <TextView
+                                android:id="@+id/tvStadiumMatch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:gravity="center"
+                                android:maxWidth="100dp"
+                                android:maxLines="2"
+                                android:text="@string/ai_bay_stadium"
+                                android:textColor="@color/gray2"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imgteam2"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="30dp"
+                                android:src="@drawable/logo" />
+
+                            <TextView
+                                android:id="@+id/tvTeam2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="16dp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="Ecuador"
+                                android:textColor="@color/white" />
+
+                            <TextView
+                                android:id="@+id/tvGoalsTeam2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="24dp"
+                                android:text="adasdasdasda"
+                                android:textColor="#FFFFFF"
+                                android:visibility="gone" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutMatch"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@null"
+                android:scrollbars="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewMatch"
+                app:tabIndicator="@drawable/tab_indicator"
+                app:tabIndicatorColor="@color/maincolor"
+                app:tabIndicatorGravity="bottom"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/maincolor"
+                app:tabTextAppearance="@style/tab_text"
+                app:tabTextColor="#565656" />
+
+            <View
+                android:id="@+id/rulerMatch"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#565656"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayoutMatch" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerMatch"
+                android:layout_width="match_parent"
+                android:layout_height="900dp"
+                android:scrollbars="vertical"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rulerMatch" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/ad_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_native_ad"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
