@@ -179,6 +179,9 @@
     <string name="mtrl_picker_toggle_to_day_selection">Trokit për të kaluar te zgjedhja e një dite</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Kalo te modaliteti i \"Hyrjes së tekstit\"</string>
     <string name="mtrl_picker_toggle_to_year_selection">Trokit për të kaluar te zgjedhja e një viti</string>
+    <string name="native_body">Teksti</string>
+    <string name="native_headline">Titulli</string>
+    <string name="native_media_view">Pamja e medias</string>
     <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"Ngjitu lart"</string>
     <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"Hap sirtarin e navigimit"</string>
     <string msgid="6573031135582639649" name="not_set">"Nuk është caktuar"</string>
@@ -203,4 +206,5 @@
     <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
     <string msgid="3140233346420563315" name="v7_preference_off">"JOAKTIV"</string>
     <string msgid="89551595707643515" name="v7_preference_on">"AKTIV"</string>
+    <string name="watermark_label_prefix">AdMob - </string>
 </resources>

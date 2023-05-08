@@ -185,6 +185,9 @@
     <string name="mtrl_picker_toggle_to_day_selection">Klepnutím prepnete na výber dňa</string>
     <string name="mtrl_picker_toggle_to_text_input_mode">Prepnúť na textový režim vstupu</string>
     <string name="mtrl_picker_toggle_to_year_selection">Klepnutím prepnete na výber roka</string>
+    <string name="native_body">Text</string>
+    <string name="native_headline">Nadpis</string>
+    <string name="native_media_view">Zobrazenie média</string>
     <string msgid="6301633601645100427" name="nav_app_bar_navigate_up_description">"Prejsť hore"</string>
     <string msgid="7456070600745802113" name="nav_app_bar_open_drawer_description">"Otvoriť navigačný vysúvací panel"</string>
     <string msgid="6573031135582639649" name="not_set">"Nenastavené"</string>
@@ -209,4 +212,5 @@
     <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
     <string msgid="3140233346420563315" name="v7_preference_off">"Vypnuté"</string>
     <string msgid="89551595707643515" name="v7_preference_on">"Zapnuté"</string>
+    <string name="watermark_label_prefix">AdMob – </string>
 </resources>
