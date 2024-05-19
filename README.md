@@ -7,7 +7,7 @@ Các chức năng: Hiển thị trận đấu, bình chọn đọi thắng - thu
 
 Note : Api đã không còn sử dụng được nữa
 
-## Iamge and design
+## Image and design
 [Link Figma](https://www.figma.com/design/nrvTYG02M9hLXfBuKwoly3/WorldCup2022_Prox_TTA?node-id=0%3A1&t=4qNS4fNdVHRXKSSv-1)
 
 ## Download App
